@@ -4,7 +4,7 @@ date: 2025-06-07 20:17:56
 tags: [“Flutter”, “Widget”]
 ---
 
-## 1.Widget 介绍1
+## 1.Widget 介绍
 >Everything is a widget 这是你学习flutter会听到的最多的一句话。因为在Flutter中几乎所有的对象都是一个 widget，在flutter中UI的构建和事件的处理基本都是通过widget的组合及嵌套来完成的。在iOS中我们经常提及的“组件”、“控件”在flutter中就是widget，当然widget的范围比之更加广泛。如：手势检测GestureDetector、主题Theme和动画容器AnimatedContainer等也是widget。
 
 **Flutter默认支持的两种设计风格：**
