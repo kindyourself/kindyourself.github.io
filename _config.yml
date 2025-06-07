@@ -34,7 +34,6 @@ category_dir: categories # 分类目录
 code_dir: downloads/code # 代码目录
 i18n_dir: :lang # 国际化目录
 skip_render:# 跳过渲染的文件
-  - "README.md" # 跳过README
 
 # ===== 写作设置 =====
 new_post_name: :title.md # 新文章文件名格式
