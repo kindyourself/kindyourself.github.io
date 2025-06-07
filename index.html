@@ -269,6 +269,7 @@
 <p>主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class MyWidget extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _MyWidgetState createState() =&gt; _MyWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>2.initState()</strong><br>在State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。</p>
 <blockquote>
 <p>主要用于初始化依赖数据（如订阅事件、加载本地配置）和 创建动画控制器（AnimationController）等需与 dispose() 配对的资源。</p>
@@ -301,6 +302,7 @@
 <p>释放资源（如取消网络请求、销毁动画控制器）</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose(); // 销毁动画控制器</span><br><span class="line">  _subscription.cancel(); // 取消事件订阅</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>需要注意的是：<br><code>如果在 dispose() 中未释放资源（如动画控制器、Stream 订阅）可能造成内存泄漏</code><br><code>如果在 dispose() 后调用 setState 会导致异常</code></p>
 <h2 id="4-Widget-的渲染"><a href="#4-Widget-的渲染" class="headerlink" title="4.Widget 的渲染"></a>4.Widget 的渲染</h2><p><strong>渲染流程：</strong><br>Flutter 的渲染系统基于三棵核心树结构，通过高度优化的管线（Pipeline）实现高效的 UI 更新。</p>
 <blockquote>
@@ -318,6 +320,7 @@
 <p>Diff 算法：Flutter 对比新旧 Widget 树，仅更新变化的 Element 和 RenderObject，类似 React 的虚拟 DOM。<br>当 Widget 树重建时，Flutter 通过 Diff 算法 对比新旧 Widget 树，决定 Element 树的更新策略<br>Reuse：若新旧 Widget 的 runtimeType 和 key 相同，复用现有 Element。<br>Update：更新 Element 的配置（调用 Element.update(newWidget)）。<br>Replace：类型或 Key 不同时，销毁旧 Element，创建新 Element。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 旧 Widget 树</span><br><span class="line">Container(color: Colors.red)</span><br><span class="line"></span><br><span class="line">// 新 Widget 树</span><br><span class="line">Container(color: Colors.blue)</span><br><span class="line"></span><br><span class="line">// Diff 结果：Container 类型相同且无 Key → 复用 Element，更新 RenderObject 颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// Element 更新逻辑</span><br><span class="line">Element.updateChild()</span><br><span class="line"></span><br><span class="line">Element updateChild(Element child, Widget newWidget, dynamic newSlot) &#123;</span><br><span class="line">  if (newWidget == null) &#123;</span><br><span class="line">    // 移除子节点</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  if (child != null) &#123;</span><br><span class="line">    if (child.widget == newWidget) &#123;</span><br><span class="line">      // Widget 未变化 → 复用 Element</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    if (Widget.canUpdate(child.widget, newWidget)) &#123;</span><br><span class="line">      // 更新 Element 配置</span><br><span class="line">      child.update(newWidget);</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    // 销毁旧 Element，创建新 Element</span><br><span class="line">    deactivateChild(child);</span><br><span class="line">  &#125;</span><br><span class="line">  return inflateWidget(newWidget, newSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -365,16 +368,19 @@
 <p><strong>Diff 算法机制：</strong> 当父组件更新时，Flutter 递归对比新旧 Widget 树，判断是否需要更新 Element 和 RenderObject。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static bool canUpdate(Widget oldWidget, Widget newWidget) &#123;</span><br><span class="line">  return oldWidget.runtimeType == newWidget.runtimeType </span><br><span class="line">      &amp;&amp; oldWidget.key == newWidget.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>复用条件：</strong> runtimeType 和 key 相同 → 复用 Element，仅更新配置。<br><strong>替换条件：</strong> 类型或 Key 不同 → 销毁旧 Element，创建新 Element。</p>
 </blockquote>
 <p><strong>优化策略：</strong><br><strong>1.使用 const 构造函数：</strong> const Widget 在多次重建中引用同一内存地址，Widget.canUpdate 直接返回 true，跳过 Diff 计算。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const MyWidget(text: &#x27;Hello&#x27;); // ✅ 优化</span><br><span class="line">MyWidget(text: &#x27;Hello&#x27;);      // ❌ 非 const</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>2.合理使用 Key：</strong> ValueKey：在列表项中标识唯一性，避免错误复用导致状态混乱。<br>GlobalKey：跨组件访问状态（谨慎使用，破坏局部性）。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemBuilder: (_, index) =&gt; ItemWidget(</span><br><span class="line">    key: ValueKey(items[index].id), // 唯一标识</span><br><span class="line">    data: items[index],</span><br><span class="line">  ),</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>3.拆分细粒度 Widget：</strong> 将频繁变化的部分拆分为独立 Widget，缩小 setState 触发的 Diff 范围。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 父组件（仅传递静态数据）</span><br><span class="line">class ParentWidget extends StatelessWidget &#123;</span><br><span class="line">  const ParentWidget(&#123;super.key&#125;);</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Column(</span><br><span class="line">      children: [</span><br><span class="line">        const StaticHeader(), // 静态部分</span><br><span class="line">        DynamicContent(data: _data), // 动态部分</span><br><span class="line">      ],</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>2.布局（Layout）阶段优化</strong></p>
 <blockquote>
 <p><strong>布局计算机制：</strong> 当某个 RenderObject 的尺寸变化不影响父节点布局时，可标记为布局边界，阻断布局计算向上传播。通过 RenderObject.isRepaintBoundary &#x3D; true 设置（布局边界（Relayout Boundary））</p>
@@ -390,6 +396,7 @@
 <p><strong>2.预计算尺寸：</strong> 通过固定尺寸（SizedBox）或 LayoutBuilder 提前确定布局约束，减少计算量。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SizedBox(</span><br><span class="line">  width: 100,</span><br><span class="line">  height: 50,</span><br><span class="line">  child: Text(&#x27;Fixed Size&#x27;),</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>3.使用 IntrinsicWidth&#x2F;IntrinsicHeight 的替代方案：</strong>     IntrinsicWidth 会触发多次子节点布局计算，性能低下。<br>我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。</p>
 </blockquote>
@@ -405,6 +412,7 @@
 <p><strong>1.使用 RepaintBoundary：</strong> 将独立变化的 UI 部分包裹 RepaintBoundary，生成独立 Layer，减少重绘区域。<br>通过 RenderObject.isRepaintBoundary &#x3D; true 标记。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RepaintBoundary(</span><br><span class="line">  child: MyAnimatedWidget(), // 独立重绘区域</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>2.避免高开销绘制操作：</strong> 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代Opacity 。<br>优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。</p>
 </blockquote>
@@ -435,6 +443,7 @@
 <p><strong>2.资源释放：</strong><br>必须释放动画控制器（AnimationController.dispose()）、Stream 订阅（Subscription.cancel()）等资源。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose();</span><br><span class="line">  _streamSubscription.cancel();</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><img src="https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png" alt="2025-05-23 14.45.52.png"></p>
  
       <!-- reward -->
