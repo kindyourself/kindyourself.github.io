@@ -102,7 +102,7 @@ theme: ayer
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: git@github.com:kindyourself/kindyourself.github.io  # 静态文件仓库
+  repo: git@github.com:kindyourself/kindyourself.github.io.git  # 静态文件仓库
   branch: master  # 或 main/master
 
 # hexo-generator-searchdb
