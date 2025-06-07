@@ -255,7 +255,7 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose();</span><br><span class="line">  _streamSubscription.cancel();</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/.io//Widget_Two.png" alt="2025-05-23 14.45.52.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/kindyourself/kindyourself.github.io@master/2025/06/07/Widget%E8%BF%9B%E9%98%B6/Widget_Two.png" alt="2025-05-23 14.45.52.png"></p>
 ]]></content>
       <tags>
         <tag>“Flutter”</tag>
