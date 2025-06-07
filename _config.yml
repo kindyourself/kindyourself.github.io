@@ -38,7 +38,7 @@ skip_render: # 跳过渲染的文件
   - "CNAME"  # 跳过CNAME文件
 
 # ===== 写作设置 =====
-new_post_name: :title.md # 新文章文件名格式
+new_post_name: title.md # 新文章文件名格式
 default_layout: post # 默认布局
 titlecase: false # 是否将标题转换为标题大小写
 external_link: # 外部链接设置
