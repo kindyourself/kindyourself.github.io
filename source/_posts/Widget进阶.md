@@ -4,7 +4,7 @@ date: 2025-06-07 20:17:56
 tags:[Widget, Flutter, 生命周期]
 ---
 
-## 1.Widget 介绍
+## 1.Widget 介绍1
 >Everything is a widget 这是你学习flutter会听到的最多的一句话。因为在Flutter中几乎所有的对象都是一个 widget，在flutter中UI的构建和事件的处理基本都是通过widget的组合及嵌套来完成的。在iOS中我们经常提及的“组件”、“控件”在flutter中就是widget，当然widget的范围比之更加广泛。如：手势检测GestureDetector、主题Theme和动画容器AnimatedContainer等也是widget。
 
 **Flutter默认支持的两种设计风格：**
@@ -54,6 +54,7 @@ class IconTextButton extends StatelessWidget {
     );
   }
 }
+
 ```
 ###### 二、StatefulWidget：
 有状态组件，通过 State 对象管理动态数据。当状态变化时调用 setState 触发 UI 更新，需要用户交互（如按钮点击、表单输入）和依赖实时数据变化（如计数器、动态列表）。
@@ -123,6 +124,7 @@ class _MarqueeWidgetState extends State<MarqueeWidget> {
     _timer.cancel();
   }
 }
+
 ```
 
 ***2.按功能分类***
@@ -134,6 +136,7 @@ Row/Column：水平/垂直排列子项（基于 Flexbox）。
 Stack：子 Widget 堆叠（类似 CSS 的绝对定位）。
 Expanded/Flexible：在 Row 或 Column 中分配剩余空间。
 Container：结合布局、装饰、边距等功能
+
 ```
 
 >**2.基础组件 Widget：** 构成 UI 的基本元素。
@@ -142,6 +145,7 @@ Container：结合布局、装饰、边距等功能
 Text：显示文本。
 Image：加载本地或网络图片。
 Icon：显示图标（需引入 cupertino_icons 或自定义图标库）
+
 ```
 
 >**3.滚动类 Widget：** 处理内容超出屏幕时的滚动行为。
@@ -150,6 +154,7 @@ Icon：显示图标（需引入 cupertino_icons 或自定义图标库）
 ListView：垂直/水平滚动列表。
 GridView：网格布局滚动视图。
 SingleChildScrollView：包裹单个可滚动子组件。
+
 ```
 
 >**4.交互类 Widget：** 响应用户输入事件。
@@ -159,6 +164,7 @@ ElevatedButton/TextButton：按钮交互。
 TextField：文本输入框。
 Checkbox/Switch：选择控件。
 GestureDetector：自定义手势检测（点击、长按、拖动）。
+
 ```
 
 >**5.平台风格类 Widget：** 适配不同操作系统的视觉风格。
@@ -166,6 +172,7 @@ GestureDetector：自定义手势检测（点击、长按、拖动）。
 常见有：
 Material Design：MaterialApp、AppBar、FloatingActionButton。
 Cupertino（iOS 风格）：CupertinoApp、CupertinoNavigationBar、CupertinoPicker。
+
 ```
 
 >**6.动画类 Widget：** 实现动态视觉效果。
@@ -174,6 +181,7 @@ Cupertino（iOS 风格）：CupertinoApp、CupertinoNavigationBar、CupertinoPic
 AnimatedContainer：自动过渡的容器（大小、颜色等属性变化）。
 Hero：页面切换共享元素的过渡动画。
 AnimatedBuilder：自定义复杂动画。
+
 ```
 
 >**7. 导航与路由类 Widget：** 管理页面跳转和导航结构。
@@ -182,6 +190,7 @@ AnimatedBuilder：自定义复杂动画。
 Navigator：管理页面堆栈（push/pop）。
 PageView：实现滑动切换页面。
 BottomNavigationBar：底部导航栏。
+
 ```
 
 >通过简单 Widget 组合实现复杂 UI（例如用 Row + Expanded 替代自定义布局）(优先组合而非继承)
@@ -219,6 +228,7 @@ class MyWidget extends StatefulWidget {
   @override
   _MyWidgetState createState() => _MyWidgetState();
 }
+
 ```
 **2.initState()**
 在State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。
@@ -231,6 +241,7 @@ void initState() {
   _controller = AnimationController(vsync: this);
   _fetchData(); // 初始化数据
 }
+
 ```
 需要注意的是：
 `必须调用 super.initState()。`
@@ -251,6 +262,7 @@ void didChangeDependencies() {
     _updateData();
   }
 }
+
 ```
 **4. didUpdateWidget(oldWidget)**
 在父组件重建时，若新旧 Widget 的 runtimeType 和 key 相同触发didUpdateWidget（didUpdateWidget我们一般不会用到）。
@@ -266,6 +278,7 @@ void didUpdateWidget(MyWidget oldWidget) {
     _updateColor(); // 颜色变化时执行逻辑
   }
 }
+
 ```
 **5. build()**
 初始化后、依赖变化后、setState() 调用后调用build()。
@@ -279,6 +292,7 @@ Widget build(BuildContext context) {
     child: Text('Count: $_count'),
   );
 }
+
 ```
 需要注意的是：
 `必须返回一个 Widget`
@@ -287,6 +301,7 @@ Widget build(BuildContext context) {
 **6. deactivate()**
 当 State 从树中暂时移除（如页面切换、组件被移除）触发deactivate()。
 >清理临时资源或保存临时状态.
+
 ```
 ```
 需要注意的是：
@@ -302,6 +317,7 @@ void dispose() {
   _subscription.cancel(); // 取消事件订阅
   super.dispose();
 }
+
 ```
 需要注意的是：
 `如果在 dispose() 中未释放资源（如动画控制器、Stream 订阅）可能造成内存泄漏`
@@ -336,6 +352,7 @@ Container(color: Colors.red)
 Container(color: Colors.blue)
 
 // Diff 结果：Container 类型相同且无 Key → 复用 Element，更新 RenderObject 颜色
+
 ```
 
 ```
@@ -362,6 +379,7 @@ Element updateChild(Element child, Widget newWidget, dynamic newSlot) {
   }
   return inflateWidget(newWidget, newSlot);
 }
+
 ```
 
 **3. RenderObject 树的更新**
@@ -390,6 +408,7 @@ void layout(Constraints constraints, { bool parentUsesSize = false }) {
   _needsLayout = false;
   markNeedsPaint(); // 标记需要重绘
 }
+
 ```
 >生成绘制指令（如形状、颜色、文本），写入 Layer（合成层）。
 
@@ -399,6 +418,7 @@ void paint(PaintingContext context, Offset offset) {
   // 绘制逻辑，如画矩形
   context.canvas.drawRect(rect, paint);
 }
+
 ```
 **4. 合成与光栅化（Composition & Rasterization）**
 
@@ -422,6 +442,7 @@ void paintChild(RenderObject child, Offset offset) {
     child._paintWithContext(this, offset);
   }
 }
+
 ```
 
 **5. GPU 渲染与屏幕刷新**
@@ -462,6 +483,7 @@ static bool canUpdate(Widget oldWidget, Widget newWidget) {
   return oldWidget.runtimeType == newWidget.runtimeType 
       && oldWidget.key == newWidget.key;
 }
+
 ```
 >**复用条件：** runtimeType 和 key 相同 → 复用 Element，仅更新配置。
 **替换条件：** 类型或 Key 不同 → 销毁旧 Element，创建新 Element。
@@ -471,6 +493,7 @@ static bool canUpdate(Widget oldWidget, Widget newWidget) {
 ```
 const MyWidget(text: 'Hello'); // ✅ 优化
 MyWidget(text: 'Hello');      // ❌ 非 const
+
 ```
 **2.合理使用 Key：** ValueKey：在列表项中标识唯一性，避免错误复用导致状态混乱。
 GlobalKey：跨组件访问状态（谨慎使用，破坏局部性）。
@@ -481,6 +504,7 @@ ListView.builder(
     data: items[index],
   ),
 )
+
 ```
 
 **3.拆分细粒度 Widget：** 将频繁变化的部分拆分为独立 Widget，缩小 setState 触发的 Diff 范围。
@@ -498,6 +522,7 @@ class ParentWidget extends StatelessWidget {
     );
   }
 }
+
 ```
 **2.布局（Layout）阶段优化**
 
@@ -517,6 +542,7 @@ SizedBox(
   height: 50,
   child: Text('Fixed Size'),
 )
+
 ```
 >**3.使用 IntrinsicWidth/IntrinsicHeight 的替代方案：**     IntrinsicWidth 会触发多次子节点布局计算，性能低下。
 我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。
@@ -534,6 +560,7 @@ SizedBox(
 RepaintBoundary(
   child: MyAnimatedWidget(), // 独立重绘区域
 )
+
 ```
 >**2.避免高开销绘制操作：** 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代Opacity 。
 优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。
@@ -546,6 +573,7 @@ class MyPainter extends CustomPainter {
     return old.color != color; // 仅颜色变化时重绘
   }
 }
+
 ```
 
 **4.GPU 合成与光栅化优化**
@@ -577,5 +605,6 @@ void dispose() {
   _streamSubscription.cancel();
   super.dispose();
 }
+
 ```
 ![2025-05-23 14.45.52.png](https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png)
