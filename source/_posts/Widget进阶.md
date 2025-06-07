@@ -228,7 +228,7 @@ build()
 deactivate()
 dispose()
 
-![2025-05-22 18.38.22.png](https://i-blog.csdnimg.cn/img_convert/a33469c55f94b5278f698d8605d8e0cc.webp?x-oss-process=image/format,png)
+![2025-05-22 18.38.22.png](https://upload-images.jianshu.io/upload_images/1976231-db929f26d712b7d6.png?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp)
 **1.createState()**
 当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。
 >主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。
