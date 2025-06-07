@@ -228,7 +228,7 @@ build()
 deactivate()
 dispose()
 
-![2025-05-22 18.38.23.png](Widget_One.png)
+![2025-05-23 18.38.23.png](Widget_One.png)
 **1.createState()**
 当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。
 >主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。
