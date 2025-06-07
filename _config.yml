@@ -39,6 +39,11 @@ i18n_dir: :lang # 国际化目录
 skip_render: # 跳过渲染的文件
   - "README.md"  # 跳过README
   - "CNAME"  # 跳过CNAME文件
+  - "_posts/*.png"
+  - "_posts/*.jpg"
+  - "_posts/*.jpeg"
+  - "_posts/*.gif"
+  - "_posts/*.webp"
 
 # ===== 写作设置 =====
 new_post_name: title.md # 新文章文件名格式
