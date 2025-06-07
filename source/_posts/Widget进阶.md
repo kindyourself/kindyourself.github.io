@@ -228,7 +228,7 @@ build()
 deactivate()
 dispose()
 
-![2025-05-23 18.38.22.png](https://upload-images.jianshu.io/upload_images/1976231-db929f26d712b7d6.png?imageMogr2/auto-orient/strip|imageView2/2/w/976/format/webp)
+![2025-05-22 18.38.23.png](Widget_image/Widget_One.png)
 **1.createState()**
 当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。
 >主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。
@@ -640,4 +640,4 @@ void dispose() {
 
 ```
 
-![2025-05-23 14.45.52.png](https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png)
+![2025-05-23 14.45.52.png](Widget_image/Widget_Two.png)
