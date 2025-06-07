@@ -17,6 +17,7 @@ tags: [“Flutter”, “Widget”]
 
 ###### 一、StatelessWidget：
 无状态组件，通过 build 方法返回静态 UI。不可变，属性（final）在创建后无法修改，适用于不需要内部状态变化的场景（如文本显示、图标），不依赖用户交互或数据变化的 UI 部分。
+
 ```
 class IconTextButton extends StatelessWidget {
   final String iconName;
@@ -58,6 +59,7 @@ class IconTextButton extends StatelessWidget {
 ```
 ###### 二、StatefulWidget：
 有状态组件，通过 State 对象管理动态数据。当状态变化时调用 setState 触发 UI 更新，需要用户交互（如按钮点击、表单输入）和依赖实时数据变化（如计数器、动态列表）。
+
 ```
 // 上下滚动的消息轮播
 class MarqueeWidget extends StatefulWidget {
@@ -130,6 +132,7 @@ class _MarqueeWidgetState extends State<MarqueeWidget> {
 ***2.按功能分类***
 
 >**1.布局类 Widget：** 控制子 Widget 的排列方式。
+
 ```
 常见有：
 Row/Column：水平/垂直排列子项（基于 Flexbox）。
@@ -140,6 +143,7 @@ Container：结合布局、装饰、边距等功能
 ```
 
 >**2.基础组件 Widget：** 构成 UI 的基本元素。
+
 ```
 常见有：
 Text：显示文本。
@@ -149,6 +153,7 @@ Icon：显示图标（需引入 cupertino_icons 或自定义图标库）
 ```
 
 >**3.滚动类 Widget：** 处理内容超出屏幕时的滚动行为。
+
 ```
 常见有：
 ListView：垂直/水平滚动列表。
@@ -158,6 +163,7 @@ SingleChildScrollView：包裹单个可滚动子组件。
 ```
 
 >**4.交互类 Widget：** 响应用户输入事件。
+
 ```
 常见有：
 ElevatedButton/TextButton：按钮交互。
@@ -168,6 +174,7 @@ GestureDetector：自定义手势检测（点击、长按、拖动）。
 ```
 
 >**5.平台风格类 Widget：** 适配不同操作系统的视觉风格。
+
 ```
 常见有：
 Material Design：MaterialApp、AppBar、FloatingActionButton。
@@ -176,6 +183,7 @@ Cupertino（iOS 风格）：CupertinoApp、CupertinoNavigationBar、CupertinoPic
 ```
 
 >**6.动画类 Widget：** 实现动态视觉效果。
+
 ```
 常见有：
 AnimatedContainer：自动过渡的容器（大小、颜色等属性变化）。
@@ -185,6 +193,7 @@ AnimatedBuilder：自定义复杂动画。
 ```
 
 >**7. 导航与路由类 Widget：** 管理页面跳转和导航结构。
+
 ```
 常见有：
 Navigator：管理页面堆栈（push/pop）。
@@ -223,6 +232,7 @@ dispose()
 **1.createState()**
 当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。
 >主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。
+
 ```
 class MyWidget extends StatefulWidget {
   @override
@@ -230,10 +240,12 @@ class MyWidget extends StatefulWidget {
 }
 
 ```
+
 **2.initState()**
 在State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。
 
 >主要用于初始化依赖数据（如订阅事件、加载本地配置）和 创建动画控制器（AnimationController）等需与 dispose() 配对的资源。
+
 ```
 @override
 void initState() {
@@ -254,6 +266,7 @@ initState() 后立即调用didChangeDependencies()。
 当 State 依赖的 InheritedWidget 发生变化时（如主题、本地化）也会调用didChangeDependencies()。
 
 >主要用于处理依赖变化后的逻辑（如重新请求网络数据）。
+
 ```
 @override
 void didChangeDependencies() {
@@ -270,6 +283,7 @@ void didChangeDependencies() {
 >主要是：
 对比新旧 Widget 的配置（如属性变化）。
 根据变化调整状态（如重置动画、更新监听）。
+
 ```
 @override
 void didUpdateWidget(MyWidget oldWidget) {
@@ -284,6 +298,7 @@ void didUpdateWidget(MyWidget oldWidget) {
 初始化后、依赖变化后、setState() 调用后调用build()。
 父组件或祖先组件触发重建时调用build()。
 >主要是根据当前状态构建 UI（不要在这里做除了创建 Widget 之外的操作）
+
 ```
 @override
 Widget build(BuildContext context) {
@@ -308,6 +323,7 @@ Widget build(BuildContext context) {
 **7. dispose()**
 State 被永久移除时调用dispose()。
 >释放资源（如取消网络请求、销毁动画控制器）
+
 ```
 @override
 void dispose() {
@@ -317,6 +333,7 @@ void dispose() {
 }
 
 ```
+
 需要注意的是：
 `如果在 dispose() 中未释放资源（如动画控制器、Stream 订阅）可能造成内存泄漏`
 `如果在 dispose() 后调用 setState 会导致异常`
@@ -352,6 +369,7 @@ Container(color: Colors.blue)
 // Diff 结果：Container 类型相同且无 Key → 复用 Element，更新 RenderObject 颜色
 
 ```
+
 
 ```
 // Element 更新逻辑
@@ -392,6 +410,7 @@ Element updateChild(Element child, Widget newWidget, dynamic newSlot) {
 递归调用子节点的 layout() 方法（深度优先遍历）。
 
 **布局（Layout）核心方法：**
+
 ```
 // RenderObject 布局流程
 RenderObject.layout()
@@ -411,6 +430,7 @@ void layout(Constraints constraints, { bool parentUsesSize = false }) {
 >生成绘制指令（如形状、颜色、文本），写入 Layer（合成层）。
 
 **绘制（Paint）核心方法:**
+
 ```
 void paint(PaintingContext context, Offset offset) {
   // 绘制逻辑，如画矩形
@@ -429,6 +449,7 @@ RenderObject 的绘制结果被组织为 Layer 树，每个 Layer 对应一个 G
 
 >将 Layer 树中的绘制指令转换为 GPU 可识别的位图数据。
 通过 Skia 图形库（或 Impeller）完成，最终提交给 GPU 渲染。（完成光栅化（Raster Thread））。
+
 ```
 void paintChild(RenderObject child, Offset offset) {
   if (child.isRepaintBoundary) {
@@ -476,6 +497,7 @@ debugPaintLayerBordersEnabled：可视化 Layer 边界。
 **1.Widget 树 Diff 优化**
 
 >**Diff 算法机制：** 当父组件更新时，Flutter 递归对比新旧 Widget 树，判断是否需要更新 Element 和 RenderObject。
+
 ```
 static bool canUpdate(Widget oldWidget, Widget newWidget) {
   return oldWidget.runtimeType == newWidget.runtimeType 
@@ -483,18 +505,22 @@ static bool canUpdate(Widget oldWidget, Widget newWidget) {
 }
 
 ```
+
 >**复用条件：** runtimeType 和 key 相同 → 复用 Element，仅更新配置。
 **替换条件：** 类型或 Key 不同 → 销毁旧 Element，创建新 Element。
 
 **优化策略：**
 **1.使用 const 构造函数：** const Widget 在多次重建中引用同一内存地址，Widget.canUpdate 直接返回 true，跳过 Diff 计算。
+
 ```
 const MyWidget(text: 'Hello'); // ✅ 优化
 MyWidget(text: 'Hello');      // ❌ 非 const
 
 ```
+
 **2.合理使用 Key：** ValueKey：在列表项中标识唯一性，避免错误复用导致状态混乱。
 GlobalKey：跨组件访问状态（谨慎使用，破坏局部性）。
+
 ```
 ListView.builder(
   itemBuilder: (_, index) => ItemWidget(
@@ -506,6 +532,7 @@ ListView.builder(
 ```
 
 **3.拆分细粒度 Widget：** 将频繁变化的部分拆分为独立 Widget，缩小 setState 触发的 Diff 范围。
+
 ```
 // 父组件（仅传递静态数据）
 class ParentWidget extends StatelessWidget {
@@ -522,6 +549,7 @@ class ParentWidget extends StatelessWidget {
 }
 
 ```
+
 **2.布局（Layout）阶段优化**
 
 >**布局计算机制：** 当某个 RenderObject 的尺寸变化不影响父节点布局时，可标记为布局边界，阻断布局计算向上传播。通过 RenderObject.isRepaintBoundary = true 设置（布局边界（Relayout Boundary））
@@ -534,6 +562,7 @@ class ParentWidget extends StatelessWidget {
 我们可以使用 Flex、Wrap 或自定义布局逻辑替代嵌套。
 
 >**2.预计算尺寸：** 通过固定尺寸（SizedBox）或 LayoutBuilder 提前确定布局约束，减少计算量。
+
 ```
 SizedBox(
   width: 100,
@@ -542,6 +571,7 @@ SizedBox(
 )
 
 ```
+
 >**3.使用 IntrinsicWidth/IntrinsicHeight 的替代方案：**     IntrinsicWidth 会触发多次子节点布局计算，性能低下。
 我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。
 
@@ -554,16 +584,19 @@ SizedBox(
 **优化策略**
 >**1.使用 RepaintBoundary：** 将独立变化的 UI 部分包裹 RepaintBoundary，生成独立 Layer，减少重绘区域。
 通过 RenderObject.isRepaintBoundary = true 标记。
+
 ```
 RepaintBoundary(
   child: MyAnimatedWidget(), // 独立重绘区域
 )
 
 ```
+
 >**2.避免高开销绘制操作：** 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代Opacity 。
 优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。
 
 >**3.自定义绘制优化：** 在 CustomPainter 中精确控制重绘条件。
+
 ```
 class MyPainter extends CustomPainter {
   @override
@@ -596,6 +629,7 @@ Flutter 自动复用未变化的 Layer 对应的 GPU 纹理，减少数据传输
 
 >**2.资源释放：**
 必须释放动画控制器（AnimationController.dispose()）、Stream 订阅（Subscription.cancel()）等资源。
+
 ```
 @override
 void dispose() {
@@ -605,4 +639,5 @@ void dispose() {
 }
 
 ```
+
 ![2025-05-23 14.45.52.png](https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png)
