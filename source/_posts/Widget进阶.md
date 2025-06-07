@@ -302,8 +302,6 @@ Widget build(BuildContext context) {
 当 State 从树中暂时移除（如页面切换、组件被移除）触发deactivate()。
 >清理临时资源或保存临时状态.
 
-```
-```
 需要注意的是：
 `可能被重新插入树中（如页面返回时），需与 dispose() 区分`
 
