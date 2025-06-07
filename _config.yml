@@ -20,7 +20,7 @@ external_link:  # 外部链接设置
 meta_generator: true  # 显示Hexo生成器标签
 
 # ===== 网址配置 =====
-url: https://kindyourself.github.io/ # 博客完整URL
+url: https://kindyourself.github.io # 博客完整URL
 root: /  # 网站根目录
 permalink: :year/:month/:day/:title/ # 文章永久链接格式
 permalink_defaults: # 永久链接中各部分的默认值
