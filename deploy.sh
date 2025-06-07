@@ -1,26 +1,41 @@
 #!/usr/bin/env bash
 
-# ===== 配置区 =====
-BLOG_DIR="/Users/dianyin/Desktop/kindyourself_blog"  # 修改为实际路径
-DEPLOY_BRANCH="master"             # 静态文件部署分支
-SOURCE_BRANCH="main"               # 源文件分支
-# ==================
+# 配置区
+BLOG_DIR="/Users/dianyin/Desktop/kindyourself_blog"  # 替换为实际路径
+SOURCE_BRANCH="blog-source"
 
-cd "$BLOG_DIR" || { echo "目录不存在: $BLOG_DIR"; exit 1; }
+cd "$BLOG_DIR" || { echo "❌ 无法进入目录: $BLOG_DIR"; exit 1; }
 
-# 生成并部署静态文件
-echo "正在生成静态文件..."
+# Hexo操作
+echo "===== 生成静态文件 ====="
 hexo clean && hexo generate
 
-echo "正在部署到GitHub Pages..."
+echo "===== 部署到GitHub Pages ====="
 hexo deploy
 
-# 备份源文件
-echo "正在备份源文件..."
+# 源文件备份
+echo "===== 备份源文件 ====="
 git add .
-git commit -m "自动备份: $(date +"%Y-%m-%d %H:%M:%S")" --allow-empty
-git push origin "$SOURCE_BRANCH"
+
+# 检查是否有变更
+if git diff-index --quiet HEAD --; then
+    echo "没有变更需要提交"
+else
+    git commit -m "自动备份: $(date +"%Y-%m-%d %H:%M:%S")"
+    
+    # 添加重试逻辑
+    for i in {1..3}; do
+        echo "尝试推送 ($i/3)..."
+        if git push origin main:$SOURCE_BRANCH; then
+            echo "✅ 备份成功"
+            break
+        else
+            echo "🔄 尝试 $i/3 失败，10秒后重试..."
+            sleep 10
+        fi
+    done
+fi
 
 echo "===== 部署完成 ====="
 echo "博客地址: https://kindyourself.github.io"
-echo "源文件仓库: https://github.com/kindyourself/blog-source"
+echo "源文件仓库: https://github.com/kindyourself/kindyourself.github.io/tree/$SOURCE_BRANCH"
