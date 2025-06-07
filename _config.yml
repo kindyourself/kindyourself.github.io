@@ -13,7 +13,10 @@ timezone: 'Asia/Shanghai'  # 时区
 
 ## 高级SEO设置
 canonical: true  # 启用规范链接，防止重复内容
-external_link: true  # 在新标签页打开外部链接
+external_link:  # 外部链接设置
+  enable: true # 在新标签页中打开外部链接
+  field: site # 对整个网站生效
+  exclude: '' # 排除的域名
 meta_generator: true  # 显示Hexo生成器标签
 
 # ===== 网址配置 =====
@@ -41,10 +44,6 @@ skip_render: # 跳过渲染的文件
 new_post_name: title.md # 新文章文件名格式
 default_layout: post # 默认布局
 titlecase: false # 是否将标题转换为标题大小写
-external_link: # 外部链接设置
-  enable: true # 在新标签页中打开外部链接
-  field: site # 对整个网站生效
-  exclude: '' # 排除的域名
 filename_case: 0 # 文件名大小写转换 (0: 不转换, 1: 小写, 2: 大写)
 render_drafts: false # 是否渲染草稿
 post_asset_folder: true # 为每篇文章创建资源文件夹
@@ -66,8 +65,6 @@ prismjs:
 default_category: uncategorized # 默认分类
 category_map: # 分类别名映射
 tag_map: # 标签别名映射
-
-meta_generator: true
 
 # ===== 日期/时间格式 =====
 date_format: YYYY-MM-DD # 日期格式
