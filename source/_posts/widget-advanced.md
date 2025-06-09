@@ -237,7 +237,7 @@ BottomNavigationBar：底部导航栏。
 > deactivate()
 > dispose()
 
-![](./images/widget_one.png)
+![2025-05-22 18.38.22.png](https://i-blog.csdnimg.cn/img_convert/a33469c55f94b5278f698d8605d8e0cc.webp?x-oss-process=image/format,png)
 
 **1.createState()**
 当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。
@@ -660,4 +660,4 @@ void dispose() {
 
 ```
 
-![](./images/widget_two.png)[]()
+![2025-05-23 14.45.52.png](https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png)
