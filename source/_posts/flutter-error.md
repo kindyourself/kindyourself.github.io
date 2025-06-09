@@ -1,7 +1,9 @@
 ---
+layout: '[layout]'
 title: Flutter遇到的问题
 date: 2025-05-23 15:17:44
 tags: [“Flutter”, “Error”]
+categories: "Flutter"
 ---
 
 

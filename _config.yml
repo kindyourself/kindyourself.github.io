@@ -53,7 +53,7 @@ filename_case: 0 # 文件名大小写转换 (0: 不转换, 1: 小写, 2: 大写)
 render_drafts: false # 是否渲染草稿
 post_asset_folder: true # 为每篇文章创建资源文件夹
 relative_link: false # 是否使用相对链接
-future: true # 显示未来日期的文章
+future: false # 显示未来日期的文章
 syntax_highlighter: highlight.js  
 highlight: # 代码高亮设置
   line_number: true # 显示行号

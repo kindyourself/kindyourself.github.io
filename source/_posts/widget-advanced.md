@@ -1,7 +1,9 @@
 ---
+layout: '[layout]'
 title: Widget进阶
 date: 2025-06-07 20:17:56
 tags: [“Flutter”, “Widget”]
+categories: "Flutter"
 ---
 
 ## 1.Widget 介绍
