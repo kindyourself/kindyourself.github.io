@@ -16,6 +16,9 @@
 </blockquote>
 <p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
 ]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
       <tags>
         <tag>“Flutter”</tag>
         <tag>“Error”</tag>
@@ -285,6 +288,9 @@
 
 <p><img src="https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png" alt="2025-05-23 14.45.52.png"></p>
 ]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
       <tags>
         <tag>“Flutter”</tag>
         <tag>“Widget”</tag>
