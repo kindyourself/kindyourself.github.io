@@ -24,7 +24,7 @@ else
     git commit -m "自动备份: $(date +"%Y-%m-%d %H:%M:%S")"
     
     # 推送到私有仓库
-    if git push "$PRIVATE_REPO" main; then
+    if git push "$PRIVATE_REPO" master; then
         echo "✅ 私有仓库备份成功"
     else
         echo "❌ 私有仓库备份失败，请手动检查"
