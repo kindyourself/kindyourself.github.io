@@ -22,22 +22,23 @@
     <title>Widget进阶</title>
     <url>/2025/06/07/widget-advanced/</url>
     <content><![CDATA[<h2 id="1-Widget-介绍"><a href="#1-Widget-介绍" class="headerlink" title="1.Widget 介绍"></a>1.Widget 介绍</h2><blockquote>
-<p>Everything is a widget 这是你学习flutter会听到的最多的一句话。因为在Flutter中几乎所有的对象都是一个 widget，在flutter中UI的构建和事件的处理基本都是通过widget的组合及嵌套来完成的。在iOS中我们经常提及的“组件”、“控件”在flutter中就是widget，当然widget的范围比之更加广泛。如：手势检测GestureDetector、主题Theme和动画容器AnimatedContainer等也是widget。</p>
+<p>Everything is a widget 这是你学习 flutter 会听到的最多的一句话。因为在 Flutter 中几乎所有的对象都是一个 widget，在 flutter 中 UI 的构建和事件的处理基本都是通过 widget 的组合及嵌套来完成的。在 iOS 中我们经常提及的“组件”、“控件”在 flutter 中就是 widget，当然 widget 的范围比之更加广泛。如：手势检测 GestureDetector、主题 Theme 和动画容器 AnimatedContainer 等也是 widget。</p>
 </blockquote>
-<p><strong>Flutter默认支持的两种设计风格：</strong></p>
+<p><strong>Flutter 默认支持的两种设计风格：</strong></p>
 <blockquote>
-<p><strong>1.Material components Design：</strong> 谷歌（android）的UI风格，主要为 Android 设计，但也支持跨平台使用。</p>
+<p><strong>1.Material components Design：</strong> 谷歌（android）的 UI 风格，主要为 Android 设计，但也支持跨平台使用。</p>
 </blockquote>
 <blockquote>
-<p><strong>2.Cupertino Design：</strong> 苹果（iOS）的UI风格，模仿苹果原生 UIKit 风格。高度还原 iOS 原生体验，适合需要与苹果生态一致的应用。</p>
+<p><strong>2.Cupertino Design：</strong> 苹果（iOS）的 UI 风格，模仿苹果原生 UIKit 风格。高度还原 iOS 原生体验，适合需要与苹果生态一致的应用。</p>
 </blockquote>
-<h2 id="2-Widget-分类"><a href="#2-Widget-分类" class="headerlink" title="2.Widget 分类"></a>2.Widget 分类</h2><p><em><strong>1.按状态管理</strong></em></p>
+<h2 id="2-Widget-分类"><a href="#2-Widget-分类" class="headerlink" title="2.Widget 分类"></a>2.Widget 分类</h2><p><strong><em>1.按状态管理</em></strong></p>
 <h6 id="一、StatelessWidget："><a href="#一、StatelessWidget：" class="headerlink" title="一、StatelessWidget："></a>一、StatelessWidget：</h6><p>无状态组件，通过 build 方法返回静态 UI。不可变，属性（final）在创建后无法修改，适用于不需要内部状态变化的场景（如文本显示、图标），不依赖用户交互或数据变化的 UI 部分。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class IconTextButton extends StatelessWidget &#123;</span><br><span class="line">  final String iconName;</span><br><span class="line">  final String label;</span><br><span class="line">  final VoidCallback onPressed;</span><br><span class="line"></span><br><span class="line">  const IconTextButton(&#123;</span><br><span class="line">    super.key,</span><br><span class="line">    required this.iconName,</span><br><span class="line">    required this.label,</span><br><span class="line">    required this.onPressed,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return GestureDetector(</span><br><span class="line">      onTap: onPressed,</span><br><span class="line">      child: Column(</span><br><span class="line">        mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Image.asset(</span><br><span class="line">            &quot;assets/images/$iconName.png&quot;,</span><br><span class="line">            width: 40,</span><br><span class="line">            height: 40,</span><br><span class="line">          ),</span><br><span class="line">          const SizedBox(</span><br><span class="line">            height: 10,</span><br><span class="line">          ), // 图标</span><br><span class="line">          Text(</span><br><span class="line">            label,</span><br><span class="line">            style: const TextStyle(color: ColorConstant.color33, fontSize: 10),</span><br><span class="line">          ), // 文字</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h6 id="二、StatefulWidget："><a href="#二、StatefulWidget：" class="headerlink" title="二、StatefulWidget："></a>二、StatefulWidget：</h6><p>有状态组件，通过 State 对象管理动态数据。当状态变化时调用 setState 触发 UI 更新，需要用户交互（如按钮点击、表单输入）和依赖实时数据变化（如计数器、动态列表）。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 上下滚动的消息轮播</span><br><span class="line">class MarqueeWidget extends StatefulWidget &#123;</span><br><span class="line">  /// 子视图数量</span><br><span class="line">  final int count;</span><br><span class="line"></span><br><span class="line">  ///子视图构建器</span><br><span class="line">  final IndexedWidgetBuilder itemBuilder;</span><br><span class="line"></span><br><span class="line">  ///轮播的时间间隔</span><br><span class="line">  final int loopSeconds;</span><br><span class="line"></span><br><span class="line">  const MarqueeWidget(&#123;</span><br><span class="line">    super.key,</span><br><span class="line">    required this.count,</span><br><span class="line">    required this.itemBuilder,</span><br><span class="line">    this.loopSeconds = 5,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _MarqueeWidgetState createState() =&gt; _MarqueeWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _MarqueeWidgetState extends State&lt;MarqueeWidget&gt; &#123;</span><br><span class="line">  late PageController _controller;</span><br><span class="line">  late Timer _timer;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    super.initState();</span><br><span class="line">    _controller = PageController();</span><br><span class="line">    _timer = Timer.periodic(Duration(seconds: widget.loopSeconds), (timer) &#123;</span><br><span class="line">      if (_controller.page != null) &#123;</span><br><span class="line">        // 如果当前位于最后一页，则直接跳转到第一页，两者内容相同，跳转时视觉上无感知</span><br><span class="line">        if (_controller.page!.round() &gt;= widget.count) &#123;</span><br><span class="line">          _controller.jumpToPage(0);</span><br><span class="line">        &#125;</span><br><span class="line">        _controller.nextPage(</span><br><span class="line">            duration: const Duration(seconds: 1), curve: Curves.linear);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return PageView.builder(</span><br><span class="line">      scrollDirection: Axis.vertical,</span><br><span class="line">      controller: _controller,</span><br><span class="line">      itemBuilder: (buildContext, index) &#123;</span><br><span class="line">        if (index &lt; widget.count) &#123;</span><br><span class="line">          return widget.itemBuilder(buildContext, index);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          return widget.itemBuilder(buildContext, 0);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      itemCount: widget.count + 1,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    super.dispose();</span><br><span class="line">    _controller.dispose();</span><br><span class="line">    _timer.cancel();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><em><strong>2.按功能分类</strong></em></p>
+<p><strong><em>2.按功能分类</em></strong></p>
 <blockquote>
 <p><strong>1.布局类 Widget：</strong> 控制子 Widget 的排列方式。</p>
 </blockquote>
@@ -80,7 +81,7 @@
 <blockquote>
 <p>StatelessWidget 仅有一个 build() 方法，无状态管理逻辑，其生命周期完全由父组件控制。</p>
 </blockquote>
-<p><strong>StatefulWidget主要生命周期方法</strong></p>
+<p><strong>StatefulWidget 主要生命周期方法</strong></p>
 <blockquote>
 <p>创建阶段<br>createState()</p>
 </blockquote>
@@ -93,40 +94,45 @@
 <blockquote>
 <p>销毁阶段<br>deactivate()<br>dispose()</p>
 </blockquote>
-<p><img src="//kindyourself.github.io/images/widget_one.png" alt="2025-05-23 18.38.23.png"><br><strong>1.createState()</strong><br>当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。</p>
+<p><img src="/./images/widget_one.png"></p>
+<p><strong>1.createState()</strong><br>当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。</p>
 <blockquote>
 <p>主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MyWidget extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _MyWidgetState createState() =&gt; _MyWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>2.initState()</strong><br>在State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。</p>
+<p><strong>2.initState()</strong><br>在 State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。</p>
 <blockquote>
 <p>主要用于初始化依赖数据（如订阅事件、加载本地配置）和 创建动画控制器（AnimationController）等需与 dispose() 配对的资源。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">void initState() &#123;</span><br><span class="line">  super.initState();</span><br><span class="line">  _controller = AnimationController(vsync: this);</span><br><span class="line">  _fetchData(); // 初始化数据</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>需要注意的是：<br><code>必须调用 super.initState()。</code><br><code>在这里 View 并没有渲染，只是 StatefulWidget 被加载到渲染树里了。</code><br><code>避免在此处触发 setState（可能导致渲染未完成）。</code><br><code>StatefulWidget的 mount 的值变为了true（调用dispose()才会变为 false）。</code></p>
-<p><strong>3.didChangeDependencies()</strong><br>initState() 后立即调用didChangeDependencies()。<br>当 State 依赖的 InheritedWidget 发生变化时（如主题、本地化）也会调用didChangeDependencies()。</p>
+<p><strong>3.didChangeDependencies()</strong><br>initState() 后立即调用 didChangeDependencies()。<br>当 State 依赖的 InheritedWidget 发生变化时（如主题、本地化）也会调用 didChangeDependencies()。</p>
 <blockquote>
 <p>主要用于处理依赖变化后的逻辑（如重新请求网络数据）。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">void didChangeDependencies() &#123;</span><br><span class="line">  super.didChangeDependencies();</span><br><span class="line">  if (Provider.of&lt;Data&gt;(context).hasChanged) &#123;</span><br><span class="line">    _updateData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>4. didUpdateWidget(oldWidget)</strong><br>在父组件重建时，若新旧 Widget 的 runtimeType 和 key 相同触发didUpdateWidget（didUpdateWidget我们一般不会用到）。</p>
+
+<p><strong>4. didUpdateWidget(oldWidget)</strong><br>在父组件重建时，若新旧 Widget 的 runtimeType 和 key 相同触发 didUpdateWidget（didUpdateWidget 我们一般不会用到）。</p>
 <blockquote>
 <p>主要是：<br>对比新旧 Widget 的配置（如属性变化）。<br>根据变化调整状态（如重置动画、更新监听）。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">void didUpdateWidget(MyWidget oldWidget) &#123;</span><br><span class="line">  super.didUpdateWidget(oldWidget);</span><br><span class="line">  if (oldWidget.color != widget.color) &#123;</span><br><span class="line">    _updateColor(); // 颜色变化时执行逻辑</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>5. build()</strong><br>初始化后、依赖变化后、setState() 调用后调用build()。<br>父组件或祖先组件触发重建时调用build()。</p>
+
+<p><strong>5. build()</strong><br>初始化后、依赖变化后、setState() 调用后调用 build()。<br>父组件或祖先组件触发重建时调用 build()。</p>
 <blockquote>
 <p>主要是根据当前状态构建 UI（不要在这里做除了创建 Widget 之外的操作）</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return Container(</span><br><span class="line">    color: widget.color,</span><br><span class="line">    child: Text(&#x27;Count: $_count&#x27;),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>需要注意的是：<br><code>必须返回一个 Widget</code><br><code>避免在此处修改状态或执行耗时操作</code></p>
-<p><strong>6. deactivate()</strong><br>当 State 从树中暂时移除（如页面切换、组件被移除）触发deactivate()。</p>
+<p><strong>6. deactivate()</strong><br>当 State 从树中暂时移除（如页面切换、组件被移除）触发 deactivate()。</p>
 <blockquote>
 <p>清理临时资源或保存临时状态.</p>
 </blockquote>
 <p>需要注意的是：<br><code>可能被重新插入树中（如页面返回时），需与 dispose() 区分</code></p>
-<p><strong>7. dispose()</strong><br>State 被永久移除时调用dispose()。</p>
+<p><strong>7. dispose()</strong><br>State 被永久移除时调用 dispose()。</p>
 <blockquote>
 <p>释放资源（如取消网络请求、销毁动画控制器）</p>
 </blockquote>
@@ -139,39 +145,40 @@
 </blockquote>
 <p><strong>1.Widget 树的构建：</strong></p>
 <blockquote>
-<p>描述 UI 的不可变配置，由开发者创建，频繁重建，需轻量化。<br>开发者编写的 Widget 代码被转化为嵌套的 Widget 树（应用的入口是根Widget，一般是MaterialApp或CupertinoApp。根Widget会递归地构建其子Widget，形成一棵树。）。<br>具有不可变性，每次重建生成全新的 Widget 树，但通过 Diff 算法可以优化实际更新范围。</p>
+<p>描述 UI 的不可变配置，由开发者创建，频繁重建，需轻量化。<br>开发者编写的 Widget 代码被转化为嵌套的 Widget 树（应用的入口是根 Widget，一般是 MaterialApp 或 CupertinoApp。根 Widget 会递归地构建其子 Widget，形成一棵树。）。<br>具有不可变性，每次重建生成全新的 Widget 树，但通过 Diff 算法可以优化实际更新范围。</p>
 </blockquote>
 <p><strong>2. Element 树的 Diff 与更新</strong></p>
 <blockquote>
-<p>根据 Widget 树生成一个 Element 树，Element 树中的节点都继承自 Element 类。<br>Element 是 Widget 的实例化对象，负责管理 状态（State） 和 子节点引用。<br>每个Widget都会有一个对应的Element对象，用于管理其生命周期。</p>
+<p>根据 Widget 树生成一个 Element 树，Element 树中的节点都继承自 Element 类。<br>Element 是 Widget 的实例化对象，负责管理 状态（State） 和 子节点引用。<br>每个 Widget 都会有一个对应的 Element 对象，用于管理其生命周期。</p>
 </blockquote>
 <blockquote>
 <p>Diff 算法：Flutter 对比新旧 Widget 树，仅更新变化的 Element 和 RenderObject，类似 React 的虚拟 DOM。<br>当 Widget 树重建时，Flutter 通过 Diff 算法 对比新旧 Widget 树，决定 Element 树的更新策略<br>Reuse：若新旧 Widget 的 runtimeType 和 key 相同，复用现有 Element。<br>Update：更新 Element 的配置（调用 Element.update(newWidget)）。<br>Replace：类型或 Key 不同时，销毁旧 Element，创建新 Element。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 旧 Widget 树</span><br><span class="line">Container(color: Colors.red)</span><br><span class="line"></span><br><span class="line">// 新 Widget 树</span><br><span class="line">Container(color: Colors.blue)</span><br><span class="line"></span><br><span class="line">// Diff 结果：Container 类型相同且无 Key → 复用 Element，更新 RenderObject 颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// Element 更新逻辑</span><br><span class="line">Element.updateChild()</span><br><span class="line"></span><br><span class="line">Element updateChild(Element child, Widget newWidget, dynamic newSlot) &#123;</span><br><span class="line">  if (newWidget == null) &#123;</span><br><span class="line">    // 移除子节点</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  if (child != null) &#123;</span><br><span class="line">    if (child.widget == newWidget) &#123;</span><br><span class="line">      // Widget 未变化 → 复用 Element</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    if (Widget.canUpdate(child.widget, newWidget)) &#123;</span><br><span class="line">      // 更新 Element 配置</span><br><span class="line">      child.update(newWidget);</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    // 销毁旧 Element，创建新 Element</span><br><span class="line">    deactivateChild(child);</span><br><span class="line">  &#125;</span><br><span class="line">  return inflateWidget(newWidget, newSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p><strong>3. RenderObject 树的更新</strong></p>
 <p>更新 RenderObject 树，计算布局和生成绘制指令。<br>运行在 UI Thread。</p>
 <blockquote>
-<p>根据 Element 树生成 Render 树（渲染树），渲染树中的节点都继承自RenderObject 类。<br>每个 Element 对应一个 RenderObject（通过 Element.createRenderObject() 创建）。</p>
+<p>根据 Element 树生成 Render 树（渲染树），渲染树中的节点都继承自 RenderObject 类。<br>每个 Element 对应一个 RenderObject（通过 Element.createRenderObject() 创建）。</p>
 </blockquote>
 <blockquote>
 <p>根据父 RenderObject 传递的 约束（Constraints），计算自身尺寸和位置。<br>递归调用子节点的 layout() 方法（深度优先遍历）。</p>
 </blockquote>
 <p><strong>布局（Layout）核心方法：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// RenderObject 布局流程</span><br><span class="line">RenderObject.layout()</span><br><span class="line"></span><br><span class="line">void layout(Constraints constraints, &#123; bool parentUsesSize = false &#125;) &#123;</span><br><span class="line">  _constraints = constraints;</span><br><span class="line">  if (_relayoutBoundary != this) &#123;</span><br><span class="line">    markNeedsLayout();</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  performLayout();  // 1. 计算自身尺寸（调用 performLayout） 由子类实现具体布局逻辑</span><br><span class="line">  _needsLayout = false;</span><br><span class="line">  markNeedsPaint(); // 标记需要重绘</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>生成绘制指令（如形状、颜色、文本），写入 Layer（合成层）。</p>
 </blockquote>
 <p><strong>绘制（Paint）核心方法:</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">void paint(PaintingContext context, Offset offset) &#123;</span><br><span class="line">  // 绘制逻辑，如画矩形</span><br><span class="line">  context.canvas.drawRect(rect, paint);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p><strong>4. 合成与光栅化（Composition &amp; Rasterization）</strong></p>
 <p>生成 Layer 树并光栅化。<br>运行在 Raster Thread（与 UI Thread 并行）</p>
 <blockquote>
-<p>根据渲染树生成 Layer 树，然后上屏显示，Layer 树中的节点都继承自 Layer 类。<br>RenderObject 的绘制结果被组织为 Layer 树，每个 Layer 对应一个 GPU 纹理（Texture）。自此Layer 树生成。<br>类型包括：PictureLayer（矢量绘制）、TextureLayer（图像纹理）、TransformLayer（变换效果）等。</p>
+<p>根据渲染树生成 Layer 树，然后上屏显示，Layer 树中的节点都继承自 Layer 类。<br>RenderObject 的绘制结果被组织为 Layer 树，每个 Layer 对应一个 GPU 纹理（Texture）。自此 Layer 树生成。<br>类型包括：PictureLayer（矢量绘制）、TextureLayer（图像纹理）、TransformLayer（变换效果）等。</p>
 </blockquote>
 <blockquote>
 <p>将 Layer 树中的绘制指令转换为 GPU 可识别的位图数据。<br>通过 Skia 图形库（或 Impeller）完成，最终提交给 GPU 渲染。（完成光栅化（Raster Thread））。</p>
@@ -187,7 +194,7 @@
 </blockquote>
 <h2 id="5-Widget-优化"><a href="#5-Widget-优化" class="headerlink" title="5.Widget 优化"></a>5.Widget 优化</h2><p><code>高性能渲染 = 最小化 Widget Diff + 高效布局/绘制 + GPU 线程优化</code></p>
 <blockquote>
-<p>Flutter 优化的本质是 减少无效计算 和 降低 GPU 负载<br>一般围绕四个方向：<br>1.最小化 Widget 树 Diff 范围<br>2.减少布局（Layout）和绘制（Paint）计算<br>3.优化 GPU 合成与光栅化（Rasterization）<br>4.高效管理状态与资源</p>
+<p>Flutter 优化的本质是 减少无效计算 和 降低 GPU 负载<br>一般围绕四个方向： 1.最小化 Widget 树 Diff 范围 2.减少布局（Layout）和绘制（Paint）计算 3.优化 GPU 合成与光栅化（Rasterization） 4.高效管理状态与资源</p>
 </blockquote>
 <blockquote>
 <p><strong>性能分析工具</strong><br>Flutter DevTools：<br>Performance 面板：分析 UI&#x2F;Raster 线程的帧耗时。<br>Layer 查看器：检测 Layer 合成是否合理。<br>debugProfileBuildsEnabled：追踪 Widget 构建耗时<br>调试标记：<br>debugPrintMarkNeedsLayoutStacks：打印触发布局的堆栈信息。<br>debugPaintLayerBordersEnabled：可视化 Layer 边界。</p>
@@ -196,7 +203,7 @@
 <blockquote>
 <p><strong>Diff 算法机制：</strong> 当父组件更新时，Flutter 递归对比新旧 Widget 树，判断是否需要更新 Element 和 RenderObject。</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static bool canUpdate(Widget oldWidget, Widget newWidget) &#123;</span><br><span class="line">  return oldWidget.runtimeType == newWidget.runtimeType </span><br><span class="line">      &amp;&amp; oldWidget.key == newWidget.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">static bool canUpdate(Widget oldWidget, Widget newWidget) &#123;</span><br><span class="line">  return oldWidget.runtimeType == newWidget.runtimeType</span><br><span class="line">      &amp;&amp; oldWidget.key == newWidget.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p><strong>复用条件：</strong> runtimeType 和 key 相同 → 复用 Element，仅更新配置。<br><strong>替换条件：</strong> 类型或 Key 不同 → 销毁旧 Element，创建新 Element。</p>
@@ -227,7 +234,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SizedBox(</span><br><span class="line">  width: 100,</span><br><span class="line">  height: 50,</span><br><span class="line">  child: Text(&#x27;Fixed Size&#x27;),</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>3.使用 IntrinsicWidth&#x2F;IntrinsicHeight 的替代方案：</strong>     IntrinsicWidth 会触发多次子节点布局计算，性能低下。<br>我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。</p>
+<p><strong>3.使用 IntrinsicWidth&#x2F;IntrinsicHeight 的替代方案：</strong> IntrinsicWidth 会触发多次子节点布局计算，性能低下。<br>我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。</p>
 </blockquote>
 <p><strong>3.绘制（Paint）阶段优化</strong></p>
 <blockquote>
@@ -243,7 +250,7 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">RepaintBoundary(</span><br><span class="line">  child: MyAnimatedWidget(), // 独立重绘区域</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p><strong>2.避免高开销绘制操作：</strong> 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代Opacity 。<br>优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。</p>
+<p><strong>2.避免高开销绘制操作：</strong> 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代 Opacity 。<br>优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。</p>
 </blockquote>
 <blockquote>
 <p><strong>3.自定义绘制优化：</strong> 在 CustomPainter 中精确控制重绘条件。</p>
@@ -273,7 +280,7 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose();</span><br><span class="line">  _streamSubscription.cancel();</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="//kindyourself.github.io/images/widget_two.png" alt="2025-05-23 14.45.52.png"></p>
+<p><img src="/./images/widget_two.png"><a href></a></p>
 ]]></content>
       <tags>
         <tag>“Flutter”</tag>
