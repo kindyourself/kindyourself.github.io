@@ -187,7 +187,7 @@
 <blockquote>
 <p>销毁阶段<br>deactivate()<br>dispose()</p>
 </blockquote>
-<p><img src="/images/widget_one.png" alt="2025-05-23 18.38.23.png"><br><strong>1.createState()</strong><br>当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。</p>
+<p><img src="//kindyourself.github.io/images/widget_one.png" alt="2025-05-23 18.38.23.png"><br><strong>1.createState()</strong><br>当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。</p>
 <blockquote>
 <p>主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。</p>
 </blockquote>
@@ -367,7 +367,7 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose();</span><br><span class="line">  _streamSubscription.cancel();</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/widget_two.png" alt="2025-05-23 14.45.52.png"></p>
+<p><img src="//kindyourself.github.io/images/widget_two.png" alt="2025-05-23 14.45.52.png"></p>
  
       <!-- reward -->
       
@@ -460,6 +460,53 @@
   </nav>
 
    
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "a1S86fOlOUpjKlnF6GbDEaXa-gzGzoHsz",
+    app_key: "I8KJc5Z8uB7wXwz3r7Mab2Rx",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "留下您的宝贵意见...",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
  
    
      
