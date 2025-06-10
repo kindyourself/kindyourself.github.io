@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <!-- 添加全局禁用 Referer -->
+      <meta name="referrer" content="no-referrer" />
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,编程,开发,Hexo" />
+       
+      <meta name="description" content="个人技术博客，分享编程、开发经验和生活感悟" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title> Gavin&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+      <!-- Font Awesome 6 -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="alternate" href="/atom.xml" title="Gavin's Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">Gavin&#39;s Blog</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
+<div id="main">
+  <section class="outer">
+  
+  
+  
+
+<div class="notice" style="margin-top:50px">
+    <i class="ri-heart-fill"></i>
+    <div class="notice-content" id="broad"></div>
+</div>
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+  
+  <article class="articles">
+    
+    
+    
+    
+    <article
+  id="[layout]-iOS-webView上加载HTML视频不显示缩略图"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"
+    >iOS-webView上加载HTML视频不显示缩略图</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="article-date">
+  <time datetime="2016-08-07T17:06:48.000Z" itemprop="datePublished">2016-08-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a target="_blank" rel="noopener" href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
+</blockquote>
+<p>###办法<br>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+<p>这个方法其实还有一个用法：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。<br>###声明<br>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CwebView%E2%80%9D/" rel="tag">“webView”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/" rel="tag">“视频不显示缩略图”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-图片上传预览"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"
+    >图片上传预览</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/" class="article-date">
+  <time datetime="2016-07-31T17:06:42.000Z" itemprop="datePublished">2016-08-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web/">web</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
+<p>一、这是代码上传的HTML部分代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</span><br><span class="line">                    &lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>二、修改上传按钮的部分css代码<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.file &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #D0EEFF;</span><br><span class="line">    border: 1px solid #99D3F5;</span><br><span class="line">    border-radius: 4px;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    color: #1E88C7;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    text-indent: 0;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.file input &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.file:hover &#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>三、这是JS部分的代码<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">function setImagePreview(avalue) &#123;</span><br><span class="line">               //input</span><br><span class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</span><br><span class="line">               var docObj = docObjs[avalue];</span><br><span class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</span><br><span class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</span><br><span class="line">                   var imgObjPreview = imgObjPreviews[0];</span><br><span class="line">               if (avalue == 0) &#123;</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;200px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;350px&#x27;;</span><br><span class="line">               &#125;else &#123;</span><br><span class="line">                   //火狐下，直接设img属性</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;100px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;100px&#x27;;</span><br><span class="line">               &#125;</span><br><span class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   //IE下，使用滤镜</span><br><span class="line">                   // docObj.select();</span><br><span class="line">                   // var imgSrc = document.selection.createRange().text;</span><br><span class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</span><br><span class="line">                   // //必须设置初始大小</span><br><span class="line">                   // localImagId.style.width = &quot;100px&quot;;</span><br><span class="line">                   // localImagId.style.height = &quot;100px&quot;;</span><br><span class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</span><br><span class="line">                   // try &#123;</span><br><span class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</span><br><span class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</span><br><span class="line">                   // &#125; catch(e) &#123;</span><br><span class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</span><br><span class="line">                   //     return false;</span><br><span class="line">                   // &#125;</span><br><span class="line">                   // imgObjPreview.style.display = &#x27;none&#x27;;</span><br><span class="line">                   // document.selection.empty();</span><br><span class="line">               &#125;</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>问题与解决：<br>问题一：是上传按钮默认的文件上传是这样的<br><img src="https://i-blog.csdnimg.cn/blog_migrate/247191efee00edfe40ac992ff86a4b93.webp?x-image-process=image/format,png" alt="默认 2016-08-01 00.26.51.png"><br>但是我需要的是这样的：</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b519bb3cae0f98c75720b46596facebb.webp?x-image-process=image/format,png" alt="目标 2016-08-01 00.28.07.png"><br>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）<br>问题二：点击事件冲突<br>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
+<p>#########NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/" rel="tag">“图片上传”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/" rel="tag">“预览”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-iOS-下加载本地HTML-js-css-image-等路径问题"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"
+    >iOS 下加载本地HTML/js/css/image 等路径问题</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2016-07-25T03:29:55.000Z" itemprop="datePublished">2016-07-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
+<p>  一个是  Create groups for any added folders （创建虚拟结构-包结构）</p>
+<p>  一个是 Create folder references for any added folders （创建实体结构）</p>
+<ul>
+<li>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。<br>引入文件方式：</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。<br> 引入文件方式：</li>
+</ul>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/" rel="tag">“本地”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/" rel="tag">“路径问题”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-iOS-widget-Today-扩展"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"
+    >iOS-widget-Today 扩展</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/" class="article-date">
+  <time datetime="2016-07-25T03:23:58.000Z" itemprop="datePublished">2016-07-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>今天要分享的是通知中心扩展中的-<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。</p>
+</blockquote>
+<p>###一、目标：<br>      我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，我也不知道这样算不算滥用widget，因为之前看见过有人的应用被苹果拒绝就是因为滥用widget导致的。<br>###二、实现：<br>1.因为widget是一个单独的进程所以需要创建一个target：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/0b583421a35083363bf56d91148192dd.webp?x-image-process=image/format,png" alt="首先 2016-07-24 23.01.34.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/217a9594befa8d064b3f479abf1d92db.webp?x-image-process=image/format,png" alt="然后 2016-07-24 23.01.13.png"></p>
+<p>2.代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // 调整Widget的高度</span><br><span class="line">    self.preferredContentSize = CGSizeMake(0, 200);</span><br><span class="line">    // 1、创建UIWebView：</span><br><span class="line">    UIWebView *mWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];</span><br><span class="line">    // 2、设置属性：</span><br><span class="line">    mWebView.scalesPageToFit = YES;// 自动对页面进行缩放以适应屏幕</span><br><span class="line">    // 检测所有数据类型  设定电话号码、网址、电子邮件和日期等文字变为链接文字</span><br><span class="line">    [mWebView setDataDetectorTypes:UIDataDetectorTypeAll];</span><br><span class="line">    mWebView.delegate = self;</span><br><span class="line">    // 打开URL</span><br><span class="line">    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.baidu.com&quot;]];</span><br><span class="line">    [mWebView loadRequest:request];</span><br><span class="line">    [self.view addSubview:mWebView];</span><br><span class="line">    </span><br><span class="line">    [self makeButtonWithTitle:@&quot;返回&quot; frame:CGRectMake(0, 0, 80, 64) button:_backBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;前进&quot; frame:CGRectMake(self.view.frame.size.width - 80, 0, 80, 64) button:_forWardBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;刷新&quot; frame:CGRectMake(100, 0, 80, 64) button:_refreshBtn];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">// 取消widget默认的inset，让应用靠左</span><br><span class="line">- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets &#123;</span><br><span class="line">    return UIEdgeInsetsZero;</span><br><span class="line">&#125;</span><br><span class="line">- (void)makeButtonWithTitle:(NSString *)title frame:(CGRect)frame button:(UIButton *)btn &#123;</span><br><span class="line">    btn = [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    [btn setTitle:title forState:UIControlStateNormal];</span><br><span class="line">    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];</span><br><span class="line">    [btn addTarget:self action:@selector(skip:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    [btn setFrame:frame];</span><br><span class="line">    </span><br><span class="line">    if ([title isEqualToString:@&quot;返回&quot;]) &#123;</span><br><span class="line">        btn.tag = 101;</span><br><span class="line">    &#125; else if([title isEqualToString:@&quot;前进&quot;]) &#123;</span><br><span class="line">        btn.tag = 102;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        btn.tag = 103;</span><br><span class="line">    &#125;</span><br><span class="line">    [self.view addSubview:btn];</span><br><span class="line">&#125;</span><br><span class="line">- (void)skip:(UIButton *)button</span><br><span class="line">&#123;</span><br><span class="line">    if (button.tag == 101) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoHomePage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;101   open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    else if(button.tag == 102) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPages&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行与结果展示：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/d2078c3e20a8126af877649cb755bce1.webp?x-image-process=image/format,png" alt="运行 2016-07-24 23.02.28.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d8e9254bab90d77597bda99215fded4b.webp?x-image-process=image/format,png" alt="效果图 2016-07-25 09.55.44.png"></p>
+<p>###扩展与主程序的交互-数据共享<br>这就要涉及扩展与应用之间的数据共享了-App Groups.</p>
+<ol>
+<li><p>首先在主应用的target &gt; Capabilities下 打开App Groups 点击+ 在group.后面输入标识符，<br><img src="https://i-blog.csdnimg.cn/blog_migrate/62f1aa6e7f4adbc919d563ca0a21bda6.webp?x-image-process=image/format,png" alt="Snip20160725_1.png"><br>再去扩展的target下进行相同的操作，记得group.后的标识符要一致。</p>
+</li>
+<li><p>代码：<br>在上面的扩展代码里面已经定义了点击事件，这里主要是主应用接收到信息后进行判断和处理。<br>在这之前还需要先配置URL schems,在主程序的plist里面：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/b36fb85f5f7ece4451b9e5c8b160d604.webp?x-image-process=image/format,png" alt="plist 2016-07-25 10.40.15.png"></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">    </span><br><span class="line">    NSString* prefix = @&quot;iOSWidgetApp://action=&quot;;</span><br><span class="line">    </span><br><span class="line">    UIWebView *webView = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">    webView.backgroundColor = [UIColor clearColor];</span><br><span class="line">    webView.delegate = self;</span><br><span class="line">    [webView setUserInteractionEnabled:YES];//是否支持交互</span><br><span class="line">    [webView setOpaque:NO];//opaque是不透明的意思</span><br><span class="line">    [webView setScalesPageToFit:YES];//自动缩放以适应屏幕</span><br><span class="line">    webView .scrollView.bounces = NO;// 禁止UIWebView下拉拖动效果</span><br><span class="line">    NSString *path;</span><br><span class="line">    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) &#123;</span><br><span class="line">        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];</span><br><span class="line">        if ([action isEqualToString:@&quot;GotoHomePage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;help&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        else if([action isEqualToString:@&quot;GotoOtherPage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;setting&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;healthyArticle&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        NSURL *urll = [NSURL fileURLWithPath:path];</span><br><span class="line">        NSURLRequest* request = [NSURLRequest requestWithURL:urll] ;</span><br><span class="line">        [webView loadRequest:request];</span><br><span class="line">        [self.rootView.view addSubview:webView];</span><br><span class="line">        self.rootView.view.backgroundColor = [UIColor whiteColor];</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为我是需要到对应的H5页面所以是添加的H5页面。<br>#<br>###注意：<br>1.当程序内存不足时，苹果优先会杀死扩展，因此需要注意内存的管理。</p>
+<p>2.在配置team是账号需要一致（我测试的时候免费账号好像还不行，需要付费的账号）</p>
+<p>3.在iOS10上面还可以从左滑主页面和锁屏进入widget。</p>
+<p>4.today只有在下拉的时候才会更新，通知栏两边的更新机制是不一样的。</p>
+<p>5.一般更新路径：viewDidLoad-&gt;viewWillAppear，但是如果你下拉过于频繁就只会执行viewWillAppear里面的，因此更新代码最好放在viewWillAppear里面。<br>######如有错误地方，万望指出，谢谢！</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cwidget%E2%80%9D/" rel="tag">“widget”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/" rel="tag">“扩展”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-gitHub-hexo-个人博客"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
+    >gitHub hexo 个人博客</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time datetime="2016-07-15T20:11:37.000Z" itemprop="datePublished">2016-07-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a target="_blank" rel="noopener" href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
+</blockquote>
+<h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
+<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<p>查看安装是否成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装成功会显示版本号：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/257560df666479d7a2171dd37c11a68b.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 03.09.16.png"></p>
+<h3 id="3-开始安装hexo"><a href="#3-开始安装hexo" class="headerlink" title="3. 开始安装hexo"></a>3. 开始安装hexo</h3><p>首先进入你需要存放博客的文件夹，然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
+
+<p>查看版本号：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<p>初始化项目：(类似于git)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开始使用"><a href="#4-开始使用" class="headerlink" title="4. 开始使用"></a>4. 开始使用</h3><p>创建页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>生成静态文件(会在当前目录下生成一个新的叫做public的文件夹)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 或者hexo generate</span><br></pre></td></tr></table></figure>
+<p>开启本地服务 用于在本地浏览 Ctrl+C退出查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s # 或者hexo server，可以在输入http://localhost:4000/ 查看 或者 按住Command 双击命令行下的网址（http://localhost:4000/）</span><br></pre></td></tr></table></figure>
+<p>这时网页已经成型了。</p>
+<p>接下来就是要部署到gitHub上 只需要在配置文件_config.xml中作如下修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gavincarter1991/gavincarter1991.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>当然gavincarter1991位置还是填你的信息</p>
+<p>然后安装一个自动工具，方便以后页面的部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>部署去gitHub：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>以后每一次部署的一般步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h3 id="5-写文章"><a href="#5-写文章" class="headerlink" title="5.写文章"></a>5.写文章</h3><p>首先；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>然后去目录：source_posts下找到My First Blog.md（markdown文件）开始编辑文章了。我Mac用的是Mou编辑器，你可以自由选择适合自己的markdown编辑器。<a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/0.html">这里有markdown使用技巧</a><br>写好以后就可以按照前面的部署常用步骤进行部署了。</p>
+<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>1.主题：hexo有很多<a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/wiki/Themes">第三方主题</a>可以选择，通过git clone<br>2.配置修改参数<a target="_blank" rel="noopener" href="http://div.io/topic/1691">详见</a> 我写几个常用的：<br>头像：把图片放在主题内 source&#x2F;images&#x2F;，图片链接地址可以填 &#x2F;images&#x2F;avatar.png  然后在当前主题的_config.yml 不是根目录的_config.yml（如果你换了主题，需要根据自己选择的主题进入里面去设置）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source/images): /images/avatar.jpg</span><br><span class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</span><br><span class="line">avatar: /images/avatar.jpg</span><br></pre></td></tr></table></figure>
+<p>个人中心配置：（根目录的_config.yml）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Gavin</span><br><span class="line">subtitle: 记录成长过程中的点点滴滴</span><br><span class="line">description: 我爱敏敏</span><br><span class="line">author: kindyourself@163.com</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
+<p>显示标签与分类：取消对应注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)</span><br><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
+<p>然后创建分类</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;categories下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2016-07-16 02:21:37</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>以后在写文章的时候加上分类就会自动创建分类了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar]</span><br><span class="line">categories: &quot;iOS&quot; // 分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>创建标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;tags下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2016-07-16 02:11:12</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>以后在写文章的时候加上标签就会自动计入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar] // 标签</span><br><span class="line">categories: &quot;iOS&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>下载主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
+<p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CgitHub%E2%80%9D/" rel="tag">“gitHub”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Chexo%E2%80%9D/" rel="tag">“hexo”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/" rel="tag">“个人博客”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-iOS-自定义带抽屉效果的tabBar"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"
+    >iOS-自定义带抽屉效果的tabBar</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/" class="article-date">
+  <time datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>demo地址：<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/-tarBar">gitHub</a><br>###一、先来个效果</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p>
+<p>###二、代码示例<br>1.抽屉页作为根视图：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.标签视图 修改方法 <code>- (void)selectBtn:(UIButton *)sender</code>中的切换效果可以实现不同的切换动画与效果。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">@implementation MTabBar</span><br><span class="line">- (instancetype)initWithTitles:(NSArray *)titles imageNames:(NSArray *)imageNames</span><br><span class="line">&#123;</span><br><span class="line">    self = [super initWithFrame:TabBarFrame()];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        //标题数组不为空，图片名字个数 ＝ 标题个数</span><br><span class="line">        self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];</span><br><span class="line">        self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;</span><br><span class="line">        [self addSubview:self.buttonBack];</span><br><span class="line">        </span><br><span class="line">        self.backgroundColor = TABBAR_BACK_COLOR;</span><br><span class="line">        </span><br><span class="line">        if ([titles count] &amp;&amp; [titles count] == [imageNames count]) &#123;</span><br><span class="line">            [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">                UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];</span><br><span class="line">                button.tag = 1000 + idx;</span><br><span class="line">                [self addSubview:button];</span><br><span class="line">                //默认选中第一个</span><br><span class="line">                if (idx == 0) &#123;</span><br><span class="line">                    button.selected = YES;</span><br><span class="line">                    self.selectedButton = button;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];</span><br><span class="line">//                // 图片宽 高分别为 44 24</span><br><span class="line">                CGFloat x = (BUTTON_W - 44)/2;</span><br><span class="line">                [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];</span><br><span class="line">                //添加点击方法</span><br><span class="line">                [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line">//button 点击方法</span><br><span class="line">- (void)selectBtn:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    //让抽屉隐藏，发出通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]postNotificationName:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">    //选中的button 已经是选中状态 不用处理</span><br><span class="line">    if (self.selectedButton == sender) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //改变之前选中button的状态  为非选中状态</span><br><span class="line">    self.selectedButton.selected = NO;</span><br><span class="line">    </span><br><span class="line">    //改变当前选中button的状态</span><br><span class="line">    sender.selected = YES;</span><br><span class="line">    self.selectedButton = sender;</span><br><span class="line">    //通知标签控制器显示当前button对应的viewController</span><br><span class="line">    if (self.callBack) &#123;</span><br><span class="line">        self.callBack(sender.tag - 1000);</span><br><span class="line">    &#125;</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br><span class="line">UILabel *MakeLabel(CGRect frame, NSString *title)</span><br><span class="line">&#123;</span><br><span class="line">    UILabel *label = [[UILabel alloc]initWithFrame:frame];</span><br><span class="line">//    label.userInteractionEnabled = YES;</span><br><span class="line">    label.backgroundColor = [UIColor clearColor];</span><br><span class="line">    label.textColor = [UIColor whiteColor];</span><br><span class="line">    label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    label.text = title;</span><br><span class="line">    return label;</span><br><span class="line">&#125;</span><br><span class="line">//根据 frame和 imageName 创建UIImageView</span><br><span class="line">UIImageView *MakeImageView(CGRect frame, NSString *imageName)</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageV = [[UIImageView alloc]initWithFrame:frame];</span><br><span class="line">//    imageV.userInteractionEnabled = YES;</span><br><span class="line">    imageV.backgroundColor = [UIColor clearColor];</span><br><span class="line">    imageV.image = [UIImage imageNamed:imageName];</span><br><span class="line">    return imageV;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>3.标签控制器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">@interface MTabBarViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MTabBarViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithViewControllers:(NSArray *)viewControllers</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        _viewControllers = viewControllers;</span><br><span class="line">        //遍历数组，添加子控制器</span><br><span class="line">        [_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            [self addChild:obj];</span><br><span class="line">        &#125;];</span><br><span class="line">        /*</span><br><span class="line">         @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]</span><br><span class="line">         @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]</span><br><span class="line">         */</span><br><span class="line">        _tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];</span><br><span class="line">        [self.view addSubview:self.tabBar];</span><br><span class="line">        __weak typeof(self) weakSelf = self;</span><br><span class="line">        self.tabBar.callBack = ^(NSInteger index)&#123;</span><br><span class="line">            weakSelf.selectedIndex = index;</span><br><span class="line">        &#125;;</span><br><span class="line">        //默认选中第0个</span><br><span class="line">        self.selectedIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line">- (void)setSelectedIndex:(NSInteger)selectedIndex</span><br><span class="line">&#123;</span><br><span class="line">    //取出当前控制器 oldVc</span><br><span class="line">    UIViewController *oldVc = self.viewControllers[self.selectedIndex];</span><br><span class="line">    //取出将要显示的 控制器 newVc</span><br><span class="line">    UIViewController *newVc = self.viewControllers[selectedIndex];</span><br><span class="line">    //动画 向左边移动</span><br><span class="line">    newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);</span><br><span class="line">    //改变 newVc 的视图层次</span><br><span class="line">    </span><br><span class="line">    //把newVc.view 的视图放在 self.tabBar 的下面</span><br><span class="line">    [self.view insertSubview:newVc.view belowSubview:self.tabBar];</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);</span><br><span class="line">        newVc.view.frame = BOUNDS;</span><br><span class="line">    &#125;];</span><br><span class="line">    _selectedIndex = selectedIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加子控制器具体步骤</span><br><span class="line">- (void)addChild:(UIViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    [self addChildViewController:viewController];</span><br><span class="line">    viewController.view.frame = BOUNDS;</span><br><span class="line">    //将viewContoller.view 放在最底层</span><br><span class="line">    [self.view insertSubview:viewController.view atIndex:0];</span><br><span class="line">    [viewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p>4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">CGRect TabBarFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, S_H-64, S_W, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉隐藏（开始）的位置</span><br><span class="line">CGRect LeftViewStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line">//左边抽屉显示（结束）的位置</span><br><span class="line">CGRect LeftViewEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容开始（抽屉隐藏时）的位置</span><br><span class="line">CGRect RigntContentStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容结束（抽屉显示时）的位置</span><br><span class="line">CGRect RightContentEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(S_W*0.75, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(x, y, w, h);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>欢迎下载</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CtabBar%E2%80%9D/" rel="tag">“tabBar”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/" rel="tag">“抽屉”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-与web前端朋友闲聊的发现-代码相通性"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"
+    >与web前端朋友闲聊的发现-代码相通性</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/" class="article-date">
+  <time datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>###缘起</p>
+<blockquote>
+<p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
+</blockquote>
+<p>###想法与问题</p>
+<blockquote>
+<p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p>
+</blockquote>
+<p>###插曲</p>
+<blockquote>
+<p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p>
+</blockquote>
+<p>###讨论</p>
+<blockquote>
+<p>这时候我想起几天前在简书上看见一个哥们写了一篇<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p>
+</blockquote>
+<p>###结论</p>
+<blockquote>
+<p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/" rel="tag">“代码相通性”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-Base64-不重要数据的简单加密"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"
+    >Base64-不重要数据的简单加密</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" class="article-date">
+  <time datetime="2016-07-09T12:31:41.000Z" itemprop="datePublished">2016-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>###导语</p>
+<blockquote>
+<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+</blockquote>
+<p>##我的实现过程（可以根据公司需求自定义）：<br>1.先编码一次<br>2.对编码结果的数据交换首位字符在编码一次<br>3.对编码结果逆序在编码一次</p>
+<p>##示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###结束语：<br>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CBase64%E2%80%9D/" rel="tag">“Base64”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" rel="tag">“加密”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-iOS-解压zip"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/"
+    >iOS-解压zip</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/" class="article-date">
+  <time datetime="2016-07-09T12:31:07.000Z" itemprop="datePublished">2016-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a target="_blank" rel="noopener" href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
+<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
+<li>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</li>
+<li>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</li>
+</ol>
+<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  当然还得遵守协议：SSZipArchiveDelegate<br>  以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%A7%A3%E5%8E%8Bzip%E2%80%9D/" rel="tag">“解压zip”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="[layout]-iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/"
+    >iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/" class="article-date">
+  <time datetime="2016-07-09T12:30:21.000Z" itemprop="datePublished">2016-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。<br>其交互方式有很多种</p>
+</blockquote>
+<ul>
+<li>一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];</span><br><span class="line"></span><br><span class="line">self.webView.delegate = self;</span><br><span class="line"></span><br><span class="line">[self.webView setUserInteractionEnabled:YES];//是否支持交互</span><br><span class="line"></span><br><span class="line">[self.webView setOpaque:NO];//opaque是不透明的意思</span><br><span class="line"></span><br><span class="line">[self.webView setScalesPageToFit:YES];//自动缩放以适应屏幕</span><br><span class="line"></span><br><span class="line">[self.view addSubview:self.webView];</span><br><span class="line"></span><br><span class="line">if (sender.tag == 101) &#123;</span><br><span class="line"></span><br><span class="line">// 返回（点击页面才会有返回）</span><br><span class="line"></span><br><span class="line">[self.mWebView goBack];</span><br><span class="line"></span><br><span class="line">&#125;else if (sender.tag == 102) &#123;</span><br><span class="line"></span><br><span class="line">// 前进（点击过的页面）</span><br><span class="line"></span><br><span class="line">[self.mWebView goForward];</span><br><span class="line"></span><br><span class="line">&#125;else &#123;</span><br><span class="line"></span><br><span class="line">// 刷新页面</span><br><span class="line"></span><br><span class="line">[self.mWebView reload];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：</li>
+</ul>
+<p>1、直接调用JS代码</p>
+<p>2、在ObjC中通过JSContext注入模型，然后调用模型的方法</p>
+<p>通过evaluateScript:方法就可以执行JS代码</p>
+<ul>
+<li><p>三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）</p>
+</li>
+<li><p>四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。</p>
+</li>
+</ul>
+<p>在iOS端：1.self.bridge &#x3D; [WebViewJavascriptBridge bridgeForWebView:self.webView];</p>
+<p>链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">2.[self.bridge registerHandler:@&quot;testJavascriptHandler&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;ObjC Echo called with: %@&quot;, data);</span><br><span class="line"></span><br><span class="line">// 反馈给JS</span><br><span class="line"></span><br><span class="line">responseCallback(data);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">// 在JS中如果调用了bridge.send()，那么将触发OC端_bridge初始化方法中的回调。</span><br><span class="line"></span><br><span class="line">// 在JS中调用了bridge.callHandler(&#x27;testJavascriptHandler&#x27;)，它将触发OC端注册的同名方法</span><br><span class="line"></span><br><span class="line">// oc 同理</span><br><span class="line"></span><br><span class="line">// JS主动调用OjbC的方法</span><br><span class="line"></span><br><span class="line">// 这是JS会调用ObjC Echo方法，这是OC注册给JS调用的</span><br><span class="line"></span><br><span class="line">// JS需要回调，当然JS也可以传参数过来。data就是JS所传的参数，不一定需要传</span><br><span class="line"></span><br><span class="line">// OC端通过responseCallback回调JS端，JS就可以得到所需要的数据</span><br><span class="line"></span><br><span class="line">3.[self.bridge callHandler:@&quot;sayHello&quot; data:@&#123;@&quot;hello&quot;: @&quot;你好&quot;&#125; responseCallback:^(id responseData) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;回调结果: %@&quot;, responseData);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+
+<p>直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。<br>js调用时也一样<br>在JS端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.Copy and paste setupWebViewJavascriptBridge into your JS:</span><br><span class="line"></span><br><span class="line">（此段代码为固定格式，直接放在js端就行）</span><br><span class="line"></span><br><span class="line">function setupWebViewJavascriptBridge(callback) &#123;</span><br><span class="line"></span><br><span class="line">if (window.WebViewJavascriptBridge) &#123; return callback(WebViewJavascriptBridge); &#125;</span><br><span class="line"></span><br><span class="line">if (window.WVJBCallbacks) &#123; return window.WVJBCallbacks.push(callback); &#125;</span><br><span class="line"></span><br><span class="line">window.WVJBCallbacks = [callback];</span><br><span class="line"></span><br><span class="line">var WVJBIframe = document.createElement(&#x27;iframe&#x27;);</span><br><span class="line"></span><br><span class="line">WVJBIframe.style.display = &#x27;none&#x27;;</span><br><span class="line"></span><br><span class="line">WVJBIframe.src = &#x27;wvjbscheme://__BRIDGE_LOADED__&#x27;;</span><br><span class="line"></span><br><span class="line">document.documentElement.appendChild(WVJBIframe);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123; document.documentElement.removeChild(WVJBIframe) &#125;, 0)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后面几步与iOS端一样</p>
+<p>如有错误，望请指出。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CWKWebViewJavascriptBridge%E2%80%9D/" rel="tag">“WKWebViewJavascriptBridge”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cjs%E2%80%9D/" rel="tag">“js”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2025
+        <i class="ri-heart-fill heart_icon"></i> kindyourself@163.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Gavin&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.jianshu.com/u/51707eacf496">简书</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
