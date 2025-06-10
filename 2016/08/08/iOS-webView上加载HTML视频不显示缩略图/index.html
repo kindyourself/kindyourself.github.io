@@ -113,6 +113,8 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -122,12 +124,21 @@
   <blockquote>
 <p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a target="_blank" rel="noopener" href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
 </blockquote>
-<p>###办法<br>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
+<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+</blockquote>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
+<blockquote>
 <p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-<p>这个方法其实还有一个用法：</p>
+</blockquote>
+<p><strong>这个方法其实还有一个用法：</strong></p>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。<br>###声明<br>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+<blockquote>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
+</blockquote>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
+<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+</blockquote>
  
       <!-- reward -->
       
@@ -211,11 +222,11 @@
    
   <nav class="article-nav">
     
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B8%80-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-nav-link">
+      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            项目总结系列 一 位置实时共享
+            项目总结-位置实时共享
           
         </div>
       </a>

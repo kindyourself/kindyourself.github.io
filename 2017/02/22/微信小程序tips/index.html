@@ -113,6 +113,8 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -122,26 +124,40 @@
   <blockquote>
 <p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
 </blockquote>
-<p>#####1、先上图<br><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
-<p>#####2、tips<br>1.背景图片不能使用本地的</p>
+<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
+<blockquote>
 <p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
-<p>2.不能加载网页</p>
+</blockquote>
+<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
 <p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
-<p>3.不能隐藏导航栏</p>
+</blockquote>
+<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
 <p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
-<p>4.只支持HTTPS的网络协议并且一个月只能修改5次</p>
-<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
-<p>5.所有的页面都必须在app.json中配置路径</p>
-<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
-<p>6.网络请求的最大并发数为5、页面层级最多5层</p>
+</blockquote>
+<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
+<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
+<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
+<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
+<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
 <p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
 <p>以上就是这次遇到的一些比较变态的问题。</p>
-<p>#####3、谈谈我的一些代码实现</p>
-<p>1.配置tabBar(app.json)</p>
+</blockquote>
+<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  2.订单管理页的菜单栏<br>  点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。<br>  手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>###4、结束<br>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
+<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
+<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
+<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
+</blockquote>
  
       <!-- reward -->
       
@@ -235,9 +251,9 @@
       </a>
     
     
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B8%80-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-nav-link">
+      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">项目总结系列 一 位置实时共享</div>
+        <div class="article-nav-title">项目总结-位置实时共享</div>
       </a>
     
   </nav>

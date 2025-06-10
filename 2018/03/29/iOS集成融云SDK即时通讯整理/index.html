@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -121,154 +121,64 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>#iOS集成融云SDK即时通讯整理</p>
-<blockquote>
+  <h2 id="iOS集成融云SDK即时通讯整理"><a href="#iOS集成融云SDK即时通讯整理" class="headerlink" title="iOS集成融云SDK即时通讯整理"></a>iOS集成融云SDK即时通讯整理</h2><blockquote>
 <p>最近很少写一下项目总结了，最近项目虽然做了很多，但是都是一些外包项目，做下来也没有什么值得总结的。最近一个项目用到了融云即时通讯，以前基本都是用环信，所以还遇到了一些问题，在此总结一下记录一下。</p>
 </blockquote>
-<h3 id="1-头像、昵称等用户信息-融云对这个问题有两种处理方式"><a href="#1-头像、昵称等用户信息-融云对这个问题有两种处理方式" class="headerlink" title="1 头像、昵称等用户信息(融云对这个问题有两种处理方式)"></a>1 头像、昵称等用户信息(融云对这个问题有两种处理方式)</h3><p>#####1.用户信息提供者<br>实现步骤(以下代码放在单例中，可以是AppDelegate，最好单独写一个单例)  </p>
+<h3 id="头像、昵称等用户信息-融云对这个问题有两种处理方式"><a href="#头像、昵称等用户信息-融云对这个问题有两种处理方式" class="headerlink" title="头像、昵称等用户信息(融云对这个问题有两种处理方式)"></a>头像、昵称等用户信息(融云对这个问题有两种处理方式)</h3><p><strong>用户信息提供者</strong></p>
+<blockquote>
+<p>实现步骤(以下代码放在单例中，可以是AppDelegate，最好单独写一个单例)  </p>
 <p>首先遵守RCIMUserInfoDataSource这个协议 </p>
-<p>然后是要设置代理  </p>
-<pre><code>[[RCIM sharedRCIM] setUserInfoDataSource:self]; 
+</blockquote>
+<p><strong>然后是要设置代理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RCIM sharedRCIM] setUserInfoDataSource:self]; </span><br></pre></td></tr></table></figure>
+<p><strong>最后实现代理方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion &#123;</span><br><span class="line">    NSLog(@&quot;getUserInfoWithUserId ----- %@&quot;, userId);</span><br><span class="line">    RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">    if (userId == nil || [userId length] == 0) &#123;</span><br><span class="line">        user.userId = userId;</span><br><span class="line">        user.portraitUri = @&quot;&quot;;</span><br><span class="line">        user.name = @&quot;&quot;;</span><br><span class="line">        completion(user);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if ([userId isEqualToString:[UserInfo shareInstance].uid]) &#123;</span><br><span class="line">        NSString *urlSelf = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        return completion([[RCUserInfo alloc] initWithUserId:userId name:[UserInfo shareInstance].nickname portrait:urlSelf]);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    </span><br><span class="line">  //根据存储联系人信息的模型，通过 userId 来取得对应的name和头像url，进行以下设置</span><br><span class="line">    [WTBaseHttpRequst postRequstWithURL:getUserHttp params:@&#123;@&quot;uid&quot;:[UserInfo shareInstance].uid, @&quot;api_token&quot;:[UserInfo shareInstance].api_token, @&quot;k_uid&quot;:userId&#125; successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">        if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">            NSString *urlStr = [BASIC_URL_image stringByAppendingString:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;photo&quot;]];</span><br><span class="line">            return completion([[RCUserInfo alloc] initWithUserId:userId name:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;nickname&quot;] portrait:urlStr]);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            completion(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">        completion(user);</span><br><span class="line">    &#125; showHUD:NO];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这个方法不需要你自己手动调用，只是当你在修改用户信息时调用方法即可</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">WS(weakSelf);</span><br><span class="line">// 修改用户信息调用</span><br><span class="line">[WTBaseHttpRequst postRequstWithURL:modifyInfoHttp params:dict successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:returnData[@&quot;msg&quot;]];</span><br><span class="line">    if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">        RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">        user.userId = [UserInfo shareInstance].uid;</span><br><span class="line">        user.portraitUri = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        user.name = weakSelf.nickNameTextField.text;</span><br><span class="line">        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid];</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            [self.navigationController popViewControllerAnimated:YES];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:error];</span><br><span class="line">&#125; showHUD:YES];</span><br></pre></td></tr></table></figure>
+
+<p><strong>在扩展消息中携带用户信息</strong></p>
+<blockquote>
+<p>设置发送消息时在消息体中携带用户信息(从2.4.1 之后附加用户信息之后cell默认会显示附加的用户信息的头像，即用户信息不会取用户信息提供者里提供的用户信息)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[RCIM sharedRCIM].enableMessageAttachUserInfo = YES; </span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">**你设置了enableMessageAttachUserInfo之后，可以取到**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;**  </p>
+<ul>
+<li>发送者信息</li>
+<li>**&#x2F;<br>@property(nonatomic, strong) RCUserInfo *senderUserInfo; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">**当然我觉得还可以从后台获取好友关系后，我们在每次登陆后，开一个线程把好友关系请求下来存起来然后根据环信ID查找好友的昵称和头像**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)</span><br><span class="line">  </span><br><span class="line">**创建提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+_lab &#x3D; [[UILabel alloc] initWithFrame:self.chatSessionInputBarControl.inputTextView.bounds];<br>_lab.text &#x3D; @”请输入文字信息…”;<br>_lab.textColor &#x3D; [UIColor colorWithHexColor:@”dddddd”];<br>_lab.font &#x3D; [UIFont systemFontOfSize:15];<br>_lab.center &#x3D; CGPointMake(_lab.center.x + 15, _lab.center.y);<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**判定是否有草稿来显示和隐藏提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[self.chatSessionInputBarControl.inputTextView addSubview:_lab];<br>if (self.chatSessionInputBarControl.draft &#x3D;&#x3D; nil || self.chatSessionInputBarControl.draft.length &#x3D;&#x3D; 0) {<br> _lab.hidden &#x3D; NO;<br>}else {<br> _lab.hidden &#x3D; YES;<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**根据输入数据来判定显示隐藏提示label**</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>(void)inputTextView:(UITextView *)inputTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {<br>  if (((inputTextView.text.length &#x3D;&#x3D; 1 &amp;&amp; [text isEqualToString:@””]) || (inputTextView.text.length &#x3D;&#x3D; 0 &amp;&amp; text.length &gt; 0))  &amp;&amp; range.length &#x3D;&#x3D; 1 &amp;&amp; range.location &#x3D;&#x3D; 0) {<br>  _lab.hidden &#x3D; NO;<br>  }else {<br>  _lab.hidden &#x3D; YES;<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 取消输入@弹出好友列表界面，保留长按头像@方法</span><br><span class="line"></span><br><span class="line">**首先在AppDelegate中开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[RCIM sharedRCIM].enableMessageMentioned &#x3D; YES;</li>
+</ul>
+<p>然后在继承RCConversationViewController的控制器中调用<br>-(void)showChooseUserViewController:(void (^)(RCUserInfo *selectedUserInfo))selectedBlock<br>                         cancel:(void (^)())cancelBlock {<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 在会话列表中添加一些固定的cell(继承RCConversationListViewController)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F; 对自定义cell赋值</p>
+<ul>
+<li>(RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView<br>                            cellForRowAtIndexPath:(NSIndexPath *)indexPath {<br>  RCCustomCell *cell &#x3D; (RCCustomCell *)[[RCCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@”RCCustomCell”];<br>  RCConversationModel *model &#x3D; self.conversationListDataSource[indexPath.row];<br>  cell.nameLabel.text &#x3D; model.conversationTitle;<br>  return cell;<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 添加自定义cell的数据源</p>
+<ul>
+<li>(NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource{<br>  NSArray *arr &#x3D; @[@”论坛回复和@我的”, @”陌生人私信”, @”幸存者部落@我的”, @”问卷调查”];<br>  for (int i &#x3D; 0; i&lt;arr.count; i++) {<br>  RCConversationModel *model &#x3D; [[RCConversationModel alloc]init];<br>  model.conversationModelType &#x3D; RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;<br>  model.conversationTitle &#x3D; arr[i];<br>  model.isTop &#x3D; YES;<br>  [dataSource insertObject:model atIndex:i];<br>  }<br>  return dataSource;<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 点击cell跳转</p>
+<ul>
+<li>(void)onSelectedTableRow:(RCConversationModelType)conversationModelType<br>   conversationModel:(RCConversationModel *)model<br>     atIndexPath:(NSIndexPath *)indexPath{<br>  if (indexPath.row &#x3D;&#x3D; 0) {<br>  WTForumAndConnectListViewController *chatList &#x3D; (WTForumAndConnectListViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTForumAndConnectListViewController”];<br>  chatList.title &#x3D; @”回复和@我的”;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 1) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”陌生人私信”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 1;<br>  chatList.friendArray &#x3D; self.friendArray;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 2) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”幸存者部落@我的”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 2;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 3) {<br>  WTQuestionnaireViewController *questionnaire &#x3D; (WTQuestionnaireViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTQuestionnaireViewController”];<br>  [self.navigationController pushViewController:questionnaire animated:YES];<br>  }else {<br>  &#x2F;&#x2F;点击cell，拿到cell对应的model，然后从model中拿到对应的RCUserInfo，然后赋值会话属性，进入会话<br>  if (model.conversationType &#x3D;&#x3D; ConversationType_PRIVATE) {&#x2F;&#x2F;单聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }else if (model.conversationType &#x3D;&#x3D; ConversationType_GROUP){&#x2F;&#x2F;群聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 在任意地方获取聊天列表数量及删除列表</span><br><span class="line"></span><br><span class="line">**获取聊天列表**   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[@(ConversationType_PRIVATE)]];<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**在ConversationList添加对应类型的聊天就可以获取对应类型的聊天列表删除方法类似**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[[RCIMClient sharedRCIMClient] clearConversations:@[@(ConversationType_PRIVATE)]];</li>
+</ul>
+<pre><code>
+### 背景图
+
+&gt; 融云聊天列表没有数据的默认图片下面有点击右上角加入聊天，可是不是所有的聊天都有这个功能(我的就没有)如何没有就可以在资源文件中找到 no\_message\_img 这张图片用ps去掉下面的那一行字
+
+### 其它
+
+&gt; 以上就是我在使用融云过程中遇到的一些问题及解决方法，如果有错误或者不足之处还望指正，谢谢！
 </code></pre>
-<p>最后实现代理方法：</p>
-<pre><code>- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion &#123;
-NSLog(@&quot;getUserInfoWithUserId ----- %@&quot;, userId);
-RCUserInfo *user = [RCUserInfo new];
-if (userId == nil || [userId length] == 0) &#123;
-    user.userId = userId;
-    user.portraitUri = @&quot;&quot;;
-    user.name = @&quot;&quot;;
-    completion(user);
-    return;
-&#125;
-if ([userId isEqualToString:[UserInfo shareInstance].uid]) &#123;
-    NSString *urlSelf = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];
-    return completion([[RCUserInfo alloc] initWithUserId:userId name:[UserInfo shareInstance].nickname portrait:urlSelf]);
-&#125;else &#123;
-    //根据存储联系人信息的模型，通过 userId 来取得对应的name和头像url，进行以下设置
-    [WTBaseHttpRequst postRequstWithURL:getUserHttp params:@&#123;@&quot;uid&quot;:[UserInfo shareInstance].uid, @&quot;api_token&quot;:[UserInfo shareInstance].api_token, @&quot;k_uid&quot;:userId&#125; successBlock:^(NSDictionary *returnData) &#123;
-        if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;
-            NSString *urlStr = [BASIC_URL_image stringByAppendingString:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;photo&quot;]];
-            return completion([[RCUserInfo alloc] initWithUserId:userId name:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;nickname&quot;] portrait:urlStr]);
-        &#125;else &#123;
-            completion(user);
-        &#125;
-    &#125; failureBlock:^(NSString *error) &#123;
-        completion(user);
-    &#125; showHUD:NO];
-&#125;
-&#125;
-</code></pre>
-<p>这个方法不需要你自己手动调用，只是当你在修改用户信息时调用  </p>
-<pre><code>[[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid]
-</code></pre>
-<p>方法即可</p>
-<pre><code>WS(weakSelf);
-// 修改用户信息调用
-[WTBaseHttpRequst postRequstWithURL:modifyInfoHttp params:dict successBlock:^(NSDictionary *returnData) &#123;
-    [weakSelf MBProgressHudShowWithTextOnlyWithText:returnData[@&quot;msg&quot;]];
-    if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;
-        RCUserInfo *user = [RCUserInfo new];
-        user.userId = [UserInfo shareInstance].uid;
-        user.portraitUri = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];
-        user.name = weakSelf.nickNameTextField.text;
-        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;
-            [self.navigationController popViewControllerAnimated:YES];
-        &#125;);
-    &#125;
-&#125; failureBlock:^(NSString *error) &#123;
-    [weakSelf MBProgressHudShowWithTextOnlyWithText:error];
-&#125; showHUD:YES];
-</code></pre>
-<p>#####2.在扩展消息中携带用户信息#####<br><em>设置发送消息时在消息体中携带用户信息(从2.4.1 之后附加用户信息之后cell默认会显示附加的用户信息的头像，即用户信息不会取用户信息提供者里提供的用户信息)</em> </p>
-<pre><code>[RCIM sharedRCIM].enableMessageAttachUserInfo = YES;   
-</code></pre>
-<p>你设置了enableMessageAttachUserInfo之后，可以取到  </p>
-<pre><code>/**  
-*  发送者信息
-*  **/  
-@property(nonatomic, strong) RCUserInfo *senderUserInfo;  
-</code></pre>
-<p><em><strong>当然我觉得还可以从后台获取好友关系后，我们在每次登陆后，开一个线程把好友关系请求下来存起来然后根据环信ID查找好友的昵称和头像</strong></em></p>
-<h3 id="2-给输入框添加提示语-这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了"><a href="#2-给输入框添加提示语-这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了" class="headerlink" title="2 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)"></a>2 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)</h3><p>#####1.创建提示的label<br>    _lab &#x3D; [[UILabel alloc] initWithFrame:self.chatSessionInputBarControl.inputTextView.bounds];<br>    _lab.text &#x3D; @”请输入文字信息…”;<br>    _lab.textColor &#x3D; [UIColor colorWithHexColor:@”dddddd”];<br>    _lab.font &#x3D; [UIFont systemFontOfSize:15];<br>    _lab.center &#x3D; CGPointMake(_lab.center.x + 15, _lab.center.y);<br>#####2.判定是否有草稿来显示和隐藏提示的label<br>    [self.chatSessionInputBarControl.inputTextView addSubview:_lab];<br>    if (self.chatSessionInputBarControl.draft &#x3D;&#x3D; nil || self.chatSessionInputBarControl.draft.length &#x3D;&#x3D; 0) {<br>        _lab.hidden &#x3D; NO;<br>    }else {<br>        _lab.hidden &#x3D; YES;<br>    }<br>#####3.根据输入数据来判定显示隐藏提示label<br>    - (void)inputTextView:(UITextView *)inputTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {<br>    if (((inputTextView.text.length &#x3D;&#x3D; 1 &amp;&amp; [text isEqualToString:@””]) || (inputTextView.text.length &#x3D;&#x3D; 0 &amp;&amp; text.length &gt; 0))  &amp;&amp; range.length &#x3D;&#x3D; 1 &amp;&amp; range.location &#x3D;&#x3D; 0) {<br>        _lab.hidden &#x3D; NO;<br>    }else {<br>        _lab.hidden &#x3D; YES;<br>    }<br>}</p>
-<h3 id="3-取消输入-弹出好友列表界面，保留长按头像-方法"><a href="#3-取消输入-弹出好友列表界面，保留长按头像-方法" class="headerlink" title="3 取消输入@弹出好友列表界面，保留长按头像@方法"></a>3 取消输入@弹出好友列表界面，保留长按头像@方法</h3><p>#####1.首先在AppDelegate中开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）<br>    [RCIM sharedRCIM].enableMessageMentioned &#x3D; YES;<br> 然后在继承RCConversationViewController的控制器中调用</p>
-<pre><code> -(void)showChooseUserViewController:(void (^)(RCUserInfo *selectedUserInfo))selectedBlock
-                         cancel:(void (^)())cancelBlock &#123;
-</code></pre>
-<p>}</p>
-<h3 id="4-在会话列表中添加一些固定的cell-继承RCConversationListViewController"><a href="#4-在会话列表中添加一些固定的cell-继承RCConversationListViewController" class="headerlink" title="4 在会话列表中添加一些固定的cell(继承RCConversationListViewController)"></a>4 在会话列表中添加一些固定的cell(继承RCConversationListViewController)</h3><pre><code> // 对自定义cell赋值
- - (RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView
-                              cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;
-RCCustomCell *cell = (RCCustomCell *)[[RCCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@&quot;RCCustomCell&quot;];
-RCConversationModel *model = self.conversationListDataSource[indexPath.row];
-cell.nameLabel.text = model.conversationTitle;
-return cell;
-</code></pre>
-<p>}</p>
-<pre><code>// 添加自定义cell的数据源
-- (NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource&#123;
-NSArray *arr = @[@&quot;论坛回复和@我的&quot;, @&quot;陌生人私信&quot;, @&quot;幸存者部落@我的&quot;, @&quot;问卷调查&quot;];
-for (int i = 0; i&lt;arr.count; i++) &#123;
-    RCConversationModel *model = [[RCConversationModel alloc]init];
-    model.conversationModelType = RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;
-    model.conversationTitle = arr[i];
-    model.isTop = YES;
-    [dataSource insertObject:model atIndex:i];
-&#125;
-return dataSource;
-</code></pre>
-<p>}</p>
-<pre><code>// 点击cell跳转
-- (void)onSelectedTableRow:(RCConversationModelType)conversationModelType
-     conversationModel:(RCConversationModel *)model
-           atIndexPath:(NSIndexPath *)indexPath&#123;
-if (indexPath.row == 0) &#123;
-    WTForumAndConnectListViewController *chatList = (WTForumAndConnectListViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@&quot;Main&quot; identifier:@&quot;WTForumAndConnectListViewController&quot;];
-    chatList.title = @&quot;回复和@我的&quot;;
-    [self.navigationController pushViewController:chatList animated:YES];
-&#125;else if (indexPath.row == 1) &#123;
-    WTChatListViewController *chatList = [[WTChatListViewController alloc] init];
-    chatList.title = @&quot;陌生人私信&quot;;
-    chatList.isEnteredToCollectionViewController = YES;
-    chatList.type = 1;
-    chatList.friendArray = self.friendArray;
-    [self.navigationController pushViewController:chatList animated:YES];
-&#125;else if (indexPath.row == 2) &#123;
-    WTChatListViewController *chatList = [[WTChatListViewController alloc] init];
-    chatList.title = @&quot;幸存者部落@我的&quot;;
-    chatList.isEnteredToCollectionViewController = YES;
-    chatList.type = 2;
-    [self.navigationController pushViewController:chatList animated:YES];
-&#125;else if (indexPath.row == 3) &#123;
-    WTQuestionnaireViewController *questionnaire = (WTQuestionnaireViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@&quot;Main&quot; identifier:@&quot;WTQuestionnaireViewController&quot;];
-    [self.navigationController pushViewController:questionnaire animated:YES];
-&#125;else &#123;
-    //点击cell，拿到cell对应的model，然后从model中拿到对应的RCUserInfo，然后赋值会话属性，进入会话
-    if (model.conversationType == ConversationType_PRIVATE) &#123;//单聊
-        WTMyConversationLisViewController *_conversationVC = [[WTMyConversationLisViewController alloc]init];
-        _conversationVC.conversationType = model.conversationType;
-        _conversationVC.targetId = model.targetId;
-        _conversationVC.title = model.conversationTitle;
-        [self.navigationController pushViewController:_conversationVC animated:YES];
-    &#125;else if (model.conversationType == ConversationType_GROUP)&#123;//群聊
-        WTMyConversationLisViewController *_conversationVC = [[WTMyConversationLisViewController alloc]init];
-        _conversationVC.conversationType = model.conversationType;
-        _conversationVC.title = model.conversationTitle;
-        _conversationVC.targetId = model.targetId;
-        [self.navigationController pushViewController:_conversationVC animated:YES];
-    &#125;
-&#125;
-</code></pre>
-<p>}</p>
-<h3 id="5-在任意地方获取聊天列表数量及删除列表"><a href="#5-在任意地方获取聊天列表数量及删除列表" class="headerlink" title="5 在任意地方获取聊天列表数量及删除列表"></a>5 在任意地方获取聊天列表数量及删除列表</h3><p>获取聊天列表   </p>
-<pre><code>NSArray *privateArr = [[RCIMClient sharedRCIMClient] getConversationList:@[@(ConversationType_PRIVATE)]];
-</code></pre>
-<p>在ConversationList添加对应类型的聊天就可以获取对应类型的聊天列表删除方法类似</p>
-<pre><code>[[RCIMClient sharedRCIMClient] clearConversations:@[@(ConversationType_PRIVATE)]];
-</code></pre>
-<h3 id="6-背景图"><a href="#6-背景图" class="headerlink" title="6 背景图"></a>6 背景图</h3><p>融云聊天列表没有数据的默认图片下面有点击右上角加入聊天，可是不是所有的聊天都有这个功能(我的就没有)如何没有就可以在资源文件中找到 no_message_img 这张图片用ps去掉下面的那一行字</p>
-<h3 id="7-其它"><a href="#7-其它" class="headerlink" title="7 其它"></a>7 其它</h3><p>以上就是我在使用融云过程中遇到的一些问题及解决方法，如果有错误或者不足之处还望指正，谢谢！</p>
  
       <!-- reward -->
       

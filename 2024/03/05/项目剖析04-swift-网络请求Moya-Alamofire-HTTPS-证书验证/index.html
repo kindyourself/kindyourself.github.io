@@ -97,7 +97,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">927</span>
+            <span class="post-count">920</span>
         </span>
     </span>
 
@@ -121,40 +121,44 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="SSL证书验证"><a href="#SSL证书验证" class="headerlink" title="SSL证书验证"></a>SSL证书验证</h2><p>&amp;emsp;一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。</p>
+  <h2 id="SSL证书验证"><a href="#SSL证书验证" class="headerlink" title="SSL证书验证"></a>SSL证书验证</h2><p><strong>一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。</strong></p>
 <blockquote>
 <p>Alamofire5.0 以后将证书验证类放于ServerTrustEvaluation这个类里面。一共有6种验证策略：</p>
-</blockquote>
 <ol>
-<li><strong>DefaultTrustEvaluator</strong> - （默认验证策略）只要是合法证书就能通过验证。</li>
-<li><strong>RevocationTrustEvaluator</strong>（验证注销策略）对注销证书做的一种额外设置，Alamofire从iOS10.1才开始支持吊销证书的策略。</li>
-<li><strong>PinnedCertificatesTrustEvaluator</strong>（证书验证策略）app端会对服务器端返回的证书和本地保存的证书中的全部内容进行校验需要全部正确，此验证策略还可以接受自签名证书，安全性相对较高，此方法较为固定，如果 Server 更新证书，App 需要定期更新并重新上架。</li>
-<li><strong>PublicKeysTrustEvaluator</strong>（公钥验证策略）app端只会对服务器返回的证书和本地保存的证书中的 PublicKey(公钥)进行校验，所以当证书需要更新时，只需确保公钥保持不变，不需要更新App。</li>
-<li><strong>CompositeTrustEvaluator</strong>（自定义组合验证策略）以上多种策略组合一起，只有在所有数组中值都成功时才成功。</li>
-<li><strong>DisabledTrustEvalutor</strong>（不验验证策略）无条件信任，所有都可以通过验证。正式环境不建议用此策略，多用于测试。</li>
+<li><p><strong>DefaultTrustEvaluator</strong> - （默认验证策略）只要是合法证书就能通过验证。</p>
+</li>
+<li><p><strong>RevocationTrustEvaluator</strong>（验证注销策略）对注销证书做的一种额外设置，Alamofire从iOS10.1才开始支持吊销证书的策略。</p>
+</li>
+<li><p><strong>PinnedCertificatesTrustEvaluator</strong>（证书验证策略）app端会对服务器端返回的证书和本地保存的证书中的全部内容进行校验需要全部正确，此验证策略还可以接受自签名证书，安全性相对较高，此方法较为固定，如果 Server 更新证书，App 需要定期更新并重新上架。</p>
+</li>
+<li><p><strong>PublicKeysTrustEvaluator</strong>（公钥验证策略）app端只会对服务器返回的证书和本地保存的证书中的 PublicKey(公钥)进行校验，所以当证书需要更新时，只需确保公钥保持不变，不需要更新App。</p>
+</li>
+<li><p><strong>CompositeTrustEvaluator</strong>（自定义组合验证策略）以上多种策略组合一起，只有在所有数组中值都成功时才成功。</p>
+</li>
+<li><p><strong>DisabledTrustEvalutor</strong>（不验验证策略）无条件信任，所有都可以通过验证。正式环境不建议用此策略，多用于测试。</p>
+</li>
 </ol>
+</blockquote>
 <p><strong>我们用的是PublicKeysTrustEvaluator（公钥验证策略）</strong></p>
 <hr>
 <blockquote>
-<p>1.后台提供证书，将正式放在项目目录中。</p>
+<p>后台提供证书，将正式放在项目目录中。</p>
 </blockquote>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/d2b909e2935eccedbf88e97df824ecf9.png" alt="本地证书存放"></p>
 <blockquote>
-<p>2.获取本地证书，提取证书的公钥（获取公钥key数组）。证书后缀名一般有：.cer、.crt、.der等，我项目中用的cer，证书链必须包含一个固定的公钥。</p>
+<p>获取本地证书，提取证书的公钥（获取公钥key数组）。证书后缀名一般有：.cer、.crt、.der等，我项目中用的cer，证书链必须包含一个固定的公钥。</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">struct WTCertificates &#123;</span><br><span class="line">    static let rootCA = WTCertificates.certificate( )</span><br><span class="line">    static func certificate() -&gt; [SecKey] &#123;</span><br><span class="line">        var publicKeyArray:[SecKey] = []</span><br><span class="line">        for resource in [&quot;xxx&quot;, &quot;xxxx&quot;, &quot;xxxxx&quot;] &#123;// 本地证书名称</span><br><span class="line">            if let filePath = Bundle.main.path(forResource: resource, ofType: &quot;cer&quot;), let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) as CFData, let certificate = SecCertificateCreateWithData(nil, data),let publicKey = certificate.af.publicKey &#123;</span><br><span class="line">                publicKeyArray.append(publicKey)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return publicKeyArray</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>3.给Session添加策略（接受质询）</p>
+<p>给Session添加策略（接受质询）</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var requestManagerSession: Session = &#123;</span><br><span class="line">    if WTCertificates.rootCA.count &gt; 0, verifyCert &#123;</span><br><span class="line">        let certificates: [SecKey] = WTCertificates.rootCA</span><br><span class="line">        let trustPolicy = PublicKeysTrustEvaluator(keys: certificates, performDefaultValidation: false, validateHost: false)</span><br><span class="line">        let manager = ServerTrustManager(evaluators: [</span><br><span class="line">            &quot;xxx.xxx.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xx.xx.jftplus.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xxx.xx.com&quot;: trustPolicy])// base url 如何域名过多，可以子类化 ServerTrustManager，并用自己的自定义实现重写 serverTrustEvaluator(forHost:) 方法</span><br><span class="line">        let configuration = URLSessionConfiguration.af.default</span><br><span class="line">        return Session(configuration: configuration, serverTrustManager: manager)</span><br><span class="line">    &#125;</span><br><span class="line">    return MoyaProvider&lt;ApiManager&gt;.defaultAlamofireSession()</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var requestManagerSession: Session = &#123;</span><br><span class="line">    if WTCertificates.rootCA.count &gt; 0, verifyCert &#123;</span><br><span class="line">        let certificates: [SecKey] = WTCertificates.rootCA</span><br><span class="line">        let trustPolicy = PublicKeysTrustEvaluator(keys: certificates, performDefaultValidation: false, validateHost: false)</span><br><span class="line">        let manager = ServerTrustManager(evaluators: [</span><br><span class="line">            &quot;xxx.xxx.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xx.xx.jftplus.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xxx.xx.com&quot;: trustPolicy])// base url 如何域名过多，可以子类化 ServerTrustManager，并用自己的自定义实现重写 serverTrustEvaluator(forHost:) 方法</span><br><span class="line">        let configuration = URLSessionConfiguration.af.default</span><br><span class="line">        return Session(configuration: configuration, serverTrustManager: manager)</span><br><span class="line">    &#125;</span><br><span class="line">    return MoyaProvider&lt;ApiManager&gt;.defaultAlamofireSession()</span><br><span class="line">&#125;()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>4.在Moya中添加requestManagerSession</p>
+<p>在Moya中添加requestManagerSession</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var JKOtherApiManagerProvider = MoyaProvider&lt;JKOtherApiManager&gt;(endpointClosure: endpointMapping, requestClosure: requestTimeoutClosure, session:requestManagerSession, plugins:[RequestAlertPlugin(), networkPlugin])</span><br></pre></td></tr></table></figure>
-<blockquote>
-<h2 id="OC-HTTPS-证书配置验证"><a href="#OC-HTTPS-证书配置验证" class="headerlink" title="OC HTTPS 证书配置验证"></a>OC HTTPS 证书配置验证</h2></blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//1 将证书拖进项目</span><br><span class="line"></span><br><span class="line">//2 获取证书路径</span><br><span class="line">NSString *certPath = [[NSBundle mainBundle] pathForResource: @&quot;cetus&quot; ofType:@&quot;cer&quot;];</span><br><span class="line">//3 获取证书data</span><br><span class="line">NSData *certData = [NSData dataWithContentsOfFile:certPath];</span><br><span class="line">//4 创建AFN 中的securityPolicy</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:[[NSSet alloc] initWithObjects:certData,nil]];</span><br><span class="line">//5 这里就可以添加多个server证书</span><br><span class="line">NSSet *dataSet = [[NSSet alloc]initWithObjects:certData, nil];</span><br><span class="line">//6 绑定证书（不止一个证书）</span><br><span class="line">[securityPolicy setPinnedCertificates:dataSet];</span><br><span class="line">//7 是否允许无效证书</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">//8 是否需要验证域名</span><br><span class="line">securityPolicy.validatesDomainName = YES;</span><br><span class="line">uploadManager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
+<h2 id="OC-HTTPS-证书配置验证"><a href="#OC-HTTPS-证书配置验证" class="headerlink" title="OC HTTPS 证书配置验证"></a>OC HTTPS 证书配置验证</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//1 将证书拖进项目</span><br><span class="line"></span><br><span class="line">//2 获取证书路径</span><br><span class="line">NSString *certPath = [[NSBundle mainBundle] pathForResource: @&quot;cetus&quot; ofType:@&quot;cer&quot;];</span><br><span class="line">//3 获取证书data</span><br><span class="line">NSData *certData = [NSData dataWithContentsOfFile:certPath];</span><br><span class="line">//4 创建AFN 中的securityPolicy</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:[[NSSet alloc] initWithObjects:certData,nil]];</span><br><span class="line">//5 这里就可以添加多个server证书</span><br><span class="line">NSSet *dataSet = [[NSSet alloc]initWithObjects:certData, nil];</span><br><span class="line">//6 绑定证书（不止一个证书）</span><br><span class="line">[securityPolicy setPinnedCertificates:dataSet];</span><br><span class="line">//7 是否允许无效证书</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">//8 是否需要验证域名</span><br><span class="line">securityPolicy.validatesDomainName = YES;</span><br><span class="line">uploadManager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>我们后台给的证书格式后缀是.pem，以下是用OpenSSL命令将.pem证书转换为cer格式证书方法</p>
 </blockquote>

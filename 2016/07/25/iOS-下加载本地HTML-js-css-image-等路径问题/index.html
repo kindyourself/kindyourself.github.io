@@ -119,18 +119,22 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+  <blockquote>
+<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
 <p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
-<p>  一个是  Create groups for any added folders （创建虚拟结构-包结构）</p>
-<p>  一个是 Create folder references for any added folders （创建实体结构）</p>
-<ul>
-<li>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。<br>引入文件方式：</li>
-</ul>
+<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
+<p>一个是 Create folder references for any added folders 创建实体结构）</p>
+</blockquote>
+<blockquote>
+<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
+</blockquote>
+<p><strong>引入文件方式：</strong></p>
  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
-<ul>
-<li>如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。<br> 引入文件方式：</li>
-</ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br></pre></td></tr></table></figure> 
+<blockquote>
+<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+</blockquote>
+<p> <strong>引入文件方式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">

@@ -17,7 +17,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>项目总结系列 一 位置实时共享 |  Gavin&#39;s Blog</title>
+      <title>项目总结-位置实时共享 |  Gavin&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -66,7 +66,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="[layout]-项目总结系列一-位置实时共享"
+  id="[layout]-项目总结-位置实时共享"
   class="article article-type-[layout]"
   itemscope
   itemprop="blogPost"
@@ -77,7 +77,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  项目总结系列 一 位置实时共享
+  项目总结-位置实时共享
 </h1>
  
 
@@ -85,7 +85,7 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B8%80-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-date">
+      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-date">
   <time datetime="2016-11-16T16:13:34.000Z" itemprop="datePublished">2016-11-17</time>
 </a> 
   <div class="article-category">
@@ -122,46 +122,35 @@
   <blockquote>
 <p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
 </blockquote>
-<p>1.谈谈新公司    </p>
+<p><strong>谈谈新公司</strong>  </p>
 <blockquote>
 <p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
 </blockquote>
-<p>2.谈谈项目    </p>
+<p><strong>谈谈项目</strong>    </p>
 <blockquote>
 <p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
 </blockquote>
-<ul>
-<li>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</li>
-</ul>
+<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>然后在解析透彻信息的解析位置信息</li>
-</ul>
+<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>将所有收到的透传消的位置信息标识在地图上。</li>
-</ul>
+<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</li>
-</ul>
+
+<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>新用户需要添加大头针，已经存在的用户只需要更新位置。</li>
-</ul>
+
+<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>通过百度地图获得自己移动的距离</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。</li>
-<li>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</li>
-</ul>
+<p><strong>通过百度地图获得自己移动的距离</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
+</blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3.结束语 </p>
+<p><strong>结束语</strong></p>
 <blockquote>
 <p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
 </blockquote>
@@ -235,7 +224,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%E7%B3%BB%E5%88%97%E4%B8%80-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" alt="微信分享二维码">
     </div>
 </div>
 
