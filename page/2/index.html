@@ -1,292 +1,103 @@
 <!DOCTYPE html>
-
-
-<html lang="zh-CN">
+<html>
+<head>
+  <meta charset="utf-8">
   
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-    <head>
-      <!-- 添加全局禁用 Referer -->
-      <meta name="referrer" content="no-referrer" />
-      <meta charset="utf-8" />
-       
-      <meta name="keywords" content="技术,编程,开发,Hexo" />
-       
-      <meta name="description" content="个人技术博客，分享编程、开发经验和生活感悟" />
-      
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1"
-      />
-      <title> Gavin&#39;s Blog</title>
-  <meta name="generator" content="hexo-theme-ayer">
-      
-      <link rel="shortcut icon" href="/favicon.ico" />
-       
-<link rel="stylesheet" href="/dist/main.css">
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-      
-<link rel="stylesheet" href="/css/fonts/remixicon.css">
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
 
-      
-<link rel="stylesheet" href="/css/custom.css">
- 
-      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
-       
- 
-
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
-      />
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
-
-      <!-- mermaid -->
-      
-      <style>
-        .swal2-styled.swal2-confirm {
-          font-size: 1.6rem;
-        }
-      </style>
-      <!-- Font Awesome 6 -->
-<link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
-    <link rel="alternate" href="/atom.xml" title="Gavin's Blog" type="application/atom+xml">
-</head>
-  </html>
-</html>
-
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
-  <div id="app">
-    
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
       
-    <main class="content on">
-      
-<section class="cover">
-    
-      
-      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
-        target="_blank"><img width="149" height="149" src="/images/forkme.png"
-          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">Gavin&#39;s Blog</a></h1>
-      <div id="subtitle-box">
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
         
-        <span id="subtitle"></span>
+          <a class="main-nav-link" href="/">Home</a>
         
-      </div>
-      <div>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
       </div>
     </div>
   </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
+</header>
 
-
-
-<script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
-
-
-<!-- Subtitle -->
-
-  <script>
-    try {
-      var typed = new Typed("#subtitle", {
-        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
-        startDelay: 0,
-        typeSpeed: 200,
-        loop: true,
-        backSpeed: 100,
-        showCursor: true
-      });
-    } catch (err) {
-      console.log(err)
-    }
-  </script>
+      <div class="outer">
+        <section id="main">
   
-<div id="main">
-  <section class="outer">
-  
-  
-  
-
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
-</div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
+    <article id="[layout]-iOS-webView上加载HTML视频不显示缩略图" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="article-date">
+  <time class="dt-published" datetime="2016-08-07T17:06:48.000Z" itemprop="datePublished">2016-08-08</time>
+</a>
     
-    
-    
-    
-    <article
-  id="[layout]-项目总结-位置实时共享"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"
-    >项目总结-位置实时共享</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-date">
-  <time datetime="2016-11-16T16:13:34.000Z" itemprop="datePublished">2016-11-17</time>
-</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
-</blockquote>
-<p><strong>谈谈新公司</strong>  </p>
-<blockquote>
-<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
-</blockquote>
-<p><strong>谈谈项目</strong>    </p>
-<blockquote>
-<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
-</blockquote>
-<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过百度地图获得自己移动的距离</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结束语</strong></p>
-<blockquote>
-<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
-</blockquote>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/" rel="tag">“位置实时共享”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/" rel="tag">“百度地图”</a></li></ul>
-
-    </footer>
   </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="[layout]-iOS-webView上加载HTML视频不显示缩略图"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
   <div class="article-inner">
     
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"
-    >iOS-webView上加载HTML视频不显示缩略图</a> 
-</h2>
- 
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/">iOS-webView上加载HTML视频不显示缩略图</a>
+    </h1>
+  
 
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="article-date">
-  <time datetime="2016-08-07T17:06:48.000Z" itemprop="datePublished">2016-08-08</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a target="_blank" rel="noopener" href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
 </blockquote>
 <h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
@@ -304,60 +115,51 @@
 <h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
 <p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" data-id="cmbpxcsna000dmtzlbc9nfhs4" data-title="iOS-webView上加载HTML视频不显示缩略图" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CwebView%E2%80%9D/" rel="tag">“webView”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/" rel="tag">“视频不显示缩略图”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-图片上传预览"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"
-    >图片上传预览</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/" class="article-date">
-  <time datetime="2016-07-31T17:06:42.000Z" itemprop="datePublished">2016-08-01</time>
-</a> 
+
+  
+    <article id="[layout]-图片上传预览" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/" class="article-date">
+  <time class="dt-published" datetime="2016-07-31T17:06:42.000Z" itemprop="datePublished">2016-08-01</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/web/">web</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/">图片上传预览</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
 </blockquote>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
@@ -378,60 +180,51 @@
 <h3 id="问题二：点击事件冲突"><a href="#问题二：点击事件冲突" class="headerlink" title="问题二：点击事件冲突"></a>问题二：点击事件冲突</h3><blockquote>
 <p>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
 </blockquote>
-<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5> 
-      <!-- reward -->
+<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5>
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/" data-id="cmbpxcsnd0015mtzl0liz0qe7" data-title="图片上传预览" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/" rel="tag">“图片上传”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/" rel="tag">“预览”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-iOS-下加载本地HTML-js-css-image-等路径问题"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"
-    >iOS 下加载本地HTML/js/css/image 等路径问题</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2016-07-25T03:29:55.000Z" itemprop="datePublished">2016-07-25</time>
-</a> 
+
+  
+    <article id="[layout]-iOS-下加载本地HTML-js-css-image-等路径问题" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2016-07-25T03:29:55.000Z" itemprop="datePublished">2016-07-25</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/">iOS 下加载本地HTML/js/css/image 等路径问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
 <p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
 <p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
@@ -446,60 +239,51 @@
 <p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
 </blockquote>
 <p> <strong>引入文件方式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/" data-id="cmbpxcsna000imtzl0ofh1jfw" data-title="iOS 下加载本地HTML/js/css/image 等路径问题" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/" rel="tag">“本地”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/" rel="tag">“路径问题”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-iOS-widget-Today-扩展"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"
-    >iOS-widget-Today 扩展</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/" class="article-date">
-  <time datetime="2016-07-25T03:23:58.000Z" itemprop="datePublished">2016-07-25</time>
-</a> 
+
+  
+    <article id="[layout]-iOS-widget-Today-扩展" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/" class="article-date">
+  <time class="dt-published" datetime="2016-07-25T03:23:58.000Z" itemprop="datePublished">2016-07-25</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/">iOS-widget-Today 扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>今天要分享的是通知中心扩展中的-<a target="_blank" rel="noopener" href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。</p>
 </blockquote>
 <h3 id="一、目标："><a href="#一、目标：" class="headerlink" title="一、目标："></a>一、目标：</h3><blockquote>
@@ -541,60 +325,51 @@
 <p>4.today只有在下拉的时候才会更新，通知栏两边的更新机制是不一样的。</p>
 <p>5.一般更新路径：viewDidLoad-&gt;viewWillAppear，但是如果你下拉过于频繁就只会执行viewWillAppear里面的，因此更新代码最好放在viewWillAppear里面。</p>
 </blockquote>
-<h6 id="如有错误地方，万望指出，谢谢！"><a href="#如有错误地方，万望指出，谢谢！" class="headerlink" title="如有错误地方，万望指出，谢谢！"></a>如有错误地方，万望指出，谢谢！</h6> 
-      <!-- reward -->
+<h6 id="如有错误地方，万望指出，谢谢！"><a href="#如有错误地方，万望指出，谢谢！" class="headerlink" title="如有错误地方，万望指出，谢谢！"></a>如有错误地方，万望指出，谢谢！</h6>
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/" data-id="cmbpxcsna000emtzl10wvfkaq" data-title="iOS-widget-Today 扩展" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cwidget%E2%80%9D/" rel="tag">“widget”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/" rel="tag">“扩展”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-gitHub-hexo-个人博客"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"
-    >gitHub hexo 个人博客</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2016-07-15T20:11:37.000Z" itemprop="datePublished">2016-07-16</time>
-</a> 
+
+  
+    <article id="[layout]-gitHub-hexo-个人博客" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
+  <time class="dt-published" datetime="2016-07-15T20:11:37.000Z" itemprop="datePublished">2016-07-16</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">gitHub hexo 个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a target="_blank" rel="noopener" href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
 </blockquote>
 <h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
@@ -659,60 +434,51 @@
 <h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
 <p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="cmbpxcsn90009mtzldbz3ghbm" data-title="gitHub hexo 个人博客" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CgitHub%E2%80%9D/" rel="tag">“gitHub”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Chexo%E2%80%9D/" rel="tag">“hexo”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/" rel="tag">“个人博客”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-iOS-自定义带抽屉效果的tabBar"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"
-    >iOS-自定义带抽屉效果的tabBar</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/" class="article-date">
-  <time datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
-</a> 
+
+  
+    <article id="[layout]-iOS-自定义带抽屉效果的tabBar" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/" class="article-date">
+  <time class="dt-published" datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/">iOS-自定义带抽屉效果的tabBar</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>demo地址：<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
+        <p>demo地址：<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
 <h3 id="一、先来个效果"><a href="#一、先来个效果" class="headerlink" title="一、先来个效果"></a>一、先来个效果</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p>
 <h3 id="二、代码示例"><a href="#二、代码示例" class="headerlink" title="二、代码示例"></a>二、代码示例</h3><p><strong>1.抽屉页作为根视图：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -730,60 +496,51 @@
 <blockquote>
 <p>欢迎下载</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/" data-id="cmbpxcsnb000jmtzl2ei73srh" data-title="iOS-自定义带抽屉效果的tabBar" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CtabBar%E2%80%9D/" rel="tag">“tabBar”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/" rel="tag">“抽屉”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-与web前端朋友闲聊的发现-代码相通性"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"
-    >与web前端朋友闲聊的发现-代码相通性</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/" class="article-date">
-  <time datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
-</a> 
+
+  
+    <article id="[layout]-与web前端朋友闲聊的发现-代码相通性" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/" class="article-date">
+  <time class="dt-published" datetime="2016-07-15T15:50:50.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/">与web前端朋友闲聊的发现-代码相通性</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
+        <h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
 <p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
 </blockquote>
 <h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote>
@@ -803,60 +560,51 @@
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
 <p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/" data-id="cmbpxcsnc000vmtzlaiv6dp81" data-title="与web前端朋友闲聊的发现-代码相通性" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/" rel="tag">“代码相通性”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-Base64-不重要数据的简单加密"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"
-    >Base64-不重要数据的简单加密</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" class="article-date">
-  <time datetime="2016-07-09T12:31:41.000Z" itemprop="datePublished">2016-07-09</time>
-</a> 
+
+  
+    <article id="[layout]-Base64-不重要数据的简单加密" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2016-07-09T12:31:41.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/">Base64-不重要数据的简单加密</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+        <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
 <p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
 </blockquote>
 <p>##我的实现过程（可以根据公司需求自定义）：</p>
@@ -871,60 +619,51 @@
 <blockquote>
 <p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" data-id="cmbpxcsn70003mtzlaj2sfhd5" data-title="Base64-不重要数据的简单加密" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CBase64%E2%80%9D/" rel="tag">“Base64”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" rel="tag">“加密”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-    <article
-  id="[layout]-iOS-解压zip"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/"
-    >iOS-解压zip</a> 
-</h2>
- 
 
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/" class="article-date">
-  <time datetime="2016-07-09T12:31:07.000Z" itemprop="datePublished">2016-07-09</time>
-</a> 
+
+  
+    <article id="[layout]-iOS-解压zip" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/" class="article-date">
+  <time class="dt-published" datetime="2016-07-09T12:31:07.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
+    
   <div class="article-category">
     <a class="article-category-link" href="/categories/iOS/">iOS</a>
   </div>
-   
-    </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/">iOS-解压zip</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
       
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
+        <blockquote>
 <p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a target="_blank" rel="noopener" href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
 </blockquote>
 <h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
@@ -937,384 +676,214 @@
 <blockquote>
 <p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
 </blockquote>
- 
-      <!-- reward -->
+
       
     </div>
-    
-
-    <!-- copyright -->
-    
     <footer class="article-footer">
-       
+      <a data-url="http://example.com/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/" data-id="cmbpxcsnb000nmtzl88k95fey" data-title="iOS-解压zip" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%A7%A3%E5%8E%8Bzip%E2%80%9D/" rel="tag">“解压zip”</a></li></ul>
 
     </footer>
   </div>
-
-    
- 
-    
+  
 </article>
 
-    
-  </article>
-  
+
 
   
-  <nav class="page-nav">
+    <article id="[layout]-iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2016-07-09T12:30:21.000Z" itemprop="datePublished">2016-07-09</time>
+</a>
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/">iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。<br>其交互方式有很多种</p>
+</blockquote>
+<h3 id="一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"><a href="#一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。" class="headerlink" title="一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"></a>一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];</span><br><span class="line"></span><br><span class="line">self.webView.delegate = self;</span><br><span class="line"></span><br><span class="line">[self.webView setUserInteractionEnabled:YES]; //是否支持交互</span><br><span class="line"></span><br><span class="line">[self.webView setOpaque:NO]; //opaque是不透明的意思</span><br><span class="line"></span><br><span class="line">[self.webView setScalesPageToFit:YES]; //自动缩放以适应屏幕</span><br><span class="line"></span><br><span class="line">[self.view addSubview:self.webView];</span><br><span class="line"></span><br><span class="line">if (sender.tag == 101) &#123;</span><br><span class="line"></span><br><span class="line">// 返回（点击页面才会有返回）</span><br><span class="line">[self.mWebView goBack];</span><br><span class="line"></span><br><span class="line">&#125;else if (sender.tag == 102) &#123;</span><br><span class="line"></span><br><span class="line">// 前进（点击过的页面）</span><br><span class="line">[self.mWebView goForward];</span><br><span class="line"></span><br><span class="line">&#125;else &#123;</span><br><span class="line"></span><br><span class="line">// 刷新页面</span><br><span class="line">[self.mWebView reload];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法："><a href="#二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法：" class="headerlink" title="二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法："></a>二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：</h3><p><strong>1、直接调用JS代码</strong></p>
+<p><strong>2、在ObjC中通过JSContext注入模型，然后调用模型的方法</strong></p>
+<p><strong>通过evaluateScript:方法就可以执行JS代码</strong></p>
+<h3 id="三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"><a href="#三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）" class="headerlink" title="三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"></a>三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）</h3><h3 id="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"><a href="#四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。" class="headerlink" title="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"></a>四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在iOS端：1.self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">2.[self.bridge registerHandler:@&quot;testJavascriptHandler&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;ObjC Echo called with: %@&quot;, data);</span><br><span class="line"></span><br><span class="line">// 反馈给JS</span><br><span class="line">responseCallback(data);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">// 在JS中如果调用了bridge.send()，那么将触发OC端_bridge初始化方法中的回调。</span><br><span class="line"></span><br><span class="line">// 在JS中调用了bridge.callHandler(&#x27;testJavascriptHandler&#x27;)，它将触发OC端注册的同名方法</span><br><span class="line"></span><br><span class="line">// oc 同理</span><br><span class="line"></span><br><span class="line">// JS主动调用OjbC的方法</span><br><span class="line"></span><br><span class="line">// 这是JS会调用ObjC Echo方法，这是OC注册给JS调用的</span><br><span class="line"></span><br><span class="line">// JS需要回调，当然JS也可以传参数过来。data就是JS所传的参数，不一定需要传</span><br><span class="line"></span><br><span class="line">// OC端通过responseCallback回调JS端，JS就可以得到所需要的数据</span><br><span class="line"></span><br><span class="line">3.[self.bridge callHandler:@&quot;sayHello&quot; data:@&#123;@&quot;hello&quot;: @&quot;你好&quot;&#125; responseCallback:^(id responseData) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;回调结果: %@&quot;, responseData);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。<br>js调用时也一样</p>
+</blockquote>
+<p>在JS端：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">1.Copy and paste setupWebViewJavascriptBridge into your JS:</span><br><span class="line"></span><br><span class="line">（此段代码为固定格式，直接放在js端就行）</span><br><span class="line"></span><br><span class="line">function setupWebViewJavascriptBridge(callback) &#123;</span><br><span class="line"></span><br><span class="line">if (window.WebViewJavascriptBridge) &#123; return callback(WebViewJavascriptBridge); &#125;</span><br><span class="line"></span><br><span class="line">if (window.WVJBCallbacks) &#123; return window.WVJBCallbacks.push(callback); &#125;</span><br><span class="line"></span><br><span class="line">window.WVJBCallbacks = [callback];</span><br><span class="line"></span><br><span class="line">var WVJBIframe = document.createElement(&#x27;iframe&#x27;);</span><br><span class="line"></span><br><span class="line">WVJBIframe.style.display = &#x27;none&#x27;;</span><br><span class="line"></span><br><span class="line">WVJBIframe.src = &#x27;wvjbscheme://__BRIDGE_LOADED__&#x27;;</span><br><span class="line"></span><br><span class="line">document.documentElement.appendChild(WVJBIframe);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123; document.documentElement.removeChild(WVJBIframe) &#125;, 0)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>后面几步与iOS端一样</p>
+<p>如有错误，望请指出。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/" data-id="cmbpxcsn9000amtzlhr560t8r" data-title="iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CWKWebViewJavascriptBridge%E2%80%9D/" rel="tag">“WKWebViewJavascriptBridge”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cjs%E2%80%9D/" rel="tag">“js”</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
-  
+
 </section>
-</div>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Flutter/">Flutter</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/iOS/">iOS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/swift/">swift</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序</a></li></ul>
+    </div>
+  </div>
 
-      <footer class="footer">
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CBase64%E2%80%9D/" rel="tag">“Base64”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CError%E2%80%9D/" rel="tag">“Error”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CFlutter%E2%80%9D/" rel="tag">“Flutter”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CHandyJSON%E2%80%9D/" rel="tag">“HandyJSON”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CLottie%E2%80%9D/" rel="tag">“Lottie”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CMoya%E2%80%9D/" rel="tag">“Moya”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CRxSwift%E2%80%9D/" rel="tag">“RxSwift”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CSSL%E2%80%9D/" rel="tag">“SSL”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CUISearchBar%E2%80%9D/" rel="tag">“UISearchBar”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CWKWebViewJavascriptBridge%E2%80%9D/" rel="tag">“WKWebViewJavascriptBridge”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CWebSocket%E2%80%9D/" rel="tag">“WebSocket”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CWidget%E2%80%9D/" rel="tag">“Widget”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CgitHub%E2%80%9D/" rel="tag">“gitHub”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9Chexo%E2%80%9D/" rel="tag">“hexo”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9Cjs%E2%80%9D/" rel="tag">“js”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9Cswift%E2%80%9D/" rel="tag">“swift”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CtabBar%E2%80%9D/" rel="tag">“tabBar”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9CwebView%E2%80%9D/" rel="tag">“webView”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9Cwidget%E2%80%9D/" rel="tag">“widget”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/" rel="tag">“个人博客”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/" rel="tag">“代码相通性”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/" rel="tag">“位置实时共享”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" rel="tag">“加密”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/" rel="tag">“动画”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/" rel="tag">“图片上传”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/" rel="tag">“微信小程序”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/" rel="tag">“扩展”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/" rel="tag">“抽屉”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/" rel="tag">“本地”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/" rel="tag">“百度地图”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/" rel="tag">“网络请求”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/" rel="tag">“融云”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/" rel="tag">“视频不显示缩略图”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E8%A7%A3%E5%8E%8Bzip%E2%80%9D/" rel="tag">“解压zip”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/" rel="tag">“证书验证”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/" rel="tag">“路径问题”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/" rel="tag">“预览”</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E2%80%9C%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E2%80%9D/" rel="tag">“高德地图”</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E2%80%9CBase64%E2%80%9D/" style="font-size: 10px;">“Base64”</a> <a href="/tags/%E2%80%9CError%E2%80%9D/" style="font-size: 10px;">“Error”</a> <a href="/tags/%E2%80%9CFlutter%E2%80%9D/" style="font-size: 13.33px;">“Flutter”</a> <a href="/tags/%E2%80%9CHandyJSON%E2%80%9D/" style="font-size: 10px;">“HandyJSON”</a> <a href="/tags/%E2%80%9CLottie%E2%80%9D/" style="font-size: 10px;">“Lottie”</a> <a href="/tags/%E2%80%9CMoya%E2%80%9D/" style="font-size: 10px;">“Moya”</a> <a href="/tags/%E2%80%9CRxSwift%E2%80%9D/" style="font-size: 10px;">“RxSwift”</a> <a href="/tags/%E2%80%9CSSL%E2%80%9D/" style="font-size: 10px;">“SSL”</a> <a href="/tags/%E2%80%9CUISearchBar%E2%80%9D/" style="font-size: 10px;">“UISearchBar”</a> <a href="/tags/%E2%80%9CWKWebViewJavascriptBridge%E2%80%9D/" style="font-size: 10px;">“WKWebViewJavascriptBridge”</a> <a href="/tags/%E2%80%9CWebSocket%E2%80%9D/" style="font-size: 10px;">“WebSocket”</a> <a href="/tags/%E2%80%9CWidget%E2%80%9D/" style="font-size: 10px;">“Widget”</a> <a href="/tags/%E2%80%9CgitHub%E2%80%9D/" style="font-size: 10px;">“gitHub”</a> <a href="/tags/%E2%80%9Chexo%E2%80%9D/" style="font-size: 10px;">“hexo”</a> <a href="/tags/%E2%80%9CiOS%E2%80%9D/" style="font-size: 20px;">“iOS”</a> <a href="/tags/%E2%80%9Cjs%E2%80%9D/" style="font-size: 10px;">“js”</a> <a href="/tags/%E2%80%9Cswift%E2%80%9D/" style="font-size: 16.67px;">“swift”</a> <a href="/tags/%E2%80%9CtabBar%E2%80%9D/" style="font-size: 10px;">“tabBar”</a> <a href="/tags/%E2%80%9CwebView%E2%80%9D/" style="font-size: 10px;">“webView”</a> <a href="/tags/%E2%80%9Cweb%E2%80%9D/" style="font-size: 13.33px;">“web”</a> <a href="/tags/%E2%80%9Cwidget%E2%80%9D/" style="font-size: 10px;">“widget”</a> <a href="/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/" style="font-size: 10px;">“个人博客”</a> <a href="/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/" style="font-size: 10px;">“代码相通性”</a> <a href="/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/" style="font-size: 10px;">“位置实时共享”</a> <a href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" style="font-size: 10px;">“加密”</a> <a href="/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/" style="font-size: 10px;">“动画”</a> <a href="/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/" style="font-size: 10px;">“图片上传”</a> <a href="/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/" style="font-size: 10px;">“微信小程序”</a> <a href="/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/" style="font-size: 10px;">“扩展”</a> <a href="/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/" style="font-size: 10px;">“抽屉”</a> <a href="/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/" style="font-size: 10px;">“本地”</a> <a href="/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/" style="font-size: 10px;">“百度地图”</a> <a href="/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/" style="font-size: 10px;">“网络请求”</a> <a href="/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/" style="font-size: 10px;">“融云”</a> <a href="/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/" style="font-size: 10px;">“视频不显示缩略图”</a> <a href="/tags/%E2%80%9C%E8%A7%A3%E5%8E%8Bzip%E2%80%9D/" style="font-size: 10px;">“解压zip”</a> <a href="/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/" style="font-size: 10px;">“证书验证”</a> <a href="/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/" style="font-size: 10px;">“路径问题”</a> <a href="/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/" style="font-size: 10px;">“预览”</a> <a href="/tags/%E2%80%9C%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E2%80%9D/" style="font-size: 10px;">“高德地图”</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/05/">May 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/06/07/widget-advanced/">Widget进阶</a>
+          </li>
+        
+          <li>
+            <a href="/2025/05/23/flutter-error/">Flutter遇到的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/">项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/">项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</a>
+          </li>
+        
+          <li>
+            <a href="/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/">项目剖析02-swift 轻松实现动画效果-Lottie</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
   <div class="outer">
-    <ul>
-      <li>
-        Copyrights &copy;
-        2015-2025
-        <i class="ri-heart-fill heart_icon"></i> kindyourself@163.com
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-      </li>
-    </ul>
-    <ul>
-      <li>
-        
-        
-        <span>
-  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
-  <span class="division">|</span>
-  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
-</span>
-        
-      </li>
-    </ul>
-    <ul>
+    <div id="footer-info" class="inner">
       
-    </ul>
-    <ul>
-      
-    </ul>
-    <ul>
-      <li>
-        <!-- cnzz统计 -->
-        
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
-      </li>
-    </ul>
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
   </div>
-</footer>    
-    </main>
-    <div class="float_btns">
-      <div class="totop" id="totop">
-  <i class="ri-arrow-up-line"></i>
-</div>
-
-<div class="todark" id="todark">
-  <i class="ri-moon-line"></i>
-</div>
+</footer>
 
     </div>
-    <aside class="sidebar on">
-      <button class="navbar-toggle"></button>
-<nav class="navbar">
+    <nav id="mobile-nav">
   
-  <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="Gavin&#39;s Blog"></a>
-  </div>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-  <ul class="nav nav-main">
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/">主页</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/archives">归档</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/categories">分类</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/tags">标签</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.jianshu.com/u/51707eacf496">简书</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/friends">友链</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/about">关于我</a>
-    </li>
-    
-  </ul>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
 </nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      
-      <a class="nav-item-link nav-item-search"  title="搜索">
-        <i class="ri-search-line"></i>
-      </a>
-      
-      
-      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-        <i class="ri-rss-line"></i>
-      </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-    </aside>
-    <div id="mask"></div>
-
-<!-- #reward -->
-<div id="reward">
-  <span class="close"><i class="ri-close-line"></i></span>
-  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
-  <div class="reward-box">
     
-    <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.png">
-      <span class="reward-type">支付宝</span>
-    </div>
-    
-    
-    <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.png">
-      <span class="reward-type">微信</span>
-    </div>
-    
-  </div>
-</div>
-    
-<script src="/js/jquery-3.6.0.min.js"></script>
- 
-<script src="/js/lazyload.min.js"></script>
-
-<!-- Tocbot -->
-
-<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
-/>
-<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
-
-<script src="/dist/main.js"></script>
-
-<!-- ImageViewer -->
- <!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-
-            <div class="pswp__top-bar">
-
-                <!--  Controls are self-explanatory. Order can be changed. -->
-
-                <div class="pswp__counter"></div>
-
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
-
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
-<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
-<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
-
-<script>
-    function viewer_init() {
-        let pswpElement = document.querySelectorAll('.pswp')[0];
-        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
-
-        $imgArr.forEach(($em, i) => {
-            $em.onclick = () => {
-                // slider展开状态
-                // todo: 这样不好，后面改成状态
-                if (document.querySelector('.left-col.show')) return
-                let items = []
-                $imgArr.forEach(($em2, i2) => {
-                    let img = $em2.getAttribute('data-idx', i2)
-                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
-                    let title = $em2.getAttribute('alt')
-                    // 获得原图尺寸
-                    const image = new Image()
-                    image.src = src
-                    items.push({
-                        src: src,
-                        w: image.width || $em2.width,
-                        h: image.height || $em2.height,
-                        title: title
-                    })
-                })
-                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-                    index: parseInt(i)
-                });
-                gallery.init()
-            }
-        })
-    }
-    viewer_init()
-</script> 
-<!-- MathJax -->
-
-<!-- Katex -->
-
-<!-- busuanzi  -->
- 
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
- 
-<!-- ClickLove -->
-
-<!-- ClickBoom1 -->
-
-<!-- ClickBoom2 -->
-
-<!-- CodeCopy -->
- 
-<link rel="stylesheet" href="/css/clipboard.css">
- <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
-<script>
-  function wait(callback, seconds) {
-    var timelag = null;
-    timelag = window.setTimeout(callback, seconds);
-  }
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      $(".article pre code").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copied');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-checkbox-circle-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
- 
-<!-- CanvasBackground -->
-
-<script>
-  if (window.mermaid) {
-    mermaid.initialize({ theme: "forest" });
-  }
-</script>
 
 
-    
-    
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
 
   </div>
 </body>
-
 </html>

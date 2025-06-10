@@ -4,24 +4,15 @@
   <meta charset="utf-8">
   
   
-  <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证 | Hexo</title>
+  <title>Archives: 2016 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="SSL证书验证一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。  Alamofire5.0 以后将证书验证类放于ServerTrustEvalua">
-<meta property="og:type" content="article">
-<meta property="og:title" content="项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证">
-<meta property="og:url" content="http://example.com/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/archives/2016/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="SSL证书验证一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。  Alamofire5.0 以后将证书验证类放于ServerTrustEvalua">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d2b909e2935eccedbf88e97df824ecf9.png">
-<meta property="article:published_time" content="2024-03-05T08:02:13.000Z">
-<meta property="article:modified_time" content="2025-06-10T08:53:45.243Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="“swift”">
-<meta property="article:tag" content="“证书验证”">
-<meta property="article:tag" content="“SSL”">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/d2b909e2935eccedbf88e97df824ecf9.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -78,117 +69,64 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="[layout]-项目剖析04-swift-网络请求Moya-Alamofire-HTTPS-证书验证" class="h-entry article article-type-[layout]" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/" class="article-date">
-  <time class="dt-published" datetime="2024-03-05T08:02:13.000Z" itemprop="datePublished">2024-03-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/swift/">swift</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="p-name article-title" itemprop="headline name">
-      项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2016" class="archive-year">2016</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-[layout]">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/" class="archive-article-date">
+  <time class="dt-published" datetime="2016-07-09T12:30:21.000Z" itemprop="datePublished">Jul 9</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/">iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）</a>
     </h1>
   
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="SSL证书验证"><a href="#SSL证书验证" class="headerlink" title="SSL证书验证"></a>SSL证书验证</h2><p><strong>一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。</strong></p>
-<blockquote>
-<p>Alamofire5.0 以后将证书验证类放于ServerTrustEvaluation这个类里面。一共有6种验证策略：</p>
-<ol>
-<li><p><strong>DefaultTrustEvaluator</strong> - （默认验证策略）只要是合法证书就能通过验证。</p>
-</li>
-<li><p><strong>RevocationTrustEvaluator</strong>（验证注销策略）对注销证书做的一种额外设置，Alamofire从iOS10.1才开始支持吊销证书的策略。</p>
-</li>
-<li><p><strong>PinnedCertificatesTrustEvaluator</strong>（证书验证策略）app端会对服务器端返回的证书和本地保存的证书中的全部内容进行校验需要全部正确，此验证策略还可以接受自签名证书，安全性相对较高，此方法较为固定，如果 Server 更新证书，App 需要定期更新并重新上架。</p>
-</li>
-<li><p><strong>PublicKeysTrustEvaluator</strong>（公钥验证策略）app端只会对服务器返回的证书和本地保存的证书中的 PublicKey(公钥)进行校验，所以当证书需要更新时，只需确保公钥保持不变，不需要更新App。</p>
-</li>
-<li><p><strong>CompositeTrustEvaluator</strong>（自定义组合验证策略）以上多种策略组合一起，只有在所有数组中值都成功时才成功。</p>
-</li>
-<li><p><strong>DisabledTrustEvalutor</strong>（不验验证策略）无条件信任，所有都可以通过验证。正式环境不建议用此策略，多用于测试。</p>
-</li>
-</ol>
-</blockquote>
-<p><strong>我们用的是PublicKeysTrustEvaluator（公钥验证策略）</strong></p>
-<hr>
-<blockquote>
-<p>后台提供证书，将正式放在项目目录中。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d2b909e2935eccedbf88e97df824ecf9.png" alt="本地证书存放"></p>
-<blockquote>
-<p>获取本地证书，提取证书的公钥（获取公钥key数组）。证书后缀名一般有：.cer、.crt、.der等，我项目中用的cer，证书链必须包含一个固定的公钥。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">struct WTCertificates &#123;</span><br><span class="line">    static let rootCA = WTCertificates.certificate( )</span><br><span class="line">    static func certificate() -&gt; [SecKey] &#123;</span><br><span class="line">        var publicKeyArray:[SecKey] = []</span><br><span class="line">        for resource in [&quot;xxx&quot;, &quot;xxxx&quot;, &quot;xxxxx&quot;] &#123;// 本地证书名称</span><br><span class="line">            if let filePath = Bundle.main.path(forResource: resource, ofType: &quot;cer&quot;), let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) as CFData, let certificate = SecCertificateCreateWithData(nil, data),let publicKey = certificate.af.publicKey &#123;</span><br><span class="line">                publicKeyArray.append(publicKey)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return publicKeyArray</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>给Session添加策略（接受质询）</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var requestManagerSession: Session = &#123;</span><br><span class="line">    if WTCertificates.rootCA.count &gt; 0, verifyCert &#123;</span><br><span class="line">        let certificates: [SecKey] = WTCertificates.rootCA</span><br><span class="line">        let trustPolicy = PublicKeysTrustEvaluator(keys: certificates, performDefaultValidation: false, validateHost: false)</span><br><span class="line">        let manager = ServerTrustManager(evaluators: [</span><br><span class="line">            &quot;xxx.xxx.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xx.xx.jftplus.com&quot;: trustPolicy,</span><br><span class="line">            &quot;xxx.xx.com&quot;: trustPolicy])// base url 如何域名过多，可以子类化 ServerTrustManager，并用自己的自定义实现重写 serverTrustEvaluator(forHost:) 方法</span><br><span class="line">        let configuration = URLSessionConfiguration.af.default</span><br><span class="line">        return Session(configuration: configuration, serverTrustManager: manager)</span><br><span class="line">    &#125;</span><br><span class="line">    return MoyaProvider&lt;ApiManager&gt;.defaultAlamofireSession()</span><br><span class="line">&#125;()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在Moya中添加requestManagerSession</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var JKOtherApiManagerProvider = MoyaProvider&lt;JKOtherApiManager&gt;(endpointClosure: endpointMapping, requestClosure: requestTimeoutClosure, session:requestManagerSession, plugins:[RequestAlertPlugin(), networkPlugin])</span><br></pre></td></tr></table></figure>
-<h2 id="OC-HTTPS-证书配置验证"><a href="#OC-HTTPS-证书配置验证" class="headerlink" title="OC HTTPS 证书配置验证"></a>OC HTTPS 证书配置验证</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//1 将证书拖进项目</span><br><span class="line"></span><br><span class="line">//2 获取证书路径</span><br><span class="line">NSString *certPath = [[NSBundle mainBundle] pathForResource: @&quot;cetus&quot; ofType:@&quot;cer&quot;];</span><br><span class="line">//3 获取证书data</span><br><span class="line">NSData *certData = [NSData dataWithContentsOfFile:certPath];</span><br><span class="line">//4 创建AFN 中的securityPolicy</span><br><span class="line">AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModePublicKey withPinnedCertificates:[[NSSet alloc] initWithObjects:certData,nil]];</span><br><span class="line">//5 这里就可以添加多个server证书</span><br><span class="line">NSSet *dataSet = [[NSSet alloc]initWithObjects:certData, nil];</span><br><span class="line">//6 绑定证书（不止一个证书）</span><br><span class="line">[securityPolicy setPinnedCertificates:dataSet];</span><br><span class="line">//7 是否允许无效证书</span><br><span class="line">securityPolicy.allowInvalidCertificates = YES;</span><br><span class="line">//8 是否需要验证域名</span><br><span class="line">securityPolicy.validatesDomainName = YES;</span><br><span class="line">uploadManager.securityPolicy = securityPolicy;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>我们后台给的证书格式后缀是.pem，以下是用OpenSSL命令将.pem证书转换为cer格式证书方法</p>
-</blockquote>
-<ol>
-<li>打开命令行工具，进入存放xxx.pem证书的目录</li>
-<li>输入以下命令，将.pem证书转换为cer格式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -in xxx.pem -inform PEM -out xxx.cer -outform DER</span><br></pre></td></tr></table></figure></li>
-<li>执行完毕后，您将在当前目录下看到生成的xxx.cer文件</li>
-</ol>
-<blockquote>
-<p><strong>注意：转换后的cer证书文件只包含公钥，不包含私钥信息</strong></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/" data-id="cmbpxcsne001kmtzl7og42urp" data-title="项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CSSL%E2%80%9D/" rel="tag">“SSL”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cswift%E2%80%9D/" rel="tag">“swift”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/" rel="tag">“证书验证”</a></li></ul>
-
-    </footer>
+    </header>
   </div>
+</article>
   
     
-<nav id="article-nav">
+    
+    <article class="archive-article archive-type-[layout]">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" class="archive-article-date">
+  <time class="dt-published" datetime="2016-07-09T12:19:07.000Z" itemprop="datePublished">Jul 9</time>
+</a>
+      
   
-    <a href="/2025/05/23/flutter-error/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Flutter遇到的问题
-        
-      </div>
-    </a>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/">iOS-高德地图</a>
+    </h1>
   
-  
-    <a href="/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</div>
-    </a>
-  
-</nav>
 
-  
+    </header>
+  </div>
 </article>
+  
+  
+    </div></section>
+  
 
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/archives/2016/">&laquo; Prev</a><a class="page-number" href="/archives/2016/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
