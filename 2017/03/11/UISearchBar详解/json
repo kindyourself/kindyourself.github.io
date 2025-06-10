@@ -1,0 +1,20 @@
+{
+    "": [
+        "widget-advanced.md", 
+        "hello-world.md", 
+        "images", 
+        "title"
+    ], 
+    "__positions": {
+        "images": 3, 
+        "widget-advanced.md": 1, 
+        "hello-world.md": 2, 
+        "title": 4
+    }, 
+    "__raw_positions": {
+        "images": 3, 
+        "widget-advanced.md": 1, 
+        "hello-world.md": 2, 
+        "title": 4
+    }
+}
