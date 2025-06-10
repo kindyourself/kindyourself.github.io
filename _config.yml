@@ -89,11 +89,16 @@ ignore:
 theme: ayer # 使用主题
 
 deploy:
-  type: git # 部署类型
-  repo: 
+  - type: git # 部署类型
+    repo:
     github: git@github.com:kindyourself/kindyourself.github.io.git  # 静态文件仓库
-  branch: master  # 部署分支
-  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+    branch: master  # 部署分支
+    message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
+  
+ - type: git
+   repo: git@github.com:gavincarter1991/gavincarter1991.github.io.git
+   branch: master  # 注意分支名称可能不同
+   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
 
 # ===== 插件配置 =====
 ## RSS订阅 
