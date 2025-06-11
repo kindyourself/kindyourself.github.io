@@ -167,6 +167,115 @@
     
     
     <article
+  id="[layout]-gitHub-hexo-个人博客升级版"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"
+    >gitHub hexo 个人博客升级版</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/" class="article-date">
+  <time datetime="2025-06-11T01:52:44.000Z" itemprop="datePublished">2025-06-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>9年前自己开始学习gitHub hexo搭建个人博客，查了很多资料，最后用hexo 搭建一个个人博客，托管在gitHub上，前段时间换了一个电脑，我在新的电脑上想再发布一篇文章，才发现不行了。因为之前只在GitHub托管了hexo生成的静态文件(public)，忘记备份Hexo的源文件。<br>source&#x2F;_posts&#x2F;（所有文章）<br>_config.yml（Hexo 主配置）<br>themes&#x2F;（主题文件）<br>package.json（依赖列表）<br>如果你遇到这种情况，跟着我进入接下来的重新部署过程。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e0619df8f245">gitHub hexo 个人博客基础版</a>。</p>
+<h3 id="首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"><a href="#首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。" class="headerlink" title="首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"></a>首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。</h3><blockquote>
+<p>1.静态文件（如 public&#x2F; 下的 HTML）可通过浏览器右键「查看页面源代码」复制正文，或使用工具解析 HTML 结构。</p>
+</blockquote>
+<blockquote>
+<p>2.使用 Markdown 渲染，HTML 中的 “article ”标签内通常包含原始文本的转换结果。</p>
+</blockquote>
+<blockquote>
+<p>3.生成.md文件放在_posts文件夹里面。</p>
+</blockquote>
+<h1 id="1-备份Hexo的源文件"><a href="#1-备份Hexo的源文件" class="headerlink" title="1.备份Hexo的源文件"></a>1.备份Hexo的源文件</h1><p><strong>到这里就可以重新发布文章了，但是为了下一次不要再出现这种情况，我们需要对Hexo的源文件进行备份。</strong></p>
+<p><strong>备份方式共有两种：</strong></p>
+<blockquote>
+<p>1.在当前gitHub管理的hexo生成的静态文件仓库中再开一个分支，用于备份Hexo的源文件。</p>
+</blockquote>
+<blockquote>
+<p>2.单独创建一个私有仓库用于备份Hexo的源文件。</p>
+</blockquote>
+<p><em>因为博客需要对外展示，所以当前gitHub管理的hexo生成的静态文件仓库必须是公开的，所以如果你选择第一种方式你的原文件也只能放在公开的仓库分支。如果不想将自己的Hexo的源文件公开就可以选择第二种方式：单独创建一个私有的仓库用来备份Hexo的源文件。</em></p>
+<h1 id="2-自动化"><a href="#2-自动化" class="headerlink" title="2.自动化"></a>2.自动化</h1><blockquote>
+<p>上文创建完成后每次发布博客，都需要去git提交备份文件，这样太麻烦了。我们可以创建一个自动化脚本，将这些重复步骤自动化。</p>
+</blockquote>
+<p><strong>创建一个deploy.sh放在博客根目录：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 设置绝对路径</span><br><span class="line">BLOG_DIR=&quot;实际路径/blog&quot;</span><br><span class="line"></span><br><span class="line"># 进入博客目录</span><br><span class="line">cd &quot;$BLOG_DIR&quot; || exit 1</span><br><span class="line"></span><br><span class="line"># Hexo操作</span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"></span><br><span class="line"># 源文件备份</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M&quot;)&quot;</span><br><span class="line">git push origin main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样一个简单的发布博客并且源文件备份的自动化脚本就好了。<br>以后每一次写完文章后再在终端进入”实际路径&#x2F;blog” 执行.&#x2F;deploy.sh 就行了</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-be565414c227becd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行./deploy.sh"></p>
+<p><strong>首次执行需要先设置执行权限：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x deploy.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-多博客自动化"><a href="#3-多博客自动化" class="headerlink" title="3.多博客自动化"></a>3.多博客自动化</h1><blockquote>
+<p>当我们有多个博客需要同步是就需要对Hexo的源文件进行再次修改。</p>
+</blockquote>
+<p>我以github为例：</p>
+<p><strong>1.首先我们的有两个GitHub账号并且本地配置好SSH</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-4b672d531de2e4be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地SSH配置"></p>
+<p><strong>2.添加配置文件</strong></p>
+<h3 id="config-yml：为其中一个GitHub账号的配置"><a href="#config-yml：为其中一个GitHub账号的配置" class="headerlink" title="_config.yml：为其中一个GitHub账号的配置"></a>_config.yml：为其中一个GitHub账号的配置</h3><blockquote>
+<p>url: <a href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-d4cc0887e0a1f1c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
+</blockquote>
+<h3 id="config-other-yml：为另外一个GitHub账号的配置"><a href="#config-other-yml：为另外一个GitHub账号的配置" class="headerlink" title="_config_other.yml：为另外一个GitHub账号的配置"></a>_config_other.yml：为另外一个GitHub账号的配置</h3><blockquote>
+<p>url: <a target="_blank" rel="noopener" href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-e88ac014d9ccf8ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
+</blockquote>
+<p>考虑到多个博客内容可能不一样：在根目录新建一个scripts文件夹创建一个JS脚本multi-site.js进行内容配置，公共文章放在source&#x2F;_posts，不同的文章各自放在自己的目录里面（source&#x2F;_posts_gavin  source&#x2F;_posts_gavin _posts_kind）脚本会分开发布。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&#x27;fs-extra&#x27;);</span><br><span class="line">const path = require(&#x27;path&#x27;);</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(&#x27;before_generate&#x27;, function() &#123;</span><br><span class="line">  const baseDir = hexo.base_dir;</span><br><span class="line">  const sites = [</span><br><span class="line">    &#123; name: &#x27;kind&#x27;, postDir: &#x27;_posts_kind&#x27;, config: &#x27;_config.yml&#x27; &#125;,</span><br><span class="line">    &#123; name: &#x27;gavin&#x27;, postDir: &#x27;_posts_gavin&#x27;, config: &#x27;_config_gavin.yml&#x27; &#125;</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  sites.forEach(site =&gt; &#123;</span><br><span class="line">    const sourceDir = path.join(baseDir, &#x27;source&#x27;);</span><br><span class="line">    const tempSourceDir = path.join(baseDir, `temp_source_$&#123;site.name&#125;`);</span><br><span class="line">    const sitePostsDir = path.join(baseDir, site.postDir);</span><br><span class="line">    </span><br><span class="line">    hexo.log.info(`准备 $&#123;site.name&#125; 站点内容...`);</span><br><span class="line">    </span><br><span class="line">    try &#123;</span><br><span class="line">      // 创建临时源目录</span><br><span class="line">      fs.ensureDirSync(tempSourceDir);</span><br><span class="line">      fs.emptyDirSync(tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 复制共享内容</span><br><span class="line">      fs.copySync(sourceDir, tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 添加专属文章</span><br><span class="line">      if (fs.existsSync(sitePostsDir)) &#123;</span><br><span class="line">        const targetPostsDir = path.join(tempSourceDir, &#x27;_posts&#x27;);</span><br><span class="line">        fs.ensureDirSync(targetPostsDir);</span><br><span class="line">        </span><br><span class="line">        fs.readdirSync(sitePostsDir).forEach(file =&gt; &#123;</span><br><span class="line">          if (file.endsWith(&#x27;.md&#x27;)) &#123;</span><br><span class="line">            fs.copySync(</span><br><span class="line">              path.join(sitePostsDir, file),</span><br><span class="line">              path.join(targetPostsDir, file)</span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      // 更新配置中的source_dir</span><br><span class="line">      const configPath = path.join(baseDir, site.config);</span><br><span class="line">      let configContent = fs.readFileSync(configPath, &#x27;utf-8&#x27;);</span><br><span class="line">      configContent = configContent.replace(</span><br><span class="line">        /source_dir:.+/,</span><br><span class="line">        `source_dir: $&#123;tempSourceDir&#125;`</span><br><span class="line">      );</span><br><span class="line">      fs.writeFileSync(configPath, configContent);</span><br><span class="line">      </span><br><span class="line">      hexo.log.info(`$&#123;site.name&#125; 站点内容准备完成`);</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      hexo.log.error(`$&#123;site.name&#125; 站点准备失败: $&#123;e.message&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>当然deploy.sh也需要更改为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line"></span><br><span class="line"># 配置区</span><br><span class="line">BLOG_DIR=&quot;/自己路径/blog&quot;</span><br><span class="line">SOURCE_BRANCH=&quot;master&quot;</span><br><span class="line">PUBLIC_REPO_KIND=&quot;git@github.com-kind:kindyourself/kindyourself.github.io.git&quot;</span><br><span class="line">PUBLIC_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/gavincarter1991.github.io.git&quot;</span><br><span class="line">PRIVATE_REPO_KIND=&quot;git@github.com-kind:kindyourself/blog-source.git&quot;</span><br><span class="line">PRIVATE_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/blog-source.git&quot;</span><br><span class="line"></span><br><span class="line">cd &quot;$BLOG_DIR&quot; || &#123; echo &quot;❌ 无法进入博客目录&quot;; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"># 清理上次生成的临时文件</span><br><span class="line">rm -rf temp_source_* public public_gavin</span><br><span class="line"></span><br><span class="line"># 生成两个站点的内容</span><br><span class="line">echo &quot;===== 生成站点内容 =====&quot;</span><br><span class="line">hexo generate --config _config.yml</span><br><span class="line">hexo generate --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 部署到GitHub Pages</span><br><span class="line">echo &quot;===== 部署到GitHub Pages =====&quot;</span><br><span class="line">hexo deploy --config _config.yml</span><br><span class="line">hexo deploy --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 备份到私有仓库</span><br><span class="line">echo &quot;===== 备份源文件到私有仓库 =====&quot;</span><br><span class="line">git add .</span><br><span class="line">if git diff-index --quiet HEAD --; then</span><br><span class="line">    echo &quot;无文件变更&quot;</span><br><span class="line">else</span><br><span class="line">    git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M:%S&quot;)&quot;</span><br><span class="line">    </span><br><span class="line">    # 推送到两个私有仓库</span><br><span class="line">    git push &quot;$PRIVATE_REPO_KIND&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ kindyourself/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ kindyourself/blog-source 备份失败&quot;</span><br><span class="line">    </span><br><span class="line">    git push &quot;$PRIVATE_REPO_GAVIN&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ gavincarter1991/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ gavincarter1991/blog-source 备份失败&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &quot;===== 部署完成 =====&quot;</span><br><span class="line">echo &quot;博客地址1: https://kindyourself.github.io&quot;</span><br><span class="line">echo &quot;博客地址2: https://gavincarter1991.github.io&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>以上就是gitHub hexo 个人博客升级版</strong></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CHexo%E2%80%9D/" rel="tag">“Hexo”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cgithub/" rel="tag">“github&quot;</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/" rel="tag">“博客&quot;</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="[layout]-widget-advanced"
   class="article article-type-[layout]"
   itemscope
@@ -1215,94 +1324,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/" rel="tag">“微信小程序”</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="[layout]-项目总结-位置实时共享"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"
-    >项目总结-位置实时共享</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-date">
-  <time datetime="2016-11-16T16:13:34.000Z" itemprop="datePublished">2016-11-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
-</blockquote>
-<p><strong>谈谈新公司</strong>  </p>
-<blockquote>
-<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
-</blockquote>
-<p><strong>谈谈项目</strong>    </p>
-<blockquote>
-<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
-</blockquote>
-<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过百度地图获得自己移动的距离</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结束语</strong></p>
-<blockquote>
-<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
-</blockquote>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/" rel="tag">“位置实时共享”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/" rel="tag">“百度地图”</a></li></ul>
 
     </footer>
   </div>
