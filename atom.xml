@@ -3,11 +3,11 @@
   <title>Gavin&#39;s Blog</title>
   
   <subtitle>记录成长过程中的点点滴滴</subtitle>
-  <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/atom.xml" rel="self"/>
+  <link href="https://kindyourself.github.io/atom.xml" rel="self"/>
   
-  <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/"/>
+  <link href="https://kindyourself.github.io/"/>
   <updated>2025-06-11T01:52:51.724Z</updated>
-  <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/</id>
+  <id>https://kindyourself.github.io/</id>
   
   <author>
     <name>kindyourself@163.com</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>gitHub hexo 个人博客升级版</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
+    <link href="https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
+    <id>https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
     <published>2025-06-11T01:52:44.000Z</published>
     <updated>2025-06-11T01:52:51.724Z</updated>
     
@@ -34,21 +34,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“Hexo”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CHexo%E2%80%9D/"/>
+    <category term="“Hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
     
-    <category term="“github&quot;" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cgithub/"/>
+    <category term="“github&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9Cgithub/"/>
     
-    <category term="“博客&quot;" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
+    <category term="“博客&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/common/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/common/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/widget-advanced/"/>
+    <id>https://kindyourself.github.io/2025/06/07/widget-advanced/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -63,46 +63,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWidget%E2%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/widget-advanced/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/widget-advanced/</id>
-    <published>2025-06-07T12:17:56.000Z</published>
-    <updated>2025-06-10T03:47:51.051Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-Widget-介绍"><a href="#1-Widget-介绍" class="headerlink" title="1.Widget 介绍"></a>1.Widget 介绍</h2><blockquote><p>Everything is a widget 这是你学习 flutter 会听到的最多的一句话。因为在 Flutter 中几乎所有的对象都是一个 widget，在 flutter 中 UI 的构建和事件的处理基本都是通过 widget 的组合及嵌套来完成的。在 iOS 中我们经常提及的“组件”、“控件”在 flutter 中就是 widget，当然 widget 的范围比之更加广泛。如：手势检测 GestureDetector、主题 Theme 和动画容器 AnimatedContainer 等也是 widget。</p></blockquote><p><strong>Flutter 默认支持的两种设计风格：</strong></p><blockquote><p><strong>1.Material components Design：</strong> 谷歌（android）的 UI 风格，主要为 Android 设计，但也支持跨平台使用。</p></blockquote><blockquote><p><strong>2.Cupertino Design：</strong> 苹果（iOS）的 UI 风格，模仿苹果原生 UIKit 风格。高度还原 iOS 原生体验，适合需要与苹果生态一致的应用。</p></blockquote><h2 id="2-Widget-分类"><a href="#2-Widget-分类" class="headerlink" title="2.Widget 分类"></a>2.Widget 分类</h2><p><strong><em>1.按状态管理</em></strong></p><h6 id="一、StatelessWidget："><a href="#一、StatelessWidget：" class="headerlink" title="一、StatelessWidget："></a>一、StatelessWidget：</h6><p>无状态组件，通过 build 方法返回静态 UI。不可变，属性（final）在创建后无法修改，适用于不需要内部状态变化的场景（如文本显示、图标），不依赖用户交互或数据变化的 UI 部分。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class IconTextButton extends StatelessWidget &#123;</span><br><span class="line">  final String iconName;</span><br><span class="line">  final String label;</span><br><span class="line">  final VoidCallback onPressed;</span><br><span class="line"></span><br><span class="line">  const IconTextButton(&#123;</span><br><span class="line">    super.key,</span><br><span class="line">    required this.iconName,</span><br><span class="line">    required this.label,</span><br><span class="line">    required this.onPressed,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return GestureDetector(</span><br><span class="line">      onTap: onPressed,</span><br><span class="line">      child: Column(</span><br><span class="line">        mainAxisAlignment: MainAxisAlignment.center,</span><br><span class="line">        children: &lt;Widget&gt;[</span><br><span class="line">          Image.asset(</span><br><span class="line">            &quot;assets/images/$iconName.png&quot;,</span><br><span class="line">            width: 40,</span><br><span class="line">            height: 40,</span><br><span class="line">          ),</span><br><span class="line">          const SizedBox(</span><br><span class="line">            height: 10,</span><br><span class="line">          ), // 图标</span><br><span class="line">          Text(</span><br><span class="line">            label,</span><br><span class="line">            style: const TextStyle(color: ColorConstant.color33, fontSize: 10),</span><br><span class="line">          ), // 文字</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h6 id="二、StatefulWidget："><a href="#二、StatefulWidget：" class="headerlink" title="二、StatefulWidget："></a>二、StatefulWidget：</h6><p>有状态组件，通过 State 对象管理动态数据。当状态变化时调用 setState 触发 UI 更新，需要用户交互（如按钮点击、表单输入）和依赖实时数据变化（如计数器、动态列表）。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">// 上下滚动的消息轮播</span><br><span class="line">class MarqueeWidget extends StatefulWidget &#123;</span><br><span class="line">  /// 子视图数量</span><br><span class="line">  final int count;</span><br><span class="line"></span><br><span class="line">  ///子视图构建器</span><br><span class="line">  final IndexedWidgetBuilder itemBuilder;</span><br><span class="line"></span><br><span class="line">  ///轮播的时间间隔</span><br><span class="line">  final int loopSeconds;</span><br><span class="line"></span><br><span class="line">  const MarqueeWidget(&#123;</span><br><span class="line">    super.key,</span><br><span class="line">    required this.count,</span><br><span class="line">    required this.itemBuilder,</span><br><span class="line">    this.loopSeconds = 5,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  _MarqueeWidgetState createState() =&gt; _MarqueeWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _MarqueeWidgetState extends State&lt;MarqueeWidget&gt; &#123;</span><br><span class="line">  late PageController _controller;</span><br><span class="line">  late Timer _timer;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void initState() &#123;</span><br><span class="line">    super.initState();</span><br><span class="line">    _controller = PageController();</span><br><span class="line">    _timer = Timer.periodic(Duration(seconds: widget.loopSeconds), (timer) &#123;</span><br><span class="line">      if (_controller.page != null) &#123;</span><br><span class="line">        // 如果当前位于最后一页，则直接跳转到第一页，两者内容相同，跳转时视觉上无感知</span><br><span class="line">        if (_controller.page!.round() &gt;= widget.count) &#123;</span><br><span class="line">          _controller.jumpToPage(0);</span><br><span class="line">        &#125;</span><br><span class="line">        _controller.nextPage(</span><br><span class="line">            duration: const Duration(seconds: 1), curve: Curves.linear);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return PageView.builder(</span><br><span class="line">      scrollDirection: Axis.vertical,</span><br><span class="line">      controller: _controller,</span><br><span class="line">      itemBuilder: (buildContext, index) &#123;</span><br><span class="line">        if (index &lt; widget.count) &#123;</span><br><span class="line">          return widget.itemBuilder(buildContext, index);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">          return widget.itemBuilder(buildContext, 0);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      itemCount: widget.count + 1,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  void dispose() &#123;</span><br><span class="line">    super.dispose();</span><br><span class="line">    _controller.dispose();</span><br><span class="line">    _timer.cancel();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong><em>2.按功能分类</em></strong></p><blockquote><p><strong>1.布局类 Widget：</strong> 控制子 Widget 的排列方式。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">Row/Column：水平/垂直排列子项（基于 Flexbox）。</span><br><span class="line">Stack：子 Widget 堆叠（类似 CSS 的绝对定位）。</span><br><span class="line">Expanded/Flexible：在 Row 或 Column 中分配剩余空间。</span><br><span class="line">Container：结合布局、装饰、边距等功能</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>2.基础组件 Widget：</strong> 构成 UI 的基本元素。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">Text：显示文本。</span><br><span class="line">Image：加载本地或网络图片。</span><br><span class="line">Icon：显示图标（需引入 cupertino_icons 或自定义图标库）</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>3.滚动类 Widget：</strong> 处理内容超出屏幕时的滚动行为。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">ListView：垂直/水平滚动列表。</span><br><span class="line">GridView：网格布局滚动视图。</span><br><span class="line">SingleChildScrollView：包裹单个可滚动子组件。</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>4.交互类 Widget：</strong> 响应用户输入事件。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">ElevatedButton/TextButton：按钮交互。</span><br><span class="line">TextField：文本输入框。</span><br><span class="line">Checkbox/Switch：选择控件。</span><br><span class="line">GestureDetector：自定义手势检测（点击、长按、拖动）。</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>5.平台风格类 Widget：</strong> 适配不同操作系统的视觉风格。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">Material Design：MaterialApp、AppBar、FloatingActionButton。</span><br><span class="line">Cupertino（iOS 风格）：CupertinoApp、CupertinoNavigationBar、CupertinoPicker。</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>6.动画类 Widget：</strong> 实现动态视觉效果。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">AnimatedContainer：自动过渡的容器（大小、颜色等属性变化）。</span><br><span class="line">Hero：页面切换共享元素的过渡动画。</span><br><span class="line">AnimatedBuilder：自定义复杂动画。</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>7. 导航与路由类 Widget：</strong> 管理页面跳转和导航结构。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见有：</span><br><span class="line">Navigator：管理页面堆栈（push/pop）。</span><br><span class="line">PageView：实现滑动切换页面。</span><br><span class="line">BottomNavigationBar：底部导航栏。</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>通过简单 Widget 组合实现复杂 UI（例如用 Row + Expanded 替代自定义布局）(优先组合而非继承)<br>局部状态使用 StatefulWidget<br>全局状态使用状态管理工具（如 Provider、Riverpod）<br>对频繁更新的部分使用 const 构造函数<br>长列表使用 ListView.builder 懒加载</p></blockquote><h2 id="3-Widget-生命周期"><a href="#3-Widget-生命周期" class="headerlink" title="3.Widget 生命周期"></a>3.Widget 生命周期</h2><p><strong>StatelessWidget 的生命周期</strong></p><blockquote><p>StatelessWidget 仅有一个 build() 方法，无状态管理逻辑，其生命周期完全由父组件控制。</p></blockquote><p><strong>StatefulWidget 主要生命周期方法</strong></p><blockquote><p>创建阶段<br>createState()</p></blockquote><blockquote><p>初始化阶段<br>initState()<br>didChangeDependencies()</p></blockquote><blockquote><p>更新阶段<br>didUpdateWidget(oldWidget)<br>build()</p></blockquote><blockquote><p>销毁阶段<br>deactivate()<br>dispose()</p></blockquote><p><img src="https://i-blog.csdnimg.cn/img_convert/a33469c55f94b5278f698d8605d8e0cc.webp?x-oss-process=image/format,png" alt="2025-05-22 18.38.22.png"></p><p><strong>1.createState()</strong><br>当 StatefulWidget 被插入 Widget 树时调用，而且只执行一次。</p><blockquote><p>主要用于创建与之关联的 State 对象（每个 Widget 对应一个 State 实例）。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class MyWidget extends StatefulWidget &#123;</span><br><span class="line">  @override</span><br><span class="line">  _MyWidgetState createState() =&gt; _MyWidgetState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>2.initState()</strong><br>在 State 对象创建后，首次调用 build() 之前触发该方法，而且只执行一次。</p><blockquote><p>主要用于初始化依赖数据（如订阅事件、加载本地配置）和 创建动画控制器（AnimationController）等需与 dispose() 配对的资源。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void initState() &#123;</span><br><span class="line">  super.initState();</span><br><span class="line">  _controller = AnimationController(vsync: this);</span><br><span class="line">  _fetchData(); // 初始化数据</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>需要注意的是：<br><code>必须调用 super.initState()。</code><br><code>在这里 View 并没有渲染，只是 StatefulWidget 被加载到渲染树里了。</code><br><code>避免在此处触发 setState（可能导致渲染未完成）。</code><br><code>StatefulWidget的 mount 的值变为了true（调用dispose()才会变为 false）。</code></p><p><strong>3.didChangeDependencies()</strong><br>initState() 后立即调用 didChangeDependencies()。<br>当 State 依赖的 InheritedWidget 发生变化时（如主题、本地化）也会调用 didChangeDependencies()。</p><blockquote><p>主要用于处理依赖变化后的逻辑（如重新请求网络数据）。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void didChangeDependencies() &#123;</span><br><span class="line">  super.didChangeDependencies();</span><br><span class="line">  if (Provider.of&lt;Data&gt;(context).hasChanged) &#123;</span><br><span class="line">    _updateData();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>4. didUpdateWidget(oldWidget)</strong><br>在父组件重建时，若新旧 Widget 的 runtimeType 和 key 相同触发 didUpdateWidget（didUpdateWidget 我们一般不会用到）。</p><blockquote><p>主要是：<br>对比新旧 Widget 的配置（如属性变化）。<br>根据变化调整状态（如重置动画、更新监听）。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void didUpdateWidget(MyWidget oldWidget) &#123;</span><br><span class="line">  super.didUpdateWidget(oldWidget);</span><br><span class="line">  if (oldWidget.color != widget.color) &#123;</span><br><span class="line">    _updateColor(); // 颜色变化时执行逻辑</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>5. build()</strong><br>初始化后、依赖变化后、setState() 调用后调用 build()。<br>父组件或祖先组件触发重建时调用 build()。</p><blockquote><p>主要是根据当前状态构建 UI（不要在这里做除了创建 Widget 之外的操作）</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return Container(</span><br><span class="line">    color: widget.color,</span><br><span class="line">    child: Text(&#x27;Count: $_count&#x27;),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>需要注意的是：<br><code>必须返回一个 Widget</code><br><code>避免在此处修改状态或执行耗时操作</code></p><p><strong>6. deactivate()</strong><br>当 State 从树中暂时移除（如页面切换、组件被移除）触发 deactivate()。</p><blockquote><p>清理临时资源或保存临时状态.</p></blockquote><p>需要注意的是：<br><code>可能被重新插入树中（如页面返回时），需与 dispose() 区分</code></p><p><strong>7. dispose()</strong><br>State 被永久移除时调用 dispose()。</p><blockquote><p>释放资源（如取消网络请求、销毁动画控制器）</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose(); // 销毁动画控制器</span><br><span class="line">  _subscription.cancel(); // 取消事件订阅</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>需要注意的是：<br><code>如果在 dispose() 中未释放资源（如动画控制器、Stream 订阅）可能造成内存泄漏</code><br><code>如果在 dispose() 后调用 setState 会导致异常</code></p><h2 id="4-Widget-的渲染"><a href="#4-Widget-的渲染" class="headerlink" title="4.Widget 的渲染"></a>4.Widget 的渲染</h2><p><strong>渲染流程：</strong><br>Flutter 的渲染系统基于三棵核心树结构，通过高度优化的管线（Pipeline）实现高效的 UI 更新。</p><blockquote><p><strong>Widget 重建 → Diff 新旧 Widget 树 → 更新 Element 树 → 更新 RenderObject 树 → 触发 Layer 合成 → 屏幕刷新</strong></p></blockquote><p><strong>1.Widget 树的构建：</strong></p><blockquote><p>描述 UI 的不可变配置，由开发者创建，频繁重建，需轻量化。<br>开发者编写的 Widget 代码被转化为嵌套的 Widget 树（应用的入口是根 Widget，一般是 MaterialApp 或 CupertinoApp。根 Widget 会递归地构建其子 Widget，形成一棵树。）。<br>具有不可变性，每次重建生成全新的 Widget 树，但通过 Diff 算法可以优化实际更新范围。</p></blockquote><p><strong>2. Element 树的 Diff 与更新</strong></p><blockquote><p>根据 Widget 树生成一个 Element 树，Element 树中的节点都继承自 Element 类。<br>Element 是 Widget 的实例化对象，负责管理 状态（State） 和 子节点引用。<br>每个 Widget 都会有一个对应的 Element 对象，用于管理其生命周期。</p></blockquote><blockquote><p>Diff 算法：Flutter 对比新旧 Widget 树，仅更新变化的 Element 和 RenderObject，类似 React 的虚拟 DOM。<br>当 Widget 树重建时，Flutter 通过 Diff 算法 对比新旧 Widget 树，决定 Element 树的更新策略<br>Reuse：若新旧 Widget 的 runtimeType 和 key 相同，复用现有 Element。<br>Update：更新 Element 的配置（调用 Element.update(newWidget)）。<br>Replace：类型或 Key 不同时，销毁旧 Element，创建新 Element。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 旧 Widget 树</span><br><span class="line">Container(color: Colors.red)</span><br><span class="line"></span><br><span class="line">// 新 Widget 树</span><br><span class="line">Container(color: Colors.blue)</span><br><span class="line"></span><br><span class="line">// Diff 结果：Container 类型相同且无 Key → 复用 Element，更新 RenderObject 颜色</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// Element 更新逻辑</span><br><span class="line">Element.updateChild()</span><br><span class="line"></span><br><span class="line">Element updateChild(Element child, Widget newWidget, dynamic newSlot) &#123;</span><br><span class="line">  if (newWidget == null) &#123;</span><br><span class="line">    // 移除子节点</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">  if (child != null) &#123;</span><br><span class="line">    if (child.widget == newWidget) &#123;</span><br><span class="line">      // Widget 未变化 → 复用 Element</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    if (Widget.canUpdate(child.widget, newWidget)) &#123;</span><br><span class="line">      // 更新 Element 配置</span><br><span class="line">      child.update(newWidget);</span><br><span class="line">      return child;</span><br><span class="line">    &#125;</span><br><span class="line">    // 销毁旧 Element，创建新 Element</span><br><span class="line">    deactivateChild(child);</span><br><span class="line">  &#125;</span><br><span class="line">  return inflateWidget(newWidget, newSlot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>3. RenderObject 树的更新</strong></p><p>更新 RenderObject 树，计算布局和生成绘制指令。<br>运行在 UI Thread。</p><blockquote><p>根据 Element 树生成 Render 树（渲染树），渲染树中的节点都继承自 RenderObject 类。<br>每个 Element 对应一个 RenderObject（通过 Element.createRenderObject() 创建）。</p></blockquote><blockquote><p>根据父 RenderObject 传递的 约束（Constraints），计算自身尺寸和位置。<br>递归调用子节点的 layout() 方法（深度优先遍历）。</p></blockquote><p><strong>布局（Layout）核心方法：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// RenderObject 布局流程</span><br><span class="line">RenderObject.layout()</span><br><span class="line"></span><br><span class="line">void layout(Constraints constraints, &#123; bool parentUsesSize = false &#125;) &#123;</span><br><span class="line">  _constraints = constraints;</span><br><span class="line">  if (_relayoutBoundary != this) &#123;</span><br><span class="line">    markNeedsLayout();</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  performLayout();  // 1. 计算自身尺寸（调用 performLayout） 由子类实现具体布局逻辑</span><br><span class="line">  _needsLayout = false;</span><br><span class="line">  markNeedsPaint(); // 标记需要重绘</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>生成绘制指令（如形状、颜色、文本），写入 Layer（合成层）。</p></blockquote><p><strong>绘制（Paint）核心方法:</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void paint(PaintingContext context, Offset offset) &#123;</span><br><span class="line">  // 绘制逻辑，如画矩形</span><br><span class="line">  context.canvas.drawRect(rect, paint);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>4. 合成与光栅化（Composition &amp; Rasterization）</strong></p><p>生成 Layer 树并光栅化。<br>运行在 Raster Thread（与 UI Thread 并行）</p><blockquote><p>根据渲染树生成 Layer 树，然后上屏显示，Layer 树中的节点都继承自 Layer 类。<br>RenderObject 的绘制结果被组织为 Layer 树，每个 Layer 对应一个 GPU 纹理（Texture）。自此 Layer 树生成。<br>类型包括：PictureLayer（矢量绘制）、TextureLayer（图像纹理）、TransformLayer（变换效果）等。</p></blockquote><blockquote><p>将 Layer 树中的绘制指令转换为 GPU 可识别的位图数据。<br>通过 Skia 图形库（或 Impeller）完成，最终提交给 GPU 渲染。（完成光栅化（Raster Thread））。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">void paintChild(RenderObject child, Offset offset) &#123;</span><br><span class="line">  if (child.isRepaintBoundary) &#123;</span><br><span class="line">    // 创建独立 Layer</span><br><span class="line">    stopRecordingIfNeeded();</span><br><span class="line">    child._layer = OffsetLayer();</span><br><span class="line">    appendLayer(child._layer);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    child._paintWithContext(this, offset);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>5. GPU 渲染与屏幕刷新</strong></p><blockquote><p><strong>垂直同步（VSync）：</strong><br>由系统定时触发的信号，控制帧率（如 60Hz → 16.6ms&#x2F;帧）。<br>Flutter 引擎在 VSync 信号到来时，提交光栅化后的帧数据到 GPU。</p></blockquote><blockquote><p><strong>屏幕显示：</strong><br>GPU 将帧数据写入帧缓冲区（Frame Buffer），屏幕硬件按刷新率读取并显示。</p></blockquote><h2 id="5-Widget-优化"><a href="#5-Widget-优化" class="headerlink" title="5.Widget 优化"></a>5.Widget 优化</h2><p><code>高性能渲染 = 最小化 Widget Diff + 高效布局/绘制 + GPU 线程优化</code></p><blockquote><p>Flutter 优化的本质是 减少无效计算 和 降低 GPU 负载<br>一般围绕四个方向： 1.最小化 Widget 树 Diff 范围 2.减少布局（Layout）和绘制（Paint）计算 3.优化 GPU 合成与光栅化（Rasterization） 4.高效管理状态与资源</p></blockquote><blockquote><p><strong>性能分析工具</strong><br>Flutter DevTools：<br>Performance 面板：分析 UI&#x2F;Raster 线程的帧耗时。<br>Layer 查看器：检测 Layer 合成是否合理。<br>debugProfileBuildsEnabled：追踪 Widget 构建耗时<br>调试标记：<br>debugPrintMarkNeedsLayoutStacks：打印触发布局的堆栈信息。<br>debugPaintLayerBordersEnabled：可视化 Layer 边界。</p></blockquote><p><strong>1.Widget 树 Diff 优化</strong></p><blockquote><p><strong>Diff 算法机制：</strong> 当父组件更新时，Flutter 递归对比新旧 Widget 树，判断是否需要更新 Element 和 RenderObject。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">static bool canUpdate(Widget oldWidget, Widget newWidget) &#123;</span><br><span class="line">  return oldWidget.runtimeType == newWidget.runtimeType</span><br><span class="line">      &amp;&amp; oldWidget.key == newWidget.key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>复用条件：</strong> runtimeType 和 key 相同 → 复用 Element，仅更新配置。<br><strong>替换条件：</strong> 类型或 Key 不同 → 销毁旧 Element，创建新 Element。</p></blockquote><p><strong>优化策略：</strong><br><strong>1.使用 const 构造函数：</strong> const Widget 在多次重建中引用同一内存地址，Widget.canUpdate 直接返回 true，跳过 Diff 计算。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const MyWidget(text: &#x27;Hello&#x27;); // ✅ 优化</span><br><span class="line">MyWidget(text: &#x27;Hello&#x27;);      // ❌ 非 const</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>2.合理使用 Key：</strong> ValueKey：在列表项中标识唯一性，避免错误复用导致状态混乱。<br>GlobalKey：跨组件访问状态（谨慎使用，破坏局部性）。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ListView.builder(</span><br><span class="line">  itemBuilder: (_, index) =&gt; ItemWidget(</span><br><span class="line">    key: ValueKey(items[index].id), // 唯一标识</span><br><span class="line">    data: items[index],</span><br><span class="line">  ),</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>3.拆分细粒度 Widget：</strong> 将频繁变化的部分拆分为独立 Widget，缩小 setState 触发的 Diff 范围。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 父组件（仅传递静态数据）</span><br><span class="line">class ParentWidget extends StatelessWidget &#123;</span><br><span class="line">  const ParentWidget(&#123;super.key&#125;);</span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Column(</span><br><span class="line">      children: [</span><br><span class="line">        const StaticHeader(), // 静态部分</span><br><span class="line">        DynamicContent(data: _data), // 动态部分</span><br><span class="line">      ],</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>2.布局（Layout）阶段优化</strong></p><blockquote><p><strong>布局计算机制：</strong> 当某个 RenderObject 的尺寸变化不影响父节点布局时，可标记为布局边界，阻断布局计算向上传播。通过 RenderObject.isRepaintBoundary &#x3D; true 设置（布局边界（Relayout Boundary））</p></blockquote><blockquote><p>父节点传递 约束（Constraints） 给子节点<br>子节点根据约束计算自身尺寸，并递归布局子节点(布局过程)</p></blockquote><p><strong>优化策略</strong></p><blockquote><p><strong>1.避免过度嵌套：</strong> 多层 Row&#x2F;Column 会导致布局计算复杂度呈指数增长。<br>我们可以使用 Flex、Wrap 或自定义布局逻辑替代嵌套。</p></blockquote><blockquote><p><strong>2.预计算尺寸：</strong> 通过固定尺寸（SizedBox）或 LayoutBuilder 提前确定布局约束，减少计算量。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SizedBox(</span><br><span class="line">  width: 100,</span><br><span class="line">  height: 50,</span><br><span class="line">  child: Text(&#x27;Fixed Size&#x27;),</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>3.使用 IntrinsicWidth&#x2F;IntrinsicHeight 的替代方案：</strong> IntrinsicWidth 会触发多次子节点布局计算，性能低下。<br>我们可以手动计算子节点最大宽度，使用 ConstrainedBox 限制尺寸。</p></blockquote><p><strong>3.绘制（Paint）阶段优化</strong></p><blockquote><p><strong>绘制机制：</strong> 当 RenderObject 的视觉属性（如颜色、位置）变化时，调用 markNeedsPaint() 标记需要重绘。</p></blockquote><blockquote><p><strong>合成层（Layer）：</strong> 每个 RenderObject 的绘制结果被组织为 Layer 树，最终由 GPU 光栅化。（PictureLayer（矢量绘制）、TextureLayer（图像）、TransformLayer（变换））。</p></blockquote><p><strong>优化策略</strong></p><blockquote><p><strong>1.使用 RepaintBoundary：</strong> 将独立变化的 UI 部分包裹 RepaintBoundary，生成独立 Layer，减少重绘区域。<br>通过 RenderObject.isRepaintBoundary &#x3D; true 标记。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RepaintBoundary(</span><br><span class="line">  child: MyAnimatedWidget(), // 独立重绘区域</span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p><strong>2.避免高开销绘制操作：</strong> 使用 AnimatedOpacity 或直接设置颜色透明度（Color.withOpacity）替代 Opacity 。<br>优先使用 ClipRect 或 ClipRRect，减少路径裁剪的计算量。</p></blockquote><blockquote><p><strong>3.自定义绘制优化：</strong> 在 CustomPainter 中精确控制重绘条件。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class MyPainter extends CustomPainter &#123;</span><br><span class="line">  @override</span><br><span class="line">  bool shouldRepaint(MyPainter old) &#123;</span><br><span class="line">    return old.color != color; // 仅颜色变化时重绘</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>4.GPU 合成与光栅化优化</strong></p><blockquote><p><strong>1.光栅化机制：</strong> 通过上面的合成与光栅化可知道：光栅化运行在独立的 Raster Thread，与 UI Thread 并行。<br>Flutter 自动复用未变化的 Layer 对应的 GPU 纹理，减少数据传输。（纹理（Texture）复用）</p></blockquote><p><strong>优化策略</strong></p><blockquote><p><strong>1.减少 Layer 数量：</strong> 过多的 Layer 会增加 GPU 合成开销，我们需要尽可能的合并相邻的 PictureLayer，避免不必要的 Opacity 或 Transform 嵌套。</p></blockquote><blockquote><p><strong>2.使用硬件加速操作：</strong> 利用 GPU 的矩阵变换硬件加速（Transform 替代手动矩阵计算）。<br>对重复使用的图片提前解码（precacheImage） （Image 预加载）。</p></blockquote><blockquote><p><strong>3.启用 Impeller 引擎：</strong> Flutter 3.0+ 引入的 Impeller 引擎针对 GPU 负载优化，减少光栅化抖动。</p></blockquote><p><strong>5.状态管理与资源优化</strong></p><blockquote><p><strong>1.状态管理：</strong><br>局部状态：使用 StatefulWidget 管理，确保 dispose() 释放资源。<br>全局状态：采用 Provider、Riverpod 或 Bloc，避免状态穿透和冗余重建。</p></blockquote><blockquote><p><strong>2.资源释放：</strong><br>必须释放动画控制器（AnimationController.dispose()）、Stream 订阅（Subscription.cancel()）等资源。</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@override</span><br><span class="line">void dispose() &#123;</span><br><span class="line">  _controller.dispose();</span><br><span class="line">  _streamSubscription.cancel();</span><br><span class="line">  super.dispose();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://i-blog.csdnimg.cn/img_convert/58ae194fbfc28292a73f2130d949f78a.webp?x-oss-process=image/format,png" alt="2025-05-23 14.45.52.png"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-Widget-介绍&quot;&gt;&lt;a href=&quot;#1-Widget-介绍&quot; class=&quot;headerlink&quot; title=&quot;1.Widget 介绍&quot;&gt;&lt;/a&gt;1.Widget 介绍&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Everything is a widge</summary>
-      
-    
-    
-    
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
-    
-    
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
-    
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Flutter遇到的问题</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/05/23/flutter-error/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/05/23/flutter-error/</id>
+    <link href="https://kindyourself.github.io/2025/05/23/flutter-error/"/>
+    <id>https://kindyourself.github.io/2025/05/23/flutter-error/</id>
     <published>2025-05-23T07:17:44.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -117,19 +90,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Error”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CError%E2%80%9D/"/>
+    <category term="“Error”" scheme="https://kindyourself.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
+    <link href="https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
+    <id>https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
     <published>2024-03-05T08:02:13.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -143,21 +116,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“证书验证”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
+    <category term="“证书验证”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
     
-    <category term="“SSL”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CSSL%E2%80%9D/"/>
+    <category term="“SSL”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
     <published>2019-12-23T08:39:52.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -172,25 +145,25 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“网络请求”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
+    <category term="“网络请求”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
     
-    <category term="“Moya”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CMoya%E2%80%9D/"/>
+    <category term="“Moya”" scheme="https://kindyourself.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
     
-    <category term="“HandyJSON”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
+    <category term="“HandyJSON”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
     
-    <category term="“RxSwift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
+    <category term="“RxSwift”" scheme="https://kindyourself.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
     <published>2019-12-23T04:34:37.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -205,21 +178,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“动画”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
+    <category term="“动画”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
     
-    <category term="“Lottie”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CLottie%E2%80%9D/"/>
+    <category term="“Lottie”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析01-swift WebSocket</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
     <published>2019-12-23T02:00:16.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -234,19 +207,19 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“WebSocket”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
+    <category term="“WebSocket”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
+    <link href="https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
+    <id>https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
     <published>2018-03-29T06:36:05.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -261,19 +234,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“融云”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
+    <category term="“融云”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>UISearchBar详解</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
     <published>2017-03-10T16:27:34.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -288,21 +261,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“UISearchBar”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
+    <category term="“UISearchBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序tips</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
+    <link href="https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
+    <id>https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
     <published>2017-02-21T17:19:52.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -317,17 +290,17 @@
     
     
     
-    <category term="微信小程序" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://kindyourself.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="“微信小程序”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
+    <category term="“微信小程序”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目总结-位置实时共享</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
+    <link href="https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
+    <id>https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
     <published>2016-11-16T16:13:34.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -342,21 +315,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“百度地图”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
+    <category term="“百度地图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
     
-    <category term="“位置实时共享”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
+    <category term="“位置实时共享”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
+    <link href="https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
     <published>2016-08-07T17:06:48.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -371,21 +344,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“webView”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CwebView%E2%80%9D/"/>
+    <category term="“webView”" scheme="https://kindyourself.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
     
-    <category term="“视频不显示缩略图”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
+    <category term="“视频不显示缩略图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>图片上传预览</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
+    <link href="https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
+    <id>https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
     <published>2016-07-31T17:06:42.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -402,21 +375,21 @@
     
     
     
-    <category term="web" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/web/"/>
+    <category term="web" scheme="https://kindyourself.github.io/categories/web/"/>
     
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“图片上传”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
+    <category term="“图片上传”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
     
-    <category term="“预览”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
+    <category term="“预览”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
     <published>2016-07-25T03:29:55.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -432,21 +405,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“本地”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
+    <category term="“本地”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
     
-    <category term="“路径问题”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
+    <category term="“路径问题”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-widget-Today 扩展</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
     <published>2016-07-25T03:23:58.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -461,21 +434,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cwidget%E2%80%9D/"/>
+    <category term="“widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
     
-    <category term="“扩展”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
+    <category term="“扩展”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2016-07-15T20:11:37.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -490,50 +463,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“hexo”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Chexo%E2%80%9D/"/>
+    <category term="“hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9Chexo%E2%80%9D/"/>
     
-    <category term="“个人博客”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
+    <category term="“个人博客”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
     
-    <category term="“gitHub”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CgitHub%E2%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>与web前端朋友闲聊的发现-代码相通性</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</id>
-    <published>2016-07-15T15:50:50.000Z</published>
-    <updated>2025-06-10T03:47:51.051Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote><p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p></blockquote><h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote><p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p></blockquote><h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote><p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p></blockquote><h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote><p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure><blockquote><p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p></blockquote><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote><p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一</summary>
-      
-    
-    
-    
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
-    
-    <category term="“web”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cweb%E2%80%9D/"/>
-    
-    <category term="“代码相通性”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/"/>
+    <category term="“gitHub”" scheme="https://kindyourself.github.io/tags/%E2%80%9CgitHub%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-自定义带抽屉效果的tabBar</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
+    <link href="https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
+    <id>https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
     <published>2016-07-15T15:50:50.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -548,21 +492,50 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“抽屉”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
+    <category term="“抽屉”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
     
-    <category term="“tabBar”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CtabBar%E2%80%9D/"/>
+    <category term="“tabBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CtabBar%E2%80%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>与web前端朋友闲聊的发现-代码相通性</title>
+    <link href="https://kindyourself.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"/>
+    <id>https://kindyourself.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</id>
+    <published>2016-07-15T15:50:50.000Z</published>
+    <updated>2025-06-10T03:47:51.051Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote><p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p></blockquote><h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote><p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p></blockquote><h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote><p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p></blockquote><h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote><p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure><blockquote><p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p></blockquote><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote><p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一</summary>
+      
+    
+    
+    
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    
+    <category term="“代码相通性”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Base64-不重要数据的简单加密</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</id>
+    <link href="https://kindyourself.github.io/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"/>
+    <id>https://kindyourself.github.io/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</id>
     <published>2016-07-09T12:31:41.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -577,12 +550,39 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“Base64”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CBase64%E2%80%9D/"/>
+    <category term="“Base64”" scheme="https://kindyourself.github.io/tags/%E2%80%9CBase64%E2%80%9D/"/>
     
-    <category term="“加密”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/"/>
+    <category term="“加密”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-解压zip</title>
+    <link href="https://kindyourself.github.io/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/"/>
+    <id>https://kindyourself.github.io/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</id>
+    <published>2016-07-09T12:31:07.000Z</published>
+    <updated>2025-06-10T03:47:51.050Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p></blockquote><h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol><li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p></li><li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p></li></ol><h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：&lt;a href=&quot;https://github.com/ZipArchive/ZipArchive&quot;&gt;ht</summary>
+      
+    
+    
+    
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
+    
+    
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    
+    <category term="“解压zip”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%A3%E5%8E%8Bzip%E2%80%9D/"/>
     
   </entry>
   
