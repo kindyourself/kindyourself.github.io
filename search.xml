@@ -97,6 +97,75 @@
       </tags>
   </entry>
   <entry>
+    <title>gitHub hexo 个人博客升级版</title>
+    <url>/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</url>
+    <content><![CDATA[<blockquote>
+<p>9年前自己开始学习gitHub hexo搭建个人博客，查了很多资料，最后用hexo 搭建一个个人博客，托管在gitHub上，前段时间换了一个电脑，我在新的电脑上想再发布一篇文章，才发现不行了。因为之前只在GitHub托管了hexo生成的静态文件(public)，忘记备份Hexo的源文件。<br>source&#x2F;_posts&#x2F;（所有文章）<br>_config.yml（Hexo 主配置）<br>themes&#x2F;（主题文件）<br>package.json（依赖列表）<br>如果你遇到这种情况，跟着我进入接下来的重新部署过程。</p>
+</blockquote>
+<p><a href="https://www.jianshu.com/p/e0619df8f245">gitHub hexo 个人博客基础版</a>。</p>
+<h3 id="首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"><a href="#首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。" class="headerlink" title="首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"></a>首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。</h3><blockquote>
+<p>1.静态文件（如 public&#x2F; 下的 HTML）可通过浏览器右键「查看页面源代码」复制正文，或使用工具解析 HTML 结构。</p>
+</blockquote>
+<blockquote>
+<p>2.使用 Markdown 渲染，HTML 中的 “article ”标签内通常包含原始文本的转换结果。</p>
+</blockquote>
+<blockquote>
+<p>3.生成.md文件放在_posts文件夹里面。</p>
+</blockquote>
+<h1 id="1-备份Hexo的源文件"><a href="#1-备份Hexo的源文件" class="headerlink" title="1.备份Hexo的源文件"></a>1.备份Hexo的源文件</h1><p><strong>到这里就可以重新发布文章了，但是为了下一次不要再出现这种情况，我们需要对Hexo的源文件进行备份。</strong></p>
+<p><strong>备份方式共有两种：</strong></p>
+<blockquote>
+<p>1.在当前gitHub管理的hexo生成的静态文件仓库中再开一个分支，用于备份Hexo的源文件。</p>
+</blockquote>
+<blockquote>
+<p>2.单独创建一个私有仓库用于备份Hexo的源文件。</p>
+</blockquote>
+<p><em>因为博客需要对外展示，所以当前gitHub管理的hexo生成的静态文件仓库必须是公开的，所以如果你选择第一种方式你的原文件也只能放在公开的仓库分支。如果不想将自己的Hexo的源文件公开就可以选择第二种方式：单独创建一个私有的仓库用来备份Hexo的源文件。</em></p>
+<h1 id="2-自动化"><a href="#2-自动化" class="headerlink" title="2.自动化"></a>2.自动化</h1><blockquote>
+<p>上文创建完成后每次发布博客，都需要去git提交备份文件，这样太麻烦了。我们可以创建一个自动化脚本，将这些重复步骤自动化。</p>
+</blockquote>
+<p><strong>创建一个deploy.sh放在博客根目录：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置绝对路径</span><br><span class="line">BLOG_DIR=&quot;实际路径/blog&quot;</span><br><span class="line"></span><br><span class="line"># 进入博客目录</span><br><span class="line">cd &quot;$BLOG_DIR&quot; || exit 1</span><br><span class="line"></span><br><span class="line"># Hexo操作</span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"></span><br><span class="line"># 源文件备份</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M&quot;)&quot;</span><br><span class="line">git push origin main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样一个简单的发布博客并且源文件备份的自动化脚本就好了。<br>以后每一次写完文章后再在终端进入”实际路径&#x2F;blog” 执行.&#x2F;deploy.sh 就行了</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-be565414c227becd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行./deploy.sh"></p>
+<p><strong>首次执行需要先设置执行权限：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x deploy.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-多博客自动化"><a href="#3-多博客自动化" class="headerlink" title="3.多博客自动化"></a>3.多博客自动化</h1><blockquote>
+<p>当我们有多个博客需要同步是就需要对Hexo的源文件进行再次修改。</p>
+</blockquote>
+<p>我以github为例：</p>
+<p><strong>1.首先我们的有两个GitHub账号并且本地配置好SSH</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-4b672d531de2e4be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地SSH配置"></p>
+<p><strong>2.添加配置文件</strong></p>
+<h3 id="config-yml：为其中一个GitHub账号的配置"><a href="#config-yml：为其中一个GitHub账号的配置" class="headerlink" title="_config.yml：为其中一个GitHub账号的配置"></a>_config.yml：为其中一个GitHub账号的配置</h3><blockquote>
+<p>url: <a href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-d4cc0887e0a1f1c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
+</blockquote>
+<h3 id="config-other-yml：为另外一个GitHub账号的配置"><a href="#config-other-yml：为另外一个GitHub账号的配置" class="headerlink" title="_config_other.yml：为另外一个GitHub账号的配置"></a>_config_other.yml：为另外一个GitHub账号的配置</h3><blockquote>
+<p>url: <a href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-e88ac014d9ccf8ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
+</blockquote>
+<p>考虑到多个博客内容可能不一样：在根目录新建一个scripts文件夹创建一个JS脚本multi-site.js进行内容配置，公共文章放在source&#x2F;_posts，不同的文章各自放在自己的目录里面（source&#x2F;_posts_gavin  source&#x2F;_posts_gavin _posts_kind）脚本会分开发布。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const fs = require(&#x27;fs-extra&#x27;);</span><br><span class="line">const path = require(&#x27;path&#x27;);</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(&#x27;before_generate&#x27;, function() &#123;</span><br><span class="line">  const baseDir = hexo.base_dir;</span><br><span class="line">  const sites = [</span><br><span class="line">    &#123; name: &#x27;kind&#x27;, postDir: &#x27;_posts_kind&#x27;, config: &#x27;_config.yml&#x27; &#125;,</span><br><span class="line">    &#123; name: &#x27;gavin&#x27;, postDir: &#x27;_posts_gavin&#x27;, config: &#x27;_config_gavin.yml&#x27; &#125;</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  sites.forEach(site =&gt; &#123;</span><br><span class="line">    const sourceDir = path.join(baseDir, &#x27;source&#x27;);</span><br><span class="line">    const tempSourceDir = path.join(baseDir, `temp_source_$&#123;site.name&#125;`);</span><br><span class="line">    const sitePostsDir = path.join(baseDir, site.postDir);</span><br><span class="line">    </span><br><span class="line">    hexo.log.info(`准备 $&#123;site.name&#125; 站点内容...`);</span><br><span class="line">    </span><br><span class="line">    try &#123;</span><br><span class="line">      // 创建临时源目录</span><br><span class="line">      fs.ensureDirSync(tempSourceDir);</span><br><span class="line">      fs.emptyDirSync(tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 复制共享内容</span><br><span class="line">      fs.copySync(sourceDir, tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 添加专属文章</span><br><span class="line">      if (fs.existsSync(sitePostsDir)) &#123;</span><br><span class="line">        const targetPostsDir = path.join(tempSourceDir, &#x27;_posts&#x27;);</span><br><span class="line">        fs.ensureDirSync(targetPostsDir);</span><br><span class="line">        </span><br><span class="line">        fs.readdirSync(sitePostsDir).forEach(file =&gt; &#123;</span><br><span class="line">          if (file.endsWith(&#x27;.md&#x27;)) &#123;</span><br><span class="line">            fs.copySync(</span><br><span class="line">              path.join(sitePostsDir, file),</span><br><span class="line">              path.join(targetPostsDir, file)</span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      // 更新配置中的source_dir</span><br><span class="line">      const configPath = path.join(baseDir, site.config);</span><br><span class="line">      let configContent = fs.readFileSync(configPath, &#x27;utf-8&#x27;);</span><br><span class="line">      configContent = configContent.replace(</span><br><span class="line">        /source_dir:.+/,</span><br><span class="line">        `source_dir: $&#123;tempSourceDir&#125;`</span><br><span class="line">      );</span><br><span class="line">      fs.writeFileSync(configPath, configContent);</span><br><span class="line">      </span><br><span class="line">      hexo.log.info(`$&#123;site.name&#125; 站点内容准备完成`);</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      hexo.log.error(`$&#123;site.name&#125; 站点准备失败: $&#123;e.message&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>当然deploy.sh也需要更改为：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line"></span><br><span class="line"># 配置区</span><br><span class="line">BLOG_DIR=&quot;/自己路径/blog&quot;</span><br><span class="line">SOURCE_BRANCH=&quot;master&quot;</span><br><span class="line">PUBLIC_REPO_KIND=&quot;git@github.com-kind:kindyourself/kindyourself.github.io.git&quot;</span><br><span class="line">PUBLIC_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/gavincarter1991.github.io.git&quot;</span><br><span class="line">PRIVATE_REPO_KIND=&quot;git@github.com-kind:kindyourself/blog-source.git&quot;</span><br><span class="line">PRIVATE_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/blog-source.git&quot;</span><br><span class="line"></span><br><span class="line">cd &quot;$BLOG_DIR&quot; || &#123; echo &quot;❌ 无法进入博客目录&quot;; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"># 清理上次生成的临时文件</span><br><span class="line">rm -rf temp_source_* public public_gavin</span><br><span class="line"></span><br><span class="line"># 生成两个站点的内容</span><br><span class="line">echo &quot;===== 生成站点内容 =====&quot;</span><br><span class="line">hexo generate --config _config.yml</span><br><span class="line">hexo generate --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 部署到GitHub Pages</span><br><span class="line">echo &quot;===== 部署到GitHub Pages =====&quot;</span><br><span class="line">hexo deploy --config _config.yml</span><br><span class="line">hexo deploy --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 备份到私有仓库</span><br><span class="line">echo &quot;===== 备份源文件到私有仓库 =====&quot;</span><br><span class="line">git add .</span><br><span class="line">if git diff-index --quiet HEAD --; then</span><br><span class="line">    echo &quot;无文件变更&quot;</span><br><span class="line">else</span><br><span class="line">    git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M:%S&quot;)&quot;</span><br><span class="line">    </span><br><span class="line">    # 推送到两个私有仓库</span><br><span class="line">    git push &quot;$PRIVATE_REPO_KIND&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ kindyourself/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ kindyourself/blog-source 备份失败&quot;</span><br><span class="line">    </span><br><span class="line">    git push &quot;$PRIVATE_REPO_GAVIN&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ gavincarter1991/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ gavincarter1991/blog-source 备份失败&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &quot;===== 部署完成 =====&quot;</span><br><span class="line">echo &quot;博客地址1: https://kindyourself.github.io&quot;</span><br><span class="line">echo &quot;博客地址2: https://gavincarter1991.github.io&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>以上就是gitHub hexo 个人博客升级版</strong></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>“Hexo”</tag>
+        <tag>“github&quot;</tag>
+        <tag>“博客&quot;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>gitHub hexo 个人博客</title>
     <url>/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<blockquote>
@@ -175,72 +244,27 @@
       </tags>
   </entry>
   <entry>
-    <title>gitHub hexo 个人博客升级版</title>
-    <url>/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</url>
+    <title>Flutter遇到的问题</title>
+    <url>/2025/05/23/flutter-error/</url>
     <content><![CDATA[<blockquote>
-<p>9年前自己开始学习gitHub hexo搭建个人博客，查了很多资料，最后用hexo 搭建一个个人博客，托管在gitHub上，前段时间换了一个电脑，我在新的电脑上想再发布一篇文章，才发现不行了。因为之前只在GitHub托管了hexo生成的静态文件(public)，忘记备份Hexo的源文件。<br>source&#x2F;_posts&#x2F;（所有文章）<br>_config.yml（Hexo 主配置）<br>themes&#x2F;（主题文件）<br>package.json（依赖列表）<br>如果你遇到这种情况，跟着我进入接下来的重新部署过程。</p>
+<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
 </blockquote>
-<p><a href="https://www.jianshu.com/p/e0619df8f245">gitHub hexo 个人博客基础版</a>。</p>
-<h3 id="首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"><a href="#首先确认你本地已经不存在source-x2F-posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。" class="headerlink" title="首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。"></a>首先确认你本地已经不存在source&#x2F;_posts文件夹，再查一查github是否有备份，如何远程和本地都没有，那就只能重新部署了。</h3><blockquote>
-<p>1.静态文件（如 public&#x2F; 下的 HTML）可通过浏览器右键「查看页面源代码」复制正文，或使用工具解析 HTML 结构。</p>
-</blockquote>
+<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
 <blockquote>
-<p>2.使用 Markdown 渲染，HTML 中的 “article ”标签内通常包含原始文本的转换结果。</p>
+<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
 </blockquote>
+<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
 <blockquote>
-<p>3.生成.md文件放在_posts文件夹里面。</p>
+<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
 </blockquote>
-<h1 id="1-备份Hexo的源文件"><a href="#1-备份Hexo的源文件" class="headerlink" title="1.备份Hexo的源文件"></a>1.备份Hexo的源文件</h1><p><strong>到这里就可以重新发布文章了，但是为了下一次不要再出现这种情况，我们需要对Hexo的源文件进行备份。</strong></p>
-<p><strong>备份方式共有两种：</strong></p>
-<blockquote>
-<p>1.在当前gitHub管理的hexo生成的静态文件仓库中再开一个分支，用于备份Hexo的源文件。</p>
-</blockquote>
-<blockquote>
-<p>2.单独创建一个私有仓库用于备份Hexo的源文件。</p>
-</blockquote>
-<p><em>因为博客需要对外展示，所以当前gitHub管理的hexo生成的静态文件仓库必须是公开的，所以如果你选择第一种方式你的原文件也只能放在公开的仓库分支。如果不想将自己的Hexo的源文件公开就可以选择第二种方式：单独创建一个私有的仓库用来备份Hexo的源文件。</em></p>
-<h1 id="2-自动化"><a href="#2-自动化" class="headerlink" title="2.自动化"></a>2.自动化</h1><blockquote>
-<p>上文创建完成后每次发布博客，都需要去git提交备份文件，这样太麻烦了。我们可以创建一个自动化脚本，将这些重复步骤自动化。</p>
-</blockquote>
-<p><strong>创建一个deploy.sh放在博客根目录：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 设置绝对路径</span><br><span class="line">BLOG_DIR=&quot;实际路径/blog&quot;</span><br><span class="line"></span><br><span class="line"># 进入博客目录</span><br><span class="line">cd &quot;$BLOG_DIR&quot; || exit 1</span><br><span class="line"></span><br><span class="line"># Hexo操作</span><br><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br><span class="line"></span><br><span class="line"># 源文件备份</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M&quot;)&quot;</span><br><span class="line">git push origin main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这样一个简单的发布博客并且源文件备份的自动化脚本就好了。<br>以后每一次写完文章后再在终端进入”实际路径&#x2F;blog” 执行.&#x2F;deploy.sh 就行了</p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/1976231-be565414c227becd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="执行./deploy.sh"></p>
-<p><strong>首次执行需要先设置执行权限：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x deploy.sh</span><br></pre></td></tr></table></figure>
-
-<h1 id="3-多博客自动化"><a href="#3-多博客自动化" class="headerlink" title="3.多博客自动化"></a>3.多博客自动化</h1><blockquote>
-<p>当我们有多个博客需要同步是就需要对Hexo的源文件进行再次修改。</p>
-</blockquote>
-<p>我以github为例：</p>
-<p><strong>1.首先我们的有两个GitHub账号并且本地配置好SSH</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1976231-4b672d531de2e4be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地SSH配置"></p>
-<p><strong>2.添加配置文件</strong></p>
-<h3 id="config-yml：为其中一个GitHub账号的配置"><a href="#config-yml：为其中一个GitHub账号的配置" class="headerlink" title="_config.yml：为其中一个GitHub账号的配置"></a>_config.yml：为其中一个GitHub账号的配置</h3><blockquote>
-<p>url: <a href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
-<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-d4cc0887e0a1f1c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
-</blockquote>
-<h3 id="config-other-yml：为另外一个GitHub账号的配置"><a href="#config-other-yml：为另外一个GitHub账号的配置" class="headerlink" title="_config_other.yml：为另外一个GitHub账号的配置"></a>_config_other.yml：为另外一个GitHub账号的配置</h3><blockquote>
-<p>url: <a href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
-<p> <img src="https://upload-images.jianshu.io/upload_images/1976231-e88ac014d9ccf8ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
-</blockquote>
-<p>考虑到多个博客内容可能不一样：在根目录新建一个scripts文件夹创建一个JS脚本multi-site.js进行内容配置，公共文章放在source&#x2F;_posts，不同的文章各自放在自己的目录里面（source&#x2F;_posts_gavin  source&#x2F;_posts_gavin _posts_kind）脚本会分开发布。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const fs = require(&#x27;fs-extra&#x27;);</span><br><span class="line">const path = require(&#x27;path&#x27;);</span><br><span class="line"></span><br><span class="line">hexo.extend.filter.register(&#x27;before_generate&#x27;, function() &#123;</span><br><span class="line">  const baseDir = hexo.base_dir;</span><br><span class="line">  const sites = [</span><br><span class="line">    &#123; name: &#x27;kind&#x27;, postDir: &#x27;_posts_kind&#x27;, config: &#x27;_config.yml&#x27; &#125;,</span><br><span class="line">    &#123; name: &#x27;gavin&#x27;, postDir: &#x27;_posts_gavin&#x27;, config: &#x27;_config_gavin.yml&#x27; &#125;</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  sites.forEach(site =&gt; &#123;</span><br><span class="line">    const sourceDir = path.join(baseDir, &#x27;source&#x27;);</span><br><span class="line">    const tempSourceDir = path.join(baseDir, `temp_source_$&#123;site.name&#125;`);</span><br><span class="line">    const sitePostsDir = path.join(baseDir, site.postDir);</span><br><span class="line">    </span><br><span class="line">    hexo.log.info(`准备 $&#123;site.name&#125; 站点内容...`);</span><br><span class="line">    </span><br><span class="line">    try &#123;</span><br><span class="line">      // 创建临时源目录</span><br><span class="line">      fs.ensureDirSync(tempSourceDir);</span><br><span class="line">      fs.emptyDirSync(tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 复制共享内容</span><br><span class="line">      fs.copySync(sourceDir, tempSourceDir);</span><br><span class="line">      </span><br><span class="line">      // 添加专属文章</span><br><span class="line">      if (fs.existsSync(sitePostsDir)) &#123;</span><br><span class="line">        const targetPostsDir = path.join(tempSourceDir, &#x27;_posts&#x27;);</span><br><span class="line">        fs.ensureDirSync(targetPostsDir);</span><br><span class="line">        </span><br><span class="line">        fs.readdirSync(sitePostsDir).forEach(file =&gt; &#123;</span><br><span class="line">          if (file.endsWith(&#x27;.md&#x27;)) &#123;</span><br><span class="line">            fs.copySync(</span><br><span class="line">              path.join(sitePostsDir, file),</span><br><span class="line">              path.join(targetPostsDir, file)</span><br><span class="line">            );</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      </span><br><span class="line">      // 更新配置中的source_dir</span><br><span class="line">      const configPath = path.join(baseDir, site.config);</span><br><span class="line">      let configContent = fs.readFileSync(configPath, &#x27;utf-8&#x27;);</span><br><span class="line">      configContent = configContent.replace(</span><br><span class="line">        /source_dir:.+/,</span><br><span class="line">        `source_dir: $&#123;tempSourceDir&#125;`</span><br><span class="line">      );</span><br><span class="line">      fs.writeFileSync(configPath, configContent);</span><br><span class="line">      </span><br><span class="line">      hexo.log.info(`$&#123;site.name&#125; 站点内容准备完成`);</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">      hexo.log.error(`$&#123;site.name&#125; 站点准备失败: $&#123;e.message&#125;`);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>当然deploy.sh也需要更改为：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line"></span><br><span class="line"># 配置区</span><br><span class="line">BLOG_DIR=&quot;/自己路径/blog&quot;</span><br><span class="line">SOURCE_BRANCH=&quot;master&quot;</span><br><span class="line">PUBLIC_REPO_KIND=&quot;git@github.com-kind:kindyourself/kindyourself.github.io.git&quot;</span><br><span class="line">PUBLIC_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/gavincarter1991.github.io.git&quot;</span><br><span class="line">PRIVATE_REPO_KIND=&quot;git@github.com-kind:kindyourself/blog-source.git&quot;</span><br><span class="line">PRIVATE_REPO_GAVIN=&quot;git@github.com-gavin:gavincarter1991/blog-source.git&quot;</span><br><span class="line"></span><br><span class="line">cd &quot;$BLOG_DIR&quot; || &#123; echo &quot;❌ 无法进入博客目录&quot;; exit 1; &#125;</span><br><span class="line"></span><br><span class="line"># 清理上次生成的临时文件</span><br><span class="line">rm -rf temp_source_* public public_gavin</span><br><span class="line"></span><br><span class="line"># 生成两个站点的内容</span><br><span class="line">echo &quot;===== 生成站点内容 =====&quot;</span><br><span class="line">hexo generate --config _config.yml</span><br><span class="line">hexo generate --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 部署到GitHub Pages</span><br><span class="line">echo &quot;===== 部署到GitHub Pages =====&quot;</span><br><span class="line">hexo deploy --config _config.yml</span><br><span class="line">hexo deploy --config _config_gavin.yml</span><br><span class="line"></span><br><span class="line"># 备份到私有仓库</span><br><span class="line">echo &quot;===== 备份源文件到私有仓库 =====&quot;</span><br><span class="line">git add .</span><br><span class="line">if git diff-index --quiet HEAD --; then</span><br><span class="line">    echo &quot;无文件变更&quot;</span><br><span class="line">else</span><br><span class="line">    git commit -m &quot;自动备份: $(date +&quot;%Y-%m-%d %H:%M:%S&quot;)&quot;</span><br><span class="line">    </span><br><span class="line">    # 推送到两个私有仓库</span><br><span class="line">    git push &quot;$PRIVATE_REPO_KIND&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ kindyourself/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ kindyourself/blog-source 备份失败&quot;</span><br><span class="line">    </span><br><span class="line">    git push &quot;$PRIVATE_REPO_GAVIN&quot; &quot;$SOURCE_BRANCH&quot; &amp;&amp; \</span><br><span class="line">        echo &quot;✅ gavincarter1991/blog-source 备份成功&quot; || \</span><br><span class="line">        echo &quot;❌ gavincarter1991/blog-source 备份失败&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &quot;===== 部署完成 =====&quot;</span><br><span class="line">echo &quot;博客地址1: https://kindyourself.github.io&quot;</span><br><span class="line">echo &quot;博客地址2: https://gavincarter1991.github.io&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>以上就是gitHub hexo 个人博客升级版</strong></p>
+<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
 ]]></content>
       <categories>
-        <category>其他</category>
+        <category>Flutter</category>
       </categories>
       <tags>
-        <tag>“Hexo”</tag>
-        <tag>“github&quot;</tag>
-        <tag>“博客&quot;</tag>
+        <tag>“Flutter”</tag>
+        <tag>“Error”</tag>
       </tags>
   </entry>
   <entry>
@@ -278,6 +302,37 @@
         <tag>“iOS”</tag>
         <tag>“js”</tag>
         <tag>“WKWebViewJavascriptBridge”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-webView上加载HTML视频不显示缩略图</title>
+    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
+</blockquote>
+<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
+<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
+<blockquote>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+</blockquote>
+<p><strong>这个方法其实还有一个用法：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
+<blockquote>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
+</blockquote>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
+<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“webView”</tag>
+        <tag>“视频不显示缩略图”</tag>
       </tags>
   </entry>
   <entry>
@@ -336,58 +391,6 @@
       </tags>
   </entry>
   <entry>
-    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
-<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
-<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
-<p>一个是 Create folder references for any added folders 创建实体结构）</p>
-</blockquote>
-<blockquote>
-<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
-</blockquote>
-<p><strong>引入文件方式：</strong></p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
-</blockquote>
-<p> <strong>引入文件方式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“本地”</tag>
-        <tag>“路径问题”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Flutter遇到的问题</title>
-    <url>/2025/05/23/flutter-error/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
-</blockquote>
-<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
-<blockquote>
-<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
-</blockquote>
-<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
-<blockquote>
-<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
-</blockquote>
-<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>“Flutter”</tag>
-        <tag>“Error”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iOS-自定义带抽屉效果的tabBar</title>
     <url>/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</url>
     <content><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
@@ -441,6 +444,34 @@
       <tags>
         <tag>“iOS”</tag>
         <tag>“解压zip”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
+    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
+<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
+<p>一个是 Create folder references for any added folders 创建实体结构）</p>
+</blockquote>
+<blockquote>
+<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
+</blockquote>
+<p><strong>引入文件方式：</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+</blockquote>
+<p> <strong>引入文件方式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“本地”</tag>
+        <tag>“路径问题”</tag>
       </tags>
   </entry>
   <entry>
@@ -542,6 +573,115 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       <tags>
         <tag>“iOS”</tag>
         <tag>“融云”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片上传预览</title>
+    <url>/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</url>
+    <content><![CDATA[<blockquote>
+<p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
+<p><strong>这是代码上传的HTML部分代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</span><br><span class="line">                    &lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改上传按钮的部分css代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.file &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #D0EEFF;</span><br><span class="line">    border: 1px solid #99D3F5;</span><br><span class="line">    border-radius: 4px;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    color: #1E88C7;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    text-indent: 0;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.file input &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.file:hover &#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>这是JS部分的代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function setImagePreview(avalue) &#123;</span><br><span class="line">               //input</span><br><span class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</span><br><span class="line">               var docObj = docObjs[avalue];</span><br><span class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</span><br><span class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</span><br><span class="line">                   var imgObjPreview = imgObjPreviews[0];</span><br><span class="line">               if (avalue == 0) &#123;</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;200px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;350px&#x27;;</span><br><span class="line">               &#125;else &#123;</span><br><span class="line">                   //火狐下，直接设img属性</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;100px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;100px&#x27;;</span><br><span class="line">               &#125;</span><br><span class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   //IE下，使用滤镜</span><br><span class="line">                   // docObj.select();</span><br><span class="line">                   // var imgSrc = document.selection.createRange().text;</span><br><span class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</span><br><span class="line">                   // //必须设置初始大小</span><br><span class="line">                   // localImagId.style.width = &quot;100px&quot;;</span><br><span class="line">                   // localImagId.style.height = &quot;100px&quot;;</span><br><span class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</span><br><span class="line">                   // try &#123;</span><br><span class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</span><br><span class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</span><br><span class="line">                   // &#125; catch(e) &#123;</span><br><span class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</span><br><span class="line">                   //     return false;</span><br><span class="line">                   // &#125;</span><br><span class="line">                   // imgObjPreview.style.display = &#x27;none&#x27;;</span><br><span class="line">                   // document.selection.empty();</span><br><span class="line">               &#125;</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br></pre></td></tr></table></figure>
+
+<h2 id="问题与解决："><a href="#问题与解决：" class="headerlink" title="问题与解决："></a>问题与解决：</h2><h3 id="问题一：是上传按钮默认的文件上传是这样的"><a href="#问题一：是上传按钮默认的文件上传是这样的" class="headerlink" title="问题一：是上传按钮默认的文件上传是这样的"></a>问题一：是上传按钮默认的文件上传是这样的</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/247191efee00edfe40ac992ff86a4b93.webp?x-image-process=image/format,png" alt="默认 2016-08-01 00.26.51.png"></p>
+<h3 id="但是我需要的是这样的："><a href="#但是我需要的是这样的：" class="headerlink" title="但是我需要的是这样的："></a>但是我需要的是这样的：</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b519bb3cae0f98c75720b46596facebb.webp?x-image-process=image/format,png" alt="目标 2016-08-01 00.28.07.png"></p>
+<blockquote>
+<p>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）</p>
+</blockquote>
+<h3 id="问题二：点击事件冲突"><a href="#问题二：点击事件冲突" class="headerlink" title="问题二：点击事件冲突"></a>问题二：点击事件冲突</h3><blockquote>
+<p>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
+</blockquote>
+<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5>]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>“web”</tag>
+        <tag>“图片上传”</tag>
+        <tag>“预览”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序tips</title>
+    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
+    <content><![CDATA[<blockquote>
+<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
+</blockquote>
+<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
+<blockquote>
+<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
+</blockquote>
+<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
+<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
+</blockquote>
+<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
+<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
+</blockquote>
+<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
+<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
+<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
+<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
+<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
+<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
+<p>以上就是这次遇到的一些比较变态的问题。</p>
+</blockquote>
+<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
+<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
+<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>“微信小程序”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目剖析01-swift WebSocket</title>
+    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
+    <content><![CDATA[<blockquote>
+<p>已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是<a href="https://github.com/daltoniam/Starscream">Starscream</a>这个第三方库，集成方法很简单去网站看看就知道。</p>
+</blockquote>
+<h3 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Reachability</span><br><span class="line">import Starscream</span><br><span class="line">import zlib</span><br><span class="line"></span><br><span class="line">let reachability = Reachability()! // 判断网络连接</span><br><span class="line">let webSocket = WTWebsocket.shared</span><br><span class="line">var reConnectTime = 0 // 设置重连次数</span><br><span class="line">let reConnectMaxTime = 1000 // 设置最大重连次数</span><br><span class="line">let reConnectIntervalTime: TimeInterval = 15 // 设置重连时间间隔(秒)</span><br><span class="line">var websocketTimer: Timer? = nil</span><br><span class="line">var reConnectSubscribeDict:[String : Any] = [:]</span><br><span class="line">var page = &quot;home&quot;</span><br><span class="line">var isReconnect = true</span><br><span class="line"></span><br><span class="line">final class WTWebsocket: NSObject,WebSocketDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    var isPingBack = true</span><br><span class="line">    var myWebsocket: WebSocket? = nil</span><br><span class="line">    //  socket连接上函数</span><br><span class="line">    func websocketDidConnect(socket: WebSocketClient) &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime = 0</span><br><span class="line">        if reConnectSubscribeDict.count &gt; 0 &#123;</span><br><span class="line">            self.subscribe(subscribeDict: reConnectSubscribeDict)</span><br><span class="line">        &#125;</span><br><span class="line">        self.hearJump()</span><br><span class="line">        if  websocketTimer == nil &#123;</span><br><span class="line">            websocketTimer = Timer.scheduledTimer(timeInterval: reConnectIntervalTime, target: self, selector: #selector(sendBrandStr), userInfo: nil, repeats: true)</span><br><span class="line">        &#125;</span><br><span class="line">        isReconnect = true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //发送文字消息</span><br><span class="line">    @objc func sendBrandStr()&#123;</span><br><span class="line">        self.checkPing()</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 发送ping</span><br><span class="line">    func hearJump() &#123;</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  socket断开执行函数</span><br><span class="line">    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) &#123;</span><br><span class="line">        //执行重新连接方法</span><br><span class="line">        socketReconnect()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  接收返回消息函数</span><br><span class="line">    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func websocketDidReceiveData(socket: WebSocketClient, data: Data) &#123;</span><br><span class="line">        guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else &#123;return&#125;</span><br><span class="line">        if newStr == &quot;PONG&quot; &#123;</span><br><span class="line">            isPingBack = true</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">      // 处理收到的信息</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 添加注册</span><br><span class="line">    func subscribe(subscribeDict: [String : Any]) &#123;</span><br><span class="line">        var subscribeDicts = subscribeDict</span><br><span class="line">        reConnectSubscribeDict = subscribeDicts</span><br><span class="line">        page = subscribeDicts[&quot;type&quot;] as! String</span><br><span class="line">        subscribeDicts.removeValue(forKey: &quot;type&quot;)</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary:</span><br><span class="line">            subscribeDicts as NSDictionary)</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //检测</span><br><span class="line">    @objc func checkPing() &#123;</span><br><span class="line">        if !isPingBack &#123;</span><br><span class="line">            // 重新连接</span><br><span class="line">            socketReconnect()</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            isPingBack = false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //构造单例数据</span><br><span class="line">    static let shared = WTWebsocket()</span><br><span class="line">    private override init() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket 重连逻辑</span><br><span class="line">func socketReconnect() &#123;</span><br><span class="line">    //判断网络情况，如果网络正常，可以执行重连</span><br><span class="line">    if reachability.connection != .none &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime =  reConnectTime + 1</span><br><span class="line">        if reConnectTime &lt; reConnectMaxTime &#123;</span><br><span class="line">            //添加重连延时执行，防止某个时间段，全部执行</span><br><span class="line">            let time: TimeInterval = 2.0</span><br><span class="line">            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) &#123;</span><br><span class="line">                SingletonSocket.sharedInstance.socket.connect()</span><br><span class="line">                SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //提示重连失败</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //提示无网络</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况</span><br><span class="line">func socketDisConnect() &#123;</span><br><span class="line">    if !SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">        websocketTimer?.invalidate()</span><br><span class="line">        websocketTimer = nil</span><br><span class="line">        SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// initSocket方法</span><br><span class="line">func initWebSocketSingle () &#123;</span><br><span class="line">    SingletonSocket.sharedInstance.socket.delegate = webSocket</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明webSocket单例</span><br><span class="line">class SingletonSocket &#123;</span><br><span class="line">    let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)</span><br><span class="line">    class var sharedInstance : SingletonSocket&#123;</span><br><span class="line">        struct Static&#123;</span><br><span class="line">            static let instance:SingletonSocket = SingletonSocket()</span><br><span class="line">        &#125;</span><br><span class="line">        if !Static.instance.socket.isConnected&#123;</span><br><span class="line">            Static.instance.socket.connect()</span><br><span class="line">        &#125;</span><br><span class="line">        return Static.instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"><a href="#整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点" class="headerlink" title="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"></a>整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点</h3><blockquote>
+<p>发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。</p>
+</blockquote>
+<p><strong>app在后台需要断开socket，当 app重新进入前台需要重新连接</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func applicationWillResignActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入后台模式，主动断开socket，防止出现处理不了的情况</span><br><span class="line">        if SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">            reConnectTime = reConnectMaxTime</span><br><span class="line">            socketDisConnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    func applicationDidBecomeActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入前台模式，主动连接socket</span><br><span class="line">        //解决因为网络切换或链接不稳定问题，引起socket断连问题</span><br><span class="line">        //如果app从无网络，到回复网络，需要执行重连</span><br><span class="line">        if !isFirstApplicationDidBecomeActive &#123;</span><br><span class="line">            reConnectTime = 0</span><br><span class="line">            socketReconnect()</span><br><span class="line">            WTBasicConfigManager.shareDataSingle.getHash()</span><br><span class="line">        &#125;</span><br><span class="line">        isFirstApplicationDidBecomeActive = false</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>一定要设置最大重新连接的次数，不然app会无限重新连接</strong></p>
+<p><strong>连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。</strong></p>
+<blockquote>
+<p>以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>swift</category>
+      </categories>
+      <tags>
+        <tag>“swift”</tag>
+        <tag>“WebSocket”</tag>
       </tags>
   </entry>
   <entry>
@@ -850,71 +990,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
-</blockquote>
-<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
-<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
-<blockquote>
-<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-</blockquote>
-<p><strong>这个方法其实还有一个用法：</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<blockquote>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
-</blockquote>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
-<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“webView”</tag>
-        <tag>“视频不显示缩略图”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图片上传预览</title>
-    <url>/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</url>
-    <content><![CDATA[<blockquote>
-<p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
-<p><strong>这是代码上传的HTML部分代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</span><br><span class="line">                    &lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>修改上传按钮的部分css代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.file &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #D0EEFF;</span><br><span class="line">    border: 1px solid #99D3F5;</span><br><span class="line">    border-radius: 4px;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    color: #1E88C7;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    text-indent: 0;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.file input &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.file:hover &#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>这是JS部分的代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function setImagePreview(avalue) &#123;</span><br><span class="line">               //input</span><br><span class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</span><br><span class="line">               var docObj = docObjs[avalue];</span><br><span class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</span><br><span class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</span><br><span class="line">                   var imgObjPreview = imgObjPreviews[0];</span><br><span class="line">               if (avalue == 0) &#123;</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;200px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;350px&#x27;;</span><br><span class="line">               &#125;else &#123;</span><br><span class="line">                   //火狐下，直接设img属性</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;100px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;100px&#x27;;</span><br><span class="line">               &#125;</span><br><span class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   //IE下，使用滤镜</span><br><span class="line">                   // docObj.select();</span><br><span class="line">                   // var imgSrc = document.selection.createRange().text;</span><br><span class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</span><br><span class="line">                   // //必须设置初始大小</span><br><span class="line">                   // localImagId.style.width = &quot;100px&quot;;</span><br><span class="line">                   // localImagId.style.height = &quot;100px&quot;;</span><br><span class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</span><br><span class="line">                   // try &#123;</span><br><span class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</span><br><span class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</span><br><span class="line">                   // &#125; catch(e) &#123;</span><br><span class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</span><br><span class="line">                   //     return false;</span><br><span class="line">                   // &#125;</span><br><span class="line">                   // imgObjPreview.style.display = &#x27;none&#x27;;</span><br><span class="line">                   // document.selection.empty();</span><br><span class="line">               &#125;</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br></pre></td></tr></table></figure>
-
-<h2 id="问题与解决："><a href="#问题与解决：" class="headerlink" title="问题与解决："></a>问题与解决：</h2><h3 id="问题一：是上传按钮默认的文件上传是这样的"><a href="#问题一：是上传按钮默认的文件上传是这样的" class="headerlink" title="问题一：是上传按钮默认的文件上传是这样的"></a>问题一：是上传按钮默认的文件上传是这样的</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/247191efee00edfe40ac992ff86a4b93.webp?x-image-process=image/format,png" alt="默认 2016-08-01 00.26.51.png"></p>
-<h3 id="但是我需要的是这样的："><a href="#但是我需要的是这样的：" class="headerlink" title="但是我需要的是这样的："></a>但是我需要的是这样的：</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b519bb3cae0f98c75720b46596facebb.webp?x-image-process=image/format,png" alt="目标 2016-08-01 00.28.07.png"></p>
-<blockquote>
-<p>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）</p>
-</blockquote>
-<h3 id="问题二：点击事件冲突"><a href="#问题二：点击事件冲突" class="headerlink" title="问题二：点击事件冲突"></a>问题二：点击事件冲突</h3><blockquote>
-<p>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
-</blockquote>
-<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5>]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>“web”</tag>
-        <tag>“图片上传”</tag>
-        <tag>“预览”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
     <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
     <content><![CDATA[<blockquote>
@@ -967,33 +1042,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“iOS”</tag>
         <tag>“动画”</tag>
         <tag>“Lottie”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目剖析01-swift WebSocket</title>
-    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
-    <content><![CDATA[<blockquote>
-<p>已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是<a href="https://github.com/daltoniam/Starscream">Starscream</a>这个第三方库，集成方法很简单去网站看看就知道。</p>
-</blockquote>
-<h3 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Reachability</span><br><span class="line">import Starscream</span><br><span class="line">import zlib</span><br><span class="line"></span><br><span class="line">let reachability = Reachability()! // 判断网络连接</span><br><span class="line">let webSocket = WTWebsocket.shared</span><br><span class="line">var reConnectTime = 0 // 设置重连次数</span><br><span class="line">let reConnectMaxTime = 1000 // 设置最大重连次数</span><br><span class="line">let reConnectIntervalTime: TimeInterval = 15 // 设置重连时间间隔(秒)</span><br><span class="line">var websocketTimer: Timer? = nil</span><br><span class="line">var reConnectSubscribeDict:[String : Any] = [:]</span><br><span class="line">var page = &quot;home&quot;</span><br><span class="line">var isReconnect = true</span><br><span class="line"></span><br><span class="line">final class WTWebsocket: NSObject,WebSocketDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    var isPingBack = true</span><br><span class="line">    var myWebsocket: WebSocket? = nil</span><br><span class="line">    //  socket连接上函数</span><br><span class="line">    func websocketDidConnect(socket: WebSocketClient) &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime = 0</span><br><span class="line">        if reConnectSubscribeDict.count &gt; 0 &#123;</span><br><span class="line">            self.subscribe(subscribeDict: reConnectSubscribeDict)</span><br><span class="line">        &#125;</span><br><span class="line">        self.hearJump()</span><br><span class="line">        if  websocketTimer == nil &#123;</span><br><span class="line">            websocketTimer = Timer.scheduledTimer(timeInterval: reConnectIntervalTime, target: self, selector: #selector(sendBrandStr), userInfo: nil, repeats: true)</span><br><span class="line">        &#125;</span><br><span class="line">        isReconnect = true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //发送文字消息</span><br><span class="line">    @objc func sendBrandStr()&#123;</span><br><span class="line">        self.checkPing()</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 发送ping</span><br><span class="line">    func hearJump() &#123;</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  socket断开执行函数</span><br><span class="line">    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) &#123;</span><br><span class="line">        //执行重新连接方法</span><br><span class="line">        socketReconnect()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  接收返回消息函数</span><br><span class="line">    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func websocketDidReceiveData(socket: WebSocketClient, data: Data) &#123;</span><br><span class="line">        guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else &#123;return&#125;</span><br><span class="line">        if newStr == &quot;PONG&quot; &#123;</span><br><span class="line">            isPingBack = true</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">      // 处理收到的信息</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 添加注册</span><br><span class="line">    func subscribe(subscribeDict: [String : Any]) &#123;</span><br><span class="line">        var subscribeDicts = subscribeDict</span><br><span class="line">        reConnectSubscribeDict = subscribeDicts</span><br><span class="line">        page = subscribeDicts[&quot;type&quot;] as! String</span><br><span class="line">        subscribeDicts.removeValue(forKey: &quot;type&quot;)</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary:</span><br><span class="line">            subscribeDicts as NSDictionary)</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //检测</span><br><span class="line">    @objc func checkPing() &#123;</span><br><span class="line">        if !isPingBack &#123;</span><br><span class="line">            // 重新连接</span><br><span class="line">            socketReconnect()</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            isPingBack = false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //构造单例数据</span><br><span class="line">    static let shared = WTWebsocket()</span><br><span class="line">    private override init() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket 重连逻辑</span><br><span class="line">func socketReconnect() &#123;</span><br><span class="line">    //判断网络情况，如果网络正常，可以执行重连</span><br><span class="line">    if reachability.connection != .none &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime =  reConnectTime + 1</span><br><span class="line">        if reConnectTime &lt; reConnectMaxTime &#123;</span><br><span class="line">            //添加重连延时执行，防止某个时间段，全部执行</span><br><span class="line">            let time: TimeInterval = 2.0</span><br><span class="line">            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) &#123;</span><br><span class="line">                SingletonSocket.sharedInstance.socket.connect()</span><br><span class="line">                SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //提示重连失败</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //提示无网络</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况</span><br><span class="line">func socketDisConnect() &#123;</span><br><span class="line">    if !SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">        websocketTimer?.invalidate()</span><br><span class="line">        websocketTimer = nil</span><br><span class="line">        SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// initSocket方法</span><br><span class="line">func initWebSocketSingle () &#123;</span><br><span class="line">    SingletonSocket.sharedInstance.socket.delegate = webSocket</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明webSocket单例</span><br><span class="line">class SingletonSocket &#123;</span><br><span class="line">    let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)</span><br><span class="line">    class var sharedInstance : SingletonSocket&#123;</span><br><span class="line">        struct Static&#123;</span><br><span class="line">            static let instance:SingletonSocket = SingletonSocket()</span><br><span class="line">        &#125;</span><br><span class="line">        if !Static.instance.socket.isConnected&#123;</span><br><span class="line">            Static.instance.socket.connect()</span><br><span class="line">        &#125;</span><br><span class="line">        return Static.instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"><a href="#整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点" class="headerlink" title="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"></a>整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点</h3><blockquote>
-<p>发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。</p>
-</blockquote>
-<p><strong>app在后台需要断开socket，当 app重新进入前台需要重新连接</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func applicationWillResignActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入后台模式，主动断开socket，防止出现处理不了的情况</span><br><span class="line">        if SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">            reConnectTime = reConnectMaxTime</span><br><span class="line">            socketDisConnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    func applicationDidBecomeActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入前台模式，主动连接socket</span><br><span class="line">        //解决因为网络切换或链接不稳定问题，引起socket断连问题</span><br><span class="line">        //如果app从无网络，到回复网络，需要执行重连</span><br><span class="line">        if !isFirstApplicationDidBecomeActive &#123;</span><br><span class="line">            reConnectTime = 0</span><br><span class="line">            socketReconnect()</span><br><span class="line">            WTBasicConfigManager.shareDataSingle.getHash()</span><br><span class="line">        &#125;</span><br><span class="line">        isFirstApplicationDidBecomeActive = false</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>一定要设置最大重新连接的次数，不然app会无限重新连接</strong></p>
-<p><strong>连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。</strong></p>
-<blockquote>
-<p>以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>swift</category>
-      </categories>
-      <tags>
-        <tag>“swift”</tag>
-        <tag>“WebSocket”</tag>
       </tags>
   </entry>
   <entry>
@@ -1056,54 +1104,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“swift”</tag>
         <tag>“证书验证”</tag>
         <tag>“SSL”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序tips</title>
-    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
-    <content><![CDATA[<blockquote>
-<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
-</blockquote>
-<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
-<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
-<blockquote>
-<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
-</blockquote>
-<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
-<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
-</blockquote>
-<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
-<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
-</blockquote>
-<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
-<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
-<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
-<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
-<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
-<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
-<p>以上就是这次遇到的一些比较变态的问题。</p>
-</blockquote>
-<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
-<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
-<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
-<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>“微信小程序”</tag>
       </tags>
   </entry>
   <entry>
