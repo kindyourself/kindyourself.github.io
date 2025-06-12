@@ -94,349 +94,6 @@
       </tags>
   </entry>
   <entry>
-    <title>gitHub hexo 个人博客</title>
-    <url>/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
-</blockquote>
-<h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
-<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>查看安装是否成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>安装成功会显示版本号：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/257560df666479d7a2171dd37c11a68b.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 03.09.16.png"></p>
-<h3 id="3-开始安装hexo"><a href="#3-开始安装hexo" class="headerlink" title="3. 开始安装hexo"></a>3. 开始安装hexo</h3><p>首先进入你需要存放博客的文件夹，然后：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-
-<p>查看版本号：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
-<p>初始化项目：(类似于git)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-开始使用"><a href="#4-开始使用" class="headerlink" title="4. 开始使用"></a>4. 开始使用</h3><p>创建页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
-<p>生成静态文件(会在当前目录下生成一个新的叫做public的文件夹)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g # 或者hexo generate</span><br></pre></td></tr></table></figure>
-<p>开启本地服务 用于在本地浏览 Ctrl+C退出查看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s # 或者hexo server，可以在输入http://localhost:4000/ 查看 或者 按住Command 双击命令行下的网址（http://localhost:4000/）</span><br></pre></td></tr></table></figure>
-<p>这时网页已经成型了。</p>
-<p>接下来就是要部署到gitHub上 只需要在配置文件_config.xml中作如下修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gavincarter1991/gavincarter1991.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>当然gavincarter1991位置还是填你的信息</p>
-<p>然后安装一个自动工具，方便以后页面的部署：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>部署去gitHub：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>以后每一次部署的一般步骤：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h3 id="5-写文章"><a href="#5-写文章" class="headerlink" title="5.写文章"></a>5.写文章</h3><p>首先；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
-<p>然后去目录：source_posts下找到My First Blog.md（markdown文件）开始编辑文章了。我Mac用的是Mou编辑器，你可以自由选择适合自己的markdown编辑器。<a href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/0.html">这里有markdown使用技巧</a><br>写好以后就可以按照前面的部署常用步骤进行部署了。</p>
-<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>1.主题：hexo有很多<a href="https://github.com/hexojs/hexo/wiki/Themes">第三方主题</a>可以选择，通过git clone<br>2.配置修改参数<a href="http://div.io/topic/1691">详见</a> 我写几个常用的：<br>头像：把图片放在主题内 source&#x2F;images&#x2F;，图片链接地址可以填 &#x2F;images&#x2F;avatar.png  然后在当前主题的_config.yml 不是根目录的_config.yml（如果你换了主题，需要根据自己选择的主题进入里面去设置）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source/images): /images/avatar.jpg</span><br><span class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</span><br><span class="line">avatar: /images/avatar.jpg</span><br></pre></td></tr></table></figure>
-<p>个人中心配置：（根目录的_config.yml）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Gavin</span><br><span class="line">subtitle: 记录成长过程中的点点滴滴</span><br><span class="line">description: 我爱敏敏</span><br><span class="line">author: kindyourself@163.com</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
-<p>显示标签与分类：取消对应注释</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)</span><br><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
-<p>然后创建分类</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-<p>在&#x2F;source&#x2F;categories下有个index.md 按照如下填写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2016-07-16 02:21:37</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>以后在写文章的时候加上分类就会自动创建分类了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar]</span><br><span class="line">categories: &quot;iOS&quot; // 分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>创建标签</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-<p>在&#x2F;source&#x2F;tags下有个index.md 按照如下填写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2016-07-16 02:11:12</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>以后在写文章的时候加上标签就会自动计入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar] // 标签</span><br><span class="line">categories: &quot;iOS&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>下载主题：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
-<p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>“hexo”</tag>
-        <tag>“个人博客”</tag>
-        <tag>“gitHub”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）</title>
-    <url>/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/</url>
-    <content><![CDATA[<blockquote>
-<p>后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。<br>其交互方式有很多种</p>
-</blockquote>
-<h3 id="一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"><a href="#一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。" class="headerlink" title="一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"></a>一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];</span><br><span class="line"></span><br><span class="line">self.webView.delegate = self;</span><br><span class="line"></span><br><span class="line">[self.webView setUserInteractionEnabled:YES]; //是否支持交互</span><br><span class="line"></span><br><span class="line">[self.webView setOpaque:NO]; //opaque是不透明的意思</span><br><span class="line"></span><br><span class="line">[self.webView setScalesPageToFit:YES]; //自动缩放以适应屏幕</span><br><span class="line"></span><br><span class="line">[self.view addSubview:self.webView];</span><br><span class="line"></span><br><span class="line">if (sender.tag == 101) &#123;</span><br><span class="line"></span><br><span class="line">// 返回（点击页面才会有返回）</span><br><span class="line">[self.mWebView goBack];</span><br><span class="line"></span><br><span class="line">&#125;else if (sender.tag == 102) &#123;</span><br><span class="line"></span><br><span class="line">// 前进（点击过的页面）</span><br><span class="line">[self.mWebView goForward];</span><br><span class="line"></span><br><span class="line">&#125;else &#123;</span><br><span class="line"></span><br><span class="line">// 刷新页面</span><br><span class="line">[self.mWebView reload];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法："><a href="#二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法：" class="headerlink" title="二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法："></a>二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：</h3><p><strong>1、直接调用JS代码</strong></p>
-<p><strong>2、在ObjC中通过JSContext注入模型，然后调用模型的方法</strong></p>
-<p><strong>通过evaluateScript:方法就可以执行JS代码</strong></p>
-<h3 id="三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"><a href="#三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）" class="headerlink" title="三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"></a>三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）</h3><h3 id="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"><a href="#四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。" class="headerlink" title="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"></a>四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在iOS端：1.self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2.[self.bridge registerHandler:@&quot;testJavascriptHandler&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;ObjC Echo called with: %@&quot;, data);</span><br><span class="line"></span><br><span class="line">// 反馈给JS</span><br><span class="line">responseCallback(data);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">// 在JS中如果调用了bridge.send()，那么将触发OC端_bridge初始化方法中的回调。</span><br><span class="line"></span><br><span class="line">// 在JS中调用了bridge.callHandler(&#x27;testJavascriptHandler&#x27;)，它将触发OC端注册的同名方法</span><br><span class="line"></span><br><span class="line">// oc 同理</span><br><span class="line"></span><br><span class="line">// JS主动调用OjbC的方法</span><br><span class="line"></span><br><span class="line">// 这是JS会调用ObjC Echo方法，这是OC注册给JS调用的</span><br><span class="line"></span><br><span class="line">// JS需要回调，当然JS也可以传参数过来。data就是JS所传的参数，不一定需要传</span><br><span class="line"></span><br><span class="line">// OC端通过responseCallback回调JS端，JS就可以得到所需要的数据</span><br><span class="line"></span><br><span class="line">3.[self.bridge callHandler:@&quot;sayHello&quot; data:@&#123;@&quot;hello&quot;: @&quot;你好&quot;&#125; responseCallback:^(id responseData) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;回调结果: %@&quot;, responseData);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。<br>js调用时也一样</p>
-</blockquote>
-<p>在JS端：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.Copy and paste setupWebViewJavascriptBridge into your JS:</span><br><span class="line"></span><br><span class="line">（此段代码为固定格式，直接放在js端就行）</span><br><span class="line"></span><br><span class="line">function setupWebViewJavascriptBridge(callback) &#123;</span><br><span class="line"></span><br><span class="line">if (window.WebViewJavascriptBridge) &#123; return callback(WebViewJavascriptBridge); &#125;</span><br><span class="line"></span><br><span class="line">if (window.WVJBCallbacks) &#123; return window.WVJBCallbacks.push(callback); &#125;</span><br><span class="line"></span><br><span class="line">window.WVJBCallbacks = [callback];</span><br><span class="line"></span><br><span class="line">var WVJBIframe = document.createElement(&#x27;iframe&#x27;);</span><br><span class="line"></span><br><span class="line">WVJBIframe.style.display = &#x27;none&#x27;;</span><br><span class="line"></span><br><span class="line">WVJBIframe.src = &#x27;wvjbscheme://__BRIDGE_LOADED__&#x27;;</span><br><span class="line"></span><br><span class="line">document.documentElement.appendChild(WVJBIframe);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123; document.documentElement.removeChild(WVJBIframe) &#125;, 0)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>后面几步与iOS端一样</p>
-<p>如有错误，望请指出。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“js”</tag>
-        <tag>“WKWebViewJavascriptBridge”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
-</blockquote>
-<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
-<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
-<blockquote>
-<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-</blockquote>
-<p><strong>这个方法其实还有一个用法：</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<blockquote>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
-</blockquote>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
-<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“webView”</tag>
-        <tag>“视频不显示缩略图”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-widget-Today 扩展</title>
-    <url>/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</url>
-    <content><![CDATA[<blockquote>
-<p>今天要分享的是通知中心扩展中的-<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。</p>
-</blockquote>
-<h3 id="一、目标："><a href="#一、目标：" class="headerlink" title="一、目标："></a>一、目标：</h3><blockquote>
-<p>我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，我也不知道这样算不算滥用widget，因为之前看见过有人的应用被苹果拒绝就是因为滥用widget导致的。</p>
-</blockquote>
-<h3 id="二、实现："><a href="#二、实现：" class="headerlink" title="二、实现："></a>二、实现：</h3><blockquote>
-<p>1.因为widget是一个单独的进程所以需要创建一个target：</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0b583421a35083363bf56d91148192dd.webp?x-image-process=image/format,png" alt="首先 2016-07-24 23.01.34.png"></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/217a9594befa8d064b3f479abf1d92db.webp?x-image-process=image/format,png" alt="然后 2016-07-24 23.01.13.png"></p>
-<blockquote>
-<p>2.代码</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // 调整Widget的高度</span><br><span class="line">    self.preferredContentSize = CGSizeMake(0, 200);</span><br><span class="line">    </span><br><span class="line">    // 1、创建UIWebView：</span><br><span class="line">    UIWebView *mWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];</span><br><span class="line">    </span><br><span class="line">    // 2、设置属性：</span><br><span class="line">    mWebView.scalesPageToFit = YES;// 自动对页面进行缩放以适应屏幕</span><br><span class="line">    // 检测所有数据类型  设定电话号码、网址、电子邮件和日期等文字变为链接文字</span><br><span class="line">    </span><br><span class="line">    [mWebView setDataDetectorTypes:UIDataDetectorTypeAll];</span><br><span class="line">    mWebView.delegate = self;</span><br><span class="line">    </span><br><span class="line">    // 打开URL</span><br><span class="line">    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.baidu.com&quot;]];</span><br><span class="line">    [mWebView loadRequest:request];</span><br><span class="line">    [self.view addSubview:mWebView];</span><br><span class="line">    </span><br><span class="line">    [self makeButtonWithTitle:@&quot;返回&quot; frame:CGRectMake(0, 0, 80, 64) button:_backBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;前进&quot; frame:CGRectMake(self.view.frame.size.width - 80, 0, 80, 64) button:_forWardBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;刷新&quot; frame:CGRectMake(100, 0, 80, 64) button:_refreshBtn];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 取消widget默认的inset，让应用靠左</span><br><span class="line">- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets &#123;</span><br><span class="line">    return UIEdgeInsetsZero;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)makeButtonWithTitle:(NSString *)title frame:(CGRect)frame button:(UIButton *)btn &#123;</span><br><span class="line">    btn = [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    [btn setTitle:title forState:UIControlStateNormal];</span><br><span class="line">    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];</span><br><span class="line">    [btn addTarget:self action:@selector(skip:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    [btn setFrame:frame];</span><br><span class="line">    </span><br><span class="line">    if ([title isEqualToString:@&quot;返回&quot;]) &#123;</span><br><span class="line">        btn.tag = 101;</span><br><span class="line">    &#125; else if([title isEqualToString:@&quot;前进&quot;]) &#123;</span><br><span class="line">        btn.tag = 102;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        btn.tag = 103;</span><br><span class="line">    &#125;</span><br><span class="line">    [self.view addSubview:btn];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)skip:(UIButton *)button</span><br><span class="line">&#123;</span><br><span class="line">    if (button.tag == 101) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoHomePage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;101   open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    else if(button.tag == 102) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPages&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>运行与结果展示：</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d2078c3e20a8126af877649cb755bce1.webp?x-image-process=image/format,png" alt="运行 2016-07-24 23.02.28.png"></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d8e9254bab90d77597bda99215fded4b.webp?x-image-process=image/format,png" alt="效果图 2016-07-25 09.55.44.png"></p>
-<h3 id="扩展与主程序的交互-数据共享"><a href="#扩展与主程序的交互-数据共享" class="headerlink" title="扩展与主程序的交互-数据共享"></a>扩展与主程序的交互-数据共享</h3><p><strong>这就要涉及扩展与应用之间的数据共享了-App Groups.</strong></p>
-<blockquote>
-<p>首先在主应用的target &gt; Capabilities下 打开App Groups 点击+ 在group.后面输入标识符，</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/62f1aa6e7f4adbc919d563ca0a21bda6.webp?x-image-process=image/format,png" alt="Snip20160725_1.png"></p>
-<p><strong>再去扩展的target下进行相同的操作，记得group.后的标识符要一致。</strong></p>
-<p>#####代码：</p>
-<blockquote>
-<p>在上面的扩展代码里面已经定义了点击事件，这里主要是主应用接收到信息后进行判断和处理。</p>
-<p>在这之前还需要先配置URL schems,在主程序的plist里面：</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b36fb85f5f7ece4451b9e5c8b160d604.webp?x-image-process=image/format,png" alt="plist 2016-07-25 10.40.15.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">    </span><br><span class="line">    NSString* prefix = @&quot;iOSWidgetApp://action=&quot;;</span><br><span class="line">    </span><br><span class="line">    UIWebView *webView = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">    webView.backgroundColor = [UIColor clearColor];</span><br><span class="line">    webView.delegate = self;</span><br><span class="line">    [webView setUserInteractionEnabled:YES];//是否支持交互</span><br><span class="line">    [webView setOpaque:NO];//opaque是不透明的意思</span><br><span class="line">    [webView setScalesPageToFit:YES];//自动缩放以适应屏幕</span><br><span class="line">    webView .scrollView.bounces = NO;// 禁止UIWebView下拉拖动效果</span><br><span class="line">    NSString *path;</span><br><span class="line">    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) &#123;</span><br><span class="line">        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];</span><br><span class="line">        if ([action isEqualToString:@&quot;GotoHomePage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;help&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        else if([action isEqualToString:@&quot;GotoOtherPage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;setting&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;healthyArticle&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        NSURL *urll = [NSURL fileURLWithPath:path];</span><br><span class="line">        NSURLRequest* request = [NSURLRequest requestWithURL:urll] ;</span><br><span class="line">        [webView loadRequest:request];</span><br><span class="line">        [self.rootView.view addSubview:webView];</span><br><span class="line">        self.rootView.view.backgroundColor = [UIColor whiteColor];</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>因为我是需要到对应的H5页面所以是添加的H5页面。</strong></p>
-<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
-<p>1.当程序内存不足时，苹果优先会杀死扩展，因此需要注意内存的管理。</p>
-<p>2.在配置team是账号需要一致（我测试的时候免费账号好像还不行，需要付费的账号）</p>
-<p>3.在iOS10上面还可以从左滑主页面和锁屏进入widget。</p>
-<p>4.today只有在下拉的时候才会更新，通知栏两边的更新机制是不一样的。</p>
-<p>5.一般更新路径：viewDidLoad-&gt;viewWillAppear，但是如果你下拉过于频繁就只会执行viewWillAppear里面的，因此更新代码最好放在viewWillAppear里面。</p>
-</blockquote>
-<h6 id="如有错误地方，万望指出，谢谢！"><a href="#如有错误地方，万望指出，谢谢！" class="headerlink" title="如有错误地方，万望指出，谢谢！"></a>如有错误地方，万望指出，谢谢！</h6>]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“widget”</tag>
-        <tag>“扩展”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
-<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
-<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
-<p>一个是 Create folder references for any added folders 创建实体结构）</p>
-</blockquote>
-<blockquote>
-<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
-</blockquote>
-<p><strong>引入文件方式：</strong></p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
-</blockquote>
-<p> <strong>引入文件方式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“本地”</tag>
-        <tag>“路径问题”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Base64-不重要数据的简单加密</title>
-    <url>/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
-<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
-</blockquote>
-<p>##我的实现过程（可以根据公司需求自定义）：</p>
-<ol>
-<li>先编码一次</li>
-<li>对编码结果的数据交换首位字符在编码一次</li>
-<li>对编码结果逆序在编码一次</li>
-</ol>
-<p>##示例代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>###结束语：</p>
-<blockquote>
-<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“Base64”</tag>
-        <tag>“加密”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-自定义带抽屉效果的tabBar</title>
-    <url>/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</url>
-    <content><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
-<h3 id="一、先来个效果"><a href="#一、先来个效果" class="headerlink" title="一、先来个效果"></a>一、先来个效果</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p>
-<h3 id="二、代码示例"><a href="#二、代码示例" class="headerlink" title="二、代码示例"></a>二、代码示例</h3><p><strong>1.抽屉页作为根视图：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>2.标签视图 修改方法 <code>- (void)selectBtn:(UIButton *)sender</code>中的切换效果可以实现不同的切换动画与效果。</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@implementation MTabBar</span><br><span class="line">- (instancetype)initWithTitles:(NSArray *)titles imageNames:(NSArray *)imageNames</span><br><span class="line">&#123;</span><br><span class="line">    self = [super initWithFrame:TabBarFrame()];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        //标题数组不为空，图片名字个数 ＝ 标题个数</span><br><span class="line">        self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];</span><br><span class="line">        self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;</span><br><span class="line">        [self addSubview:self.buttonBack];</span><br><span class="line">        </span><br><span class="line">        self.backgroundColor = TABBAR_BACK_COLOR;</span><br><span class="line">        </span><br><span class="line">        if ([titles count] &amp;&amp; [titles count] == [imageNames count]) &#123;</span><br><span class="line">            [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">                UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];</span><br><span class="line">                button.tag = 1000 + idx;</span><br><span class="line">                [self addSubview:button];</span><br><span class="line">                //默认选中第一个</span><br><span class="line">                if (idx == 0) &#123;</span><br><span class="line">                    button.selected = YES;</span><br><span class="line">                    self.selectedButton = button;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];</span><br><span class="line">//                // 图片宽 高分别为 44 24</span><br><span class="line">                CGFloat x = (BUTTON_W - 44)/2;</span><br><span class="line">                [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];</span><br><span class="line">                //添加点击方法</span><br><span class="line">                [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//button 点击方法</span><br><span class="line">- (void)selectBtn:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    //让抽屉隐藏，发出通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]postNotificationName:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">    //选中的button 已经是选中状态 不用处理</span><br><span class="line">    if (self.selectedButton == sender) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //改变之前选中button的状态  为非选中状态</span><br><span class="line">    self.selectedButton.selected = NO;</span><br><span class="line">    </span><br><span class="line">    //改变当前选中button的状态</span><br><span class="line">    sender.selected = YES;</span><br><span class="line">    self.selectedButton = sender;</span><br><span class="line">    //通知标签控制器显示当前button对应的viewController</span><br><span class="line">    if (self.callBack) &#123;</span><br><span class="line">        self.callBack(sender.tag - 1000);</span><br><span class="line">    &#125;</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UILabel *MakeLabel(CGRect frame, NSString *title)</span><br><span class="line">&#123;</span><br><span class="line">    UILabel *label = [[UILabel alloc]initWithFrame:frame];</span><br><span class="line">//    label.userInteractionEnabled = YES;</span><br><span class="line">    label.backgroundColor = [UIColor clearColor];</span><br><span class="line">    label.textColor = [UIColor whiteColor];</span><br><span class="line">    label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    label.text = title;</span><br><span class="line">    return label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//根据 frame和 imageName 创建UIImageView</span><br><span class="line">UIImageView *MakeImageView(CGRect frame, NSString *imageName)</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageV = [[UIImageView alloc]initWithFrame:frame];</span><br><span class="line">//    imageV.userInteractionEnabled = YES;</span><br><span class="line">    imageV.backgroundColor = [UIColor clearColor];</span><br><span class="line">    imageV.image = [UIImage imageNamed:imageName];</span><br><span class="line">    return imageV;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-
-<p><strong>3.标签控制器</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@interface MTabBarViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MTabBarViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithViewControllers:(NSArray *)viewControllers</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        _viewControllers = viewControllers;</span><br><span class="line">        //遍历数组，添加子控制器</span><br><span class="line">        [_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            [self addChild:obj];</span><br><span class="line">        &#125;];</span><br><span class="line">        /*</span><br><span class="line">         @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]</span><br><span class="line">         @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]</span><br><span class="line">         */</span><br><span class="line">        _tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];</span><br><span class="line">        [self.view addSubview:self.tabBar];</span><br><span class="line">        __weak typeof(self) weakSelf = self;</span><br><span class="line">        self.tabBar.callBack = ^(NSInteger index)&#123;</span><br><span class="line">            weakSelf.selectedIndex = index;</span><br><span class="line">        &#125;;</span><br><span class="line">        //默认选中第0个</span><br><span class="line">        self.selectedIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setSelectedIndex:(NSInteger)selectedIndex</span><br><span class="line">&#123;</span><br><span class="line">    //取出当前控制器 oldVc</span><br><span class="line">    UIViewController *oldVc = self.viewControllers[self.selectedIndex];</span><br><span class="line">    //取出将要显示的 控制器 newVc</span><br><span class="line">    UIViewController *newVc = self.viewControllers[selectedIndex];</span><br><span class="line">    //动画 向左边移动</span><br><span class="line">    newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);</span><br><span class="line">    //改变 newVc 的视图层次</span><br><span class="line">    </span><br><span class="line">    //把newVc.view 的视图放在 self.tabBar 的下面</span><br><span class="line">    [self.view insertSubview:newVc.view belowSubview:self.tabBar];</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);</span><br><span class="line">        newVc.view.frame = BOUNDS;</span><br><span class="line">    &#125;];</span><br><span class="line">    _selectedIndex = selectedIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加子控制器具体步骤</span><br><span class="line">- (void)addChild:(UIViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    [self addChildViewController:viewController];</span><br><span class="line">    viewController.view.frame = BOUNDS;</span><br><span class="line">    //将viewContoller.view 放在最底层</span><br><span class="line">    [self.view insertSubview:viewController.view atIndex:0];</span><br><span class="line">    [viewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-
-<p><strong>4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CGRect TabBarFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, S_H-64, S_W, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉隐藏（开始）的位置</span><br><span class="line">CGRect LeftViewStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉显示（结束）的位置</span><br><span class="line">CGRect LeftViewEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容开始（抽屉隐藏时）的位置</span><br><span class="line">CGRect RigntContentStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容结束（抽屉显示时）的位置</span><br><span class="line">CGRect RightContentEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(S_W*0.75, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(x, y, w, h);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<blockquote>
-<p>欢迎下载</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“抽屉”</tag>
-        <tag>“tabBar”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-解压zip</title>
-    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
-    <content><![CDATA[<blockquote>
-<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
-</blockquote>
-<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
-<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
-</li>
-<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
-</li>
-</ol>
-<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“解压zip”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-高德地图</title>
-    <url>/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。<br>要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如果需要导航就可以不用pod搜索SDK了。最后就是本地导入相应头文件，然后配置key。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const static NSString *APIKey = @&quot;你申请的key&quot;;</span><br><span class="line"></span><br><span class="line">// 配置用户Key</span><br><span class="line"></span><br><span class="line">[MAMapServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 搜索</span><br><span class="line"></span><br><span class="line">[AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 导航</span><br><span class="line"></span><br><span class="line">[AMapNaviServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>后面的就可以按照它的开发指南写，要注意的是路径规划是建立在路径搜索之上的，要路径规划先得完成路径搜索。导航的语音合成，我是用的讯飞的在线语音合成，离线的好像要收费，在下穷猿一名。高德导航的demo好像也是用的讯飞的。去讯飞API官网注册账号，创建应用，获取key，然后配置语音。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//设置sdk的log等级，log保存在下面设置的工作路径中</span><br><span class="line">[IFlySetting setLogFile:LVL_ALL];</span><br><span class="line"></span><br><span class="line">//打开输出在console的log开关</span><br><span class="line">[IFlySetting showLogcat:YES];</span><br><span class="line"></span><br><span class="line">//设置sdk的工作路径</span><br><span class="line">NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *cachePath = [paths objectAtIndex:0];</span><br><span class="line">[IFlySetting setLogFilePath:cachePath];</span><br><span class="line"></span><br><span class="line">// 配置相关参数</span><br><span class="line">- (void)configIFlySpeech</span><br><span class="line">&#123;</span><br><span class="line">[IFlySpeechUtility createUtility:[NSString stringWithFormat:@&quot;appid=%@,timeout=%@&quot;,@&quot;5733feca&quot;,@&quot;20000&quot;]];</span><br><span class="line"></span><br><span class="line">[IFlySetting setLogFile:LVL_NONE];</span><br><span class="line"></span><br><span class="line">[IFlySetting showLogcat:NO];</span><br><span class="line"></span><br><span class="line">// 设置语音合成的参数</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant SPEED]];//合成的语速,取值范围 0~100</span><br><span class="line"></span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant VOLUME]];//合成的音量;取值范围 0~100</span><br><span class="line"></span><br><span class="line">// 发音人,默认为”xiaoyan”;可以设置的参数列表可参考个 性化发音人列表;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;xiaowang&quot; forKey:[IFlySpeechConstant VOICE_NAME]];</span><br><span class="line"></span><br><span class="line">// 音频采样率,目前支持的采样率有 16000 和 8000;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;8000&quot; forKey:[IFlySpeechConstant SAMPLE_RATE]];</span><br><span class="line"></span><br><span class="line">// 当你再不需要保存音频时，请在必要的地方加上这行。</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:nil forKey:[IFlySpeechConstant TTS_AUDIO_PATH]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后初始化和设置代理。</span><br><span class="line">- (void)initIFlySpeech &#123;</span><br><span class="line"></span><br><span class="line">if (self.iFlySpeechSynthesizer == nil)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer = [IFlySpeechSynthesizer sharedInstance];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer.delegate = self;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 语音失败回调代理函数</span><br><span class="line">- (void)onCompleted:(IFlySpeechError *)error &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;Speak Error:&#123;%d:%@&#125;&quot;, error.errorCode, error.errorDesc);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>高德导航有一个回调函数，会传回导航语音的字符串，在回调函数里面创建异步线程，将字符串合成语音，并且播放，在高德导航点击关闭按钮的回调函数里面关闭播放并且关闭导航。</p>
-</blockquote>
-<p>####pragma mark – 语音调用（导航回调）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- (void)naviManager:(AMapNaviManager *)naviManager playNaviSoundString:(NSString *)soundString soundStringType:(AMapNaviSoundType)soundStringType &#123;</span><br><span class="line"></span><br><span class="line">if (soundStringType == AMapNaviSoundTypePassedReminder) &#123;</span><br><span class="line"></span><br><span class="line">// 系统语音</span><br><span class="line">AudioServicesPlaySystemSound(1009);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">// 开启异步线程（全局）</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line">[_iFlySpeechSynthesizer startSpeaking:soundString];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这是点击关闭按钮的回调函数（就是导航界面的叉叉）</span><br><span class="line">- (void)naviViewControllerCloseButtonClicked:(AMapNaviViewController *)naviViewController &#123;</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line"></span><br><span class="line">[self.iFlySpeechSynthesizer stopSpeaking];</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">[self.naviManager stopNavi];</span><br><span class="line"></span><br><span class="line">[self.naviManager dismissNaviViewControllerAnimated:YES];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>以上就是我最近研究的高德API，一是对最近学习的总结，二是希望帮助刚刚接触高德的人，希望对你们有帮助，文章写得有点乱，第一次啊，以后肯定会越来越好。如有错误欢迎各位指出。谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“高德地图”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Widget进阶</title>
     <url>/2025/06/07/common/</url>
     <content><![CDATA[<h2 id="1-Widget-介绍"><a href="#1-Widget-介绍" class="headerlink" title="1.Widget 介绍"></a>1.Widget 介绍</h2><blockquote>
@@ -709,6 +366,290 @@
       </tags>
   </entry>
   <entry>
+    <title>gitHub hexo 个人博客</title>
+    <url>/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
+</blockquote>
+<h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
+<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<p>查看安装是否成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装成功会显示版本号：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/257560df666479d7a2171dd37c11a68b.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 03.09.16.png"></p>
+<h3 id="3-开始安装hexo"><a href="#3-开始安装hexo" class="headerlink" title="3. 开始安装hexo"></a>3. 开始安装hexo</h3><p>首先进入你需要存放博客的文件夹，然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
+
+<p>查看版本号：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<p>初始化项目：(类似于git)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开始使用"><a href="#4-开始使用" class="headerlink" title="4. 开始使用"></a>4. 开始使用</h3><p>创建页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>生成静态文件(会在当前目录下生成一个新的叫做public的文件夹)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g # 或者hexo generate</span><br></pre></td></tr></table></figure>
+<p>开启本地服务 用于在本地浏览 Ctrl+C退出查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s # 或者hexo server，可以在输入http://localhost:4000/ 查看 或者 按住Command 双击命令行下的网址（http://localhost:4000/）</span><br></pre></td></tr></table></figure>
+<p>这时网页已经成型了。</p>
+<p>接下来就是要部署到gitHub上 只需要在配置文件_config.xml中作如下修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gavincarter1991/gavincarter1991.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>当然gavincarter1991位置还是填你的信息</p>
+<p>然后安装一个自动工具，方便以后页面的部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>部署去gitHub：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>以后每一次部署的一般步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h3 id="5-写文章"><a href="#5-写文章" class="headerlink" title="5.写文章"></a>5.写文章</h3><p>首先；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>然后去目录：source_posts下找到My First Blog.md（markdown文件）开始编辑文章了。我Mac用的是Mou编辑器，你可以自由选择适合自己的markdown编辑器。<a href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/0.html">这里有markdown使用技巧</a><br>写好以后就可以按照前面的部署常用步骤进行部署了。</p>
+<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>1.主题：hexo有很多<a href="https://github.com/hexojs/hexo/wiki/Themes">第三方主题</a>可以选择，通过git clone<br>2.配置修改参数<a href="http://div.io/topic/1691">详见</a> 我写几个常用的：<br>头像：把图片放在主题内 source&#x2F;images&#x2F;，图片链接地址可以填 &#x2F;images&#x2F;avatar.png  然后在当前主题的_config.yml 不是根目录的_config.yml（如果你换了主题，需要根据自己选择的主题进入里面去设置）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source/images): /images/avatar.jpg</span><br><span class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</span><br><span class="line">avatar: /images/avatar.jpg</span><br></pre></td></tr></table></figure>
+<p>个人中心配置：（根目录的_config.yml）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Gavin</span><br><span class="line">subtitle: 记录成长过程中的点点滴滴</span><br><span class="line">description: 我爱敏敏</span><br><span class="line">author: kindyourself@163.com</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
+<p>显示标签与分类：取消对应注释</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)</span><br><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
+<p>然后创建分类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;categories下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2016-07-16 02:21:37</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>以后在写文章的时候加上分类就会自动创建分类了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar]</span><br><span class="line">categories: &quot;iOS&quot; // 分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>创建标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;tags下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2016-07-16 02:11:12</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>以后在写文章的时候加上标签就会自动计入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar] // 标签</span><br><span class="line">categories: &quot;iOS&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>下载主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
+<p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>“hexo”</tag>
+        <tag>“个人博客”</tag>
+        <tag>“gitHub”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-webView上加载HTML视频不显示缩略图</title>
+    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
+</blockquote>
+<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
+<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
+<blockquote>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+</blockquote>
+<p><strong>这个方法其实还有一个用法：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
+<blockquote>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
+</blockquote>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
+<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“webView”</tag>
+        <tag>“视频不显示缩略图”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-js与iOS的交互（基于WKWebViewJavascriptBridge第三方）</title>
+    <url>/2016/07/09/iOS-js%E4%B8%8EiOS%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%88%E5%9F%BA%E4%BA%8EWKWebViewJavascriptBridge%E7%AC%AC%E4%B8%89%E6%96%B9%EF%BC%89/</url>
+    <content><![CDATA[<blockquote>
+<p>后天就要去北京出差了，据说那边的项目主要是与网页交互，所以就简单的研究了一下js与iOS的交互。<br>其交互方式有很多种</p>
+</blockquote>
+<h3 id="一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"><a href="#一、native（app）通过UIWebView的代理方法拦截url-scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。" class="headerlink" title="一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。"></a>一、native（app）通过UIWebView的代理方法拦截url scheme判断是否是我们需要拦截处理的url及其所对应的要处理的逻辑（可以实现对网页的返回、前景、刷新），比较通用和简单。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];</span><br><span class="line"></span><br><span class="line">self.webView.delegate = self;</span><br><span class="line"></span><br><span class="line">[self.webView setUserInteractionEnabled:YES]; //是否支持交互</span><br><span class="line"></span><br><span class="line">[self.webView setOpaque:NO]; //opaque是不透明的意思</span><br><span class="line"></span><br><span class="line">[self.webView setScalesPageToFit:YES]; //自动缩放以适应屏幕</span><br><span class="line"></span><br><span class="line">[self.view addSubview:self.webView];</span><br><span class="line"></span><br><span class="line">if (sender.tag == 101) &#123;</span><br><span class="line"></span><br><span class="line">// 返回（点击页面才会有返回）</span><br><span class="line">[self.mWebView goBack];</span><br><span class="line"></span><br><span class="line">&#125;else if (sender.tag == 102) &#123;</span><br><span class="line"></span><br><span class="line">// 前进（点击过的页面）</span><br><span class="line">[self.mWebView goForward];</span><br><span class="line"></span><br><span class="line">&#125;else &#123;</span><br><span class="line"></span><br><span class="line">// 刷新页面</span><br><span class="line">[self.mWebView reload];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法："><a href="#二、iOS7之后出了JavaScriptCore-framework用于与JS交互，通过JSContext调用JS代码的方法：" class="headerlink" title="二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法："></a>二、iOS7之后出了JavaScriptCore.framework用于与JS交互，通过JSContext调用JS代码的方法：</h3><p><strong>1、直接调用JS代码</strong></p>
+<p><strong>2、在ObjC中通过JSContext注入模型，然后调用模型的方法</strong></p>
+<p><strong>通过evaluateScript:方法就可以执行JS代码</strong></p>
+<h3 id="三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"><a href="#三、React-Native-（不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）" class="headerlink" title="三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）"></a>三、React Native （不是很了解，只知道是Facebook的，能编译很多的语音，兼容性很强，可移植也很强，有很多很好的原生控件，有兴趣的朋友可以了解一下）</h3><h3 id="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"><a href="#四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。" class="headerlink" title="四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。"></a>四、WebViewJavascriptBridge（第三方）是基于方式一封装的（主要是两个回调函数）。</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">在iOS端：1.self.bridge = [WebViewJavascriptBridge bridgeForWebView:self.webView];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>链接iOS与js,self.webView就是展示你用来显示需要交换页面的UIWebView</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2.[self.bridge registerHandler:@&quot;testJavascriptHandler&quot; handler:^(id data, WVJBResponseCallback responseCallback) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;ObjC Echo called with: %@&quot;, data);</span><br><span class="line"></span><br><span class="line">// 反馈给JS</span><br><span class="line">responseCallback(data);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br><span class="line"></span><br><span class="line">// 在JS中如果调用了bridge.send()，那么将触发OC端_bridge初始化方法中的回调。</span><br><span class="line"></span><br><span class="line">// 在JS中调用了bridge.callHandler(&#x27;testJavascriptHandler&#x27;)，它将触发OC端注册的同名方法</span><br><span class="line"></span><br><span class="line">// oc 同理</span><br><span class="line"></span><br><span class="line">// JS主动调用OjbC的方法</span><br><span class="line"></span><br><span class="line">// 这是JS会调用ObjC Echo方法，这是OC注册给JS调用的</span><br><span class="line"></span><br><span class="line">// JS需要回调，当然JS也可以传参数过来。data就是JS所传的参数，不一定需要传</span><br><span class="line"></span><br><span class="line">// OC端通过responseCallback回调JS端，JS就可以得到所需要的数据</span><br><span class="line"></span><br><span class="line">3.[self.bridge callHandler:@&quot;sayHello&quot; data:@&#123;@&quot;hello&quot;: @&quot;你好&quot;&#125; responseCallback:^(id responseData) &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;回调结果: %@&quot;, responseData);</span><br><span class="line"></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>直接调用JS端注册的HandleName，一定注意此次的名字一定要与js端的相同。<br>js调用时也一样</p>
+</blockquote>
+<p>在JS端：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.Copy and paste setupWebViewJavascriptBridge into your JS:</span><br><span class="line"></span><br><span class="line">（此段代码为固定格式，直接放在js端就行）</span><br><span class="line"></span><br><span class="line">function setupWebViewJavascriptBridge(callback) &#123;</span><br><span class="line"></span><br><span class="line">if (window.WebViewJavascriptBridge) &#123; return callback(WebViewJavascriptBridge); &#125;</span><br><span class="line"></span><br><span class="line">if (window.WVJBCallbacks) &#123; return window.WVJBCallbacks.push(callback); &#125;</span><br><span class="line"></span><br><span class="line">window.WVJBCallbacks = [callback];</span><br><span class="line"></span><br><span class="line">var WVJBIframe = document.createElement(&#x27;iframe&#x27;);</span><br><span class="line"></span><br><span class="line">WVJBIframe.style.display = &#x27;none&#x27;;</span><br><span class="line"></span><br><span class="line">WVJBIframe.src = &#x27;wvjbscheme://__BRIDGE_LOADED__&#x27;;</span><br><span class="line"></span><br><span class="line">document.documentElement.appendChild(WVJBIframe);</span><br><span class="line"></span><br><span class="line">setTimeout(function() &#123; document.documentElement.removeChild(WVJBIframe) &#125;, 0)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>后面几步与iOS端一样</p>
+<p>如有错误，望请指出。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“js”</tag>
+        <tag>“WKWebViewJavascriptBridge”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-widget-Today 扩展</title>
+    <url>/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</url>
+    <content><![CDATA[<blockquote>
+<p>今天要分享的是通知中心扩展中的-<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/">Today</a>扩展（ios8推出），ios目前可以使用的扩展有：today扩展（widget-即通知栏的今天一栏）、键盘自定义、文件管理、照片编辑扩展、通知扩展（推送）、分享扩展等。扩展与拥有这个扩展主应用的生命周期是独立的。他们是两个独立的进程。</p>
+</blockquote>
+<h3 id="一、目标："><a href="#一、目标：" class="headerlink" title="一、目标："></a>一、目标：</h3><blockquote>
+<p>我项目是希望在widget中添加一个H5的页面方便以后的自定义。点击对应按钮去到相应界面，我也不知道这样算不算滥用widget，因为之前看见过有人的应用被苹果拒绝就是因为滥用widget导致的。</p>
+</blockquote>
+<h3 id="二、实现："><a href="#二、实现：" class="headerlink" title="二、实现："></a>二、实现：</h3><blockquote>
+<p>1.因为widget是一个单独的进程所以需要创建一个target：</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0b583421a35083363bf56d91148192dd.webp?x-image-process=image/format,png" alt="首先 2016-07-24 23.01.34.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/217a9594befa8d064b3f479abf1d92db.webp?x-image-process=image/format,png" alt="然后 2016-07-24 23.01.13.png"></p>
+<blockquote>
+<p>2.代码</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    // 调整Widget的高度</span><br><span class="line">    self.preferredContentSize = CGSizeMake(0, 200);</span><br><span class="line">    </span><br><span class="line">    // 1、创建UIWebView：</span><br><span class="line">    UIWebView *mWebView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];</span><br><span class="line">    </span><br><span class="line">    // 2、设置属性：</span><br><span class="line">    mWebView.scalesPageToFit = YES;// 自动对页面进行缩放以适应屏幕</span><br><span class="line">    // 检测所有数据类型  设定电话号码、网址、电子邮件和日期等文字变为链接文字</span><br><span class="line">    </span><br><span class="line">    [mWebView setDataDetectorTypes:UIDataDetectorTypeAll];</span><br><span class="line">    mWebView.delegate = self;</span><br><span class="line">    </span><br><span class="line">    // 打开URL</span><br><span class="line">    NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;http://www.baidu.com&quot;]];</span><br><span class="line">    [mWebView loadRequest:request];</span><br><span class="line">    [self.view addSubview:mWebView];</span><br><span class="line">    </span><br><span class="line">    [self makeButtonWithTitle:@&quot;返回&quot; frame:CGRectMake(0, 0, 80, 64) button:_backBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;前进&quot; frame:CGRectMake(self.view.frame.size.width - 80, 0, 80, 64) button:_forWardBtn];</span><br><span class="line">    [self makeButtonWithTitle:@&quot;刷新&quot; frame:CGRectMake(100, 0, 80, 64) button:_refreshBtn];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 取消widget默认的inset，让应用靠左</span><br><span class="line">- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets &#123;</span><br><span class="line">    return UIEdgeInsetsZero;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)makeButtonWithTitle:(NSString *)title frame:(CGRect)frame button:(UIButton *)btn &#123;</span><br><span class="line">    btn = [UIButton buttonWithType:UIButtonTypeCustom];</span><br><span class="line">    [btn setTitle:title forState:UIControlStateNormal];</span><br><span class="line">    [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];</span><br><span class="line">    [btn addTarget:self action:@selector(skip:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">    [btn setFrame:frame];</span><br><span class="line">    </span><br><span class="line">    if ([title isEqualToString:@&quot;返回&quot;]) &#123;</span><br><span class="line">        btn.tag = 101;</span><br><span class="line">    &#125; else if([title isEqualToString:@&quot;前进&quot;]) &#123;</span><br><span class="line">        btn.tag = 102;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        btn.tag = 103;</span><br><span class="line">    &#125;</span><br><span class="line">    [self.view addSubview:btn];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)skip:(UIButton *)button</span><br><span class="line">&#123;</span><br><span class="line">    if (button.tag == 101) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoHomePage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;101   open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">    else if(button.tag == 102) &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPage&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [self.extensionContext openURL:[NSURL URLWithString:@&quot;iOSWidgetApp://action=GotoOtherPages&quot;] completionHandler:^(BOOL success) &#123;</span><br><span class="line">            NSLog(@&quot;102    open url result:%d&quot;,success);</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>运行与结果展示：</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d2078c3e20a8126af877649cb755bce1.webp?x-image-process=image/format,png" alt="运行 2016-07-24 23.02.28.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d8e9254bab90d77597bda99215fded4b.webp?x-image-process=image/format,png" alt="效果图 2016-07-25 09.55.44.png"></p>
+<h3 id="扩展与主程序的交互-数据共享"><a href="#扩展与主程序的交互-数据共享" class="headerlink" title="扩展与主程序的交互-数据共享"></a>扩展与主程序的交互-数据共享</h3><p><strong>这就要涉及扩展与应用之间的数据共享了-App Groups.</strong></p>
+<blockquote>
+<p>首先在主应用的target &gt; Capabilities下 打开App Groups 点击+ 在group.后面输入标识符，</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/62f1aa6e7f4adbc919d563ca0a21bda6.webp?x-image-process=image/format,png" alt="Snip20160725_1.png"></p>
+<p><strong>再去扩展的target下进行相同的操作，记得group.后的标识符要一致。</strong></p>
+<p>#####代码：</p>
+<blockquote>
+<p>在上面的扩展代码里面已经定义了点击事件，这里主要是主应用接收到信息后进行判断和处理。</p>
+<p>在这之前还需要先配置URL schems,在主程序的plist里面：</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b36fb85f5f7ece4451b9e5c8b160d604.webp?x-image-process=image/format,png" alt="plist 2016-07-25 10.40.15.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation &#123;</span><br><span class="line">    </span><br><span class="line">    NSString* prefix = @&quot;iOSWidgetApp://action=&quot;;</span><br><span class="line">    </span><br><span class="line">    UIWebView *webView = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];</span><br><span class="line">    webView.backgroundColor = [UIColor clearColor];</span><br><span class="line">    webView.delegate = self;</span><br><span class="line">    [webView setUserInteractionEnabled:YES];//是否支持交互</span><br><span class="line">    [webView setOpaque:NO];//opaque是不透明的意思</span><br><span class="line">    [webView setScalesPageToFit:YES];//自动缩放以适应屏幕</span><br><span class="line">    webView .scrollView.bounces = NO;// 禁止UIWebView下拉拖动效果</span><br><span class="line">    NSString *path;</span><br><span class="line">    if ([[url absoluteString] rangeOfString:prefix].location != NSNotFound) &#123;</span><br><span class="line">        NSString* action = [[url absoluteString] substringFromIndex:prefix.length];</span><br><span class="line">        if ([action isEqualToString:@&quot;GotoHomePage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;help&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        else if([action isEqualToString:@&quot;GotoOtherPage&quot;]) &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;setting&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            path = [[NSBundle mainBundle] pathForResource:@&quot;healthyArticle&quot; ofType:@&quot;html&quot;];</span><br><span class="line">        &#125;</span><br><span class="line">        NSURL *urll = [NSURL fileURLWithPath:path];</span><br><span class="line">        NSURLRequest* request = [NSURLRequest requestWithURL:urll] ;</span><br><span class="line">        [webView loadRequest:request];</span><br><span class="line">        [self.rootView.view addSubview:webView];</span><br><span class="line">        self.rootView.view.backgroundColor = [UIColor whiteColor];</span><br><span class="line">    &#125;</span><br><span class="line">    return  YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>因为我是需要到对应的H5页面所以是添加的H5页面。</strong></p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
+<p>1.当程序内存不足时，苹果优先会杀死扩展，因此需要注意内存的管理。</p>
+<p>2.在配置team是账号需要一致（我测试的时候免费账号好像还不行，需要付费的账号）</p>
+<p>3.在iOS10上面还可以从左滑主页面和锁屏进入widget。</p>
+<p>4.today只有在下拉的时候才会更新，通知栏两边的更新机制是不一样的。</p>
+<p>5.一般更新路径：viewDidLoad-&gt;viewWillAppear，但是如果你下拉过于频繁就只会执行viewWillAppear里面的，因此更新代码最好放在viewWillAppear里面。</p>
+</blockquote>
+<h6 id="如有错误地方，万望指出，谢谢！"><a href="#如有错误地方，万望指出，谢谢！" class="headerlink" title="如有错误地方，万望指出，谢谢！"></a>如有错误地方，万望指出，谢谢！</h6>]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“widget”</tag>
+        <tag>“扩展”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Base64-不重要数据的简单加密</title>
+    <url>/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+</blockquote>
+<p>##我的实现过程（可以根据公司需求自定义）：</p>
+<ol>
+<li>先编码一次</li>
+<li>对编码结果的数据交换首位字符在编码一次</li>
+<li>对编码结果逆序在编码一次</li>
+</ol>
+<p>##示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>###结束语：</p>
+<blockquote>
+<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“Base64”</tag>
+        <tag>“加密”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-解压zip</title>
+    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
+    <content><![CDATA[<blockquote>
+<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
+</blockquote>
+<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
+<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
+</li>
+<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
+</li>
+</ol>
+<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“解压zip”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-高德地图</title>
+    <url>/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。<br>要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如果需要导航就可以不用pod搜索SDK了。最后就是本地导入相应头文件，然后配置key。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const static NSString *APIKey = @&quot;你申请的key&quot;;</span><br><span class="line"></span><br><span class="line">// 配置用户Key</span><br><span class="line"></span><br><span class="line">[MAMapServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 搜索</span><br><span class="line"></span><br><span class="line">[AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 导航</span><br><span class="line"></span><br><span class="line">[AMapNaviServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>后面的就可以按照它的开发指南写，要注意的是路径规划是建立在路径搜索之上的，要路径规划先得完成路径搜索。导航的语音合成，我是用的讯飞的在线语音合成，离线的好像要收费，在下穷猿一名。高德导航的demo好像也是用的讯飞的。去讯飞API官网注册账号，创建应用，获取key，然后配置语音。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//设置sdk的log等级，log保存在下面设置的工作路径中</span><br><span class="line">[IFlySetting setLogFile:LVL_ALL];</span><br><span class="line"></span><br><span class="line">//打开输出在console的log开关</span><br><span class="line">[IFlySetting showLogcat:YES];</span><br><span class="line"></span><br><span class="line">//设置sdk的工作路径</span><br><span class="line">NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *cachePath = [paths objectAtIndex:0];</span><br><span class="line">[IFlySetting setLogFilePath:cachePath];</span><br><span class="line"></span><br><span class="line">// 配置相关参数</span><br><span class="line">- (void)configIFlySpeech</span><br><span class="line">&#123;</span><br><span class="line">[IFlySpeechUtility createUtility:[NSString stringWithFormat:@&quot;appid=%@,timeout=%@&quot;,@&quot;5733feca&quot;,@&quot;20000&quot;]];</span><br><span class="line"></span><br><span class="line">[IFlySetting setLogFile:LVL_NONE];</span><br><span class="line"></span><br><span class="line">[IFlySetting showLogcat:NO];</span><br><span class="line"></span><br><span class="line">// 设置语音合成的参数</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant SPEED]];//合成的语速,取值范围 0~100</span><br><span class="line"></span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant VOLUME]];//合成的音量;取值范围 0~100</span><br><span class="line"></span><br><span class="line">// 发音人,默认为”xiaoyan”;可以设置的参数列表可参考个 性化发音人列表;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;xiaowang&quot; forKey:[IFlySpeechConstant VOICE_NAME]];</span><br><span class="line"></span><br><span class="line">// 音频采样率,目前支持的采样率有 16000 和 8000;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;8000&quot; forKey:[IFlySpeechConstant SAMPLE_RATE]];</span><br><span class="line"></span><br><span class="line">// 当你再不需要保存音频时，请在必要的地方加上这行。</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:nil forKey:[IFlySpeechConstant TTS_AUDIO_PATH]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后初始化和设置代理。</span><br><span class="line">- (void)initIFlySpeech &#123;</span><br><span class="line"></span><br><span class="line">if (self.iFlySpeechSynthesizer == nil)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer = [IFlySpeechSynthesizer sharedInstance];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer.delegate = self;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 语音失败回调代理函数</span><br><span class="line">- (void)onCompleted:(IFlySpeechError *)error &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;Speak Error:&#123;%d:%@&#125;&quot;, error.errorCode, error.errorDesc);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>高德导航有一个回调函数，会传回导航语音的字符串，在回调函数里面创建异步线程，将字符串合成语音，并且播放，在高德导航点击关闭按钮的回调函数里面关闭播放并且关闭导航。</p>
+</blockquote>
+<p>####pragma mark – 语音调用（导航回调）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- (void)naviManager:(AMapNaviManager *)naviManager playNaviSoundString:(NSString *)soundString soundStringType:(AMapNaviSoundType)soundStringType &#123;</span><br><span class="line"></span><br><span class="line">if (soundStringType == AMapNaviSoundTypePassedReminder) &#123;</span><br><span class="line"></span><br><span class="line">// 系统语音</span><br><span class="line">AudioServicesPlaySystemSound(1009);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">// 开启异步线程（全局）</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line">[_iFlySpeechSynthesizer startSpeaking:soundString];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这是点击关闭按钮的回调函数（就是导航界面的叉叉）</span><br><span class="line">- (void)naviViewControllerCloseButtonClicked:(AMapNaviViewController *)naviViewController &#123;</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line"></span><br><span class="line">[self.iFlySpeechSynthesizer stopSpeaking];</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">[self.naviManager stopNavi];</span><br><span class="line"></span><br><span class="line">[self.naviManager dismissNaviViewControllerAnimated:YES];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上就是我最近研究的高德API，一是对最近学习的总结，二是希望帮助刚刚接触高德的人，希望对你们有帮助，文章写得有点乱，第一次啊，以后肯定会越来越好。如有错误欢迎各位指出。谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“高德地图”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
     <url>/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</url>
     <content><![CDATA[<h2 id="iOS集成融云SDK即时通讯整理"><a href="#iOS集成融云SDK即时通讯整理" class="headerlink" title="iOS集成融云SDK即时通讯整理"></a>iOS集成融云SDK即时通讯整理</h2><blockquote>
@@ -776,6 +717,34 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       <tags>
         <tag>“iOS”</tag>
         <tag>“融云”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
+    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
+<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
+<p>一个是 Create folder references for any added folders 创建实体结构）</p>
+</blockquote>
+<blockquote>
+<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
+</blockquote>
+<p><strong>引入文件方式：</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+</blockquote>
+<p> <strong>引入文件方式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“本地”</tag>
+        <tag>“路径问题”</tag>
       </tags>
   </entry>
   <entry>
@@ -1118,6 +1087,37 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
+    <title>iOS-自定义带抽屉效果的tabBar</title>
+    <url>/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</url>
+    <content><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
+<h3 id="一、先来个效果"><a href="#一、先来个效果" class="headerlink" title="一、先来个效果"></a>一、先来个效果</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p>
+<h3 id="二、代码示例"><a href="#二、代码示例" class="headerlink" title="二、代码示例"></a>二、代码示例</h3><p><strong>1.抽屉页作为根视图：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>2.标签视图 修改方法 <code>- (void)selectBtn:(UIButton *)sender</code>中的切换效果可以实现不同的切换动画与效果。</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@implementation MTabBar</span><br><span class="line">- (instancetype)initWithTitles:(NSArray *)titles imageNames:(NSArray *)imageNames</span><br><span class="line">&#123;</span><br><span class="line">    self = [super initWithFrame:TabBarFrame()];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        //标题数组不为空，图片名字个数 ＝ 标题个数</span><br><span class="line">        self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];</span><br><span class="line">        self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;</span><br><span class="line">        [self addSubview:self.buttonBack];</span><br><span class="line">        </span><br><span class="line">        self.backgroundColor = TABBAR_BACK_COLOR;</span><br><span class="line">        </span><br><span class="line">        if ([titles count] &amp;&amp; [titles count] == [imageNames count]) &#123;</span><br><span class="line">            [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">                UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];</span><br><span class="line">                button.tag = 1000 + idx;</span><br><span class="line">                [self addSubview:button];</span><br><span class="line">                //默认选中第一个</span><br><span class="line">                if (idx == 0) &#123;</span><br><span class="line">                    button.selected = YES;</span><br><span class="line">                    self.selectedButton = button;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];</span><br><span class="line">//                // 图片宽 高分别为 44 24</span><br><span class="line">                CGFloat x = (BUTTON_W - 44)/2;</span><br><span class="line">                [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];</span><br><span class="line">                //添加点击方法</span><br><span class="line">                [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//button 点击方法</span><br><span class="line">- (void)selectBtn:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    //让抽屉隐藏，发出通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]postNotificationName:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">    //选中的button 已经是选中状态 不用处理</span><br><span class="line">    if (self.selectedButton == sender) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //改变之前选中button的状态  为非选中状态</span><br><span class="line">    self.selectedButton.selected = NO;</span><br><span class="line">    </span><br><span class="line">    //改变当前选中button的状态</span><br><span class="line">    sender.selected = YES;</span><br><span class="line">    self.selectedButton = sender;</span><br><span class="line">    //通知标签控制器显示当前button对应的viewController</span><br><span class="line">    if (self.callBack) &#123;</span><br><span class="line">        self.callBack(sender.tag - 1000);</span><br><span class="line">    &#125;</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UILabel *MakeLabel(CGRect frame, NSString *title)</span><br><span class="line">&#123;</span><br><span class="line">    UILabel *label = [[UILabel alloc]initWithFrame:frame];</span><br><span class="line">//    label.userInteractionEnabled = YES;</span><br><span class="line">    label.backgroundColor = [UIColor clearColor];</span><br><span class="line">    label.textColor = [UIColor whiteColor];</span><br><span class="line">    label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    label.text = title;</span><br><span class="line">    return label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//根据 frame和 imageName 创建UIImageView</span><br><span class="line">UIImageView *MakeImageView(CGRect frame, NSString *imageName)</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageV = [[UIImageView alloc]initWithFrame:frame];</span><br><span class="line">//    imageV.userInteractionEnabled = YES;</span><br><span class="line">    imageV.backgroundColor = [UIColor clearColor];</span><br><span class="line">    imageV.image = [UIImage imageNamed:imageName];</span><br><span class="line">    return imageV;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.标签控制器</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@interface MTabBarViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MTabBarViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithViewControllers:(NSArray *)viewControllers</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        _viewControllers = viewControllers;</span><br><span class="line">        //遍历数组，添加子控制器</span><br><span class="line">        [_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            [self addChild:obj];</span><br><span class="line">        &#125;];</span><br><span class="line">        /*</span><br><span class="line">         @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]</span><br><span class="line">         @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]</span><br><span class="line">         */</span><br><span class="line">        _tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];</span><br><span class="line">        [self.view addSubview:self.tabBar];</span><br><span class="line">        __weak typeof(self) weakSelf = self;</span><br><span class="line">        self.tabBar.callBack = ^(NSInteger index)&#123;</span><br><span class="line">            weakSelf.selectedIndex = index;</span><br><span class="line">        &#125;;</span><br><span class="line">        //默认选中第0个</span><br><span class="line">        self.selectedIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setSelectedIndex:(NSInteger)selectedIndex</span><br><span class="line">&#123;</span><br><span class="line">    //取出当前控制器 oldVc</span><br><span class="line">    UIViewController *oldVc = self.viewControllers[self.selectedIndex];</span><br><span class="line">    //取出将要显示的 控制器 newVc</span><br><span class="line">    UIViewController *newVc = self.viewControllers[selectedIndex];</span><br><span class="line">    //动画 向左边移动</span><br><span class="line">    newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);</span><br><span class="line">    //改变 newVc 的视图层次</span><br><span class="line">    </span><br><span class="line">    //把newVc.view 的视图放在 self.tabBar 的下面</span><br><span class="line">    [self.view insertSubview:newVc.view belowSubview:self.tabBar];</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);</span><br><span class="line">        newVc.view.frame = BOUNDS;</span><br><span class="line">    &#125;];</span><br><span class="line">    _selectedIndex = selectedIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加子控制器具体步骤</span><br><span class="line">- (void)addChild:(UIViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    [self addChildViewController:viewController];</span><br><span class="line">    viewController.view.frame = BOUNDS;</span><br><span class="line">    //将viewContoller.view 放在最底层</span><br><span class="line">    [self.view insertSubview:viewController.view atIndex:0];</span><br><span class="line">    [viewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CGRect TabBarFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, S_H-64, S_W, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉隐藏（开始）的位置</span><br><span class="line">CGRect LeftViewStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉显示（结束）的位置</span><br><span class="line">CGRect LeftViewEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容开始（抽屉隐藏时）的位置</span><br><span class="line">CGRect RigntContentStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容结束（抽屉显示时）的位置</span><br><span class="line">CGRect RightContentEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(S_W*0.75, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(x, y, w, h);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>欢迎下载</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“抽屉”</tag>
+        <tag>“tabBar”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>微信小程序tips</title>
     <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
     <content><![CDATA[<blockquote>
@@ -1163,61 +1163,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </categories>
       <tags>
         <tag>“微信小程序”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
-    <content><![CDATA[<blockquote>
-<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
-<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
-</blockquote>
-<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
-
-<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
-</blockquote>
-<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>利用进度时间(Play with Progress Time)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
-<ol>
-<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
-</li>
-<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
-</li>
-<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
-</li>
-<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
-</li>
-<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
-</li>
-<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
-</li>
-<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
-</li>
-</ol>
-</blockquote>
-<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“动画”</tag>
-        <tag>“Lottie”</tag>
       </tags>
   </entry>
   <entry>
@@ -1492,6 +1437,61 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“Hexo”</tag>
         <tag>“github&quot;</tag>
         <tag>“博客&quot;</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
+    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
+<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
+</blockquote>
+<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
+
+<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
+</blockquote>
+<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>利用进度时间(Play with Progress Time)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
+<ol>
+<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
+</li>
+<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
+</li>
+<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
+</li>
+<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
+</li>
+<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
+</li>
+<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
+</li>
+<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“动画”</tag>
+        <tag>“Lottie”</tag>
       </tags>
   </entry>
 </search>

@@ -3,11 +3,11 @@
   <title>Gavin&#39;s Blog</title>
   
   <subtitle>记录成长过程中的点点滴滴</subtitle>
-  <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/atom.xml" rel="self"/>
+  <link href="https://kindyourself.github.io/atom.xml" rel="self"/>
   
-  <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/"/>
+  <link href="https://kindyourself.github.io/"/>
   <updated>2025-06-11T01:52:51.724Z</updated>
-  <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/</id>
+  <id>https://kindyourself.github.io/</id>
   
   <author>
     <name>kindyourself@163.com</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>gitHub hexo 个人博客升级版</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
+    <link href="https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
+    <id>https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
     <published>2025-06-11T01:52:44.000Z</published>
     <updated>2025-06-11T01:52:51.724Z</updated>
     
@@ -34,21 +34,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“Hexo”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CHexo%E2%80%9D/"/>
+    <category term="“Hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
     
-    <category term="“github&quot;" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cgithub/"/>
+    <category term="“github&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9Cgithub/"/>
     
-    <category term="“博客&quot;" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
+    <category term="“博客&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/common/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/common/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/common/"/>
+    <id>https://kindyourself.github.io/2025/06/07/common/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -63,19 +63,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/widget-advanced/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/06/07/widget-advanced/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/widget-advanced/"/>
+    <id>https://kindyourself.github.io/2025/06/07/widget-advanced/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -90,19 +90,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Flutter遇到的问题</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/05/23/flutter-error/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2025/05/23/flutter-error/</id>
+    <link href="https://kindyourself.github.io/2025/05/23/flutter-error/"/>
+    <id>https://kindyourself.github.io/2025/05/23/flutter-error/</id>
     <published>2025-05-23T07:17:44.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -117,19 +117,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Error”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CError%E2%80%9D/"/>
+    <category term="“Error”" scheme="https://kindyourself.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
+    <link href="https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
+    <id>https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
     <published>2024-03-05T08:02:13.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -143,21 +143,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“证书验证”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
+    <category term="“证书验证”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
     
-    <category term="“SSL”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CSSL%E2%80%9D/"/>
+    <category term="“SSL”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
     <published>2019-12-23T08:39:52.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -172,25 +172,25 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“网络请求”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
+    <category term="“网络请求”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
     
-    <category term="“Moya”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CMoya%E2%80%9D/"/>
+    <category term="“Moya”" scheme="https://kindyourself.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
     
-    <category term="“HandyJSON”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
+    <category term="“HandyJSON”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
     
-    <category term="“RxSwift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
+    <category term="“RxSwift”" scheme="https://kindyourself.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
     <published>2019-12-23T04:34:37.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -205,21 +205,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“动画”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
+    <category term="“动画”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
     
-    <category term="“Lottie”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CLottie%E2%80%9D/"/>
+    <category term="“Lottie”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析01-swift WebSocket</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
     <published>2019-12-23T02:00:16.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -234,19 +234,19 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“WebSocket”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
+    <category term="“WebSocket”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
+    <link href="https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
+    <id>https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
     <published>2018-03-29T06:36:05.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -261,19 +261,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“融云”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
+    <category term="“融云”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>UISearchBar详解</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
     <published>2017-03-10T16:27:34.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -288,21 +288,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“UISearchBar”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
+    <category term="“UISearchBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序tips</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
+    <link href="https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
+    <id>https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
     <published>2017-02-21T17:19:52.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -317,17 +317,17 @@
     
     
     
-    <category term="微信小程序" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://kindyourself.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="“微信小程序”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
+    <category term="“微信小程序”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目总结-位置实时共享</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
+    <link href="https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
+    <id>https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
     <published>2016-11-16T16:13:34.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -342,21 +342,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“百度地图”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
+    <category term="“百度地图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
     
-    <category term="“位置实时共享”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
+    <category term="“位置实时共享”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
+    <link href="https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
     <published>2016-08-07T17:06:48.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -371,21 +371,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“webView”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CwebView%E2%80%9D/"/>
+    <category term="“webView”" scheme="https://kindyourself.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
     
-    <category term="“视频不显示缩略图”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
+    <category term="“视频不显示缩略图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>图片上传预览</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
+    <link href="https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
+    <id>https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
     <published>2016-07-31T17:06:42.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -402,21 +402,21 @@
     
     
     
-    <category term="web" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/web/"/>
+    <category term="web" scheme="https://kindyourself.github.io/categories/web/"/>
     
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“图片上传”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
+    <category term="“图片上传”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
     
-    <category term="“预览”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
+    <category term="“预览”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
     <published>2016-07-25T03:29:55.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -432,21 +432,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“本地”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
+    <category term="“本地”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
     
-    <category term="“路径问题”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
+    <category term="“路径问题”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-widget-Today 扩展</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
     <published>2016-07-25T03:23:58.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -461,21 +461,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“widget”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cwidget%E2%80%9D/"/>
+    <category term="“widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
     
-    <category term="“扩展”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
+    <category term="“扩展”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2016-07-15T20:11:37.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -490,50 +490,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“hexo”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Chexo%E2%80%9D/"/>
+    <category term="“hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9Chexo%E2%80%9D/"/>
     
-    <category term="“个人博客”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
+    <category term="“个人博客”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
     
-    <category term="“gitHub”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CgitHub%E2%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iOS-自定义带抽屉效果的tabBar</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
-    <published>2016-07-15T15:50:50.000Z</published>
-    <updated>2025-06-10T03:47:51.050Z</updated>
-    
-    <content type="html"><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p><h3 id="一、先来个效果"><a href="#一、先来个效果" class="headerlink" title="一、先来个效果"></a>一、先来个效果</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p><h3 id="二、代码示例"><a href="#二、代码示例" class="headerlink" title="二、代码示例"></a>二、代码示例</h3><p><strong>1.抽屉页作为根视图：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>2.标签视图 修改方法 <code>- (void)selectBtn:(UIButton *)sender</code>中的切换效果可以实现不同的切换动画与效果。</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">@implementation MTabBar</span><br><span class="line">- (instancetype)initWithTitles:(NSArray *)titles imageNames:(NSArray *)imageNames</span><br><span class="line">&#123;</span><br><span class="line">    self = [super initWithFrame:TabBarFrame()];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        //标题数组不为空，图片名字个数 ＝ 标题个数</span><br><span class="line">        self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];</span><br><span class="line">        self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;</span><br><span class="line">        [self addSubview:self.buttonBack];</span><br><span class="line">        </span><br><span class="line">        self.backgroundColor = TABBAR_BACK_COLOR;</span><br><span class="line">        </span><br><span class="line">        if ([titles count] &amp;&amp; [titles count] == [imageNames count]) &#123;</span><br><span class="line">            [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">                UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];</span><br><span class="line">                button.tag = 1000 + idx;</span><br><span class="line">                [self addSubview:button];</span><br><span class="line">                //默认选中第一个</span><br><span class="line">                if (idx == 0) &#123;</span><br><span class="line">                    button.selected = YES;</span><br><span class="line">                    self.selectedButton = button;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];</span><br><span class="line">//                // 图片宽 高分别为 44 24</span><br><span class="line">                CGFloat x = (BUTTON_W - 44)/2;</span><br><span class="line">                [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];</span><br><span class="line">                //添加点击方法</span><br><span class="line">                [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//button 点击方法</span><br><span class="line">- (void)selectBtn:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    //让抽屉隐藏，发出通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]postNotificationName:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">    //选中的button 已经是选中状态 不用处理</span><br><span class="line">    if (self.selectedButton == sender) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //改变之前选中button的状态  为非选中状态</span><br><span class="line">    self.selectedButton.selected = NO;</span><br><span class="line">    </span><br><span class="line">    //改变当前选中button的状态</span><br><span class="line">    sender.selected = YES;</span><br><span class="line">    self.selectedButton = sender;</span><br><span class="line">    //通知标签控制器显示当前button对应的viewController</span><br><span class="line">    if (self.callBack) &#123;</span><br><span class="line">        self.callBack(sender.tag - 1000);</span><br><span class="line">    &#125;</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UILabel *MakeLabel(CGRect frame, NSString *title)</span><br><span class="line">&#123;</span><br><span class="line">    UILabel *label = [[UILabel alloc]initWithFrame:frame];</span><br><span class="line">//    label.userInteractionEnabled = YES;</span><br><span class="line">    label.backgroundColor = [UIColor clearColor];</span><br><span class="line">    label.textColor = [UIColor whiteColor];</span><br><span class="line">    label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    label.text = title;</span><br><span class="line">    return label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//根据 frame和 imageName 创建UIImageView</span><br><span class="line">UIImageView *MakeImageView(CGRect frame, NSString *imageName)</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageV = [[UIImageView alloc]initWithFrame:frame];</span><br><span class="line">//    imageV.userInteractionEnabled = YES;</span><br><span class="line">    imageV.backgroundColor = [UIColor clearColor];</span><br><span class="line">    imageV.image = [UIImage imageNamed:imageName];</span><br><span class="line">    return imageV;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p><strong>3.标签控制器</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">@interface MTabBarViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MTabBarViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithViewControllers:(NSArray *)viewControllers</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        _viewControllers = viewControllers;</span><br><span class="line">        //遍历数组，添加子控制器</span><br><span class="line">        [_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            [self addChild:obj];</span><br><span class="line">        &#125;];</span><br><span class="line">        /*</span><br><span class="line">         @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]</span><br><span class="line">         @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]</span><br><span class="line">         */</span><br><span class="line">        _tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];</span><br><span class="line">        [self.view addSubview:self.tabBar];</span><br><span class="line">        __weak typeof(self) weakSelf = self;</span><br><span class="line">        self.tabBar.callBack = ^(NSInteger index)&#123;</span><br><span class="line">            weakSelf.selectedIndex = index;</span><br><span class="line">        &#125;;</span><br><span class="line">        //默认选中第0个</span><br><span class="line">        self.selectedIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setSelectedIndex:(NSInteger)selectedIndex</span><br><span class="line">&#123;</span><br><span class="line">    //取出当前控制器 oldVc</span><br><span class="line">    UIViewController *oldVc = self.viewControllers[self.selectedIndex];</span><br><span class="line">    //取出将要显示的 控制器 newVc</span><br><span class="line">    UIViewController *newVc = self.viewControllers[selectedIndex];</span><br><span class="line">    //动画 向左边移动</span><br><span class="line">    newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);</span><br><span class="line">    //改变 newVc 的视图层次</span><br><span class="line">    </span><br><span class="line">    //把newVc.view 的视图放在 self.tabBar 的下面</span><br><span class="line">    [self.view insertSubview:newVc.view belowSubview:self.tabBar];</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);</span><br><span class="line">        newVc.view.frame = BOUNDS;</span><br><span class="line">    &#125;];</span><br><span class="line">    _selectedIndex = selectedIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加子控制器具体步骤</span><br><span class="line">- (void)addChild:(UIViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    [self addChildViewController:viewController];</span><br><span class="line">    viewController.view.frame = BOUNDS;</span><br><span class="line">    //将viewContoller.view 放在最底层</span><br><span class="line">    [self.view insertSubview:viewController.view atIndex:0];</span><br><span class="line">    [viewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p><strong>4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CGRect TabBarFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, S_H-64, S_W, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉隐藏（开始）的位置</span><br><span class="line">CGRect LeftViewStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉显示（结束）的位置</span><br><span class="line">CGRect LeftViewEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容开始（抽屉隐藏时）的位置</span><br><span class="line">CGRect RigntContentStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容结束（抽屉显示时）的位置</span><br><span class="line">CGRect RightContentEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(S_W*0.75, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(x, y, w, h);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>欢迎下载</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;demo地址：&lt;a href=&quot;https://github.com/GavinCarter1991/-tarBar&quot;&gt;gitHub&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;一、先来个效果&quot;&gt;&lt;a href=&quot;#一、先来个效果&quot; class=&quot;headerlink&quot; title=&quot;</summary>
-      
-    
-    
-    
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
-    
-    
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
-    
-    <category term="“抽屉”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
-    
-    <category term="“tabBar”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CtabBar%E2%80%9D/"/>
+    <category term="“gitHub”" scheme="https://kindyourself.github.io/tags/%E2%80%9CgitHub%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>与web前端朋友闲聊的发现-代码相通性</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</id>
+    <link href="https://kindyourself.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"/>
+    <id>https://kindyourself.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</id>
     <published>2016-07-15T15:50:50.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -548,21 +519,50 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“代码相通性”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/"/>
+    <category term="“代码相通性”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>iOS-自定义带抽屉效果的tabBar</title>
+    <link href="https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
+    <id>https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
+    <published>2016-07-15T15:50:50.000Z</published>
+    <updated>2025-06-10T03:47:51.050Z</updated>
+    
+    <content type="html"><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p><h3 id="一、先来个效果"><a href="#一、先来个效果" class="headerlink" title="一、先来个效果"></a>一、先来个效果</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/05244727e176525fc66016280b6309d6.webp?x-image-process=image/format,png" alt="tabBar.gif"></p><h3 id="二、代码示例"><a href="#二、代码示例" class="headerlink" title="二、代码示例"></a>二、代码示例</h3><p><strong>1.抽屉页作为根视图：</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br></pre></td><td class="code"><pre><span class="line">@interface DrawerViewController ()</span><br><span class="line">&#123;</span><br><span class="line">    UITapGestureRecognizer *tapGesture;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边的抽屉</span><br><span class="line">@property (nonatomic, strong) LeftViewController *leftViewController;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">@property (nonatomic, strong) MTabBarViewController *mainViewController;</span><br><span class="line">//抽屉是否显示的标示</span><br><span class="line"></span><br><span class="line">@property (nonatomic, assign) BOOL isOpen;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation DrawerViewController</span><br><span class="line"></span><br><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    //移除通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]removeObserver:self name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">&#125;</span><br><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [self createTabBarController];</span><br><span class="line">    [self createLeftVc];</span><br><span class="line">    </span><br><span class="line">    self.view.backgroundColor = [UIColor grayColor];</span><br><span class="line">    </span><br><span class="line">    //添加通知，监听TabBar的点击事件 隐藏左边抽屉</span><br><span class="line">    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(buttonTap) name:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (void)buttonTap</span><br><span class="line">&#123;</span><br><span class="line">    //抽屉展开时则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self openOrHidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建左边抽屉</span><br><span class="line">- (void)createLeftVc</span><br><span class="line">&#123;</span><br><span class="line">    self.leftViewController = [[LeftViewController alloc]init];</span><br><span class="line">    </span><br><span class="line">    //抽屉控制器添加到父控制器中</span><br><span class="line">    [self addChildViewController:self.leftViewController];</span><br><span class="line">    self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">    [self.view addSubview:self.leftViewController.view];</span><br><span class="line">    [self.leftViewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//创建右边的标签控制器</span><br><span class="line">- (void)createTabBarController&#123;</span><br><span class="line">    //</span><br><span class="line">    NSArray *classNames = @[@&quot;ProductViewController&quot;,@&quot;MessageViewController&quot;,@&quot;OrderViewController&quot;];</span><br><span class="line">    </span><br><span class="line">    //保存viewControllers</span><br><span class="line">    NSMutableArray *viewControllers = [NSMutableArray array];</span><br><span class="line">    [classNames enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">        //先把字符串转化为类名</span><br><span class="line">        Class class = NSClassFromString(obj);</span><br><span class="line">        </span><br><span class="line">        //创建ViewController</span><br><span class="line">        UIViewController *vc = [[class alloc]init];</span><br><span class="line">        UINavigationController *aNav = [[UINavigationController alloc]initWithRootViewController:vc];</span><br><span class="line">        </span><br><span class="line">        [viewControllers addObject:aNav];</span><br><span class="line">        </span><br><span class="line">    &#125;];</span><br><span class="line">    //TabBarController 创建</span><br><span class="line">    _mainViewController = [[MTabBarViewController alloc]initWithViewControllers:viewControllers];</span><br><span class="line">    _mainViewController.view.backgroundColor = [UIColor brownColor];</span><br><span class="line">    </span><br><span class="line">    //添加标签控制器到父控制器</span><br><span class="line">    [self addChildViewController:self.mainViewController];</span><br><span class="line">    self.mainViewController.view.frame = BOUNDS;</span><br><span class="line">    [self.view addSubview:self.mainViewController.view];</span><br><span class="line">    [self.mainViewController didMoveToParentViewController:self];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//标签控制器显示的vc的根控制器的view往右边移动</span><br><span class="line">//tabBar -&gt; Nav (ViewControllers[selectedIndex]) -&gt; Nav.rootViewController.view</span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveRight</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RightContentEndFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tabBar_Nav_RootViewController_viewMoveLeft</span><br><span class="line">&#123;</span><br><span class="line">    //标签控制器当中 当前显示的控制器</span><br><span class="line">    UINavigationController *nav = self.mainViewController.viewControllers[self.mainViewController.selectedIndex];</span><br><span class="line">    //取出导航控制器的根控制器</span><br><span class="line">    UIViewController *rootVc = nav.childViewControllers[0];</span><br><span class="line">    rootVc.view.frame = RigntContentStartFrame();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//显示左边抽屉</span><br><span class="line">- (void)open</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewEndFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveRight];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">    //添加点击手势，点击某些区域的隐藏抽屉</span><br><span class="line">    tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];</span><br><span class="line">    tapGesture.numberOfTapsRequired = 1;</span><br><span class="line">    tapGesture.numberOfTouchesRequired = 1;</span><br><span class="line">    [self.view addGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)tap:(UITapGestureRecognizer *)gesturer</span><br><span class="line">&#123;</span><br><span class="line">    //获取点击的位置</span><br><span class="line">    CGPoint point = [gesturer locationInView:self.view];</span><br><span class="line">    if (CGRectContainsPoint(self.leftViewController.view.frame, point) == YES) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self hidden];</span><br><span class="line">    self.isOpen = NO;</span><br><span class="line">    //移除手势</span><br><span class="line">    [self.view removeGestureRecognizer:tapGesture];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//隐藏左边抽屉</span><br><span class="line">- (void)hidden</span><br><span class="line">&#123;</span><br><span class="line">    [UIView animateWithDuration:0.48 animations:^&#123;</span><br><span class="line">        self.leftViewController.view.frame = LeftViewStartFrame();</span><br><span class="line">        [self tabBar_Nav_RootViewController_viewMoveLeft];</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)openOrHidden</span><br><span class="line">&#123;</span><br><span class="line">    //当前如果是隐藏，则显示</span><br><span class="line">    if (self.isOpen == NO) &#123;</span><br><span class="line">        [self open];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //当前如果是显示的，则隐藏</span><br><span class="line">    if (self.isOpen == YES) &#123;</span><br><span class="line">        [self hidden];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //改变隐藏标记</span><br><span class="line">    self.isOpen = !self.isOpen;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>2.标签视图 修改方法 <code>- (void)selectBtn:(UIButton *)sender</code>中的切换效果可以实现不同的切换动画与效果。</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">@implementation MTabBar</span><br><span class="line">- (instancetype)initWithTitles:(NSArray *)titles imageNames:(NSArray *)imageNames</span><br><span class="line">&#123;</span><br><span class="line">    self = [super initWithFrame:TabBarFrame()];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        //标题数组不为空，图片名字个数 ＝ 标题个数</span><br><span class="line">        self.buttonBack = [[UIView alloc]initWithFrame:CGRM(0, 0, BUTTON_W, 64)];</span><br><span class="line">        self.buttonBack.backgroundColor = BUTTON_BACK_COLOR;</span><br><span class="line">        [self addSubview:self.buttonBack];</span><br><span class="line">        </span><br><span class="line">        self.backgroundColor = TABBAR_BACK_COLOR;</span><br><span class="line">        </span><br><span class="line">        if ([titles count] &amp;&amp; [titles count] == [imageNames count]) &#123;</span><br><span class="line">            [titles enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">                UIButton *button = [[UIButton alloc]initWithFrame:CGRM(BUTTON_W*idx, 0, BUTTON_W, 64)];</span><br><span class="line">                button.tag = 1000 + idx;</span><br><span class="line">                [self addSubview:button];</span><br><span class="line">                //默认选中第一个</span><br><span class="line">                if (idx == 0) &#123;</span><br><span class="line">                    button.selected = YES;</span><br><span class="line">                    self.selectedButton = button;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                [button addSubview:MakeLabel(CGRM(0, 30, BUTTON_W, 34), obj)];</span><br><span class="line">//                // 图片宽 高分别为 44 24</span><br><span class="line">                CGFloat x = (BUTTON_W - 44)/2;</span><br><span class="line">                [button addSubview:MakeImageView(CGRM(x, 5, 44, 24),[imageNames objectAtIndex:idx])];</span><br><span class="line">                //添加点击方法</span><br><span class="line">                [button addTarget:self action:@selector(selectBtn:) forControlEvents:UIControlEventTouchUpInside];</span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//button 点击方法</span><br><span class="line">- (void)selectBtn:(UIButton *)sender</span><br><span class="line">&#123;</span><br><span class="line">    //让抽屉隐藏，发出通知</span><br><span class="line">    [[NSNotificationCenter defaultCenter]postNotificationName:@&quot;buttonTap&quot; object:nil];</span><br><span class="line">    </span><br><span class="line">    //选中的button 已经是选中状态 不用处理</span><br><span class="line">    if (self.selectedButton == sender) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    //改变之前选中button的状态  为非选中状态</span><br><span class="line">    self.selectedButton.selected = NO;</span><br><span class="line">    </span><br><span class="line">    //改变当前选中button的状态</span><br><span class="line">    sender.selected = YES;</span><br><span class="line">    self.selectedButton = sender;</span><br><span class="line">    //通知标签控制器显示当前button对应的viewController</span><br><span class="line">    if (self.callBack) &#123;</span><br><span class="line">        self.callBack(sender.tag - 1000);</span><br><span class="line">    &#125;</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        self.buttonBack.center = CGPointMake(BUTTON_W/2+(sender.tag - 1000) * BUTTON_W, 32);</span><br><span class="line">    &#125; completion:nil];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">UILabel *MakeLabel(CGRect frame, NSString *title)</span><br><span class="line">&#123;</span><br><span class="line">    UILabel *label = [[UILabel alloc]initWithFrame:frame];</span><br><span class="line">//    label.userInteractionEnabled = YES;</span><br><span class="line">    label.backgroundColor = [UIColor clearColor];</span><br><span class="line">    label.textColor = [UIColor whiteColor];</span><br><span class="line">    label.textAlignment = NSTextAlignmentCenter;</span><br><span class="line">    label.text = title;</span><br><span class="line">    return label;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//根据 frame和 imageName 创建UIImageView</span><br><span class="line">UIImageView *MakeImageView(CGRect frame, NSString *imageName)</span><br><span class="line">&#123;</span><br><span class="line">    UIImageView *imageV = [[UIImageView alloc]initWithFrame:frame];</span><br><span class="line">//    imageV.userInteractionEnabled = YES;</span><br><span class="line">    imageV.backgroundColor = [UIColor clearColor];</span><br><span class="line">    imageV.image = [UIImage imageNamed:imageName];</span><br><span class="line">    return imageV;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p><strong>3.标签控制器</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">@interface MTabBarViewController ()</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation MTabBarViewController</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithViewControllers:(NSArray *)viewControllers</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        </span><br><span class="line">        _viewControllers = viewControllers;</span><br><span class="line">        //遍历数组，添加子控制器</span><br><span class="line">        [_viewControllers enumerateObjectsUsingBlock:^(UIViewController *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) &#123;</span><br><span class="line">            [self addChild:obj];</span><br><span class="line">        &#125;];</span><br><span class="line">        /*</span><br><span class="line">         @[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]</span><br><span class="line">         @[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;]</span><br><span class="line">         */</span><br><span class="line">        _tabBar = [[MTabBar alloc]initWithTitles:@[@&quot;商品浏览&quot;,@&quot;我的消息&quot;,@&quot;我的订单&quot;] imageNames:@[@&quot;商品.png&quot;,@&quot;消息.png&quot;,@&quot;订单.png&quot;]];</span><br><span class="line">        [self.view addSubview:self.tabBar];</span><br><span class="line">        __weak typeof(self) weakSelf = self;</span><br><span class="line">        self.tabBar.callBack = ^(NSInteger index)&#123;</span><br><span class="line">            weakSelf.selectedIndex = index;</span><br><span class="line">        &#125;;</span><br><span class="line">        //默认选中第0个</span><br><span class="line">        self.selectedIndex = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)setSelectedIndex:(NSInteger)selectedIndex</span><br><span class="line">&#123;</span><br><span class="line">    //取出当前控制器 oldVc</span><br><span class="line">    UIViewController *oldVc = self.viewControllers[self.selectedIndex];</span><br><span class="line">    //取出将要显示的 控制器 newVc</span><br><span class="line">    UIViewController *newVc = self.viewControllers[selectedIndex];</span><br><span class="line">    //动画 向左边移动</span><br><span class="line">    newVc.view.frame = CGRectMake(S_W, 0, S_W, S_H);</span><br><span class="line">    //改变 newVc 的视图层次</span><br><span class="line">    </span><br><span class="line">    //把newVc.view 的视图放在 self.tabBar 的下面</span><br><span class="line">    [self.view insertSubview:newVc.view belowSubview:self.tabBar];</span><br><span class="line">    [UIView animateWithDuration:0.5 animations:^&#123;</span><br><span class="line">        oldVc.view.frame = CGRectMake(-S_W, 0, S_W, S_H);</span><br><span class="line">        newVc.view.frame = BOUNDS;</span><br><span class="line">    &#125;];</span><br><span class="line">    _selectedIndex = selectedIndex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//添加子控制器具体步骤</span><br><span class="line">- (void)addChild:(UIViewController *)viewController</span><br><span class="line">&#123;</span><br><span class="line">    [self addChildViewController:viewController];</span><br><span class="line">    viewController.view.frame = BOUNDS;</span><br><span class="line">    //将viewContoller.view 放在最底层</span><br><span class="line">    [self.view insertSubview:viewController.view atIndex:0];</span><br><span class="line">    [viewController didMoveToParentViewController:self];</span><br><span class="line">    </span><br><span class="line">//    self.view.subviews 数组 下标越小，视图层次越在下面，下标越大，视图层次越在上面</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure><p><strong>4.视图位置控制 修改对应的视图的frame可以实现不同的视图效果</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">CGRect TabBarFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, S_H-64, S_W, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉隐藏（开始）的位置</span><br><span class="line">CGRect LeftViewStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(-S_W*0.75, 67,S_W*0.75 , S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//左边抽屉显示（结束）的位置</span><br><span class="line">CGRect LeftViewEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 67, S_W*0.75, S_H-64-64-6);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容开始（抽屉隐藏时）的位置</span><br><span class="line">CGRect RigntContentStartFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(0, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//右边内容结束（抽屉显示时）的位置</span><br><span class="line">CGRect RightContentEndFrame()</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(S_W*0.75, 0, S_W, S_H);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CGRect CGRM(CGFloat x, CGFloat y,CGFloat w,CGFloat h)</span><br><span class="line">&#123;</span><br><span class="line">    return CGRectMake(x, y, w, h);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>欢迎下载</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;demo地址：&lt;a href=&quot;https://github.com/GavinCarter1991/-tarBar&quot;&gt;gitHub&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一、先来个效果&quot;&gt;&lt;a href=&quot;#一、先来个效果&quot; class=&quot;headerlink&quot; title=&quot;</summary>
+      
+    
+    
+    
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
+    
+    
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    
+    <category term="“抽屉”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
+    
+    <category term="“tabBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CtabBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Base64-不重要数据的简单加密</title>
-    <link href="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"/>
-    <id>https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</id>
+    <link href="https://kindyourself.github.io/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"/>
+    <id>https://kindyourself.github.io/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</id>
     <published>2016-07-09T12:31:41.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -577,12 +577,12 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“Base64”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9CBase64%E2%80%9D/"/>
+    <category term="“Base64”" scheme="https://kindyourself.github.io/tags/%E2%80%9CBase64%E2%80%9D/"/>
     
-    <category term="“加密”" scheme="https://gavincarter1991.github.io/#%20%E5%8D%9A%E5%AE%A2%E5%AE%8C%E6%95%B4URL/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/"/>
+    <category term="“加密”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/"/>
     
   </entry>
   
