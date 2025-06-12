@@ -97,27 +97,81 @@
       </tags>
   </entry>
   <entry>
-    <title>Flutter遇到的问题</title>
-    <url>/2025/05/23/flutter-error/</url>
+    <title>gitHub hexo 个人博客</title>
+    <url>/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<blockquote>
-<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
+<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
 </blockquote>
-<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
-<blockquote>
-<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
+<h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
+<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
+<p>查看安装是否成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>安装成功会显示版本号：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/257560df666479d7a2171dd37c11a68b.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 03.09.16.png"></p>
+<h3 id="3-开始安装hexo"><a href="#3-开始安装hexo" class="headerlink" title="3. 开始安装hexo"></a>3. 开始安装hexo</h3><p>首先进入你需要存放博客的文件夹，然后：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
+
+<p>查看版本号：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+<p>初始化项目：(类似于git)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-开始使用"><a href="#4-开始使用" class="headerlink" title="4. 开始使用"></a>4. 开始使用</h3><p>创建页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>生成静态文件(会在当前目录下生成一个新的叫做public的文件夹)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g # 或者hexo generate</span><br></pre></td></tr></table></figure>
+<p>开启本地服务 用于在本地浏览 Ctrl+C退出查看</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s # 或者hexo server，可以在输入http://localhost:4000/ 查看 或者 按住Command 双击命令行下的网址（http://localhost:4000/）</span><br></pre></td></tr></table></figure>
+<p>这时网页已经成型了。</p>
+<p>接下来就是要部署到gitHub上 只需要在配置文件_config.xml中作如下修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gavincarter1991/gavincarter1991.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>当然gavincarter1991位置还是填你的信息</p>
+<p>然后安装一个自动工具，方便以后页面的部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>部署去gitHub：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>以后每一次部署的一般步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<h3 id="5-写文章"><a href="#5-写文章" class="headerlink" title="5.写文章"></a>5.写文章</h3><p>首先；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
+<p>然后去目录：source_posts下找到My First Blog.md（markdown文件）开始编辑文章了。我Mac用的是Mou编辑器，你可以自由选择适合自己的markdown编辑器。<a href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/0.html">这里有markdown使用技巧</a><br>写好以后就可以按照前面的部署常用步骤进行部署了。</p>
+<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>1.主题：hexo有很多<a href="https://github.com/hexojs/hexo/wiki/Themes">第三方主题</a>可以选择，通过git clone<br>2.配置修改参数<a href="http://div.io/topic/1691">详见</a> 我写几个常用的：<br>头像：把图片放在主题内 source&#x2F;images&#x2F;，图片链接地址可以填 &#x2F;images&#x2F;avatar.png  然后在当前主题的_config.yml 不是根目录的_config.yml（如果你换了主题，需要根据自己选择的主题进入里面去设置）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source/images): /images/avatar.jpg</span><br><span class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</span><br><span class="line">avatar: /images/avatar.jpg</span><br></pre></td></tr></table></figure>
+<p>个人中心配置：（根目录的_config.yml）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Gavin</span><br><span class="line">subtitle: 记录成长过程中的点点滴滴</span><br><span class="line">description: 我爱敏敏</span><br><span class="line">author: kindyourself@163.com</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
+<p>显示标签与分类：取消对应注释</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)</span><br><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
+<p>然后创建分类</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;categories下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2016-07-16 02:21:37</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>以后在写文章的时候加上分类就会自动创建分类了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar]</span><br><span class="line">categories: &quot;iOS&quot; // 分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>创建标签</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<p>在&#x2F;source&#x2F;tags下有个index.md 按照如下填写：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2016-07-16 02:11:12</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>以后在写文章的时候加上标签就会自动计入</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar] // 标签</span><br><span class="line">categories: &quot;iOS&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>下载主题：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
+<p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
 </blockquote>
-<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
-<blockquote>
-<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
-</blockquote>
-<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
 ]]></content>
       <categories>
-        <category>Flutter</category>
+        <category>其他</category>
       </categories>
       <tags>
-        <tag>“Flutter”</tag>
-        <tag>“Error”</tag>
+        <tag>“hexo”</tag>
+        <tag>“个人博客”</tag>
+        <tag>“gitHub”</tag>
       </tags>
   </entry>
   <entry>
@@ -227,143 +281,6 @@
       </tags>
   </entry>
   <entry>
-    <title>gitHub hexo 个人博客</title>
-    <url>/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
-</blockquote>
-<h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
-<h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">brew install node</span><br></pre></td></tr></table></figure>
-<p>查看安装是否成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>安装成功会显示版本号：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/257560df666479d7a2171dd37c11a68b.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 03.09.16.png"></p>
-<h3 id="3-开始安装hexo"><a href="#3-开始安装hexo" class="headerlink" title="3. 开始安装hexo"></a>3. 开始安装hexo</h3><p>首先进入你需要存放博客的文件夹，然后：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo -g</span><br></pre></td></tr></table></figure>
-
-<p>查看版本号：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
-<p>初始化项目：(类似于git)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-开始使用"><a href="#4-开始使用" class="headerlink" title="4. 开始使用"></a>4. 开始使用</h3><p>创建页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
-<p>生成静态文件(会在当前目录下生成一个新的叫做public的文件夹)</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo g # 或者hexo generate</span><br></pre></td></tr></table></figure>
-<p>开启本地服务 用于在本地浏览 Ctrl+C退出查看</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo s # 或者hexo server，可以在输入http://localhost:4000/ 查看 或者 按住Command 双击命令行下的网址（http://localhost:4000/）</span><br></pre></td></tr></table></figure>
-<p>这时网页已经成型了。</p>
-<p>接下来就是要部署到gitHub上 只需要在配置文件_config.xml中作如下修改：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:gavincarter1991/gavincarter1991.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>当然gavincarter1991位置还是填你的信息</p>
-<p>然后安装一个自动工具，方便以后页面的部署：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>部署去gitHub：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>以后每一次部署的一般步骤：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<h3 id="5-写文章"><a href="#5-写文章" class="headerlink" title="5.写文章"></a>5.写文章</h3><p>首先；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new post &quot;My First Blog&quot;</span><br></pre></td></tr></table></figure>
-<p>然后去目录：source_posts下找到My First Blog.md（markdown文件）开始编辑文章了。我Mac用的是Mou编辑器，你可以自由选择适合自己的markdown编辑器。<a href="https://wizardforcel.gitbooks.io/markdown-simple-world/content/0.html">这里有markdown使用技巧</a><br>写好以后就可以按照前面的部署常用步骤进行部署了。</p>
-<h3 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h3><p>1.主题：hexo有很多<a href="https://github.com/hexojs/hexo/wiki/Themes">第三方主题</a>可以选择，通过git clone<br>2.配置修改参数<a href="http://div.io/topic/1691">详见</a> 我写几个常用的：<br>头像：把图片放在主题内 source&#x2F;images&#x2F;，图片链接地址可以填 &#x2F;images&#x2F;avatar.png  然后在当前主题的_config.yml 不是根目录的_config.yml（如果你换了主题，需要根据自己选择的主题进入里面去设置）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line"># in theme directory(source/images): /images/avatar.jpg</span><br><span class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</span><br><span class="line">avatar: /images/avatar.jpg</span><br></pre></td></tr></table></figure>
-<p>个人中心配置：（根目录的_config.yml）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: Gavin</span><br><span class="line">subtitle: 记录成长过程中的点点滴滴</span><br><span class="line">description: 我爱敏敏</span><br><span class="line">author: kindyourself@163.com</span><br><span class="line">language: zh-Hans</span><br><span class="line">timezone:</span><br></pre></td></tr></table></figure>
-<p>显示标签与分类：取消对应注释</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash (/archives -&gt; archives)</span><br><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  categories: /categories</span><br><span class="line">  #about: /about</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br><span class="line">  #commonweal: /404.html</span><br></pre></td></tr></table></figure>
-<p>然后创建分类</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-<p>在&#x2F;source&#x2F;categories下有个index.md 按照如下填写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2016-07-16 02:21:37</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>以后在写文章的时候加上分类就会自动创建分类了</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar]</span><br><span class="line">categories: &quot;iOS&quot; // 分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>创建标签</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
-<p>在&#x2F;source&#x2F;tags下有个index.md 按照如下填写：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: All tags</span><br><span class="line">date: 2016-07-16 02:11:12</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>以后在写文章的时候加上标签就会自动计入</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">layout: &#x27;[layout]&#x27;</span><br><span class="line">title: iOS-自定义带抽屉效果的tabBar</span><br><span class="line">date: 2016-07-12 23:19:35</span><br><span class="line">tags: [自定义，抽屉，tabBar] // 标签</span><br><span class="line">categories: &quot;iOS&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<p>下载主题：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7. 总结"></a>7. 总结</h3><blockquote>
-<p>这个在网上还有很多很详细的教程，这是我的大致操作流程。感觉这个可以很简单，就是少去动原生的。如果你想要去捣鼓会发现还是有很多可以捣鼓的，因为他有很多的参数可以配置。我只是配置了一下我觉得在我看来重要的。有兴趣的朋友可以去捣鼓捣鼓。-太晚了，都4点了，睡觉去</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>“hexo”</tag>
-        <tag>“个人博客”</tag>
-        <tag>“gitHub”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
-</blockquote>
-<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
-<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
-<blockquote>
-<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-</blockquote>
-<p><strong>这个方法其实还有一个用法：</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<blockquote>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
-</blockquote>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
-<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“webView”</tag>
-        <tag>“视频不显示缩略图”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
-<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
-<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
-<p>一个是 Create folder references for any added folders 创建实体结构）</p>
-</blockquote>
-<blockquote>
-<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
-</blockquote>
-<p><strong>引入文件方式：</strong></p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
-</blockquote>
-<p> <strong>引入文件方式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“本地”</tag>
-        <tag>“路径问题”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iOS-widget-Today 扩展</title>
     <url>/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<blockquote>
@@ -419,6 +336,58 @@
       </tags>
   </entry>
   <entry>
+    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
+    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
+<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
+<p>一个是 Create folder references for any added folders 创建实体结构）</p>
+</blockquote>
+<blockquote>
+<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
+</blockquote>
+<p><strong>引入文件方式：</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+</blockquote>
+<p> <strong>引入文件方式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“本地”</tag>
+        <tag>“路径问题”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flutter遇到的问题</title>
+    <url>/2025/05/23/flutter-error/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
+</blockquote>
+<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
+<blockquote>
+<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
+</blockquote>
+<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
+<blockquote>
+<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
+</blockquote>
+<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>“Flutter”</tag>
+        <tag>“Error”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iOS-自定义带抽屉效果的tabBar</title>
     <url>/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</url>
     <content><![CDATA[<p>demo地址：<a href="https://github.com/GavinCarter1991/-tarBar">gitHub</a></p>
@@ -447,6 +416,62 @@
         <tag>“iOS”</tag>
         <tag>“抽屉”</tag>
         <tag>“tabBar”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-解压zip</title>
+    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
+    <content><![CDATA[<blockquote>
+<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
+</blockquote>
+<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
+<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
+</li>
+<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
+</li>
+</ol>
+<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“解压zip”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-高德地图</title>
+    <url>/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。<br>要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如果需要导航就可以不用pod搜索SDK了。最后就是本地导入相应头文件，然后配置key。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const static NSString *APIKey = @&quot;你申请的key&quot;;</span><br><span class="line"></span><br><span class="line">// 配置用户Key</span><br><span class="line"></span><br><span class="line">[MAMapServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 搜索</span><br><span class="line"></span><br><span class="line">[AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 导航</span><br><span class="line"></span><br><span class="line">[AMapNaviServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>后面的就可以按照它的开发指南写，要注意的是路径规划是建立在路径搜索之上的，要路径规划先得完成路径搜索。导航的语音合成，我是用的讯飞的在线语音合成，离线的好像要收费，在下穷猿一名。高德导航的demo好像也是用的讯飞的。去讯飞API官网注册账号，创建应用，获取key，然后配置语音。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//设置sdk的log等级，log保存在下面设置的工作路径中</span><br><span class="line">[IFlySetting setLogFile:LVL_ALL];</span><br><span class="line"></span><br><span class="line">//打开输出在console的log开关</span><br><span class="line">[IFlySetting showLogcat:YES];</span><br><span class="line"></span><br><span class="line">//设置sdk的工作路径</span><br><span class="line">NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *cachePath = [paths objectAtIndex:0];</span><br><span class="line">[IFlySetting setLogFilePath:cachePath];</span><br><span class="line"></span><br><span class="line">// 配置相关参数</span><br><span class="line">- (void)configIFlySpeech</span><br><span class="line">&#123;</span><br><span class="line">[IFlySpeechUtility createUtility:[NSString stringWithFormat:@&quot;appid=%@,timeout=%@&quot;,@&quot;5733feca&quot;,@&quot;20000&quot;]];</span><br><span class="line"></span><br><span class="line">[IFlySetting setLogFile:LVL_NONE];</span><br><span class="line"></span><br><span class="line">[IFlySetting showLogcat:NO];</span><br><span class="line"></span><br><span class="line">// 设置语音合成的参数</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant SPEED]];//合成的语速,取值范围 0~100</span><br><span class="line"></span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant VOLUME]];//合成的音量;取值范围 0~100</span><br><span class="line"></span><br><span class="line">// 发音人,默认为”xiaoyan”;可以设置的参数列表可参考个 性化发音人列表;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;xiaowang&quot; forKey:[IFlySpeechConstant VOICE_NAME]];</span><br><span class="line"></span><br><span class="line">// 音频采样率,目前支持的采样率有 16000 和 8000;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;8000&quot; forKey:[IFlySpeechConstant SAMPLE_RATE]];</span><br><span class="line"></span><br><span class="line">// 当你再不需要保存音频时，请在必要的地方加上这行。</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:nil forKey:[IFlySpeechConstant TTS_AUDIO_PATH]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后初始化和设置代理。</span><br><span class="line">- (void)initIFlySpeech &#123;</span><br><span class="line"></span><br><span class="line">if (self.iFlySpeechSynthesizer == nil)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer = [IFlySpeechSynthesizer sharedInstance];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer.delegate = self;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 语音失败回调代理函数</span><br><span class="line">- (void)onCompleted:(IFlySpeechError *)error &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;Speak Error:&#123;%d:%@&#125;&quot;, error.errorCode, error.errorDesc);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>高德导航有一个回调函数，会传回导航语音的字符串，在回调函数里面创建异步线程，将字符串合成语音，并且播放，在高德导航点击关闭按钮的回调函数里面关闭播放并且关闭导航。</p>
+</blockquote>
+<p>####pragma mark – 语音调用（导航回调）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- (void)naviManager:(AMapNaviManager *)naviManager playNaviSoundString:(NSString *)soundString soundStringType:(AMapNaviSoundType)soundStringType &#123;</span><br><span class="line"></span><br><span class="line">if (soundStringType == AMapNaviSoundTypePassedReminder) &#123;</span><br><span class="line"></span><br><span class="line">// 系统语音</span><br><span class="line">AudioServicesPlaySystemSound(1009);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">// 开启异步线程（全局）</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line">[_iFlySpeechSynthesizer startSpeaking:soundString];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这是点击关闭按钮的回调函数（就是导航界面的叉叉）</span><br><span class="line">- (void)naviViewControllerCloseButtonClicked:(AMapNaviViewController *)naviViewController &#123;</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line"></span><br><span class="line">[self.iFlySpeechSynthesizer stopSpeaking];</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">[self.naviManager stopNavi];</span><br><span class="line"></span><br><span class="line">[self.naviManager dismissNaviViewControllerAnimated:YES];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上就是我最近研究的高德API，一是对最近学习的总结，二是希望帮助刚刚接触高德的人，希望对你们有帮助，文章写得有点乱，第一次啊，以后肯定会越来越好。如有错误欢迎各位指出。谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“高德地图”</tag>
       </tags>
   </entry>
   <entry>
@@ -517,119 +542,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       <tags>
         <tag>“iOS”</tag>
         <tag>“融云”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-高德地图</title>
-    <url>/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来在简书上学习了不少的知识，自己也想分享一些知识供大家指点，最近正好在研究高德地图API，所以分享一下自己最近捣鼓的。<br>要使用高德API，首先要去高德API官网注册开发者账号，创建应用，获得key值。然后在本地创建自己的项目pod高德SDK，在pod时要提前思考清楚是否需要导航，我在这里就被坑过，因为导航的SDK包含搜索的SDK，如果将搜索SDK与导航SDK都pod了会报链接错误，所以如果需要导航就可以不用pod搜索SDK了。最后就是本地导入相应头文件，然后配置key。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const static NSString *APIKey = @&quot;你申请的key&quot;;</span><br><span class="line"></span><br><span class="line">// 配置用户Key</span><br><span class="line"></span><br><span class="line">[MAMapServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 搜索</span><br><span class="line"></span><br><span class="line">[AMapSearchServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br><span class="line">// 导航</span><br><span class="line"></span><br><span class="line">[AMapNaviServices sharedServices].apiKey = (NSString *)APIKey;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>后面的就可以按照它的开发指南写，要注意的是路径规划是建立在路径搜索之上的，要路径规划先得完成路径搜索。导航的语音合成，我是用的讯飞的在线语音合成，离线的好像要收费，在下穷猿一名。高德导航的demo好像也是用的讯飞的。去讯飞API官网注册账号，创建应用，获取key，然后配置语音。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//设置sdk的log等级，log保存在下面设置的工作路径中</span><br><span class="line">[IFlySetting setLogFile:LVL_ALL];</span><br><span class="line"></span><br><span class="line">//打开输出在console的log开关</span><br><span class="line">[IFlySetting showLogcat:YES];</span><br><span class="line"></span><br><span class="line">//设置sdk的工作路径</span><br><span class="line">NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *cachePath = [paths objectAtIndex:0];</span><br><span class="line">[IFlySetting setLogFilePath:cachePath];</span><br><span class="line"></span><br><span class="line">// 配置相关参数</span><br><span class="line">- (void)configIFlySpeech</span><br><span class="line">&#123;</span><br><span class="line">[IFlySpeechUtility createUtility:[NSString stringWithFormat:@&quot;appid=%@,timeout=%@&quot;,@&quot;5733feca&quot;,@&quot;20000&quot;]];</span><br><span class="line"></span><br><span class="line">[IFlySetting setLogFile:LVL_NONE];</span><br><span class="line"></span><br><span class="line">[IFlySetting showLogcat:NO];</span><br><span class="line"></span><br><span class="line">// 设置语音合成的参数</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant SPEED]];//合成的语速,取值范围 0~100</span><br><span class="line"></span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;50&quot; forKey:[IFlySpeechConstant VOLUME]];//合成的音量;取值范围 0~100</span><br><span class="line"></span><br><span class="line">// 发音人,默认为”xiaoyan”;可以设置的参数列表可参考个 性化发音人列表;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;xiaowang&quot; forKey:[IFlySpeechConstant VOICE_NAME]];</span><br><span class="line"></span><br><span class="line">// 音频采样率,目前支持的采样率有 16000 和 8000;</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:@&quot;8000&quot; forKey:[IFlySpeechConstant SAMPLE_RATE]];</span><br><span class="line"></span><br><span class="line">// 当你再不需要保存音频时，请在必要的地方加上这行。</span><br><span class="line">[[IFlySpeechSynthesizer sharedInstance] setParameter:nil forKey:[IFlySpeechConstant TTS_AUDIO_PATH]];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">然后初始化和设置代理。</span><br><span class="line">- (void)initIFlySpeech &#123;</span><br><span class="line"></span><br><span class="line">if (self.iFlySpeechSynthesizer == nil)</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer = [IFlySpeechSynthesizer sharedInstance];</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_iFlySpeechSynthesizer.delegate = self;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 语音失败回调代理函数</span><br><span class="line">- (void)onCompleted:(IFlySpeechError *)error &#123;</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;Speak Error:&#123;%d:%@&#125;&quot;, error.errorCode, error.errorDesc);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>高德导航有一个回调函数，会传回导航语音的字符串，在回调函数里面创建异步线程，将字符串合成语音，并且播放，在高德导航点击关闭按钮的回调函数里面关闭播放并且关闭导航。</p>
-</blockquote>
-<p>####pragma mark – 语音调用（导航回调）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- (void)naviManager:(AMapNaviManager *)naviManager playNaviSoundString:(NSString *)soundString soundStringType:(AMapNaviSoundType)soundStringType &#123;</span><br><span class="line"></span><br><span class="line">if (soundStringType == AMapNaviSoundTypePassedReminder) &#123;</span><br><span class="line"></span><br><span class="line">// 系统语音</span><br><span class="line">AudioServicesPlaySystemSound(1009);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">// 开启异步线程（全局）</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line">[_iFlySpeechSynthesizer startSpeaking:soundString];</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 这是点击关闭按钮的回调函数（就是导航界面的叉叉）</span><br><span class="line">- (void)naviViewControllerCloseButtonClicked:(AMapNaviViewController *)naviViewController &#123;</span><br><span class="line"></span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^&#123;</span><br><span class="line"></span><br><span class="line">[self.iFlySpeechSynthesizer stopSpeaking];</span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">[self.naviManager stopNavi];</span><br><span class="line"></span><br><span class="line">[self.naviManager dismissNaviViewControllerAnimated:YES];</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>以上就是我最近研究的高德API，一是对最近学习的总结，二是希望帮助刚刚接触高德的人，希望对你们有帮助，文章写得有点乱，第一次啊，以后肯定会越来越好。如有错误欢迎各位指出。谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“高德地图”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图片上传预览</title>
-    <url>/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</url>
-    <content><![CDATA[<blockquote>
-<p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
-<p><strong>这是代码上传的HTML部分代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</span><br><span class="line">                    &lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p><strong>修改上传按钮的部分css代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.file &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #D0EEFF;</span><br><span class="line">    border: 1px solid #99D3F5;</span><br><span class="line">    border-radius: 4px;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    color: #1E88C7;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    text-indent: 0;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.file input &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.file:hover &#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p><strong>这是JS部分的代码</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function setImagePreview(avalue) &#123;</span><br><span class="line">               //input</span><br><span class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</span><br><span class="line">               var docObj = docObjs[avalue];</span><br><span class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</span><br><span class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</span><br><span class="line">                   var imgObjPreview = imgObjPreviews[0];</span><br><span class="line">               if (avalue == 0) &#123;</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;200px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;350px&#x27;;</span><br><span class="line">               &#125;else &#123;</span><br><span class="line">                   //火狐下，直接设img属性</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;100px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;100px&#x27;;</span><br><span class="line">               &#125;</span><br><span class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   //IE下，使用滤镜</span><br><span class="line">                   // docObj.select();</span><br><span class="line">                   // var imgSrc = document.selection.createRange().text;</span><br><span class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</span><br><span class="line">                   // //必须设置初始大小</span><br><span class="line">                   // localImagId.style.width = &quot;100px&quot;;</span><br><span class="line">                   // localImagId.style.height = &quot;100px&quot;;</span><br><span class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</span><br><span class="line">                   // try &#123;</span><br><span class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</span><br><span class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</span><br><span class="line">                   // &#125; catch(e) &#123;</span><br><span class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</span><br><span class="line">                   //     return false;</span><br><span class="line">                   // &#125;</span><br><span class="line">                   // imgObjPreview.style.display = &#x27;none&#x27;;</span><br><span class="line">                   // document.selection.empty();</span><br><span class="line">               &#125;</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br></pre></td></tr></table></figure>
-
-<h2 id="问题与解决："><a href="#问题与解决：" class="headerlink" title="问题与解决："></a>问题与解决：</h2><h3 id="问题一：是上传按钮默认的文件上传是这样的"><a href="#问题一：是上传按钮默认的文件上传是这样的" class="headerlink" title="问题一：是上传按钮默认的文件上传是这样的"></a>问题一：是上传按钮默认的文件上传是这样的</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/247191efee00edfe40ac992ff86a4b93.webp?x-image-process=image/format,png" alt="默认 2016-08-01 00.26.51.png"></p>
-<h3 id="但是我需要的是这样的："><a href="#但是我需要的是这样的：" class="headerlink" title="但是我需要的是这样的："></a>但是我需要的是这样的：</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b519bb3cae0f98c75720b46596facebb.webp?x-image-process=image/format,png" alt="目标 2016-08-01 00.28.07.png"></p>
-<blockquote>
-<p>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）</p>
-</blockquote>
-<h3 id="问题二：点击事件冲突"><a href="#问题二：点击事件冲突" class="headerlink" title="问题二：点击事件冲突"></a>问题二：点击事件冲突</h3><blockquote>
-<p>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
-</blockquote>
-<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5>]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>“web”</tag>
-        <tag>“图片上传”</tag>
-        <tag>“预览”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序tips</title>
-    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
-    <content><![CDATA[<blockquote>
-<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
-</blockquote>
-<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
-<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
-<blockquote>
-<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
-</blockquote>
-<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
-<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
-</blockquote>
-<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
-<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
-</blockquote>
-<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
-<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
-<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
-<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
-<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
-<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
-<p>以上就是这次遇到的一些比较变态的问题。</p>
-</blockquote>
-<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
-<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
-<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
-<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>“微信小程序”</tag>
       </tags>
   </entry>
   <entry>
@@ -938,30 +850,68 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>项目剖析01-swift WebSocket</title>
-    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
+    <title>iOS-webView上加载HTML视频不显示缩略图</title>
+    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
     <content><![CDATA[<blockquote>
-<p>已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是<a href="https://github.com/daltoniam/Starscream">Starscream</a>这个第三方库，集成方法很简单去网站看看就知道。</p>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
 </blockquote>
-<h3 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Reachability</span><br><span class="line">import Starscream</span><br><span class="line">import zlib</span><br><span class="line"></span><br><span class="line">let reachability = Reachability()! // 判断网络连接</span><br><span class="line">let webSocket = WTWebsocket.shared</span><br><span class="line">var reConnectTime = 0 // 设置重连次数</span><br><span class="line">let reConnectMaxTime = 1000 // 设置最大重连次数</span><br><span class="line">let reConnectIntervalTime: TimeInterval = 15 // 设置重连时间间隔(秒)</span><br><span class="line">var websocketTimer: Timer? = nil</span><br><span class="line">var reConnectSubscribeDict:[String : Any] = [:]</span><br><span class="line">var page = &quot;home&quot;</span><br><span class="line">var isReconnect = true</span><br><span class="line"></span><br><span class="line">final class WTWebsocket: NSObject,WebSocketDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    var isPingBack = true</span><br><span class="line">    var myWebsocket: WebSocket? = nil</span><br><span class="line">    //  socket连接上函数</span><br><span class="line">    func websocketDidConnect(socket: WebSocketClient) &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime = 0</span><br><span class="line">        if reConnectSubscribeDict.count &gt; 0 &#123;</span><br><span class="line">            self.subscribe(subscribeDict: reConnectSubscribeDict)</span><br><span class="line">        &#125;</span><br><span class="line">        self.hearJump()</span><br><span class="line">        if  websocketTimer == nil &#123;</span><br><span class="line">            websocketTimer = Timer.scheduledTimer(timeInterval: reConnectIntervalTime, target: self, selector: #selector(sendBrandStr), userInfo: nil, repeats: true)</span><br><span class="line">        &#125;</span><br><span class="line">        isReconnect = true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //发送文字消息</span><br><span class="line">    @objc func sendBrandStr()&#123;</span><br><span class="line">        self.checkPing()</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 发送ping</span><br><span class="line">    func hearJump() &#123;</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  socket断开执行函数</span><br><span class="line">    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) &#123;</span><br><span class="line">        //执行重新连接方法</span><br><span class="line">        socketReconnect()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  接收返回消息函数</span><br><span class="line">    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func websocketDidReceiveData(socket: WebSocketClient, data: Data) &#123;</span><br><span class="line">        guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else &#123;return&#125;</span><br><span class="line">        if newStr == &quot;PONG&quot; &#123;</span><br><span class="line">            isPingBack = true</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">      // 处理收到的信息</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 添加注册</span><br><span class="line">    func subscribe(subscribeDict: [String : Any]) &#123;</span><br><span class="line">        var subscribeDicts = subscribeDict</span><br><span class="line">        reConnectSubscribeDict = subscribeDicts</span><br><span class="line">        page = subscribeDicts[&quot;type&quot;] as! String</span><br><span class="line">        subscribeDicts.removeValue(forKey: &quot;type&quot;)</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary:</span><br><span class="line">            subscribeDicts as NSDictionary)</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //检测</span><br><span class="line">    @objc func checkPing() &#123;</span><br><span class="line">        if !isPingBack &#123;</span><br><span class="line">            // 重新连接</span><br><span class="line">            socketReconnect()</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            isPingBack = false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //构造单例数据</span><br><span class="line">    static let shared = WTWebsocket()</span><br><span class="line">    private override init() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket 重连逻辑</span><br><span class="line">func socketReconnect() &#123;</span><br><span class="line">    //判断网络情况，如果网络正常，可以执行重连</span><br><span class="line">    if reachability.connection != .none &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime =  reConnectTime + 1</span><br><span class="line">        if reConnectTime &lt; reConnectMaxTime &#123;</span><br><span class="line">            //添加重连延时执行，防止某个时间段，全部执行</span><br><span class="line">            let time: TimeInterval = 2.0</span><br><span class="line">            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) &#123;</span><br><span class="line">                SingletonSocket.sharedInstance.socket.connect()</span><br><span class="line">                SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //提示重连失败</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //提示无网络</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况</span><br><span class="line">func socketDisConnect() &#123;</span><br><span class="line">    if !SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">        websocketTimer?.invalidate()</span><br><span class="line">        websocketTimer = nil</span><br><span class="line">        SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// initSocket方法</span><br><span class="line">func initWebSocketSingle () &#123;</span><br><span class="line">    SingletonSocket.sharedInstance.socket.delegate = webSocket</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明webSocket单例</span><br><span class="line">class SingletonSocket &#123;</span><br><span class="line">    let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)</span><br><span class="line">    class var sharedInstance : SingletonSocket&#123;</span><br><span class="line">        struct Static&#123;</span><br><span class="line">            static let instance:SingletonSocket = SingletonSocket()</span><br><span class="line">        &#125;</span><br><span class="line">        if !Static.instance.socket.isConnected&#123;</span><br><span class="line">            Static.instance.socket.connect()</span><br><span class="line">        &#125;</span><br><span class="line">        return Static.instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"><a href="#整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点" class="headerlink" title="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"></a>整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点</h3><blockquote>
-<p>发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。</p>
+<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
+<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
 </blockquote>
-<p><strong>app在后台需要断开socket，当 app重新进入前台需要重新连接</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func applicationWillResignActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入后台模式，主动断开socket，防止出现处理不了的情况</span><br><span class="line">        if SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">            reConnectTime = reConnectMaxTime</span><br><span class="line">            socketDisConnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    func applicationDidBecomeActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入前台模式，主动连接socket</span><br><span class="line">        //解决因为网络切换或链接不稳定问题，引起socket断连问题</span><br><span class="line">        //如果app从无网络，到回复网络，需要执行重连</span><br><span class="line">        if !isFirstApplicationDidBecomeActive &#123;</span><br><span class="line">            reConnectTime = 0</span><br><span class="line">            socketReconnect()</span><br><span class="line">            WTBasicConfigManager.shareDataSingle.getHash()</span><br><span class="line">        &#125;</span><br><span class="line">        isFirstApplicationDidBecomeActive = false</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>一定要设置最大重新连接的次数，不然app会无限重新连接</strong></p>
-<p><strong>连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
 <blockquote>
-<p>以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢</p>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+</blockquote>
+<p><strong>这个方法其实还有一个用法：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
+<blockquote>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
+</blockquote>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
+<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>swift</category>
+        <category>iOS</category>
       </categories>
       <tags>
-        <tag>“swift”</tag>
-        <tag>“WebSocket”</tag>
+        <tag>“iOS”</tag>
+        <tag>“webView”</tag>
+        <tag>“视频不显示缩略图”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图片上传预览</title>
+    <url>/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</url>
+    <content><![CDATA[<blockquote>
+<p>本周帮一哥们写了一个页面遇到了一些问题，特此记录一下。主要遇到的问题是图片上传预览（多个上传控件）、多个颜色选择，遇到了冲突。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/236f8ed15fd552d48cf2c3287edd9c53.webp?x-image-process=image/format,png" alt="来个效果一撇 2016-08-01 00.13.22.png"></p>
+<p><strong>这是代码上传的HTML部分代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div id=&quot;home11&quot; class=&quot;tab-pane in active lowerContent &quot;&gt;</span><br><span class="line">                  &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                    &lt;span class=&quot;spanStylef floatLeft&quot;&gt;名称&lt;/span&gt;</span><br><span class="line">                    &lt;input type=&quot;text&quot; name=&quot;appName&quot;&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;默认图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(2);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview2&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview2&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                  &lt;div class=&quot;upImage floatLeft&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;触及图标&lt;/span&gt;</span><br><span class="line">                      &lt;a href=&quot;javascript:;&quot; class=&quot;file&quot; onchange=&quot;javascript:setImagePreview(3);&quot;&gt;上传图片</span><br><span class="line">                        &lt;input type=&quot;file&quot; name=&quot;imagereview3&quot; class =&quot;inputImages&quot;&gt;</span><br><span class="line">                      &lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">                    &lt;div class=&quot;tool floatLeft&quot;&gt;</span><br><span class="line">                      &lt;span class=&quot;spanStylef floatLeft&quot;&gt;&amp;nbsp&lt;/span&gt;</span><br><span class="line">                      &lt;img class=&quot;imagereview3&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改上传按钮的部分css代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.file &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    background: #D0EEFF;</span><br><span class="line">    border: 1px solid #99D3F5;</span><br><span class="line">    border-radius: 4px;</span><br><span class="line">    padding: 4px 12px;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    color: #1E88C7;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">    text-indent: 0;</span><br><span class="line">    line-height: 20px;</span><br><span class="line">&#125;</span><br><span class="line">.file input &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    font-size: 100px;</span><br><span class="line">    right: 0;</span><br><span class="line">    top: 0;</span><br><span class="line">    opacity: 0;</span><br><span class="line">&#125;</span><br><span class="line">.file:hover &#123;</span><br><span class="line">    text-decoration: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>这是JS部分的代码</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">function setImagePreview(avalue) &#123;</span><br><span class="line">               //input</span><br><span class="line">               var docObjs = document.getElementsByClassName(&quot;inputImages&quot;);</span><br><span class="line">               var docObj = docObjs[avalue];</span><br><span class="line">               if (docObj.files &amp;&amp; docObj.files[0]) &#123;</span><br><span class="line">                   var imgObjPreviews = document.getElementsByClassName(docObj.name);</span><br><span class="line">                   var imgObjPreview = imgObjPreviews[0];</span><br><span class="line">               if (avalue == 0) &#123;</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;200px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;350px&#x27;;</span><br><span class="line">               &#125;else &#123;</span><br><span class="line">                   //火狐下，直接设img属性</span><br><span class="line">                   imgObjPreview.style.display = &#x27;block&#x27;;</span><br><span class="line">                   imgObjPreview.style.width = &#x27;100px&#x27;;</span><br><span class="line">                   imgObjPreview.style.height = &#x27;100px&#x27;;</span><br><span class="line">               &#125;</span><br><span class="line">                  imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);</span><br><span class="line">               &#125; else &#123;</span><br><span class="line">                   //IE下，使用滤镜</span><br><span class="line">                   // docObj.select();</span><br><span class="line">                   // var imgSrc = document.selection.createRange().text;</span><br><span class="line">                   // var localImagId = document.getElementById(&quot;localImag&quot;);</span><br><span class="line">                   // //必须设置初始大小</span><br><span class="line">                   // localImagId.style.width = &quot;100px&quot;;</span><br><span class="line">                   // localImagId.style.height = &quot;100px&quot;;</span><br><span class="line">                   // //图片异常的捕捉，防止用户修改后缀来伪造图片</span><br><span class="line">                   // try &#123;</span><br><span class="line">                   //     localImagId.style.filter = &quot;progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)&quot;;</span><br><span class="line">                   //     localImagId.filters.item(&quot;DXImageTransform.Microsoft.AlphaImageLoader&quot;).src = imgSrc;</span><br><span class="line">                   // &#125; catch(e) &#123;</span><br><span class="line">                   //     alert(&quot;您上传的图片格式不正确，请重新选择!&quot;);</span><br><span class="line">                   //     return false;</span><br><span class="line">                   // &#125;</span><br><span class="line">                   // imgObjPreview.style.display = &#x27;none&#x27;;</span><br><span class="line">                   // document.selection.empty();</span><br><span class="line">               &#125;</span><br><span class="line">               return true;</span><br><span class="line">           &#125;</span><br><span class="line">           </span><br></pre></td></tr></table></figure>
+
+<h2 id="问题与解决："><a href="#问题与解决：" class="headerlink" title="问题与解决："></a>问题与解决：</h2><h3 id="问题一：是上传按钮默认的文件上传是这样的"><a href="#问题一：是上传按钮默认的文件上传是这样的" class="headerlink" title="问题一：是上传按钮默认的文件上传是这样的"></a>问题一：是上传按钮默认的文件上传是这样的</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/247191efee00edfe40ac992ff86a4b93.webp?x-image-process=image/format,png" alt="默认 2016-08-01 00.26.51.png"></p>
+<h3 id="但是我需要的是这样的："><a href="#但是我需要的是这样的：" class="headerlink" title="但是我需要的是这样的："></a>但是我需要的是这样的：</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b519bb3cae0f98c75720b46596facebb.webp?x-image-process=image/format,png" alt="目标 2016-08-01 00.28.07.png"></p>
+<blockquote>
+<p>解决方案：就是将fileAPI放在你需要的控件上面，然后将fileAPI设置为透明，然后点击你需要的控件其实就是点击了fileAPI。还有一个方案就是用js:将你的控件的点击事件里面的返回为fileAPI的事件。这样点击你的控件就完成了fileAPI事件了，（我想的，没有去实现喔）</p>
+</blockquote>
+<h3 id="问题二：点击事件冲突"><a href="#问题二：点击事件冲突" class="headerlink" title="问题二：点击事件冲突"></a>问题二：点击事件冲突</h3><blockquote>
+<p>一开始我是通过id选择器来标记image与input的,后来发现多个上传按钮就需要多个js判定，会有很多的重复代码。于是后来我改为了用类选择器但是类名一样无法将image与input对应。于是我将input的name与与image的类名写成一样，通过input的name找到对应的image。</p>
+</blockquote>
+<h5 id="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"><a href="#NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！" class="headerlink" title="NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！"></a>NOTE：我前端开发很久没有弄了，很多忘记了，如有错误。请亲们一定要指出啊！</h5>]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>“web”</tag>
+        <tag>“图片上传”</tag>
+        <tag>“预览”</tag>
       </tags>
   </entry>
   <entry>
@@ -1020,76 +970,30 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>项目总结-位置实时共享</title>
-    <url>/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</url>
+    <title>项目剖析01-swift WebSocket</title>
+    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
     <content><![CDATA[<blockquote>
-<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
+<p>已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是<a href="https://github.com/daltoniam/Starscream">Starscream</a>这个第三方库，集成方法很简单去网站看看就知道。</p>
 </blockquote>
-<p><strong>谈谈新公司</strong>  </p>
-<blockquote>
-<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
+<h3 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Reachability</span><br><span class="line">import Starscream</span><br><span class="line">import zlib</span><br><span class="line"></span><br><span class="line">let reachability = Reachability()! // 判断网络连接</span><br><span class="line">let webSocket = WTWebsocket.shared</span><br><span class="line">var reConnectTime = 0 // 设置重连次数</span><br><span class="line">let reConnectMaxTime = 1000 // 设置最大重连次数</span><br><span class="line">let reConnectIntervalTime: TimeInterval = 15 // 设置重连时间间隔(秒)</span><br><span class="line">var websocketTimer: Timer? = nil</span><br><span class="line">var reConnectSubscribeDict:[String : Any] = [:]</span><br><span class="line">var page = &quot;home&quot;</span><br><span class="line">var isReconnect = true</span><br><span class="line"></span><br><span class="line">final class WTWebsocket: NSObject,WebSocketDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    var isPingBack = true</span><br><span class="line">    var myWebsocket: WebSocket? = nil</span><br><span class="line">    //  socket连接上函数</span><br><span class="line">    func websocketDidConnect(socket: WebSocketClient) &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime = 0</span><br><span class="line">        if reConnectSubscribeDict.count &gt; 0 &#123;</span><br><span class="line">            self.subscribe(subscribeDict: reConnectSubscribeDict)</span><br><span class="line">        &#125;</span><br><span class="line">        self.hearJump()</span><br><span class="line">        if  websocketTimer == nil &#123;</span><br><span class="line">            websocketTimer = Timer.scheduledTimer(timeInterval: reConnectIntervalTime, target: self, selector: #selector(sendBrandStr), userInfo: nil, repeats: true)</span><br><span class="line">        &#125;</span><br><span class="line">        isReconnect = true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //发送文字消息</span><br><span class="line">    @objc func sendBrandStr()&#123;</span><br><span class="line">        self.checkPing()</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 发送ping</span><br><span class="line">    func hearJump() &#123;</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  socket断开执行函数</span><br><span class="line">    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) &#123;</span><br><span class="line">        //执行重新连接方法</span><br><span class="line">        socketReconnect()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  接收返回消息函数</span><br><span class="line">    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func websocketDidReceiveData(socket: WebSocketClient, data: Data) &#123;</span><br><span class="line">        guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else &#123;return&#125;</span><br><span class="line">        if newStr == &quot;PONG&quot; &#123;</span><br><span class="line">            isPingBack = true</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">      // 处理收到的信息</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 添加注册</span><br><span class="line">    func subscribe(subscribeDict: [String : Any]) &#123;</span><br><span class="line">        var subscribeDicts = subscribeDict</span><br><span class="line">        reConnectSubscribeDict = subscribeDicts</span><br><span class="line">        page = subscribeDicts[&quot;type&quot;] as! String</span><br><span class="line">        subscribeDicts.removeValue(forKey: &quot;type&quot;)</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary:</span><br><span class="line">            subscribeDicts as NSDictionary)</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //检测</span><br><span class="line">    @objc func checkPing() &#123;</span><br><span class="line">        if !isPingBack &#123;</span><br><span class="line">            // 重新连接</span><br><span class="line">            socketReconnect()</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            isPingBack = false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //构造单例数据</span><br><span class="line">    static let shared = WTWebsocket()</span><br><span class="line">    private override init() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket 重连逻辑</span><br><span class="line">func socketReconnect() &#123;</span><br><span class="line">    //判断网络情况，如果网络正常，可以执行重连</span><br><span class="line">    if reachability.connection != .none &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime =  reConnectTime + 1</span><br><span class="line">        if reConnectTime &lt; reConnectMaxTime &#123;</span><br><span class="line">            //添加重连延时执行，防止某个时间段，全部执行</span><br><span class="line">            let time: TimeInterval = 2.0</span><br><span class="line">            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) &#123;</span><br><span class="line">                SingletonSocket.sharedInstance.socket.connect()</span><br><span class="line">                SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //提示重连失败</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //提示无网络</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况</span><br><span class="line">func socketDisConnect() &#123;</span><br><span class="line">    if !SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">        websocketTimer?.invalidate()</span><br><span class="line">        websocketTimer = nil</span><br><span class="line">        SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// initSocket方法</span><br><span class="line">func initWebSocketSingle () &#123;</span><br><span class="line">    SingletonSocket.sharedInstance.socket.delegate = webSocket</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明webSocket单例</span><br><span class="line">class SingletonSocket &#123;</span><br><span class="line">    let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)</span><br><span class="line">    class var sharedInstance : SingletonSocket&#123;</span><br><span class="line">        struct Static&#123;</span><br><span class="line">            static let instance:SingletonSocket = SingletonSocket()</span><br><span class="line">        &#125;</span><br><span class="line">        if !Static.instance.socket.isConnected&#123;</span><br><span class="line">            Static.instance.socket.connect()</span><br><span class="line">        &#125;</span><br><span class="line">        return Static.instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"><a href="#整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点" class="headerlink" title="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"></a>整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点</h3><blockquote>
+<p>发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。</p>
 </blockquote>
-<p><strong>谈谈项目</strong>    </p>
+<p><strong>app在后台需要断开socket，当 app重新进入前台需要重新连接</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">func applicationWillResignActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入后台模式，主动断开socket，防止出现处理不了的情况</span><br><span class="line">        if SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">            reConnectTime = reConnectMaxTime</span><br><span class="line">            socketDisConnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    func applicationDidBecomeActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入前台模式，主动连接socket</span><br><span class="line">        //解决因为网络切换或链接不稳定问题，引起socket断连问题</span><br><span class="line">        //如果app从无网络，到回复网络，需要执行重连</span><br><span class="line">        if !isFirstApplicationDidBecomeActive &#123;</span><br><span class="line">            reConnectTime = 0</span><br><span class="line">            socketReconnect()</span><br><span class="line">            WTBasicConfigManager.shareDataSingle.getHash()</span><br><span class="line">        &#125;</span><br><span class="line">        isFirstApplicationDidBecomeActive = false</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>一定要设置最大重新连接的次数，不然app会无限重新连接</strong></p>
+<p><strong>连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。</strong></p>
 <blockquote>
-<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
-</blockquote>
-<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过百度地图获得自己移动的距离</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结束语</strong></p>
-<blockquote>
-<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
+<p>以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢</p>
 </blockquote>
 ]]></content>
       <categories>
-        <category>iOS</category>
+        <category>swift</category>
       </categories>
       <tags>
-        <tag>“iOS”</tag>
-        <tag>“百度地图”</tag>
-        <tag>“位置实时共享”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS-解压zip</title>
-    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
-    <content><![CDATA[<blockquote>
-<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
-</blockquote>
-<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
-<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
-</li>
-<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
-</li>
-</ol>
-<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“解压zip”</tag>
+        <tag>“swift”</tag>
+        <tag>“WebSocket”</tag>
       </tags>
   </entry>
   <entry>
@@ -1152,6 +1056,54 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“swift”</tag>
         <tag>“证书验证”</tag>
         <tag>“SSL”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序tips</title>
+    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
+    <content><![CDATA[<blockquote>
+<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
+</blockquote>
+<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
+<blockquote>
+<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
+</blockquote>
+<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
+<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
+</blockquote>
+<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
+<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
+</blockquote>
+<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
+<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
+<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
+<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
+<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
+<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
+<p>以上就是这次遇到的一些比较变态的问题。</p>
+</blockquote>
+<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
+<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
+<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>“微信小程序”</tag>
       </tags>
   </entry>
   <entry>
@@ -1220,6 +1172,54 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“Moya”</tag>
         <tag>“HandyJSON”</tag>
         <tag>“RxSwift”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目总结-位置实时共享</title>
+    <url>/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</url>
+    <content><![CDATA[<blockquote>
+<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
+</blockquote>
+<p><strong>谈谈新公司</strong>  </p>
+<blockquote>
+<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
+</blockquote>
+<p><strong>谈谈项目</strong>    </p>
+<blockquote>
+<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
+</blockquote>
+<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过百度地图获得自己移动的距离</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结束语</strong></p>
+<blockquote>
+<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“百度地图”</tag>
+        <tag>“位置实时共享”</tag>
       </tags>
   </entry>
 </search>
