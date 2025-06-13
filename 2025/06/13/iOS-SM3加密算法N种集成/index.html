@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <!-- 添加全局禁用 Referer -->
+      <meta name="referrer" content="no-referrer" />
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,编程,开发,Hexo" />
+       
+      <meta name="description" content="个人技术博客，分享编程、开发经验和生活感悟" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>iOS-SM3加密算法N种集成 |  Gavin&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+      <!-- Font Awesome 6 -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="alternate" href="/atom.xml" title="Gavin's Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="[layout]-iOS-SM3加密算法N种集成"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  iOS-SM3加密算法N种集成
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/" class="article-date">
+  <time datetime="2025-06-13T10:55:07.000Z" itemprop="datePublished">2025-06-13</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">3.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">15 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>近期的一个项目需要用到SM3加密算法，需要在iOS中使用Objective-C实现SM3国密加密算法。</p>
+<blockquote>
+<p>SM3：是中国国家密码管理局发布的密码杂凑算法标准，适用于商用密码应用中的数字签名和验证、消息认证码的生成与验证以及随机数的生成等</p>
+<p>由于iOS系统并未内置SM3算法，我们需要使用第三方开源库或自己实现</p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/muzipiao/GMObjC">GMObjC</a>库：</strong> 是一个基于 OpenSSL 的国密（SM2、SM3、SM4）算法的 Objective-C 开源库，适用于 iOS 和 macOS 开发。它封装了中国国家密码管理局发布的多种加密算法，包括：</p>
+</blockquote>
+<blockquote>
+<p><strong>1. SM2：</strong> 支持基于椭圆曲线（ECC）的加解密，密钥协商（ECDH）和签名算法</p>
+<p><strong>2. SM3：</strong> 类似 SHA 系列的国密哈希算法，包含 SM3 和 HMAC 等</p>
+<p><strong>3. SM4：</strong> 实现对称分组加密算法</p>
+<p><strong><a target="_blank" rel="noopener" href="https://github.com/guanzhi/GmSSL#">GmSSL</a>库：</strong>GmSSL是由北京大学自主开发的国产商用密码开源库，实现了对国密算法、标准和安全通信协议的全面功能覆盖，支持包括移动端在内的主流操作系统和处理器，支持密码钥匙、密码卡等典型国产密码硬件，提供功能丰富的命令行工具及多种编译语言编程接口</p>
+</blockquote>
+<h2 id="方案一：使用第三方库（GMObjC）"><a href="#方案一：使用第三方库（GMObjC）" class="headerlink" title="方案一：使用第三方库（GMObjC）"></a>方案一：使用第三方库（GMObjC）</h2><p>集成GMObjC：<a target="_blank" rel="noopener" href="https://muzipiao.github.io/gmdocs/zh/guide/getting-started">集成GMObjC方法</a></p>
+<p>因为我们的项目是SDK不便用CocoaPods方法，因此我只能选择直接集成和手动编译为 Framework。</p>
+<h3 id="1-直接集成-demo"><a href="#1-直接集成-demo" class="headerlink" title="1.直接集成 (demo)"></a>1.直接集成 (<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/GMObjC%EF%BC%88%E7%9B%B4%E6%8E%A5%E9%9B%86%E6%88%90%EF%BC%89">demo</a>)</h3><blockquote>
+<p>1.从 Git 下载最新代码，找到和 README 同级的 GMObjC 文件夹，将 GMObjC 文件夹拖入项目</p>
+<p>2.找到和 README 同级的 Frameworks 文件夹，将项目 Frameworks&#x2F;OpenSSL.xcframework 拖入项目</p>
+<p>3.在需要使用的地方导入头文件 GMObjC.h 即可使用 SM2、SM4 加解密，签名验签，计算 SM3 摘要等</p>
+</blockquote>
+<p><strong>注意事项</strong></p>
+<p><code> GMObjC 依赖 OpenSSL，可直接拖入 Frameworks/OpenSSL.xcframework 或通过pod GMOpenSSL安装 OpenSSL。</code></p>
+<p><code> 如果项目中已集成 OpenSSL 1.1.1l 以上版本，可共用同一个 OpenSSL；否则需要使用 Carthage 将 GMObjC 编译为动态库。</code></p>
+<p><strong>我按照以上步骤将文件导入后报错：</strong><br>OpenSSL.xcframework 签名验证失败</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-53feb7bc56f237bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="OpenSSL.xcframework报错"></p>
+<p><strong>终端执行强制重签名命令</strong></p>
+<p>codesign –force –deep –sign - 你的路径&#x2F;OpenSSL.xcframework</p>
+<p>返回：你的路径&#x2F;OpenSSL.xcframework: replacing existing signature</p>
+<p>现在就可以运行测试了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;GMObjC.h&quot;</span><br><span class="line"></span><br><span class="line">NSString *str = @&quot;123@1234&quot;;</span><br><span class="line">NSString *digest = [GMSm3Utils hashWithText:str];</span><br><span class="line">NSLog(@&quot;%@&quot;, digest);</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-手动编译为-Framework-demo"><a href="#2-手动编译为-Framework-demo" class="headerlink" title="2.手动编译为 Framework (demo)"></a>2.手动编译为 Framework (<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/GMObjC-Framework%EF%BC%88%E6%89%8B%E5%8A%A8%E7%BC%96%E8%AF%91%EF%BC%89">demo</a>)</h3><p>1.<strong>动态库‌：</strong></p>
+<blockquote>
+<p>从 GitHub 下载源码，打开项目GMObjC-master&#x2F;Frameworks&#x2F;GMObjC.xcframework把这个拖入项目</p>
+<p>在 Xcode 的 General → Frameworks, Libraries, and Embedded Content 中需标记为 Embed &amp; Sign</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-30c18fc5528e087b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Embed &amp; Sign"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;GMObjC/GMObjC.h&quot;</span><br><span class="line"></span><br><span class="line">NSString *digest1 = [GMSm3Utils hashWithText:str];</span><br><span class="line">NSLog(@&quot;%@&quot;, digest1);</span><br></pre></td></tr></table></figure>
+
+<p>2.<strong>静态库：</strong></p>
+<blockquote>
+<p>从 GitHub 下载源码，打开项目 GMObjC.xcodeproj，设置 Build Settings - Linking-General - Mach-O Type 为 Static Library</p>
+<p>手动编译为静态库 GMObjC.framework</p>
+<p><strong>合并为 XCFramework：</strong>通过xcodebuild -create-xcframework命令来合并为 XCFramework，通过合并 GMObjC 库的模拟器和真机版本来演示</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 创建合并包 GMObjC.xcframework</span><br><span class="line"></span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">           -framework Release-iphoneos/GMObjC.framework \</span><br><span class="line">           -framework Release-iphonesimulator/GMObjC.framework \</span><br><span class="line">           -output GMObjC.xcframework</span><br></pre></td></tr></table></figure>
+<p><strong>把生成的GMObjC.xcframework拖入项目即可</strong></p>
+<h3 id="3-CocoaPods安装GMObjC-GMObjC-demo-GMDynamic-demo"><a href="#3-CocoaPods安装GMObjC-GMObjC-demo-GMDynamic-demo" class="headerlink" title="3.CocoaPods安装GMObjC  (GMObjC-demo) (GMDynamic-demo)"></a>3.CocoaPods安装GMObjC  (<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/GMObjC-CocoaPods">GMObjC-demo</a>) (<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/GMDynamic-CocoaPods">GMDynamic-demo</a>)</h3><blockquote>
+<p>GMObjC 和 GMDynamic 只能安装其中一个，二者不能同时安装。</p>
+<p>GMObjC 为静态库，GMDynamic 为编译好的 GMObjC 动态库版本。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 安装 GMObjC 的源码和 GMOpenSSL.xcframework (静态库)</span><br><span class="line">pod &#x27;GMObjC&#x27;, &#x27;~&gt; 4.0.3&#x27;</span><br><span class="line"></span><br><span class="line"># 当 Podfile 中使用 use_frameworks! 时，安装 GMObjC.xcframework (动态库)</span><br><span class="line">pod &#x27;GMDynamic&#x27;, &#x27;~&gt; 4.0.3&#x27;</span><br></pre></td></tr></table></figure>
+
+<h2 id="方案二：使用第三方库（GmSSL）-demo"><a href="#方案二：使用第三方库（GmSSL）-demo" class="headerlink" title="方案二：使用第三方库（GmSSL）(demo)"></a>方案二：使用第三方库（GmSSL）(<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/GmSSL%EF%BC%88libgmssl.a%EF%BC%89">demo</a>)</h2><p><strong>集成GmSSL：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-4e921d7eba588139.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="集成GmSSL方法"></p>
+<p>但是我用这种方法不行，我用了其他的方法。</p>
+<blockquote>
+<p>我们使用GmSSL 3.x（master分支）来编译iOS的静态库（libcrypto.a和libssl.a）。由于3.x版本采用了CMake构建系统，因此流程与2.x不同。</p>
+<p>GmSSL 3.x 的构建系统已经发生了变化，生成的库文件名为 libgmssl.a 而不是传统的 libcrypto.a 和 libssl.a。</p>
+<p> 如果项目必须使用 <code>libcrypto.a</code> 和 <code>libssl.a</code>，请回退到 GmSSL 2.x</p>
+</blockquote>
+<ol>
+<li><p>克隆代码并切换到master分支（或最新的稳定标签）</p>
+</li>
+<li><p>配置CMake工具链文件（为iOS交叉编译）</p>
+</li>
+<li><p>分别编译arm64（真机）和x86_64（模拟器）架构</p>
+</li>
+<li><p>使用lipo合并成通用静态库</p>
+</li>
+<li><p>将生成的静态库和头文件集成到iOS项目中。</p>
+</li>
+</ol>
+<p><strong>创建编译脚本：</strong> build_ios.sh（放在GmSSL根目录）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">set -e</span><br><span class="line"></span><br><span class="line"># 确保使用正确的路径</span><br><span class="line">export PATH=&quot;/usr/local/bin:$PATH&quot;</span><br><span class="line"></span><br><span class="line"># 设置环境变量</span><br><span class="line">export XCODE_PATH=$(xcode-select -p)</span><br><span class="line">export IOS_SDK=$XCODE_PATH/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk</span><br><span class="line">export SIM_SDK=$XCODE_PATH/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk</span><br><span class="line"></span><br><span class="line"># 创建输出目录</span><br><span class="line">OUTPUT_DIR=&quot;build-ios&quot;</span><br><span class="line">rm -rf $OUTPUT_DIR</span><br><span class="line">mkdir -p $OUTPUT_DIR</span><br><span class="line"></span><br><span class="line"># 编译函数</span><br><span class="line">compile_arch() &#123;</span><br><span class="line">    ARCH=$1</span><br><span class="line">    SDK=$2</span><br><span class="line">    </span><br><span class="line">    BUILD_DIR=&quot;$&#123;OUTPUT_DIR&#125;/$&#123;ARCH&#125;&quot;</span><br><span class="line">    mkdir -p $BUILD_DIR</span><br><span class="line">    pushd $BUILD_DIR &gt; /dev/null</span><br><span class="line">    </span><br><span class="line">    echo &quot;▸ 配置 $ARCH...&quot;</span><br><span class="line">    cmake ../.. \</span><br><span class="line">        -DCMAKE_SYSTEM_NAME=iOS \</span><br><span class="line">        -DCMAKE_OSX_ARCHITECTURES=$ARCH \</span><br><span class="line">        -DCMAKE_OSX_SYSROOT=$SDK \</span><br><span class="line">        -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \</span><br><span class="line">        -DCMAKE_BUILD_TYPE=Release \</span><br><span class="line">        -DBUILD_SHARED_LIBS=OFF \</span><br><span class="line">        -DENABLE_SM2=ON \</span><br><span class="line">        -DENABLE_SM3=ON \</span><br><span class="line">        -DENABLE_SM4=ON \</span><br><span class="line">        -DENABLE_SM9=ON \</span><br><span class="line">        -G Ninja</span><br><span class="line">        </span><br><span class="line">    echo &quot;▸ 编译 $ARCH...&quot;</span><br><span class="line">    ninja</span><br><span class="line">    </span><br><span class="line">    # 关键修改：GmSSL 3.x 生成的库是 libgmssl.a</span><br><span class="line">    mkdir -p lib</span><br><span class="line">    cp bin/libgmssl.a lib/</span><br><span class="line">    </span><br><span class="line">    popd &gt; /dev/null</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 编译各架构</span><br><span class="line">compile_arch &quot;arm64&quot; &quot;$IOS_SDK&quot;</span><br><span class="line">compile_arch &quot;x86_64&quot; &quot;$SIM_SDK&quot;</span><br><span class="line"></span><br><span class="line"># 合并通用库</span><br><span class="line">UNIVERSAL_DIR=&quot;$&#123;OUTPUT_DIR&#125;/universal&quot;</span><br><span class="line">mkdir -p $UNIVERSAL_DIR/lib</span><br><span class="line"></span><br><span class="line"># 合并为单个库 (GmSSL 3.x 只生成一个库)</span><br><span class="line">lipo -create \</span><br><span class="line">    &quot;$&#123;OUTPUT_DIR&#125;/arm64/lib/libgmssl.a&quot; \</span><br><span class="line">    &quot;$&#123;OUTPUT_DIR&#125;/x86_64/lib/libgmssl.a&quot; \</span><br><span class="line">    -output &quot;$UNIVERSAL_DIR/lib/libgmssl.a&quot;</span><br><span class="line"></span><br><span class="line"># 复制头文件</span><br><span class="line">if [ -d &quot;$&#123;OUTPUT_DIR&#125;/arm64/include&quot; ]; then</span><br><span class="line">    cp -R &quot;$&#123;OUTPUT_DIR&#125;/arm64/include&quot; &quot;$UNIVERSAL_DIR/&quot;</span><br><span class="line">elif [ -d &quot;../../include&quot; ]; then</span><br><span class="line">    cp -R &quot;../../include&quot; &quot;$UNIVERSAL_DIR/&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;⚠️ 警告: 找不到头文件目录&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &quot;✅ 编译成功！&quot;</span><br><span class="line">echo &quot;库文件位置: $UNIVERSAL_DIR/lib/libgmssl.a&quot;</span><br><span class="line">echo &quot;头文件位置: $UNIVERSAL_DIR/include&quot;</span><br><span class="line"></span><br><span class="line"># 验证文件</span><br><span class="line">file &quot;$UNIVERSAL_DIR/lib&quot;/*.a</span><br><span class="line">lipo -info &quot;$UNIVERSAL_DIR/lib/libgmssl.a&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>然后按照以下步骤进行执行：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 安装构建工具</span><br><span class="line">brew install cmake ninja pkg-config</span><br><span class="line"></span><br><span class="line"># 获取最新代码</span><br><span class="line">git clone https://github.com/guanzhi/GmSSL.git</span><br><span class="line">cd GmSSL</span><br><span class="line">git checkout master  # 确保使用最新版本</span><br><span class="line">git pull</span><br><span class="line"></span><br><span class="line"># 2. 执行编译</span><br><span class="line">chmod +x build_ios.sh</span><br><span class="line">./build_ios.sh</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>将GmSSL&#x2F;build-ios&#x2F;universal&#x2F;lib&#x2F;libgmssl.a 拖入项目</p>
+</li>
+<li><p>将GmSSL&#x2F;include&#x2F;gmssl 拖入项目</p>
+</li>
+<li><p>import “sm3.h”</p>
+</li>
+</ol>
+<p><strong>封装方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@interface GmSSLEncryptorSM3 : NSObject</span><br><span class="line"></span><br><span class="line">+ (NSString *)sm3HashWithString:(NSString *)input;</span><br><span class="line">+ (NSData *)sm3HashWithData:(NSData *)data;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation GmSSLEncryptorSM3</span><br><span class="line"></span><br><span class="line">+ (instancetype)encryptor &#123;</span><br><span class="line">    return [[GmSSLEncryptorSM3 alloc] init];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (NSData *)sm3HashWithData:(NSData *)data &#123;</span><br><span class="line">    // 初始化 SM3 上下文</span><br><span class="line">    SM3_CTX ctx;</span><br><span class="line">    sm3_init(&amp;ctx);</span><br><span class="line">    // 添加数据到哈希计算</span><br><span class="line">    sm3_update(&amp;ctx, data.bytes, data.length);</span><br><span class="line">    // 准备存储结果的缓冲区 (SM3 输出为 32 字节)</span><br><span class="line">    uint8_t dgst[SM3_DIGEST_SIZE];</span><br><span class="line">    // 完成哈希计算</span><br><span class="line">    sm3_finish(&amp;ctx, dgst);</span><br><span class="line">    // 转换为 NSData</span><br><span class="line">    return [NSData dataWithBytes:dgst length:SM3_DIGEST_SIZE];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (NSString *)sm3HashWithString:(NSString *)input &#123;</span><br><span class="line">    NSData *inputData = [input dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    // 计算 SM3 哈希</span><br><span class="line">    NSData *hashData = [GmSSLEncryptorSM3 sm3HashWithData:inputData];</span><br><span class="line">    // 转换为十六进制字符串显示</span><br><span class="line">    NSMutableString *hexString = [NSMutableString string];</span><br><span class="line">    const uint8_t *bytes = (const uint8_t *)hashData.bytes;</span><br><span class="line">    for (NSUInteger i = 0; i &lt; hashData.length; i++) &#123;</span><br><span class="line">        [hexString appendFormat:@&quot;%02x&quot;, bytes[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    return hexString;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p><strong>就可以在项目中使用了：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSString *encryptor = [GmSSLEncryptorSM3 sm3HashWithString:str];</span><br><span class="line">NSLog(@&quot;%@&quot;, encryptor);</span><br></pre></td></tr></table></figure>
+
+<h2 id="方案三：纯-Objective-C-实现（无依赖）-demo"><a href="#方案三：纯-Objective-C-实现（无依赖）-demo" class="headerlink" title="方案三：纯 Objective-C 实现（无依赖）(demo)"></a>方案三：纯 Objective-C 实现（无依赖）(<a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/sm3-demo/tree/SM3-%E7%BA%AFOC%E4%BB%A3%E7%A0%81">demo</a>)</h2><blockquote>
+<p>SM3本质上不是加密算法，它是是一种杂凑函数，是在[SHA-256]基础上改进实现的一种算法，它不是对数据进行加密然后再解密，而是生成一个256位的散列值，因此SM3适用于内容摘要，数字签名验证或密码验证等。</p>
+</blockquote>
+<p><strong>SM3算法的执行过程：</strong></p>
+<p>根据SM3标准文档（GM&#x2F;T 0004-2012）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-b73f718c48617fcb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sm3流程.png"></p>
+<p><strong>消息扩展：</strong>将16个32位字扩展为68个字（W）和64个字（W1），使用P1宏。<br><strong>压缩函数：</strong>64轮迭代更新寄存器（A-H），每轮使用FF1&#x2F;GG1等宏。<br><strong>常量：</strong>压缩函数中的常量0x7A879D8A（TJ的固定值）。<br><strong>结果输出：</strong>将最终状态寄存器转换为大端序字节流（256位）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  SM3Encryptor.m</span><br><span class="line">//  testDemo</span><br><span class="line">//</span><br><span class="line">//  Created by wt on 2025/6/12.</span><br><span class="line">//</span><br><span class="line"></span><br><span class="line">#import &quot;SM3Encryptor.h&quot;</span><br><span class="line">#include &lt;stdint.h&gt;</span><br><span class="line"></span><br><span class="line">// SM3 上下文结构</span><br><span class="line">typedef struct &#123;</span><br><span class="line">    uint32_t state[8];   // 8个32位寄存器（A-H）</span><br><span class="line">    uint64_t totalLength; // 总消息长度（位）</span><br><span class="line">    uint8_t buffer[64];  // 当前数据块缓存</span><br><span class="line">    uint32_t bufferLength; // 当前缓冲区长度</span><br><span class="line">&#125; SM3Context;</span><br><span class="line"></span><br><span class="line">// 循环左移</span><br><span class="line">static inline uint32_t ROTL(uint32_t x, uint8_t n) &#123;</span><br><span class="line">    return (x &lt;&lt; n) | (x &gt;&gt; (32 - n));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布尔函数 FF0（0≤j≤15）</span><br><span class="line">static inline uint32_t FF0(uint32_t x, uint32_t y, uint32_t z) &#123;</span><br><span class="line">    return x ^ y ^ z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布尔函数 FF1（16≤j≤63）</span><br><span class="line">static inline uint32_t FF1(uint32_t x, uint32_t y, uint32_t z) &#123;</span><br><span class="line">    return (x &amp; y) | (x &amp; z) | (y &amp; z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布尔函数 GG0（0≤j≤15）</span><br><span class="line">static inline uint32_t GG0(uint32_t x, uint32_t y, uint32_t z) &#123;</span><br><span class="line">    return x ^ y ^ z;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 布尔函数 GG1（16≤j≤63）</span><br><span class="line">static inline uint32_t GG1(uint32_t x, uint32_t y, uint32_t z) &#123;</span><br><span class="line">    return (x &amp; y) | ((~x) &amp; z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 置换函数 P0</span><br><span class="line">static inline uint32_t P0(uint32_t x) &#123;</span><br><span class="line">    return x ^ ROTL(x, 9) ^ ROTL(x, 17);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 置换函数 P1</span><br><span class="line">static inline uint32_t P1(uint32_t x) &#123;</span><br><span class="line">    return x ^ ROTL(x, 15) ^ ROTL(x, 23);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 初始化SM3上下文</span><br><span class="line">void SM3Init(SM3Context *context) &#123;</span><br><span class="line">    // SM3标准初始值</span><br><span class="line">    context-&gt;state[0] = 0x7380166F;</span><br><span class="line">    context-&gt;state[1] = 0x4914B2B9;</span><br><span class="line">    context-&gt;state[2] = 0x172442D7;</span><br><span class="line">    context-&gt;state[3] = 0xDA8A0600;</span><br><span class="line">    context-&gt;state[4] = 0xA96F30BC;</span><br><span class="line">    context-&gt;state[5] = 0x163138AA;</span><br><span class="line">    context-&gt;state[6] = 0xE38DEE4D;</span><br><span class="line">    context-&gt;state[7] = 0xB0FB0E4E;</span><br><span class="line">    context-&gt;totalLength = 0;</span><br><span class="line">    context-&gt;bufferLength = 0;</span><br><span class="line">    memset(context-&gt;buffer, 0, 64);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 处理单个64字节块（压缩函数核心）</span><br><span class="line">void SM3Compress(SM3Context *context, const uint8_t block[64]) &#123;</span><br><span class="line">    // 1. 消息扩展：16字 → 68字（W） + 64字（W1）</span><br><span class="line">    uint32_t W[68], W1[64];</span><br><span class="line">    </span><br><span class="line">    // 初始化前16字（大端序转换）</span><br><span class="line">    for (int i = 0; i &lt; 16; i++) &#123;</span><br><span class="line">        W[i] = (uint32_t)block[i*4] &lt;&lt; 24 |</span><br><span class="line">               (uint32_t)block[i*4+1] &lt;&lt; 16 |</span><br><span class="line">               (uint32_t)block[i*4+2] &lt;&lt; 8 |</span><br><span class="line">               (uint32_t)block[i*4+3];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 计算W[16]-W[67]</span><br><span class="line">    for (int j = 16; j &lt; 68; j++) &#123;</span><br><span class="line">        uint32_t temp = W[j-16] ^ W[j-9] ^ ROTL(W[j-3], 15);</span><br><span class="line">        W[j] = P1(temp) ^ ROTL(W[j-13], 7) ^ W[j-6];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 计算W1[0]-W1[63]</span><br><span class="line">    for (int j = 0; j &lt; 64; j++) &#123;</span><br><span class="line">        W1[j] = W[j] ^ W[j+4];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 2. 寄存器初始化（A-H）</span><br><span class="line">    uint32_t A = context-&gt;state[0];</span><br><span class="line">    uint32_t B = context-&gt;state[1];</span><br><span class="line">    uint32_t C = context-&gt;state[2];</span><br><span class="line">    uint32_t D = context-&gt;state[3];</span><br><span class="line">    uint32_t E = context-&gt;state[4];</span><br><span class="line">    uint32_t F = context-&gt;state[5];</span><br><span class="line">    uint32_t G = context-&gt;state[6];</span><br><span class="line">    uint32_t H = context-&gt;state[7];</span><br><span class="line">    </span><br><span class="line">    // 3. 64轮迭代（严格遵循标准）</span><br><span class="line">    for (int j = 0; j &lt; 64; j++) &#123;</span><br><span class="line">        uint32_t SS1, SS2, TT1, TT2;</span><br><span class="line">        </span><br><span class="line">        // 常量选择（关键修正）</span><br><span class="line">        uint32_t TJ = (j &lt; 16) ? 0x79CC4519 : 0x7A879D8A;</span><br><span class="line">        </span><br><span class="line">        // 计算SS1/SS2（修正了TJ参数）</span><br><span class="line">        SS1 = ROTL(ROTL(A, 12) + E + ROTL(TJ, j % 32), 7);</span><br><span class="line">        SS2 = SS1 ^ ROTL(A, 12);</span><br><span class="line">        </span><br><span class="line">        // 计算TT1/TT2（使用内联函数）</span><br><span class="line">        if (j &lt; 16) &#123;</span><br><span class="line">            TT1 = FF0(A, B, C) + D + SS2 + W1[j];</span><br><span class="line">            TT2 = GG0(E, F, G) + H + SS1 + W[j];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            TT1 = FF1(A, B, C) + D + SS2 + W1[j];</span><br><span class="line">            TT2 = GG1(E, F, G) + H + SS1 + W[j];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        // 更新寄存器（严格顺序）</span><br><span class="line">        D = C;</span><br><span class="line">        C = ROTL(B, 9);</span><br><span class="line">        B = A;</span><br><span class="line">        A = TT1;</span><br><span class="line">        H = G;</span><br><span class="line">        G = ROTL(F, 19);</span><br><span class="line">        F = E;</span><br><span class="line">        E = P0(TT2);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 4. 更新最终状态（与初始IV异或）</span><br><span class="line">    context-&gt;state[0] ^= A;</span><br><span class="line">    context-&gt;state[1] ^= B;</span><br><span class="line">    context-&gt;state[2] ^= C;</span><br><span class="line">    context-&gt;state[3] ^= D;</span><br><span class="line">    context-&gt;state[4] ^= E;</span><br><span class="line">    context-&gt;state[5] ^= F;</span><br><span class="line">    context-&gt;state[6] ^= G;</span><br><span class="line">    context-&gt;state[7] ^= H;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 更新数据（可分多次调用）</span><br><span class="line">void SM3Update(SM3Context *context, const uint8_t *data, size_t length) &#123;</span><br><span class="line">    context-&gt;totalLength += length * 8; // 更新总位数（字节转位）</span><br><span class="line">    </span><br><span class="line">    // 处理缓冲区中的剩余空间</span><br><span class="line">    if (context-&gt;bufferLength &gt; 0) &#123;</span><br><span class="line">        size_t copySize = MIN(64 - context-&gt;bufferLength, length);</span><br><span class="line">        memcpy(context-&gt;buffer + context-&gt;bufferLength, data, copySize);</span><br><span class="line">        context-&gt;bufferLength += copySize;</span><br><span class="line">        data += copySize;</span><br><span class="line">        length -= copySize;</span><br><span class="line">        </span><br><span class="line">        if (context-&gt;bufferLength == 64) &#123;</span><br><span class="line">            SM3Compress(context, context-&gt;buffer);</span><br><span class="line">            context-&gt;bufferLength = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 处理完整块</span><br><span class="line">    while (length &gt;= 64) &#123;</span><br><span class="line">        SM3Compress(context, data);</span><br><span class="line">        data += 64;</span><br><span class="line">        length -= 64;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 缓存剩余数据</span><br><span class="line">    if (length &gt; 0) &#123;</span><br><span class="line">        memcpy(context-&gt;buffer, data, length);</span><br><span class="line">        context-&gt;bufferLength = length;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 完成哈希计算</span><br><span class="line">void SM3Final(SM3Context *context, uint8_t output[32]) &#123;</span><br><span class="line">    // 计算填充长度（SM3标准：补位1 + k个0 + 64位长度）</span><br><span class="line">    size_t totalBits = context-&gt;totalLength;</span><br><span class="line">    size_t paddingBits = (context-&gt;bufferLength &lt; 56) ?</span><br><span class="line">                         (56 - context-&gt;bufferLength) :</span><br><span class="line">                         (120 - context-&gt;bufferLength);</span><br><span class="line">    </span><br><span class="line">    // 构建填充数据</span><br><span class="line">    uint8_t padding[128] = &#123;0&#125;;</span><br><span class="line">    padding[0] = 0x80; // 补位起始位（二进制10000000）</span><br><span class="line">    </span><br><span class="line">    // 添加填充</span><br><span class="line">    SM3Update(context, padding, paddingBits);</span><br><span class="line">    </span><br><span class="line">    // 添加消息长度（大端序64位）</span><br><span class="line">    uint64_t bitCount = CFSwapInt64HostToBig(totalBits);</span><br><span class="line">    SM3Update(context, (uint8_t *)&amp;bitCount, 8);</span><br><span class="line">    </span><br><span class="line">    // 确保最后一个块被处理</span><br><span class="line">    if (context-&gt;bufferLength &gt; 0) &#123;</span><br><span class="line">        memset(context-&gt;buffer + context-&gt;bufferLength, 0, 64 - context-&gt;bufferLength);</span><br><span class="line">        SM3Compress(context, context-&gt;buffer);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 输出最终哈希（256位，大端序）</span><br><span class="line">    for (int i = 0; i &lt; 8; i++) &#123;</span><br><span class="line">        output[i*4]     = (uint8_t)(context-&gt;state[i] &gt;&gt; 24);</span><br><span class="line">        output[i*4 + 1] = (uint8_t)(context-&gt;state[i] &gt;&gt; 16);</span><br><span class="line">        output[i*4 + 2] = (uint8_t)(context-&gt;state[i] &gt;&gt; 8);</span><br><span class="line">        output[i*4 + 3] = (uint8_t)(context-&gt;state[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Objective-C 封装接口</span><br><span class="line">@implementation SM3Encryptor</span><br><span class="line"></span><br><span class="line">+ (NSData *)hashWithData:(NSData *)inputData &#123;</span><br><span class="line">    SM3Context context;</span><br><span class="line">    SM3Init(&amp;context);</span><br><span class="line">    </span><br><span class="line">    // 处理输入数据</span><br><span class="line">    SM3Update(&amp;context, inputData.bytes, inputData.length);</span><br><span class="line">    </span><br><span class="line">    // 获取结果</span><br><span class="line">    uint8_t output[32];</span><br><span class="line">    SM3Final(&amp;context, output);</span><br><span class="line">    </span><br><span class="line">    return [NSData dataWithBytes:output length:32];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (NSString *)hexStringWithData:(NSData *)inputData &#123;</span><br><span class="line">    NSData *hashData = [self hashWithData:inputData];</span><br><span class="line">    const uint8_t *bytes = (const uint8_t *)hashData.bytes;</span><br><span class="line">    NSMutableString *hex = [NSMutableString string];</span><br><span class="line">    </span><br><span class="line">    for (NSUInteger i = 0; i &lt; hashData.length; i++) &#123;</span><br><span class="line">        [hex appendFormat:@&quot;%02X&quot;, bytes[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return [hex copy];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (NSString *)hexStringWithInput:(NSString *)inputStr &#123;</span><br><span class="line">    NSData *inputData = [inputStr dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    NSData *hashData = [self hashWithData:inputData];</span><br><span class="line">    const uint8_t *bytes = (const uint8_t *)hashData.bytes;</span><br><span class="line">    NSMutableString *hex = [NSMutableString string];</span><br><span class="line">    </span><br><span class="line">    for (NSUInteger i = 0; i &lt; hashData.length; i++) &#123;</span><br><span class="line">        [hex appendFormat:@&quot;%02X&quot;, bytes[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return [hex copy];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CSM3%E2%80%9D/" rel="tag">“SM3”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">gitHub hexo 个人博客升级版</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "a1S86fOlOUpjKlnF6GbDEaXa-gzGzoHsz",
+    app_key: "I8KJc5Z8uB7wXwz3r7Mab2Rx",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "留下您的宝贵意见...",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2025
+        <i class="ri-heart-fill heart_icon"></i> kindyourself@163.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Gavin&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.jianshu.com/u/51707eacf496">简书</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
