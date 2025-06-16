@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <!-- 添加全局禁用 Referer -->
+      <meta name="referrer" content="no-referrer" />
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,编程,开发,Hexo" />
+       
+      <meta name="description" content="个人技术博客，分享编程、开发经验和生活感悟" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>iOS即时通讯发送图片消息内存暴涨优化 |  Gavin&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+      <!-- Font Awesome 6 -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="alternate" href="/atom.xml" title="Gavin's Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="[layout]-iOS即时通讯发送图片消息内存暴涨优化"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  iOS即时通讯发送图片消息内存暴涨优化
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/" class="article-date">
+  <time datetime="2025-06-16T05:55:07.000Z" itemprop="datePublished">2025-06-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><blockquote>
+<p>即时通讯App在发送图片消息时内存暴涨导致网络请求初始化失败（内存不足OOM），发送消息失败。</p>
+</blockquote>
+<h3 id="可能原因分析："><a href="#可能原因分析：" class="headerlink" title="可能原因分析："></a>可能原因分析：</h3><ol>
+<li>有内存泄漏。</li>
+<li>发送的图片消息，可能包含大图，没有进行压缩处理，导致内存占用过高。</li>
+<li>在发送过程中，可能同时进行了图片的读取和处理，如果图片很大，处理过程中会产生很大的内存峰值。</li>
+</ol>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol>
+<li><strong>对于发送消息时的内存暴涨：</strong></li>
+</ol>
+<ul>
+<li>检查是否有内存泄漏，使用Instruments工具检测。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-75e63fb317acf3a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Instruments工具检测结果"></p>
+<p><strong>检测发现确实有内存泄漏，解决后发现问题还是存在。</strong></p>
+<ul>
+<li><p>在发送图片消息前，对图片进行压缩（包括压缩质量和尺寸），然后再发送压缩后的图片。</p>
+</li>
+<li><p>避免直接操作大图，可以使用后台线程进行处理，防止阻塞主线程。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">    // 1. 读取图片（避免使用imageNamed:）</span><br><span class="line">    UIImage *originalImage = [UIImage imageWithContentsOfFile:filePath];</span><br><span class="line">    </span><br><span class="line">    // 2. 尺寸压缩（限制最大边长为1024）</span><br><span class="line">    CGFloat maxSize = 1024.0;</span><br><span class="line">    CGSize scaledSize = [self scaledSizeForImage:originalImage maxLength:maxSize];</span><br><span class="line">    </span><br><span class="line">    // 3. 质量压缩（70%质量）</span><br><span class="line">    UIImage *compressedImage = [self resizeImage:originalImage toSize:scaledSize];</span><br><span class="line">    NSData *imageData = UIImageJPEGRepresentation(compressedImage, 0.7);</span><br><span class="line">    </span><br><span class="line">    // 4. 发送压缩后的数据（非原始图片）</span><br><span class="line">    [self sendImageData:imageData];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 计算缩放尺寸</span><br><span class="line">- (CGSize)scaledSizeForImage:(UIImage *)image maxLength:(CGFloat)maxLength &#123;</span><br><span class="line">    CGFloat ratio = MIN(maxLength / image.size.width, maxLength / image.size.height);</span><br><span class="line">    return CGSizeMake(image.size.width * ratio, image.size.height * ratio);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 图片重绘</span><br><span class="line">- (UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)targetSize &#123;</span><br><span class="line">    UIGraphicsBeginImageContextWithOptions(targetSize, NO, UIScreen.mainScreen.scale);</span><br><span class="line">    [image drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];</span><br><span class="line">    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">    UIGraphicsEndImageContext();</span><br><span class="line">    return resizedImage;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>压缩后的图片数据要及时释放不必要的资源，避免在内存中同时存在多张图片，比如在图片展示后，如果原图不再需要，可以将其置为nil，帮助内存回收。（@autoreleasepool）。</li>
+</ul>
+<p><strong>处理到此内存暴涨解决了，但是随着发送图片内存还是在持续增加，现在每发送一张图片内存还是要涨10M。（message.compressRatio &#x3D; 1.0 &#x2F;&#x2F; 设置压缩率），message.compressRatio &#x3D; 0.2，每发送一张图片内存也要涨5M。</strong></p>
+<h3 id="新问题："><a href="#新问题：" class="headerlink" title="新问题："></a>新问题：</h3><blockquote>
+<p>即时通讯App在发送图片消息时每次展示一张图片内存涨10M多。</p>
+</blockquote>
+<h3 id="可能原因分析：-1"><a href="#可能原因分析：-1" class="headerlink" title="可能原因分析："></a>可能原因分析：</h3><p>1.<strong>图片加载方法不对</strong> </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-6e9d4b44497cf943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cell图片展示"></p>
+<p><strong>[UIImage imageNamed:]的内存缓存特性：</strong> </p>
+<ul>
+<li><p>系统级缓存无法自动释放</p>
+</li>
+<li><p>特别不适合大图和列表展示场景</p>
+</li>
+<li><p>会自动缓存图片到系统缓存</p>
+</li>
+<li><p>适合重复使用的小图标</p>
+</li>
+<li><p>不适合大图或单次使用的图片</p>
+</li>
+</ul>
+<p>2.<strong>内存增长原因：</strong></p>
+<p><code>为了支持 GIF/WebP 等动图格式，showImageView为SDAnimatedImageView，它解码后的帧缓存会增加内存占用。 </code></p>
+<ul>
+<li><p>大图被缓存且无法及时释放</p>
+</li>
+<li><p>图片解码后的位图数据占用内存</p>
+</li>
+</ul>
+<p>3.<strong>Cell 复用机制</strong></p>
+<p>快速滑动时可能同时加载多张大图，旧图片未及时释放</p>
+<h3 id="优化方案："><a href="#优化方案：" class="headerlink" title="优化方案："></a>优化方案：</h3><blockquote>
+<p>通过以下优化措施，图片展示内存问题应该能得到显著改善。核心要点是：</p>
+</blockquote>
+<ul>
+<li><p>避免使用 imageNamed: 加载大图</p>
+</li>
+<li><p>合理配置 SDAnimatedImageView</p>
+</li>
+<li><p>完善 cell 复用机制</p>
+</li>
+<li><p>使用图片下采样技术</p>
+</li>
+<li><p>滑动时优化资源使用</p>
+</li>
+</ul>
+<p><strong>1.使用正确的图片加载方式，用  [UIImage imageWithContentsOfFile:filePath]替代[UIImage imageNamed:filePath]</strong></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>不会缓存图片</p>
+</li>
+<li><p>适合大图和单次使用的图片</p>
+</li>
+</ul>
+<p><strong>后台线程解码 + 尺寸适配</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 后台线程处理图片</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        // 1. 从文件加载</span><br><span class="line">        UIImage *originalImage = [UIImage imageWithContentsOfFile:filePath];</span><br><span class="line">        </span><br><span class="line">        // 2. 压缩图片尺寸 (按需)</span><br><span class="line">        CGSize targetSize = CGSizeMake(800, 800); // 根据需求调整</span><br><span class="line">        UIGraphicsBeginImageContextWithOptions(targetSize, NO, [UIScreen mainScreen].scale);</span><br><span class="line">        [originalImage drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];</span><br><span class="line">        UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">        UIGraphicsEndImageContext();</span><br><span class="line">        </span><br><span class="line">        // 3. 主线程更新UI</span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.showImageView.image = scaledImage;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.使用 ImageIO 框架高效加载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;ImageIO/ImageIO.h&gt;</span><br><span class="line"></span><br><span class="line">NSURL *imageURL = [NSURL fileURLWithPath:filePath];</span><br><span class="line">NSDictionary *options = @&#123;(id)kCGImageSourceShouldCache: @NO&#125;; // 禁用解码缓存</span><br><span class="line">CGImageSourceRef source = CGImageSourceCreateWithURL((CFURLRef)imageURL, NULL);</span><br><span class="line">CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, (CFDictionaryRef)options);</span><br><span class="line">UIImage *image = [UIImage imageWithCGImage:imageRef];</span><br><span class="line">CGImageRelease(imageRef);</span><br><span class="line">CFRelease(source);</span><br><span class="line"></span><br><span class="line">self.showImageView.image = image;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.使用第三方图片加载库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 使用SDWebImage示例</span><br><span class="line">#import &lt;SDWebImage/SDWebImage.h&gt;</span><br><span class="line"></span><br><span class="line">[self.showImageView sd_setImageWithURL:[NSURL fileURLWithPath:filePath]placeholderImage:nil</span><br><span class="line">                           completed:^(UIImage *image, NSError *error,</span><br><span class="line">                           SDImageCacheType cacheType, </span><br><span class="line">                           NSURL *imageURL) &#123;</span><br><span class="line">                               // 加载完成回调</span><br><span class="line"> &#125;];</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.优化 SDAnimatedImageView 配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (SDAnimatedImageView *)showImageView &#123;</span><br><span class="line">    if (!_showImageView) &#123;</span><br><span class="line">        _showImageView = [[SDAnimatedImageView alloc] init];</span><br><span class="line">        _showImageView.contentMode = UIViewContentModeScaleAspectFill;</span><br><span class="line">        _showImageView.userInteractionEnabled = YES;</span><br><span class="line">        </span><br><span class="line">        // 添加以下优化配置</span><br><span class="line">        _showImageView.shouldIncrementalLoad = YES; // 渐进式加载</span><br><span class="line">        _showImageView.maxBufferSize = 1024 * 1024; // 设置合理的缓冲区大小</span><br><span class="line">        _showImageView.runLoopMode = NSDefaultRunLoopMode; // 滑动时暂停动画</span><br><span class="line">    &#125;</span><br><span class="line">    return _showImageView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.Cell 复用时的内存管理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 在 cell 的 prepareForReuse 中清理</span><br><span class="line">- (void)prepareForReuse &#123;</span><br><span class="line">    [super prepareForReuse];</span><br><span class="line">    </span><br><span class="line">    // 停止动画并释放资源</span><br><span class="line">    [self.showImageView stopAnimating];</span><br><span class="line">    self.showImageView.currentFrame = nil;</span><br><span class="line">    self.showImageView.animationImages = nil;</span><br><span class="line">    </span><br><span class="line">    // 取消未完成的图片加载</span><br><span class="line">    [self.showImageView sd_cancelCurrentImageLoad];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.图片尺寸优化（针对大图）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 使用 ImageIO 进行下采样</span><br><span class="line">- (UIImage *)downsampleImageAtPath:(NSString *)path toSize:(CGSize)size &#123;</span><br><span class="line">    NSURL *url = [NSURL fileURLWithPath:path];</span><br><span class="line">    NSDictionary *options = @&#123;</span><br><span class="line">        (id)kCGImageSourceShouldCache: @NO,</span><br><span class="line">        (id)kCGImageSourceShouldAllowFloat: @YES</span><br><span class="line">    &#125;;</span><br><span class="line">    CGImageSourceRef source = CGImageSourceCreateWithURL((CFURLRef)url, NULL);</span><br><span class="line">    </span><br><span class="line">    CGFloat maxDimension = MAX(size.width, size.height) * [UIScreen mainScreen].scale;</span><br><span class="line">    NSDictionary *downsampleOptions = @&#123;</span><br><span class="line">        (id)kCGImageSourceCreateThumbnailFromImageAlways: @YES,</span><br><span class="line">        (id)kCGImageSourceShouldCacheImmediately: @YES,</span><br><span class="line">        (id)kCGImageSourceThumbnailMaxPixelSize: @(maxDimension)</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    CGImageRef imageRef = CGImageSourceCreateThumbnailAtIndex(source, 0, (CFDictionaryRef)downsampleOptions);</span><br><span class="line">    UIImage *image = [UIImage imageWithCGImage:imageRef];</span><br><span class="line">    </span><br><span class="line">    if (imageRef) CFRelease(imageRef);</span><br><span class="line">    if (source) CFRelease(source);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.滑动性能优化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 在 scrollView 代理中实现以下方法</span><br><span class="line">- (void)scrollViewDidScroll:(UIScrollView *)scrollView &#123;</span><br><span class="line">    // 暂停屏幕外 cell 的动画</span><br><span class="line">    for (UITableViewCell *cell in self.tableView.visibleCells) &#123;</span><br><span class="line">        if ([cell isKindOfClass:[YourCellClass class]]) &#123;</span><br><span class="line">            YourCellClass *yourCell = (YourCellClass *)cell;</span><br><span class="line">            [yourCell.showImageView startAnimating];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 暂停非可见 cell 的动画</span><br><span class="line">    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];</span><br><span class="line">    for (NSIndexPath *indexPath in self.loadedIndexPaths) &#123;</span><br><span class="line">        if (![visiblePaths containsObject:indexPath]) &#123;</span><br><span class="line">            YourCellClass *cell = (YourCellClass *)[self.tableView cellForRowAtIndexPath:indexPath];</span><br><span class="line">            [cell.showImageView stopAnimating];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他优化建议："><a href="#其他优化建议：" class="headerlink" title="其他优化建议："></a>其他优化建议：</h3><p><strong>1.内存警告处理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // 清除所有图片缓存</span><br><span class="line">    [[SDImageCache sharedImageCache] clearMemory];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.使用合适的 SDWebImage 选项：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[self.showImageView sd_setImageWithURL:imageURL</span><br><span class="line">                    placeholderImage:nil</span><br><span class="line">                           options:SDWebImageAvoidDecodeImage | </span><br><span class="line">                                   SDWebImageScaleDownLargeImages |</span><br><span class="line">                                   SDWebImageProgressiveLoad</span><br><span class="line">                          completed:nil];</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.监控内存使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- (void)monitorMemoryUsage &#123;</span><br><span class="line">    struct task_basic_info info;</span><br><span class="line">    mach_msg_type_number_t size = sizeof(info);</span><br><span class="line">    kern_return_t kerr = task_info(mach_task_self(),</span><br><span class="line">                                 TASK_BASIC_INFO,</span><br><span class="line">                                 (task_info_t)&amp;info,</span><br><span class="line">                                 &amp;size);</span><br><span class="line">    if (kerr == KERN_SUCCESS) &#123;</span><br><span class="line">        NSLog(@&quot;Memory in use (in MB): %f&quot;, info.resident_size / 1024.0 / 1024.0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4.配置 SDWebImage 全局参数（AppDelegate 中）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 设置全局缓存策略</span><br><span class="line">SDImageCacheConfig *cacheConfig = [SDImageCacheConfig defaultCacheConfig];</span><br><span class="line">cacheConfig.maxMemoryCost = 100 * 1024 * 1024; // 100MB 内存缓存</span><br><span class="line">cacheConfig.maxMemoryCount = 50; // 最大缓存图片数量</span><br><span class="line">cacheConfig.shouldDecompressImages = NO; // 禁止自动解压</span><br><span class="line">[SDImageCache sharedImageCache].config = cacheConfig;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-aabb2e60704bb072.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="性能对比"></p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIImage/" rel="tag">UIImage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CIMSDK%E2%80%9D/" rel="tag">“IMSDK”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/" rel="tag">优化内存</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">iOS-SM3加密算法N种集成</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "a1S86fOlOUpjKlnF6GbDEaXa-gzGzoHsz",
+    app_key: "I8KJc5Z8uB7wXwz3r7Mab2Rx",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "留下您的宝贵意见...",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2015-2025
+        <i class="ri-heart-fill heart_icon"></i> kindyourself@163.com
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="Gavin&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.jianshu.com/u/51707eacf496">简书</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.png">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.png">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

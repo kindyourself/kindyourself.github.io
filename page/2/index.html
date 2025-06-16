@@ -167,6 +167,115 @@
     
     
     <article
+  id="[layout]-UISearchBar详解"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"
+    >UISearchBar详解</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2017-03-10T16:27:34.000Z" itemprop="datePublished">2017-03-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/swift/">swift</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>今天公司的项目测试的差不多了，基本可以上架了，又有时间来分享一下最近遇到的一些问题了，公司的项目进行了大改版（应该是全改了，基本是一个新的项目了），老大决定用swift重写。之前一直在自学swift，终于这一次可以实战了。项目中搜索用的比较多，但是搜索框的样式与默认的差别太大了，所以只能自定义了。</p>
+</blockquote>
+<p>The UISearchBar class implements a text field control for text-based searches. The control provides a text field for entering text, a search button, a bookmark button, and a cancel button. The UISearchBar object does not actually perform any searches. You use a delegate, an object conforming to the UISearchBarDelegate protocol, to implement the actions when text is entered and buttons are clicked.</p><p>
+
+<blockquote>
+<p>以上是苹果对UISearchBar的解释，可以看见UISearchBar提供了类似UITextField的输入（其实它的组成中就有UITextField，下面会讲到），右边有搜索按钮、标签按钮、关闭按钮可供选择，搜索都是在协议UISearchBarDelegate中进行。</p>
+</blockquote>
+</p><p><strong>自定义外观</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7efbcef7e9cb93c4383fe6794bdbefdf.webp?x-image-process=image/format,png" alt="默认搜索外观"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/226c294545fe64cc3f3f91cd71df0146.webp?x-image-process=image/format,png" alt="项目搜索外观"></p>
+<blockquote>
+<p>UISearchBar的层级很是复杂主要由UISearchBarBackgroud、UISearchBarTextField、<br>UINavigationButton组成，其中UISearchBarTextField就是输入框，主要是由——UISearchBarSearchFieldBackgroundView、UIButton（❌）、UIImageView（?）等组成，</p>
+</blockquote>
+<p><strong>获取TextField方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let searchFiled:UITextField = self.searchBar.value(forKey: &quot;_searchField&quot;) as! UITextField</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>这样就可以通过修改	searchFiled来修改输入样式（圆角、字体等）。</strong></p>
+<blockquote>
+<p>UISearchBar的直接子控件是UIVIew，其上的子控件UISearchBarBackgroud的frame与UISearchBar的bounds相等，UISearchBarTextField的高度默认为28与UISearchBar左右有8像素的固定间距，上下间距为直接子控件UIView的高度 - UISearchBarTextField的默认高度28 再除以2。因此UISearchBar的输入框始终与设置的frame不一样，不便于布局，我们可以添加一个子类继承UISearchBar，可以更改其内边距。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class MySearchBar: UISearchBar &#123;</span><br><span class="line">    </span><br><span class="line">    // 监听是否添加了该属性</span><br><span class="line">    var contentInset: UIEdgeInsets? &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            self.layoutSubviews()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func layoutSubviews() &#123;</span><br><span class="line">        super.layoutSubviews()</span><br><span class="line">        // 便利寻找</span><br><span class="line">        for view in self.subviews &#123;</span><br><span class="line">            for subview in view.subviews &#123;</span><br><span class="line">                // 判定是否是UISearchBarTextField</span><br><span class="line">                if subview.isKind(of: UITextField.classForCoder()) &#123;</span><br><span class="line">                    if let textFieldContentInset = contentInset &#123;</span><br><span class="line">                        // 修改UISearchBarTextField的布局</span><br><span class="line">                        subview.frame = CGRect(x: textFieldContentInset.left, y: textFieldContentInset.top, width: self.bounds.width - textFieldContentInset.left - textFieldContentInset.right, height: self.bounds.height - textFieldContentInset.top - textFieldContentInset.bottom)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        // 设置UISearchBar中UISearchBarTextField的默认边距</span><br><span class="line">                        let top: CGFloat = (self.bounds.height - 28.0) / 2.0</span><br><span class="line">                        let bottom: CGFloat = top</span><br><span class="line">                        let left: CGFloat = 8.0</span><br><span class="line">                        let right: CGFloat = left</span><br><span class="line">                        contentInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>让实例化的UISearchBar继承MySearchBar，然后就可以很方便的直接控制内边距了</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.searchBar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>接下来就是处理placeholder靠左，这个就比较麻烦了，查询了一大堆办法都挺麻烦的，最后找到了一个很投机的办法：先判定手机宽度，然后在placeholder右边加上空格做成靠左的假象。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if SCREEN.WIDTH == 320 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置       &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 373\5 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                  &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 414 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                                 &quot;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>然后在storyboard中设置searchBar的BarStyle为Minimal就可以很方便的控制UISearchBar的外观了。<br>到这里就剩一个问题了：UISearchBar上下的两根黑线了，</p>
+</blockquote>
+<p><strong>去除方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.searchBar.setBackgroundImage(UIImage.init(), for: .any, barMetrics: .default)</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜索的使用</strong></p>
+<blockquote>
+<p>如苹果官方文档所说，与搜索相关的都是在其代理方法中完成。UISearchBar有很多的代理方法，感兴趣的可以点击进入查看</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/reference/uikit/uisearchbardelegate">UISearchBarDelegate</a>我就介绍几个常用的：</p>
+<blockquote>
+<p>当搜索内容变化时，执行该方法,可以实时监听输入框的变化,可以实现时实搜索。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)textNS_AVAILABLE_IOS(3_0);                 // called before text changes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也行你想把搜索事件放在点击搜索以后再触发，那就选用这个方法，它就是点击搜索后的代理方法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>当然如果你觉得这样太麻烦了，你还可以选择用UITextField来实现UISearchBar的功能，但是最终哪一个更加的麻烦还需要试一试才知道。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CUISearchBar%E2%80%9D/" rel="tag">“UISearchBar”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cswift%E2%80%9D/" rel="tag">“swift”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="[layout]-微信小程序tips"
   class="article article-type-[layout]"
   itemscope
@@ -685,7 +794,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <blockquote>
-<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
+<p>一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，<a target="_blank" rel="noopener" href="https://gavincarter1991.github.io/">我的搭建网页</a>。</p>
 </blockquote>
 <h3 id="1-gitHub"><a href="#1-gitHub" class="headerlink" title="1. gitHub"></a>1. gitHub</h3><p>gitHub 的注册及配置我就不介绍了，这个哪里都可以查到，我介绍一下注册过后远程仓库的创建。<br>首先创建远程仓库：<br><img src="https://i-blog.csdnimg.cn/blog_migrate/ea1e5de3d83fcb9ca8c0eb0e11086ab3.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.16.png"><br>在后面的Respository name 里面输入：gavincarter1991.github.io 这个格式是定的（gavincarter1991 需要填写你的用户名）我没有测试过如果不填写自己用户名的后果，不过查了很多资料都推荐这样填写，有的还是不以这样的方式会报错，没有实践，我没有发言权。<br><img src="https://i-blog.csdnimg.cn/blog_migrate/c44f6c8a7f4544c550f966f205dd7848.webp?x-image-process=image/format,png" alt="屏幕快照 2016-07-16 02.49.37.png"></p>
 <h3 id="2-homebrew安装"><a href="#2-homebrew安装" class="headerlink" title="2. homebrew安装"></a>2. homebrew安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -904,74 +1013,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cweb%E2%80%9D/" rel="tag">“web”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/" rel="tag">“代码相通性”</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="[layout]-Base64-不重要数据的简单加密"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"
-    >Base64-不重要数据的简单加密</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" class="article-date">
-  <time datetime="2016-07-09T12:31:41.000Z" itemprop="datePublished">2016-07-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
-<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
-</blockquote>
-<p>##我的实现过程（可以根据公司需求自定义）：</p>
-<ol>
-<li>先编码一次</li>
-<li>对编码结果的数据交换首位字符在编码一次</li>
-<li>对编码结果逆序在编码一次</li>
-</ol>
-<p>##示例代码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>###结束语：</p>
-<blockquote>
-<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
-</blockquote>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CBase64%E2%80%9D/" rel="tag">“Base64”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" rel="tag">“加密”</a></li></ul>
 
     </footer>
   </div>

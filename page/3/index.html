@@ -167,6 +167,74 @@
     
     
     <article
+  id="[layout]-Base64-不重要数据的简单加密"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/"
+    >Base64-不重要数据的简单加密</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/" class="article-date">
+  <time datetime="2016-07-09T12:31:41.000Z" itemprop="datePublished">2016-07-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+</blockquote>
+<p>##我的实现过程（可以根据公司需求自定义）：</p>
+<ol>
+<li>先编码一次</li>
+<li>对编码结果的数据交换首位字符在编码一次</li>
+<li>对编码结果逆序在编码一次</li>
+</ol>
+<p>##示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>###结束语：</p>
+<blockquote>
+<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CBase64%E2%80%9D/" rel="tag">“Base64”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8A%A0%E5%AF%86%E2%80%9D/" rel="tag">“加密”</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="[layout]-iOS-解压zip"
   class="article article-type-[layout]"
   itemscope

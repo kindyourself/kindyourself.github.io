@@ -1,75 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>UISearchBar详解</title>
-    <url>/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>今天公司的项目测试的差不多了，基本可以上架了，又有时间来分享一下最近遇到的一些问题了，公司的项目进行了大改版（应该是全改了，基本是一个新的项目了），老大决定用swift重写。之前一直在自学swift，终于这一次可以实战了。项目中搜索用的比较多，但是搜索框的样式与默认的差别太大了，所以只能自定义了。</p>
-</blockquote>
-<p>The UISearchBar class implements a text field control for text-based searches. The control provides a text field for entering text, a search button, a bookmark button, and a cancel button. The UISearchBar object does not actually perform any searches. You use a delegate, an object conforming to the UISearchBarDelegate protocol, to implement the actions when text is entered and buttons are clicked.</p><p>
-
-<blockquote>
-<p>以上是苹果对UISearchBar的解释，可以看见UISearchBar提供了类似UITextField的输入（其实它的组成中就有UITextField，下面会讲到），右边有搜索按钮、标签按钮、关闭按钮可供选择，搜索都是在协议UISearchBarDelegate中进行。</p>
-</blockquote>
-</p><p><strong>自定义外观</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7efbcef7e9cb93c4383fe6794bdbefdf.webp?x-image-process=image/format,png" alt="默认搜索外观"></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/226c294545fe64cc3f3f91cd71df0146.webp?x-image-process=image/format,png" alt="项目搜索外观"></p>
-<blockquote>
-<p>UISearchBar的层级很是复杂主要由UISearchBarBackgroud、UISearchBarTextField、<br>UINavigationButton组成，其中UISearchBarTextField就是输入框，主要是由——UISearchBarSearchFieldBackgroundView、UIButton（❌）、UIImageView（?）等组成，</p>
-</blockquote>
-<p><strong>获取TextField方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let searchFiled:UITextField = self.searchBar.value(forKey: &quot;_searchField&quot;) as! UITextField</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>这样就可以通过修改	searchFiled来修改输入样式（圆角、字体等）。</strong></p>
-<blockquote>
-<p>UISearchBar的直接子控件是UIVIew，其上的子控件UISearchBarBackgroud的frame与UISearchBar的bounds相等，UISearchBarTextField的高度默认为28与UISearchBar左右有8像素的固定间距，上下间距为直接子控件UIView的高度 - UISearchBarTextField的默认高度28 再除以2。因此UISearchBar的输入框始终与设置的frame不一样，不便于布局，我们可以添加一个子类继承UISearchBar，可以更改其内边距。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MySearchBar: UISearchBar &#123;</span><br><span class="line">    </span><br><span class="line">    // 监听是否添加了该属性</span><br><span class="line">    var contentInset: UIEdgeInsets? &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            self.layoutSubviews()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func layoutSubviews() &#123;</span><br><span class="line">        super.layoutSubviews()</span><br><span class="line">        // 便利寻找</span><br><span class="line">        for view in self.subviews &#123;</span><br><span class="line">            for subview in view.subviews &#123;</span><br><span class="line">                // 判定是否是UISearchBarTextField</span><br><span class="line">                if subview.isKind(of: UITextField.classForCoder()) &#123;</span><br><span class="line">                    if let textFieldContentInset = contentInset &#123;</span><br><span class="line">                        // 修改UISearchBarTextField的布局</span><br><span class="line">                        subview.frame = CGRect(x: textFieldContentInset.left, y: textFieldContentInset.top, width: self.bounds.width - textFieldContentInset.left - textFieldContentInset.right, height: self.bounds.height - textFieldContentInset.top - textFieldContentInset.bottom)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        // 设置UISearchBar中UISearchBarTextField的默认边距</span><br><span class="line">                        let top: CGFloat = (self.bounds.height - 28.0) / 2.0</span><br><span class="line">                        let bottom: CGFloat = top</span><br><span class="line">                        let left: CGFloat = 8.0</span><br><span class="line">                        let right: CGFloat = left</span><br><span class="line">                        contentInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>让实例化的UISearchBar继承MySearchBar，然后就可以很方便的直接控制内边距了</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>接下来就是处理placeholder靠左，这个就比较麻烦了，查询了一大堆办法都挺麻烦的，最后找到了一个很投机的办法：先判定手机宽度，然后在placeholder右边加上空格做成靠左的假象。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if SCREEN.WIDTH == 320 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置       &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 373\5 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                  &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 414 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                                 &quot;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>然后在storyboard中设置searchBar的BarStyle为Minimal就可以很方便的控制UISearchBar的外观了。<br>到这里就剩一个问题了：UISearchBar上下的两根黑线了，</p>
-</blockquote>
-<p><strong>去除方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.setBackgroundImage(UIImage.init(), for: .any, barMetrics: .default)</span><br></pre></td></tr></table></figure>
-
-<p><strong>搜索的使用</strong></p>
-<blockquote>
-<p>如苹果官方文档所说，与搜索相关的都是在其代理方法中完成。UISearchBar有很多的代理方法，感兴趣的可以点击进入查看</p>
-</blockquote>
-<p><a href="https://developer.apple.com/reference/uikit/uisearchbardelegate">UISearchBarDelegate</a>我就介绍几个常用的：</p>
-<blockquote>
-<p>当搜索内容变化时，执行该方法,可以实时监听输入框的变化,可以实现时实搜索。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)textNS_AVAILABLE_IOS(3_0);                 // called before text changes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>也行你想把搜索事件放在点击搜索以后再触发，那就选用这个方法，它就是点击搜索后的代理方法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
-<p>当然如果你觉得这样太麻烦了，你还可以选择用UITextField来实现UISearchBar的功能，但是最终哪一个更加的麻烦还需要试一试才知道。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>swift</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“swift”</tag>
-        <tag>“UISearchBar”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Flutter遇到的问题</title>
     <url>/2025/05/23/flutter-error/</url>
     <content><![CDATA[<blockquote>
@@ -91,6 +22,33 @@
       <tags>
         <tag>“Flutter”</tag>
         <tag>“Error”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Base64-不重要数据的简单加密</title>
+    <url>/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</url>
+    <content><![CDATA[<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
+<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+</blockquote>
+<p>##我的实现过程（可以根据公司需求自定义）：</p>
+<ol>
+<li>先编码一次</li>
+<li>对编码结果的数据交换首位字符在编码一次</li>
+<li>对编码结果逆序在编码一次</li>
+</ol>
+<p>##示例代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>###结束语：</p>
+<blockquote>
+<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“Base64”</tag>
+        <tag>“加密”</tag>
       </tags>
   </entry>
   <entry>
@@ -480,30 +438,31 @@
       </tags>
   </entry>
   <entry>
-    <title>Base64-不重要数据的简单加密</title>
-    <url>/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</url>
-    <content><![CDATA[<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
-<p> 最近公司要求对服务器的token等参数进行一个简单的加密，防止恶意请求。要求加密过程自定义，于是就想到了用base64，其实这不是一个加密解密的算法，其实它就是使用64个字符来对任意数据进行编码解码的，具体底层实现原理就不讨论了，它是随着iOS7推出的。</p>
+    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
+    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
+<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
+<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
+<p>一个是 Create folder references for any added folders 创建实体结构）</p>
 </blockquote>
-<p>##我的实现过程（可以根据公司需求自定义）：</p>
-<ol>
-<li>先编码一次</li>
-<li>对编码结果的数据交换首位字符在编码一次</li>
-<li>对编码结果逆序在编码一次</li>
-</ol>
-<p>##示例代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">+(NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">Base64Encoding *base64 = [[Base64Encoding alloc] init];</span><br><span class="line">   </span><br><span class="line">    // 1次</span><br><span class="line">    NSString *encrypt1 = [base64 base64EncodedString:string];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string1 = [base64 changeStringFirsrAndLast:encrypt1];</span><br><span class="line">    </span><br><span class="line">    // 2次</span><br><span class="line">    NSString *encrypt2 = [base64 base64EncodedString:string1];</span><br><span class="line">    // 交换字符串首位次序</span><br><span class="line">    NSString *string2 = [base64 changeStringOrder:encrypt2];</span><br><span class="line">    </span><br><span class="line">    // 3次</span><br><span class="line">    NSString *encrypt3 = [base64 base64EncodedString:string2];</span><br><span class="line">    </span><br><span class="line">    return encrypt3;</span><br><span class="line">&#125;</span><br><span class="line">// 添加逗号</span><br><span class="line">- (NSString *)addSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">    NSMutableString *mutableString = [string mutableCopy];</span><br><span class="line">    NSInteger cont = mutableString.length;</span><br><span class="line">    for (int i = 0; i &lt; cont - 1; i ++) &#123;</span><br><span class="line">        [mutableString insertString:@&quot;,&quot; atIndex:2 * i + 1];</span><br><span class="line">    &#125;</span><br><span class="line">    return mutableString;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 去掉逗号</span><br><span class="line">- (NSString *)removeSeparaedSingle:(NSString *)string &#123;</span><br><span class="line">   return [string stringByReplacingOccurrencesOfString:@&quot;,&quot; withString:@&quot;&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串转数组</span><br><span class="line">- (NSMutableArray *)stringChangeArray:(NSString *)string &#123;</span><br><span class="line">    NSMutableArray *mutableArray = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@&quot;,&quot;]];</span><br><span class="line">    return mutableArray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 数组转字符串</span><br><span class="line">- (NSString *)arrayChangeString:(NSArray *)array &#123;</span><br><span class="line">    return [array componentsJoinedByString:@&quot;,&quot;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串交换首尾</span><br><span class="line">- (NSString *)changeStringFirsrAndLast:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSString *temp = mutableArray[0];</span><br><span class="line">    mutableArray[0] = mutableArray[mutableArray.count - 1];</span><br><span class="line">    mutableArray[mutableArray.count - 1] = temp;</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:mutableArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 字符串逆序</span><br><span class="line">- (NSString *)changeStringOrder:(NSString *)string &#123;</span><br><span class="line">    NSString *str = [self addSeparaedSingle:string];</span><br><span class="line">    NSMutableArray *mutableArray = [self stringChangeArray:str];</span><br><span class="line">    NSArray *reversedArray = [[mutableArray reverseObjectEnumerator] allObjects];</span><br><span class="line">    NSString *arrayString = [self arrayChangeString:reversedArray];</span><br><span class="line">    return [self removeSeparaedSingle:arrayString];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 编码</span><br><span class="line">- (NSString *)base64EncodedString:(NSString *)string &#123;</span><br><span class="line">    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];</span><br><span class="line">    return [data base64EncodedStringWithOptions:0];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>###结束语：</p>
 <blockquote>
-<p>  这个可以根据公司的要求跟后台写的好加密的规则，解密就交给后台了，<code>方法：initWithBase64EncodedData</code> 采用逆向规则解密即可，当然这个是极其容易被破解的，涉及敏感数据是不可使用这个方法的。</p>
+<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
 </blockquote>
-]]></content>
+<p><strong>引入文件方式：</strong></p>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+</blockquote>
+<p> <strong>引入文件方式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>iOS</category>
       </categories>
       <tags>
-        <tag>“Base64”</tag>
-        <tag>“加密”</tag>
+        <tag>“iOS”</tag>
+        <tag>“本地”</tag>
+        <tag>“路径问题”</tag>
       </tags>
   </entry>
   <entry>
@@ -664,31 +623,161 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>今天在项目中遇到一个问题：我将H5的文件拖入项目中，在webView上添加H5,运行时发现H5的样式与图片等都没有了。经过多种测试后发现：是路径的问题。</p>
-<p>在ios项目下添加本地HTML&#x2F;js&#x2F;css&#x2F;image  当拖入项目时有两种选择：</p>
-<p>一个是  Create groups for any added folders（创建虚拟结构-包结构）</p>
-<p>一个是 Create folder references for any added folders 创建实体结构）</p>
+    <title>iOS即时通讯发送图片消息内存暴涨优化</title>
+    <url>/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</url>
+    <content><![CDATA[<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><blockquote>
+<p>即时通讯App在发送图片消息时内存暴涨导致网络请求初始化失败（内存不足OOM），发送消息失败。</p>
 </blockquote>
-<blockquote>
-<p>如果选择前者，当APP编译过后引入的文件会被放在同一个文件夹下面会忽略你原本的文件夹。因此在HTML文件中的路径就会出现问题。如果你选择了前者那么HTML文件中引入CSS，js，图片等就不需要添加前缀路径了，直接写文件名就行。</p>
+<h3 id="可能原因分析："><a href="#可能原因分析：" class="headerlink" title="可能原因分析："></a>可能原因分析：</h3><ol>
+<li>有内存泄漏。</li>
+<li>发送的图片消息，可能包含大图，没有进行压缩处理，导致内存占用过高。</li>
+<li>在发送过程中，可能同时进行了图片的读取和处理，如果图片很大，处理过程中会产生很大的内存峰值。</li>
+</ol>
+<h3 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h3><ol>
+<li><strong>对于发送消息时的内存暴涨：</strong></li>
+</ol>
+<ul>
+<li>检查是否有内存泄漏，使用Instruments工具检测。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-75e63fb317acf3a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Instruments工具检测结果"></p>
+<p><strong>检测发现确实有内存泄漏，解决后发现问题还是存在。</strong></p>
+<ul>
+<li><p>在发送图片消息前，对图片进行压缩（包括压缩质量和尺寸），然后再发送压缩后的图片。</p>
+</li>
+<li><p>避免直接操作大图，可以使用后台线程进行处理，防止阻塞主线程。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">    // 1. 读取图片（避免使用imageNamed:）</span><br><span class="line">    UIImage *originalImage = [UIImage imageWithContentsOfFile:filePath];</span><br><span class="line">    </span><br><span class="line">    // 2. 尺寸压缩（限制最大边长为1024）</span><br><span class="line">    CGFloat maxSize = 1024.0;</span><br><span class="line">    CGSize scaledSize = [self scaledSizeForImage:originalImage maxLength:maxSize];</span><br><span class="line">    </span><br><span class="line">    // 3. 质量压缩（70%质量）</span><br><span class="line">    UIImage *compressedImage = [self resizeImage:originalImage toSize:scaledSize];</span><br><span class="line">    NSData *imageData = UIImageJPEGRepresentation(compressedImage, 0.7);</span><br><span class="line">    </span><br><span class="line">    // 4. 发送压缩后的数据（非原始图片）</span><br><span class="line">    [self sendImageData:imageData];</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 计算缩放尺寸</span><br><span class="line">- (CGSize)scaledSizeForImage:(UIImage *)image maxLength:(CGFloat)maxLength &#123;</span><br><span class="line">    CGFloat ratio = MIN(maxLength / image.size.width, maxLength / image.size.height);</span><br><span class="line">    return CGSizeMake(image.size.width * ratio, image.size.height * ratio);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 图片重绘</span><br><span class="line">- (UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)targetSize &#123;</span><br><span class="line">    UIGraphicsBeginImageContextWithOptions(targetSize, NO, UIScreen.mainScreen.scale);</span><br><span class="line">    [image drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];</span><br><span class="line">    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">    UIGraphicsEndImageContext();</span><br><span class="line">    return resizedImage;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>压缩后的图片数据要及时释放不必要的资源，避免在内存中同时存在多张图片，比如在图片展示后，如果原图不再需要，可以将其置为nil，帮助内存回收。（@autoreleasepool）。</li>
+</ul>
+<p><strong>处理到此内存暴涨解决了，但是随着发送图片内存还是在持续增加，现在每发送一张图片内存还是要涨10M。（message.compressRatio &#x3D; 1.0 &#x2F;&#x2F; 设置压缩率），message.compressRatio &#x3D; 0.2，每发送一张图片内存也要涨5M。</strong></p>
+<h3 id="新问题："><a href="#新问题：" class="headerlink" title="新问题："></a>新问题：</h3><blockquote>
+<p>即时通讯App在发送图片消息时每次展示一张图片内存涨10M多。</p>
 </blockquote>
-<p><strong>引入文件方式：</strong></p>
- <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSString * htmlPath = [[NSBundle mainBundle] pathForResource:@&quot;index&quot; ofType:@&quot;html&quot;];</span><br><span class="line">NSString * htmlString = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];</span><br><span class="line"> NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] resourcePath]];</span><br><span class="line">[self.webView loadHTMLString:htmlString baseURL:baseURL];</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p> 如果选择后者，当APP编译过后引入的文件会按照原本的目录结构存放，这个时候就需要添加相对路径。</p>
+<h3 id="可能原因分析：-1"><a href="#可能原因分析：-1" class="headerlink" title="可能原因分析："></a>可能原因分析：</h3><p>1.<strong>图片加载方法不对</strong> </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-6e9d4b44497cf943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cell图片展示"></p>
+<p><strong>[UIImage imageNamed:]的内存缓存特性：</strong> </p>
+<ul>
+<li><p>系统级缓存无法自动释放</p>
+</li>
+<li><p>特别不适合大图和列表展示场景</p>
+</li>
+<li><p>会自动缓存图片到系统缓存</p>
+</li>
+<li><p>适合重复使用的小图标</p>
+</li>
+<li><p>不适合大图或单次使用的图片</p>
+</li>
+</ul>
+<p>2.<strong>内存增长原因：</strong></p>
+<p><code>为了支持 GIF/WebP 等动图格式，showImageView为SDAnimatedImageView，它解码后的帧缓存会增加内存占用。 </code></p>
+<ul>
+<li><p>大图被缓存且无法及时释放</p>
+</li>
+<li><p>图片解码后的位图数据占用内存</p>
+</li>
+</ul>
+<p>3.<strong>Cell 复用机制</strong></p>
+<p>快速滑动时可能同时加载多张大图，旧图片未及时释放</p>
+<h3 id="优化方案："><a href="#优化方案：" class="headerlink" title="优化方案："></a>优化方案：</h3><blockquote>
+<p>通过以下优化措施，图片展示内存问题应该能得到显著改善。核心要点是：</p>
 </blockquote>
-<p> <strong>引入文件方式：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@&quot;huaiha/index.html&quot; </span><br><span class="line"></span><br><span class="line">relativeToURL:[[NSBundle mainBundle] bundleURL]]]];</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+<ul>
+<li><p>避免使用 imageNamed: 加载大图</p>
+</li>
+<li><p>合理配置 SDAnimatedImageView</p>
+</li>
+<li><p>完善 cell 复用机制</p>
+</li>
+<li><p>使用图片下采样技术</p>
+</li>
+<li><p>滑动时优化资源使用</p>
+</li>
+</ul>
+<p><strong>1.使用正确的图片加载方式，用  [UIImage imageWithContentsOfFile:filePath]替代[UIImage imageNamed:filePath]</strong></p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>不会缓存图片</p>
+</li>
+<li><p>适合大图和单次使用的图片</p>
+</li>
+</ul>
+<p><strong>后台线程解码 + 尺寸适配</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 后台线程处理图片</span><br><span class="line">dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        // 1. 从文件加载</span><br><span class="line">        UIImage *originalImage = [UIImage imageWithContentsOfFile:filePath];</span><br><span class="line">        </span><br><span class="line">        // 2. 压缩图片尺寸 (按需)</span><br><span class="line">        CGSize targetSize = CGSizeMake(800, 800); // 根据需求调整</span><br><span class="line">        UIGraphicsBeginImageContextWithOptions(targetSize, NO, [UIScreen mainScreen].scale);</span><br><span class="line">        [originalImage drawInRect:CGRectMake(0, 0, targetSize.width, targetSize.height)];</span><br><span class="line">        UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();</span><br><span class="line">        UIGraphicsEndImageContext();</span><br><span class="line">        </span><br><span class="line">        // 3. 主线程更新UI</span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.showImageView.image = scaledImage;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.使用 ImageIO 框架高效加载</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;ImageIO/ImageIO.h&gt;</span><br><span class="line"></span><br><span class="line">NSURL *imageURL = [NSURL fileURLWithPath:filePath];</span><br><span class="line">NSDictionary *options = @&#123;(id)kCGImageSourceShouldCache: @NO&#125;; // 禁用解码缓存</span><br><span class="line">CGImageSourceRef source = CGImageSourceCreateWithURL((CFURLRef)imageURL, NULL);</span><br><span class="line">CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, 0, (CFDictionaryRef)options);</span><br><span class="line">UIImage *image = [UIImage imageWithCGImage:imageRef];</span><br><span class="line">CGImageRelease(imageRef);</span><br><span class="line">CFRelease(source);</span><br><span class="line"></span><br><span class="line">self.showImageView.image = image;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.使用第三方图片加载库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 使用SDWebImage示例</span><br><span class="line">#import &lt;SDWebImage/SDWebImage.h&gt;</span><br><span class="line"></span><br><span class="line">[self.showImageView sd_setImageWithURL:[NSURL fileURLWithPath:filePath]placeholderImage:nil</span><br><span class="line">                           completed:^(UIImage *image, NSError *error,</span><br><span class="line">                           SDImageCacheType cacheType, </span><br><span class="line">                           NSURL *imageURL) &#123;</span><br><span class="line">                               // 加载完成回调</span><br><span class="line"> &#125;];</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.优化 SDAnimatedImageView 配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (SDAnimatedImageView *)showImageView &#123;</span><br><span class="line">    if (!_showImageView) &#123;</span><br><span class="line">        _showImageView = [[SDAnimatedImageView alloc] init];</span><br><span class="line">        _showImageView.contentMode = UIViewContentModeScaleAspectFill;</span><br><span class="line">        _showImageView.userInteractionEnabled = YES;</span><br><span class="line">        </span><br><span class="line">        // 添加以下优化配置</span><br><span class="line">        _showImageView.shouldIncrementalLoad = YES; // 渐进式加载</span><br><span class="line">        _showImageView.maxBufferSize = 1024 * 1024; // 设置合理的缓冲区大小</span><br><span class="line">        _showImageView.runLoopMode = NSDefaultRunLoopMode; // 滑动时暂停动画</span><br><span class="line">    &#125;</span><br><span class="line">    return _showImageView;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>5.Cell 复用时的内存管理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在 cell 的 prepareForReuse 中清理</span><br><span class="line">- (void)prepareForReuse &#123;</span><br><span class="line">    [super prepareForReuse];</span><br><span class="line">    </span><br><span class="line">    // 停止动画并释放资源</span><br><span class="line">    [self.showImageView stopAnimating];</span><br><span class="line">    self.showImageView.currentFrame = nil;</span><br><span class="line">    self.showImageView.animationImages = nil;</span><br><span class="line">    </span><br><span class="line">    // 取消未完成的图片加载</span><br><span class="line">    [self.showImageView sd_cancelCurrentImageLoad];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.图片尺寸优化（针对大图）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 使用 ImageIO 进行下采样</span><br><span class="line">- (UIImage *)downsampleImageAtPath:(NSString *)path toSize:(CGSize)size &#123;</span><br><span class="line">    NSURL *url = [NSURL fileURLWithPath:path];</span><br><span class="line">    NSDictionary *options = @&#123;</span><br><span class="line">        (id)kCGImageSourceShouldCache: @NO,</span><br><span class="line">        (id)kCGImageSourceShouldAllowFloat: @YES</span><br><span class="line">    &#125;;</span><br><span class="line">    CGImageSourceRef source = CGImageSourceCreateWithURL((CFURLRef)url, NULL);</span><br><span class="line">    </span><br><span class="line">    CGFloat maxDimension = MAX(size.width, size.height) * [UIScreen mainScreen].scale;</span><br><span class="line">    NSDictionary *downsampleOptions = @&#123;</span><br><span class="line">        (id)kCGImageSourceCreateThumbnailFromImageAlways: @YES,</span><br><span class="line">        (id)kCGImageSourceShouldCacheImmediately: @YES,</span><br><span class="line">        (id)kCGImageSourceThumbnailMaxPixelSize: @(maxDimension)</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    CGImageRef imageRef = CGImageSourceCreateThumbnailAtIndex(source, 0, (CFDictionaryRef)downsampleOptions);</span><br><span class="line">    UIImage *image = [UIImage imageWithCGImage:imageRef];</span><br><span class="line">    </span><br><span class="line">    if (imageRef) CFRelease(imageRef);</span><br><span class="line">    if (source) CFRelease(source);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    return image;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>7.滑动性能优化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在 scrollView 代理中实现以下方法</span><br><span class="line">- (void)scrollViewDidScroll:(UIScrollView *)scrollView &#123;</span><br><span class="line">    // 暂停屏幕外 cell 的动画</span><br><span class="line">    for (UITableViewCell *cell in self.tableView.visibleCells) &#123;</span><br><span class="line">        if ([cell isKindOfClass:[YourCellClass class]]) &#123;</span><br><span class="line">            YourCellClass *yourCell = (YourCellClass *)cell;</span><br><span class="line">            [yourCell.showImageView startAnimating];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 暂停非可见 cell 的动画</span><br><span class="line">    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];</span><br><span class="line">    for (NSIndexPath *indexPath in self.loadedIndexPaths) &#123;</span><br><span class="line">        if (![visiblePaths containsObject:indexPath]) &#123;</span><br><span class="line">            YourCellClass *cell = (YourCellClass *)[self.tableView cellForRowAtIndexPath:indexPath];</span><br><span class="line">            [cell.showImageView stopAnimating];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他优化建议："><a href="#其他优化建议：" class="headerlink" title="其他优化建议："></a>其他优化建议：</h3><p><strong>1.内存警告处理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)didReceiveMemoryWarning &#123;</span><br><span class="line">    [super didReceiveMemoryWarning];</span><br><span class="line">    // 清除所有图片缓存</span><br><span class="line">    [[SDImageCache sharedImageCache] clearMemory];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2.使用合适的 SDWebImage 选项：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.showImageView sd_setImageWithURL:imageURL</span><br><span class="line">                    placeholderImage:nil</span><br><span class="line">                           options:SDWebImageAvoidDecodeImage | </span><br><span class="line">                                   SDWebImageScaleDownLargeImages |</span><br><span class="line">                                   SDWebImageProgressiveLoad</span><br><span class="line">                          completed:nil];</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.监控内存使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)monitorMemoryUsage &#123;</span><br><span class="line">    struct task_basic_info info;</span><br><span class="line">    mach_msg_type_number_t size = sizeof(info);</span><br><span class="line">    kern_return_t kerr = task_info(mach_task_self(),</span><br><span class="line">                                 TASK_BASIC_INFO,</span><br><span class="line">                                 (task_info_t)&amp;info,</span><br><span class="line">                                 &amp;size);</span><br><span class="line">    if (kerr == KERN_SUCCESS) &#123;</span><br><span class="line">        NSLog(@&quot;Memory in use (in MB): %f&quot;, info.resident_size / 1024.0 / 1024.0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4.配置 SDWebImage 全局参数（AppDelegate 中）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 设置全局缓存策略</span><br><span class="line">SDImageCacheConfig *cacheConfig = [SDImageCacheConfig defaultCacheConfig];</span><br><span class="line">cacheConfig.maxMemoryCost = 100 * 1024 * 1024; // 100MB 内存缓存</span><br><span class="line">cacheConfig.maxMemoryCount = 50; // 最大缓存图片数量</span><br><span class="line">cacheConfig.shouldDecompressImages = NO; // 禁止自动解压</span><br><span class="line">[SDImageCache sharedImageCache].config = cacheConfig;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-aabb2e60704bb072.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="性能对比"></p>
+]]></content>
       <categories>
         <category>iOS</category>
       </categories>
       <tags>
         <tag>“iOS”</tag>
-        <tag>“本地”</tag>
-        <tag>“路径问题”</tag>
+        <tag>“IMSDK”</tag>
+        <tag>UIImage</tag>
+        <tag>优化内存</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>与web前端朋友闲聊的发现-代码相通性</title>
+    <url>/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</url>
+    <content><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
+<p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
+</blockquote>
+<h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote>
+<p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p>
+</blockquote>
+<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote>
+<p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p>
+</blockquote>
+<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote>
+<p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p>
+</blockquote>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“web”</tag>
+        <tag>“代码相通性”</tag>
       </tags>
   </entry>
   <entry>
@@ -998,39 +1087,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>与web前端朋友闲聊的发现-代码相通性</title>
-    <url>/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</url>
-    <content><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
-<p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
-</blockquote>
-<h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote>
-<p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p>
-</blockquote>
-<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote>
-<p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p>
-</blockquote>
-<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote>
-<p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p>
-</blockquote>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
-<p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“web”</tag>
-        <tag>“代码相通性”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>微信小程序tips</title>
     <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
     <content><![CDATA[<blockquote>
@@ -1079,6 +1135,75 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
+    <title>UISearchBar详解</title>
+    <url>/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>今天公司的项目测试的差不多了，基本可以上架了，又有时间来分享一下最近遇到的一些问题了，公司的项目进行了大改版（应该是全改了，基本是一个新的项目了），老大决定用swift重写。之前一直在自学swift，终于这一次可以实战了。项目中搜索用的比较多，但是搜索框的样式与默认的差别太大了，所以只能自定义了。</p>
+</blockquote>
+<p>The UISearchBar class implements a text field control for text-based searches. The control provides a text field for entering text, a search button, a bookmark button, and a cancel button. The UISearchBar object does not actually perform any searches. You use a delegate, an object conforming to the UISearchBarDelegate protocol, to implement the actions when text is entered and buttons are clicked.</p><p>
+
+<blockquote>
+<p>以上是苹果对UISearchBar的解释，可以看见UISearchBar提供了类似UITextField的输入（其实它的组成中就有UITextField，下面会讲到），右边有搜索按钮、标签按钮、关闭按钮可供选择，搜索都是在协议UISearchBarDelegate中进行。</p>
+</blockquote>
+</p><p><strong>自定义外观</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7efbcef7e9cb93c4383fe6794bdbefdf.webp?x-image-process=image/format,png" alt="默认搜索外观"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/226c294545fe64cc3f3f91cd71df0146.webp?x-image-process=image/format,png" alt="项目搜索外观"></p>
+<blockquote>
+<p>UISearchBar的层级很是复杂主要由UISearchBarBackgroud、UISearchBarTextField、<br>UINavigationButton组成，其中UISearchBarTextField就是输入框，主要是由——UISearchBarSearchFieldBackgroundView、UIButton（❌）、UIImageView（?）等组成，</p>
+</blockquote>
+<p><strong>获取TextField方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let searchFiled:UITextField = self.searchBar.value(forKey: &quot;_searchField&quot;) as! UITextField</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>这样就可以通过修改	searchFiled来修改输入样式（圆角、字体等）。</strong></p>
+<blockquote>
+<p>UISearchBar的直接子控件是UIVIew，其上的子控件UISearchBarBackgroud的frame与UISearchBar的bounds相等，UISearchBarTextField的高度默认为28与UISearchBar左右有8像素的固定间距，上下间距为直接子控件UIView的高度 - UISearchBarTextField的默认高度28 再除以2。因此UISearchBar的输入框始终与设置的frame不一样，不便于布局，我们可以添加一个子类继承UISearchBar，可以更改其内边距。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MySearchBar: UISearchBar &#123;</span><br><span class="line">    </span><br><span class="line">    // 监听是否添加了该属性</span><br><span class="line">    var contentInset: UIEdgeInsets? &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            self.layoutSubviews()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func layoutSubviews() &#123;</span><br><span class="line">        super.layoutSubviews()</span><br><span class="line">        // 便利寻找</span><br><span class="line">        for view in self.subviews &#123;</span><br><span class="line">            for subview in view.subviews &#123;</span><br><span class="line">                // 判定是否是UISearchBarTextField</span><br><span class="line">                if subview.isKind(of: UITextField.classForCoder()) &#123;</span><br><span class="line">                    if let textFieldContentInset = contentInset &#123;</span><br><span class="line">                        // 修改UISearchBarTextField的布局</span><br><span class="line">                        subview.frame = CGRect(x: textFieldContentInset.left, y: textFieldContentInset.top, width: self.bounds.width - textFieldContentInset.left - textFieldContentInset.right, height: self.bounds.height - textFieldContentInset.top - textFieldContentInset.bottom)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        // 设置UISearchBar中UISearchBarTextField的默认边距</span><br><span class="line">                        let top: CGFloat = (self.bounds.height - 28.0) / 2.0</span><br><span class="line">                        let bottom: CGFloat = top</span><br><span class="line">                        let left: CGFloat = 8.0</span><br><span class="line">                        let right: CGFloat = left</span><br><span class="line">                        contentInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>让实例化的UISearchBar继承MySearchBar，然后就可以很方便的直接控制内边距了</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>接下来就是处理placeholder靠左，这个就比较麻烦了，查询了一大堆办法都挺麻烦的，最后找到了一个很投机的办法：先判定手机宽度，然后在placeholder右边加上空格做成靠左的假象。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if SCREEN.WIDTH == 320 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置       &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 373\5 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                  &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 414 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                                 &quot;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>然后在storyboard中设置searchBar的BarStyle为Minimal就可以很方便的控制UISearchBar的外观了。<br>到这里就剩一个问题了：UISearchBar上下的两根黑线了，</p>
+</blockquote>
+<p><strong>去除方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.setBackgroundImage(UIImage.init(), for: .any, barMetrics: .default)</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜索的使用</strong></p>
+<blockquote>
+<p>如苹果官方文档所说，与搜索相关的都是在其代理方法中完成。UISearchBar有很多的代理方法，感兴趣的可以点击进入查看</p>
+</blockquote>
+<p><a href="https://developer.apple.com/reference/uikit/uisearchbardelegate">UISearchBarDelegate</a>我就介绍几个常用的：</p>
+<blockquote>
+<p>当搜索内容变化时，执行该方法,可以实时监听输入框的变化,可以实现时实搜索。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)textNS_AVAILABLE_IOS(3_0);                 // called before text changes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也行你想把搜索事件放在点击搜索以后再触发，那就选用这个方法，它就是点击搜索后的代理方法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>当然如果你觉得这样太麻烦了，你还可以选择用UITextField来实现UISearchBar的功能，但是最终哪一个更加的麻烦还需要试一试才知道。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>swift</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“swift”</tag>
+        <tag>“UISearchBar”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>项目剖析01-swift WebSocket</title>
     <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
     <content><![CDATA[<blockquote>
@@ -1103,61 +1228,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       <tags>
         <tag>“swift”</tag>
         <tag>“WebSocket”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
-    <content><![CDATA[<blockquote>
-<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
-<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
-</blockquote>
-<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
-
-<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
-</blockquote>
-<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>利用进度时间(Play with Progress Time)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
-<ol>
-<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
-</li>
-<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
-</li>
-<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
-</li>
-<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
-</li>
-<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
-</li>
-<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
-</li>
-<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
-</li>
-</ol>
-</blockquote>
-<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“动画”</tag>
-        <tag>“Lottie”</tag>
       </tags>
   </entry>
   <entry>
@@ -1229,6 +1299,109 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
+    <title>项目总结-位置实时共享</title>
+    <url>/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</url>
+    <content><![CDATA[<blockquote>
+<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
+</blockquote>
+<p><strong>谈谈新公司</strong>  </p>
+<blockquote>
+<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
+</blockquote>
+<p><strong>谈谈项目</strong>    </p>
+<blockquote>
+<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
+</blockquote>
+<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>通过百度地图获得自己移动的距离</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结束语</strong></p>
+<blockquote>
+<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“百度地图”</tag>
+        <tag>“位置实时共享”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
+    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
+<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
+</blockquote>
+<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
+
+<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
+</blockquote>
+<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>利用进度时间(Play with Progress Time)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
+<ol>
+<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
+</li>
+<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
+</li>
+<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
+</li>
+<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
+</li>
+<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
+</li>
+<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
+</li>
+<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“动画”</tag>
+        <tag>“Lottie”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
     <url>/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</url>
     <content><![CDATA[<h2 id="SSL证书验证"><a href="#SSL证书验证" class="headerlink" title="SSL证书验证"></a>SSL证书验证</h2><p><strong>一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。</strong></p>
@@ -1288,54 +1461,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“swift”</tag>
         <tag>“证书验证”</tag>
         <tag>“SSL”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目总结-位置实时共享</title>
-    <url>/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</url>
-    <content><![CDATA[<blockquote>
-<p>从北京回来到今天已经整整三个月了，三个月没有更新简书了。回来找了一家新的公司上班，正好今天新项目打包测试了，找了点时间来总结一下最近项目中遇到的一些问题与心得。今天主要分享<em>位置实时共享</em>，其实之前也有时间，因为在新的公司很少加班。但是自己太懒了，所以……。</p>
-</blockquote>
-<p><strong>谈谈新公司</strong>  </p>
-<blockquote>
-<p>进入公司才发现公司有个iOS大神和我是一个大学的 还是一个系的 还是同一级的，还有两个Android与我是一个专业的，这个行业真的小啊😄。公司不大，老板是个美籍华人（这应该是我们加班少的原因吧）。     </p>
-</blockquote>
-<p><strong>谈谈项目</strong>    </p>
-<blockquote>
-<p>项目内容保密（签了协议的）……，还是谈技术吧。<br>1&gt;即时通讯：我们用的是环信的，因为这不是主要的功能，使用就直接用的是环信的UI，就是官方demo里面的EaseUI，导入SDK就不用说了，我主要分享一下我们在里面添加的一个新的功能：<em>实时位置共享</em> 我们将这个功能添加在群聊里面的。主要逻辑：是通过环信群聊的透传消息实现的用的是百度地图。</p>
-</blockquote>
-<p><strong>通过百度地图定位 将自己的位置的经纬度放在透传消息的扩展信息中传出去</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新发送</span><br><span class="line">- (void)sendCmdMessageWithType:(NSString *)type &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        EMCmdMessageBody *body = [[EMCmdMessageBody alloc] initWithAction:@&quot;shareLocation&quot;];</span><br><span class="line">        _currentUserId = [[NSUserDefaults standardUserDefaults] objectForKey:@&quot;eid&quot;];</span><br><span class="line">        NSDictionary *ext = @&#123;@&quot;latitude&quot;:@(_userStartLocation.location.coordinate.latitude),@&quot;longitude&quot;:@(_userStartLocation.location.coordinate.longitude),@&quot;type&quot;:type,_currentUserId:[[NSUserDefaults standardUserDefaults] objectForKey:@&quot;user_nickname&quot;]&#125;;</span><br><span class="line">        </span><br><span class="line">        EMMessage *message = [[EMMessage alloc] initWithConversationID:self.conversationID</span><br><span class="line">                                                                  from:_currentUserId</span><br><span class="line">                                                                    to:self.conversationID</span><br><span class="line">                                                                  body:body</span><br><span class="line">                                                                   ext:ext];</span><br><span class="line">        message.chatType = EMChatTypeGroupChat;</span><br><span class="line">        [[EMClient sharedClient].chatManager sendMessage:message progress:nil completion:^(EMMessage *message, EMError *error) &#123;</span><br><span class="line">            if (error) &#123;</span><br><span class="line">                [CTHUD showText:@&quot;位置更新失败&quot;];</span><br><span class="line">                // 去请求token</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>然后在解析透彻信息的解析位置信息</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 收到解析</span><br><span class="line">- (void)didReceiveCmdMessages:(NSArray *)aCmdMessages &#123;</span><br><span class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</span><br><span class="line">        for (EMMessage *cmdMessage in aCmdMessages) &#123;</span><br><span class="line">            EMCmdMessageBody *body = (EMCmdMessageBody *)cmdMessage.body;</span><br><span class="line">            // 判断是否是位置共享消息</span><br><span class="line">            if ([body.action isEqualToString:@&quot;shareLocation&quot;]) &#123;</span><br><span class="line">                CLLocationCoordinate2D coordinate;</span><br><span class="line">                coordinate.latitude = [[cmdMessage.ext objectForKey:@&quot;latitude&quot;] doubleValue];</span><br><span class="line">                coordinate.longitude = [[cmdMessage.ext objectForKey:@&quot;longitude&quot;] doubleValue];</span><br><span class="line">                NSString *nickName = [cmdMessage.ext objectForKey:cmdMessage.from];</span><br><span class="line">                if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>将所有收到的透传消的位置信息标识在地图上</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 添加新的用户标注</span><br><span class="line">- (void)addMyAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    BMKPointAnnotation *annotation = [[BMKPointAnnotation alloc]init];</span><br><span class="line">    annotation.coordinate = coordinate;</span><br><span class="line">    annotation.title = nickName;</span><br><span class="line">    [_mapView addAnnotation:annotation];</span><br><span class="line">    [_mapView selectAnnotation:annotation animated:YES];</span><br><span class="line">    [_otherUserAnnotation addObject:annotation];</span><br><span class="line">    [_otherUserNickName addObject:nickName];</span><br><span class="line">    [_mapView showAnnotations:_otherUserAnnotation animated:YES];</span><br><span class="line">    [_mapView setCenterCoordinate:coordinate animated:YES];</span><br><span class="line">    while (!_mapView.zoomOut) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>还需要通过传递者的传递的类型定该位置是新加入用户还是已经存在的用户</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;update&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self updateOtherAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;remove&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self removeOtherAnnotationWithUserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;join&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                        [self sendCmdMessageWithType:@&quot;feedback&quot;];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;else if ([[cmdMessage.ext objectForKey:@&quot;type&quot;] isEqualToString:@&quot;feedback&quot;]) &#123;</span><br><span class="line">                    dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">                        [self addMyAnnotationWithLocation:coordinate UserNickName:nickName];</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>新用户需要添加大头针，已经存在的用户只需要更新位置</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 更新用户标注</span><br><span class="line">- (void)updateOtherAnnotationWithLocation:(CLLocationCoordinate2D)coordinate UserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            annotation.coordinate = coordinate;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>通过百度地图获得自己移动的距离</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">BMKMapPoint point1 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(_userStartLocation.location.coordinate.latitude,_userStartLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line">BMKMapPoint point2 = BMKMapPointForCoordinate(CLLocationCoordinate2DMake(userLocation.location.coordinate.latitude,userLocation.location.coordinate.latitude));</span><br><span class="line"></span><br><span class="line"> CLLocationDistance distance = BMKMetersBetweenMapPoints(point1,point2);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>自己定义一个移动的精度，我们当时定的移动距离大于20米（distance&gt;20）就发送一次位置更新。<br>最后当需要离开位置共享是也需要再发送一次信息，透传解析出，然后移除标识</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 删除用户标注</span><br><span class="line">- (void)removeOtherAnnotationWithUserNickName:(NSString *)nickName&#123;</span><br><span class="line">    for (BMKPointAnnotation *annotation in _otherUserAnnotation) &#123;</span><br><span class="line">        if ([annotation.title isEqualToString:nickName]) &#123;</span><br><span class="line">            [_otherUserAnnotation removeObject:annotation];</span><br><span class="line">            [_otherUserNickName removeObject:nickName];</span><br><span class="line">            [_mapView removeAnnotation:annotation];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>结束语</strong></p>
-<blockquote>
-<p>实时共享 其实与群聊差不多，就是我的位置移动距离达到了精度要求，我就发送一次群消息，让每一个参加共享的人都知道，然后在自己的地图上更新一次。以上就是我们的位置实时共享的逻辑与部分代码，欢迎各位的指正，谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“百度地图”</tag>
-        <tag>“位置实时共享”</tag>
       </tags>
   </entry>
 </search>
