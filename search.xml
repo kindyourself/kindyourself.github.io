@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Flutter遇到的问题</title>
-    <url>/2025/05/23/flutter-error/</url>
-    <content><![CDATA[<blockquote>
-<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
-</blockquote>
-<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
-<blockquote>
-<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
-</blockquote>
-<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
-<blockquote>
-<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
-</blockquote>
-<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
-]]></content>
-      <categories>
-        <category>Flutter</category>
-      </categories>
-      <tags>
-        <tag>“Flutter”</tag>
-        <tag>“Error”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Base64-不重要数据的简单加密</title>
     <url>/2016/07/09/Base64-%E4%B8%8D%E9%87%8D%E8%A6%81%E6%95%B0%E6%8D%AE%E7%9A%84%E7%AE%80%E5%8D%95%E5%8A%A0%E5%AF%86/</url>
     <content><![CDATA[<h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><blockquote>
@@ -49,6 +25,99 @@
       <tags>
         <tag>“Base64”</tag>
         <tag>“加密”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>UISearchBar详解</title>
+    <url>/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<blockquote>
+<p>今天公司的项目测试的差不多了，基本可以上架了，又有时间来分享一下最近遇到的一些问题了，公司的项目进行了大改版（应该是全改了，基本是一个新的项目了），老大决定用swift重写。之前一直在自学swift，终于这一次可以实战了。项目中搜索用的比较多，但是搜索框的样式与默认的差别太大了，所以只能自定义了。</p>
+</blockquote>
+<p>The UISearchBar class implements a text field control for text-based searches. The control provides a text field for entering text, a search button, a bookmark button, and a cancel button. The UISearchBar object does not actually perform any searches. You use a delegate, an object conforming to the UISearchBarDelegate protocol, to implement the actions when text is entered and buttons are clicked.</p><p>
+
+<blockquote>
+<p>以上是苹果对UISearchBar的解释，可以看见UISearchBar提供了类似UITextField的输入（其实它的组成中就有UITextField，下面会讲到），右边有搜索按钮、标签按钮、关闭按钮可供选择，搜索都是在协议UISearchBarDelegate中进行。</p>
+</blockquote>
+</p><p><strong>自定义外观</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7efbcef7e9cb93c4383fe6794bdbefdf.webp?x-image-process=image/format,png" alt="默认搜索外观"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/226c294545fe64cc3f3f91cd71df0146.webp?x-image-process=image/format,png" alt="项目搜索外观"></p>
+<blockquote>
+<p>UISearchBar的层级很是复杂主要由UISearchBarBackgroud、UISearchBarTextField、<br>UINavigationButton组成，其中UISearchBarTextField就是输入框，主要是由——UISearchBarSearchFieldBackgroundView、UIButton（❌）、UIImageView（?）等组成，</p>
+</blockquote>
+<p><strong>获取TextField方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let searchFiled:UITextField = self.searchBar.value(forKey: &quot;_searchField&quot;) as! UITextField</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>这样就可以通过修改	searchFiled来修改输入样式（圆角、字体等）。</strong></p>
+<blockquote>
+<p>UISearchBar的直接子控件是UIVIew，其上的子控件UISearchBarBackgroud的frame与UISearchBar的bounds相等，UISearchBarTextField的高度默认为28与UISearchBar左右有8像素的固定间距，上下间距为直接子控件UIView的高度 - UISearchBarTextField的默认高度28 再除以2。因此UISearchBar的输入框始终与设置的frame不一样，不便于布局，我们可以添加一个子类继承UISearchBar，可以更改其内边距。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MySearchBar: UISearchBar &#123;</span><br><span class="line">    </span><br><span class="line">    // 监听是否添加了该属性</span><br><span class="line">    var contentInset: UIEdgeInsets? &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            self.layoutSubviews()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func layoutSubviews() &#123;</span><br><span class="line">        super.layoutSubviews()</span><br><span class="line">        // 便利寻找</span><br><span class="line">        for view in self.subviews &#123;</span><br><span class="line">            for subview in view.subviews &#123;</span><br><span class="line">                // 判定是否是UISearchBarTextField</span><br><span class="line">                if subview.isKind(of: UITextField.classForCoder()) &#123;</span><br><span class="line">                    if let textFieldContentInset = contentInset &#123;</span><br><span class="line">                        // 修改UISearchBarTextField的布局</span><br><span class="line">                        subview.frame = CGRect(x: textFieldContentInset.left, y: textFieldContentInset.top, width: self.bounds.width - textFieldContentInset.left - textFieldContentInset.right, height: self.bounds.height - textFieldContentInset.top - textFieldContentInset.bottom)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        // 设置UISearchBar中UISearchBarTextField的默认边距</span><br><span class="line">                        let top: CGFloat = (self.bounds.height - 28.0) / 2.0</span><br><span class="line">                        let bottom: CGFloat = top</span><br><span class="line">                        let left: CGFloat = 8.0</span><br><span class="line">                        let right: CGFloat = left</span><br><span class="line">                        contentInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>让实例化的UISearchBar继承MySearchBar，然后就可以很方便的直接控制内边距了</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>接下来就是处理placeholder靠左，这个就比较麻烦了，查询了一大堆办法都挺麻烦的，最后找到了一个很投机的办法：先判定手机宽度，然后在placeholder右边加上空格做成靠左的假象。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if SCREEN.WIDTH == 320 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置       &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 373\5 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                  &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 414 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                                 &quot;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>然后在storyboard中设置searchBar的BarStyle为Minimal就可以很方便的控制UISearchBar的外观了。<br>到这里就剩一个问题了：UISearchBar上下的两根黑线了，</p>
+</blockquote>
+<p><strong>去除方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.setBackgroundImage(UIImage.init(), for: .any, barMetrics: .default)</span><br></pre></td></tr></table></figure>
+
+<p><strong>搜索的使用</strong></p>
+<blockquote>
+<p>如苹果官方文档所说，与搜索相关的都是在其代理方法中完成。UISearchBar有很多的代理方法，感兴趣的可以点击进入查看</p>
+</blockquote>
+<p><a href="https://developer.apple.com/reference/uikit/uisearchbardelegate">UISearchBarDelegate</a>我就介绍几个常用的：</p>
+<blockquote>
+<p>当搜索内容变化时，执行该方法,可以实时监听输入框的变化,可以实现时实搜索。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)textNS_AVAILABLE_IOS(3_0);                 // called before text changes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>也行你想把搜索事件放在点击搜索以后再触发，那就选用这个方法，它就是点击搜索后的代理方法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>当然如果你觉得这样太麻烦了，你还可以选择用UITextField来实现UISearchBar的功能，但是最终哪一个更加的麻烦还需要试一试才知道。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>swift</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“swift”</tag>
+        <tag>“UISearchBar”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Flutter遇到的问题</title>
+    <url>/2025/05/23/flutter-error/</url>
+    <content><![CDATA[<blockquote>
+<p><strong>1.Flutter In ios 14+,debug mode Flutter apps can only be launched from Flutter tooling。<br>原因：Debug模式下，Flutter也实现了热重载，默认编译方式为JIT而iOS 14+系统对这种编译模式做了限制，导致无法启动。</strong></p>
+</blockquote>
+<p>解决办法如下：用 [Xcode] 打开Flutter里面Runner工程项目，在 Build Settings 的最下方找到 User-Defined，点击 + 按钮，添加一个键为 FLUTTER_BUILD_MODE ，debug设置profile模式，release设置release 模式：<img src="https://i-blog.csdnimg.cn/img_convert/7f789a7b66202aa3d5d577d4ff7a4b51.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.27.00.png">{target&#x3D;”_blank”}</p>
+<blockquote>
+<p><strong>2.将 flutter 模块 嵌入iOS工程中，编译时报错：Failed to package 。。。。flutter代码路径。。。。。Command PhaseScriptExecution failed with a nonzero exit code</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ad21f4b3e2a82eb701e1e9363f00d885.webp?x-oss-process=image/format,png" alt="截屏2024-03-14 11.28.18.png">{target&#x3D;”_blank”}</p>
+</blockquote>
+<p>解决办法如下：<br><strong>1.确保flutter项目代码中没有错误</strong><br><strong>2.重新构建项目：</strong><br><strong>flutter clean</strong><br><strong>2.flutter pub get（获取远程库,确定当前应用所依赖的包，并将它们保存到中央系统缓存（central system cache）中）</strong><br><strong>3.flutter run</strong></p>
+<blockquote>
+<p><strong>3.升级flutter：flutter upgrade –force 报错</strong><br><img src="https://i-blog.csdnimg.cn/img_convert/ed59f544c4becaac4c167e3128af66ca.webp?x-oss-process=image/format,png" alt="截屏2024-09-12 15.23.05.png">{target&#x3D;”_blank”}</p>
+</blockquote>
+<p>Flutter Channel版本选择<br>Flutter提供了Stable、Beta、Dev和Master四种版本，每种版本都有其特定的用途和稳定性：<br>Stable：最稳定的版本，推荐用于生产环境。<br>Beta：相对较稳定，但仍可能存在一些已知问题。<br>Dev：经过Google测试后的最新版本，包含新功能和改进。<br>Master：最新的代码主分支，更新速度非常快，几乎每天都有提交，新功能多但可能不稳定。<br>开发Flutter项目时，一般推荐使用Stable版本，以确保项目的稳定性和可靠性。如需使用某些尚未在Stable版本中支持的功能，可以考虑使用Beta或Dev版本。Master版本则更适合于那些希望尝试最新功能并愿意承受潜在不稳定性的开发者。</p>
+]]></content>
+      <categories>
+        <category>Flutter</category>
+      </categories>
+      <tags>
+        <tag>“Flutter”</tag>
+        <tag>“Error”</tag>
       </tags>
   </entry>
   <entry>
@@ -352,37 +421,6 @@
       </tags>
   </entry>
   <entry>
-    <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
-    <content><![CDATA[<blockquote>
-<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
-</blockquote>
-<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
-<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
-<blockquote>
-<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-</blockquote>
-<p><strong>这个方法其实还有一个用法：</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<blockquote>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
-</blockquote>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
-<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“webView”</tag>
-        <tag>“视频不显示缩略图”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iOS-widget-Today 扩展</title>
     <url>/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</url>
     <content><![CDATA[<blockquote>
@@ -438,6 +476,37 @@
       </tags>
   </entry>
   <entry>
+    <title>iOS-webView上加载HTML视频不显示缩略图</title>
+    <url>/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</url>
+    <content><![CDATA[<blockquote>
+<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
+</blockquote>
+<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
+<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
+<blockquote>
+<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
+</blockquote>
+<p><strong>这个方法其实还有一个用法：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
+<blockquote>
+<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
+</blockquote>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
+<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“webView”</tag>
+        <tag>“视频不显示缩略图”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
     <url>/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<blockquote>
@@ -463,6 +532,135 @@
         <tag>“iOS”</tag>
         <tag>“本地”</tag>
         <tag>“路径问题”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-发布代码到cocoapods上详细步骤</title>
+    <url>/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</url>
+    <content><![CDATA[<h2 id="完整步骤："><a href="#完整步骤：" class="headerlink" title="完整步骤："></a>完整步骤：</h2><blockquote>
+<ol>
+<li><p>把你需要发布到CocoaPods的代码写好。</p>
+</li>
+<li><p>用Xcode创建一个Framework项目，将你写好的代码拖入Framework，进行相关配置，根据需求打包Framework。</p>
+</li>
+<li><p>注册CocoaPods账号，检查库名是否已被占用，没有被占用就创建Podspec文件，拖入通用Framework。</p>
+</li>
+<li><p>创建git仓库，修改xxx.podspec配置，将代码推送到远程仓库并进行版本控制，验证Podspec文件。</p>
+</li>
+<li><p>验证通过，发布到 CocoaPods。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="1-创建Framework项目"><a href="#1-创建Framework项目" class="headerlink" title="1. 创建Framework项目"></a>1. 创建Framework项目</h2><p><strong>1. 在Xcode中，选择File -&gt; New -&gt; Project</strong></p>
+<p><strong>2. 选择iOS -&gt; Framework &amp; Library -&gt; Framework，然后点击Next</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-be0160ff8d3afd2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Framework"></p>
+<p><strong>3. 输入产品名称（例如：<code>LanguageSet</code>），选择语言（Objective-C或Swift），点击Next并保存。</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-83b4887d1f953d7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建cocoapodsDemo"></p>
+<h2 id="2-配置Framework"><a href="#2-配置Framework" class="headerlink" title="2. 配置Framework"></a>2. 配置Framework</h2><ul>
+<li><strong>添加代码文件</strong>：将你的源代码文件拖入项目，确保在Build Phases -&gt; Headers中设置好公开头文件（Public Headers）。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-ae2a853b2b80c1ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加代码文件"></p>
+<ul>
+<li><strong>将需要公开的头文件拖到public：</strong></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-d9a8a7555487533e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置好公开头文件"></p>
+<p><strong>添加第三方库</strong></p>
+<blockquote>
+<p>1.使用cocoapod是可以自动管理第三方库，在Link Binary With Libraries 中找到Pod_的framwork 选择Optional</p>
+</blockquote>
+<blockquote>
+<p>2.手动添加第三方库和文件时，不要选择target</p>
+</blockquote>
+<ul>
+<li><p><strong>设置Build Settings</strong>:</p>
+</li>
+<li><p><strong>Mach-O Type</strong>: 默认为Dynamic Library，也可以选择Static Library（但Framework通常指动态库）。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-4ec8c2a6b6993b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Mach-O Type"></p>
+</li>
+<li><p><strong>Build Active Architecture Only</strong>: 设置为NO，以支持所有架构。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-c68f41b1eae65414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Build Active Architecture Only"></p>
+</li>
+<li><p><strong>iOS Deployment Target</strong>: 选择你希望支持的最低iOS版本。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-7f6fb03188cbd741.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS Deployment Target"></p>
+</li>
+<li><p><strong>Swift版本</strong>：如果是Swift项目，确保设置正确的Swift版本。</p>
+</li>
+<li><p><strong>Enable Bitcode</strong>: 如果需要，设置为YES。</p>
+</li>
+</ul>
+<h2 id="3-打包Framework（支持真机和模拟器）"><a href="#3-打包Framework（支持真机和模拟器）" class="headerlink" title="3. 打包Framework（支持真机和模拟器）"></a>3. 打包Framework（支持真机和模拟器）</h2><blockquote>
+<p>我们需要同时支持真机和模拟器架构（arm64, x86_64），并最终合并为一个通用Framework。</p>
+</blockquote>
+<p><strong>1. 分别编译真机和模拟器版本</strong></p>
+<p><strong>1. 真机Release</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-iOS&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 模拟器Release</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS Simulator&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-Simulator&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 合并两个Framework-打包通用Framework（支持真机+模拟器）</strong></p>
+<blockquote>
+<p>使用<code>lipo</code>工具合并二进制文件，并复制模拟器的swiftmodule（如果有）到真机Framework中。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建通用Framework目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p build/LanguageSet-Universal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制真机Framework到通用目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet build/LanguageSet-Universal/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并二进制文件</span></span><br><span class="line"></span><br><span class="line">lipo -create </span><br><span class="line"></span><br><span class="line">build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet.framework/LanguageSet </span><br><span class="line"></span><br><span class="line">build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSetframework/LanguageSet </span><br><span class="line"></span><br><span class="line">-output build/LanguageSet-Universal/LanguageSet.framework/LanguageSet</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果使用Swift，需要合并swiftmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule/* \</span><br><span class="line"></span><br><span class="line">build/LanguageSet-Universal/LanguageSet.framework/Modules/LanguageSet.swiftmodule/</span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>将上面的合并起来：</strong></p>
+<p><strong>创建一个打包脚本 build_framework.sh</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 1. 定义基础变量</span><br><span class="line">SCHEME_NAME=&quot;LanguageSet&quot;   # 替换为实际Scheme名</span><br><span class="line">PROJECT_NAME=&quot;LanguageSet&quot;    # 替换为实际工程名</span><br><span class="line">CONFIGURATION=&quot;Release&quot;           # 建议使用Release模式</span><br><span class="line">OUTPUT_DIR=&quot;$&#123;PWD&#125;/Output&quot;        # 输出目录</span><br><span class="line"></span><br><span class="line"># 2. 清理旧构建</span><br><span class="line">rm -rf &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line">mkdir -p &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 3. 编译真机版本 (arm64, armv7)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphoneos \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # 支持多架构 [[6]]</span><br><span class="line"></span><br><span class="line"># 4. 编译模拟器版本 (x86_64, arm64)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphonesimulator \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # M1芯片需包含arm64 [[3, 6]]</span><br><span class="line"></span><br><span class="line"># 5. 合并为XCFramework (官方推荐方式)</span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.xcframework&quot;  # 生成多平台兼容包 [[2, 6, 12, 16]]</span><br><span class="line"></span><br><span class="line"># 6. 可选：生成Fat Framework (传统合并方式)</span><br><span class="line"># lipo -create \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot;  # 需手动处理头文件 [[11, 15, 20]]</span><br><span class="line"></span><br><span class="line"># 7. 打开输出目录</span><br><span class="line">open &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-909a8b6bfe8a86bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build_framework.sh 存放"></p>
+<p><strong>运行脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x build_framework.sh</span><br><span class="line">./build_framework.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成文件夹：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-b9c853f304e38d24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework"></p>
+<h2 id="注册CocoaPods的Trunk"><a href="#注册CocoaPods的Trunk" class="headerlink" title="注册CocoaPods的Trunk"></a>注册CocoaPods的Trunk</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 注册CocoaPods账号（仅首次）</span><br><span class="line">pod trunk register your-email@example.com &quot;Your Name&quot; --description=&#x27;MacBook Pro&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>CocoaPods会向你提供的邮箱发送一个验证链接，点击链接完成验证。 </code></p>
+<p><strong>验证CocoaPods的Trunk注册结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-a69e3e9f4000afde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Trunk创建验证"></p>
+<h2 id="创建Podspec文件"><a href="#创建Podspec文件" class="headerlink" title="创建Podspec文件"></a>创建Podspec文件</h2><blockquote>
+<p> <strong>pod lib create LanguageSet</strong></p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-e39b370605e72821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Podspec文件"></p>
+<p><strong>生成Podspec文件夹</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-086200ce38c70fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成Podspec文件夹"></p>
+<blockquote>
+<p> <strong>Example:</strong> 放demo应用</p>
+<p> <strong>LanguageSet:</strong> &#x2F;Classes主代码 &#x2F;Assets图片资源文件</p>
+</blockquote>
+<p><strong>将之前生成的XCFramework拖入新建Podspec文件夹中的LanguageSet中</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-60eec0705967d61c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework拖入后"></p>
+<h2 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h2><p><img src="https://upload-images.jianshu.io/upload_images/1976231-efca2c60c3794fd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Git仓库"></p>
+<p><strong>修改LanguageSet.podspec配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line">  s.name             = &#x27;LanguageSet&#x27;</span><br><span class="line">  s.version          = &#x27;0.0.1&#x27;</span><br><span class="line">  s.summary          = &#x27;multilingual processing.&#x27;</span><br><span class="line"></span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">  A few simple lines of code can handle multiple languages</span><br><span class="line">  DESC</span><br><span class="line"></span><br><span class="line">  s.homepage         = &#x27;https://github.com/GavinCarter1991/LanguageSet&#x27;</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line">  s.author           = &#123; &#x27;gavin&#x27; =&gt; &#x27;kindyourself@163.com&#x27; &#125;</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/GavinCarter1991/LanguageSet.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  s.ios.deployment_target = &#x27;12.0&#x27;</span><br><span class="line">  s.vendored_frameworks = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  # 添加模块映射</span><br><span class="line">  s.preserve_paths = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  </span><br><span class="line">  # 添加资源处理排除规则</span><br><span class="line">  s.pod_target_xcconfig = &#123;</span><br><span class="line">    &#x27;EXCLUDED_FILE_GROUP_PATTERNS&#x27; =&gt; [</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/_CodeSignature/**&#x27;,</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/Modules/**&#x27;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  # 禁用模块验证（针对 xcframework）</span><br><span class="line">  s.user_target_xcconfig = &#123; &#x27;VALIDATE_WORKSPACE&#x27; =&gt; &#x27;NO&#x27; &#125;</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置Git仓库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建本地仓库</span><br><span class="line">cd LanguageSet 进入文件夹</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line"></span><br><span class="line"># 创建远程仓库（在Gitee/GitHub上创建）</span><br><span class="line">git remote add origin https://github.com/GavinCarter1991/LanguageSet.git // 关联仓库</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"># 添加版本标签</span><br><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-abf0ebb55afd72eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tags"></p>
+<h2 id="发布到CocoaPods"><a href="#发布到CocoaPods" class="headerlink" title="发布到CocoaPods"></a>发布到CocoaPods</h2><p><strong>1. 首次发布</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 验证podspec</span><br><span class="line">pod lib lint --allow-warnings</span><br><span class="line"></span><br><span class="line"># 发布到CocoaPods</span><br><span class="line">pod trunk push CocoaPodsDemo.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-6524cd38c321ead0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="发布到CocoaPods"></p>
+<p><strong>2. 更新版本</strong></p>
+<blockquote>
+<p>更新podspec中的版本号</p>
+</blockquote>
+<blockquote>
+<p>推送新代码到你的库的 Git 仓库，创建新的Git标签(tag)</p>
+</blockquote>
+<blockquote>
+<p>重复推送和发布的步骤</p>
+</blockquote>
+<p><a href="https://github.com/GavinCarter1991/LanguageSet">Demo</a></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“cocoapods”</tag>
+        <tag>Github</tag>
+        <tag>发布</tag>
       </tags>
   </entry>
   <entry>
@@ -497,31 +695,6 @@
       </tags>
   </entry>
   <entry>
-    <title>iOS-解压zip</title>
-    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
-    <content><![CDATA[<blockquote>
-<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
-</blockquote>
-<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
-<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
-</li>
-<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
-</li>
-</ol>
-<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“解压zip”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>iOS-高德地图</title>
     <url>/2016/07/09/iOS-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
     <content><![CDATA[<blockquote>
@@ -550,76 +723,6 @@
       <tags>
         <tag>“iOS”</tag>
         <tag>“高德地图”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS集成融云SDK即时通讯整理</title>
-    <url>/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</url>
-    <content><![CDATA[<h2 id="iOS集成融云SDK即时通讯整理"><a href="#iOS集成融云SDK即时通讯整理" class="headerlink" title="iOS集成融云SDK即时通讯整理"></a>iOS集成融云SDK即时通讯整理</h2><blockquote>
-<p>最近很少写一下项目总结了，最近项目虽然做了很多，但是都是一些外包项目，做下来也没有什么值得总结的。最近一个项目用到了融云即时通讯，以前基本都是用环信，所以还遇到了一些问题，在此总结一下记录一下。</p>
-</blockquote>
-<h3 id="头像、昵称等用户信息-融云对这个问题有两种处理方式"><a href="#头像、昵称等用户信息-融云对这个问题有两种处理方式" class="headerlink" title="头像、昵称等用户信息(融云对这个问题有两种处理方式)"></a>头像、昵称等用户信息(融云对这个问题有两种处理方式)</h3><p><strong>用户信息提供者</strong></p>
-<blockquote>
-<p>实现步骤(以下代码放在单例中，可以是AppDelegate，最好单独写一个单例)  </p>
-<p>首先遵守RCIMUserInfoDataSource这个协议 </p>
-</blockquote>
-<p><strong>然后是要设置代理</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[[RCIM sharedRCIM] setUserInfoDataSource:self]; </span><br></pre></td></tr></table></figure>
-<p><strong>最后实现代理方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion &#123;</span><br><span class="line">    NSLog(@&quot;getUserInfoWithUserId ----- %@&quot;, userId);</span><br><span class="line">    RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">    if (userId == nil || [userId length] == 0) &#123;</span><br><span class="line">        user.userId = userId;</span><br><span class="line">        user.portraitUri = @&quot;&quot;;</span><br><span class="line">        user.name = @&quot;&quot;;</span><br><span class="line">        completion(user);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if ([userId isEqualToString:[UserInfo shareInstance].uid]) &#123;</span><br><span class="line">        NSString *urlSelf = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        return completion([[RCUserInfo alloc] initWithUserId:userId name:[UserInfo shareInstance].nickname portrait:urlSelf]);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    </span><br><span class="line">  //根据存储联系人信息的模型，通过 userId 来取得对应的name和头像url，进行以下设置</span><br><span class="line">    [WTBaseHttpRequst postRequstWithURL:getUserHttp params:@&#123;@&quot;uid&quot;:[UserInfo shareInstance].uid, @&quot;api_token&quot;:[UserInfo shareInstance].api_token, @&quot;k_uid&quot;:userId&#125; successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">        if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">            NSString *urlStr = [BASIC_URL_image stringByAppendingString:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;photo&quot;]];</span><br><span class="line">            return completion([[RCUserInfo alloc] initWithUserId:userId name:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;nickname&quot;] portrait:urlStr]);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            completion(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">        completion(user);</span><br><span class="line">    &#125; showHUD:NO];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>这个方法不需要你自己手动调用，只是当你在修改用户信息时调用方法即可</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WS(weakSelf);</span><br><span class="line">// 修改用户信息调用</span><br><span class="line">[WTBaseHttpRequst postRequstWithURL:modifyInfoHttp params:dict successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:returnData[@&quot;msg&quot;]];</span><br><span class="line">    if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">        RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">        user.userId = [UserInfo shareInstance].uid;</span><br><span class="line">        user.portraitUri = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        user.name = weakSelf.nickNameTextField.text;</span><br><span class="line">        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid];</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            [self.navigationController popViewControllerAnimated:YES];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:error];</span><br><span class="line">&#125; showHUD:YES];</span><br></pre></td></tr></table></figure>
-
-<p><strong>在扩展消息中携带用户信息</strong></p>
-<blockquote>
-<p>设置发送消息时在消息体中携带用户信息(从2.4.1 之后附加用户信息之后cell默认会显示附加的用户信息的头像，即用户信息不会取用户信息提供者里提供的用户信息)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RCIM sharedRCIM].enableMessageAttachUserInfo = YES; </span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">**你设置了enableMessageAttachUserInfo之后，可以取到**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;**  </p>
-<ul>
-<li>发送者信息</li>
-<li>**&#x2F;<br>@property(nonatomic, strong) RCUserInfo *senderUserInfo; <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   </span><br><span class="line">**当然我觉得还可以从后台获取好友关系后，我们在每次登陆后，开一个线程把好友关系请求下来存起来然后根据环信ID查找好友的昵称和头像**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)</span><br><span class="line">  </span><br><span class="line">**创建提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-_lab &#x3D; [[UILabel alloc] initWithFrame:self.chatSessionInputBarControl.inputTextView.bounds];<br>_lab.text &#x3D; @”请输入文字信息…”;<br>_lab.textColor &#x3D; [UIColor colorWithHexColor:@”dddddd”];<br>_lab.font &#x3D; [UIFont systemFontOfSize:15];<br>_lab.center &#x3D; CGPointMake(_lab.center.x + 15, _lab.center.y);<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**判定是否有草稿来显示和隐藏提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[self.chatSessionInputBarControl.inputTextView addSubview:_lab];<br>if (self.chatSessionInputBarControl.draft &#x3D;&#x3D; nil || self.chatSessionInputBarControl.draft.length &#x3D;&#x3D; 0) {<br> _lab.hidden &#x3D; NO;<br>}else {<br> _lab.hidden &#x3D; YES;<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**根据输入数据来判定显示隐藏提示label**</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>(void)inputTextView:(UITextView *)inputTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {<br>  if (((inputTextView.text.length &#x3D;&#x3D; 1 &amp;&amp; [text isEqualToString:@””]) || (inputTextView.text.length &#x3D;&#x3D; 0 &amp;&amp; text.length &gt; 0))  &amp;&amp; range.length &#x3D;&#x3D; 1 &amp;&amp; range.location &#x3D;&#x3D; 0) {<br>  _lab.hidden &#x3D; NO;<br>  }else {<br>  _lab.hidden &#x3D; YES;<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 取消输入@弹出好友列表界面，保留长按头像@方法</span><br><span class="line"></span><br><span class="line">**首先在AppDelegate中开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[RCIM sharedRCIM].enableMessageMentioned &#x3D; YES;</li>
-</ul>
-<p>然后在继承RCConversationViewController的控制器中调用<br>-(void)showChooseUserViewController:(void (^)(RCUserInfo *selectedUserInfo))selectedBlock<br>                         cancel:(void (^)())cancelBlock {<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 在会话列表中添加一些固定的cell(继承RCConversationListViewController)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F; 对自定义cell赋值</p>
-<ul>
-<li>(RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView<br>                            cellForRowAtIndexPath:(NSIndexPath *)indexPath {<br>  RCCustomCell *cell &#x3D; (RCCustomCell *)[[RCCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@”RCCustomCell”];<br>  RCConversationModel *model &#x3D; self.conversationListDataSource[indexPath.row];<br>  cell.nameLabel.text &#x3D; model.conversationTitle;<br>  return cell;<br>}</li>
-</ul>
-<p>&#x2F;&#x2F; 添加自定义cell的数据源</p>
-<ul>
-<li>(NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource{<br>  NSArray *arr &#x3D; @[@”论坛回复和@我的”, @”陌生人私信”, @”幸存者部落@我的”, @”问卷调查”];<br>  for (int i &#x3D; 0; i&lt;arr.count; i++) {<br>  RCConversationModel *model &#x3D; [[RCConversationModel alloc]init];<br>  model.conversationModelType &#x3D; RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;<br>  model.conversationTitle &#x3D; arr[i];<br>  model.isTop &#x3D; YES;<br>  [dataSource insertObject:model atIndex:i];<br>  }<br>  return dataSource;<br>}</li>
-</ul>
-<p>&#x2F;&#x2F; 点击cell跳转</p>
-<ul>
-<li>(void)onSelectedTableRow:(RCConversationModelType)conversationModelType<br>   conversationModel:(RCConversationModel *)model<br>     atIndexPath:(NSIndexPath *)indexPath{<br>  if (indexPath.row &#x3D;&#x3D; 0) {<br>  WTForumAndConnectListViewController *chatList &#x3D; (WTForumAndConnectListViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTForumAndConnectListViewController”];<br>  chatList.title &#x3D; @”回复和@我的”;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 1) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”陌生人私信”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 1;<br>  chatList.friendArray &#x3D; self.friendArray;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 2) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”幸存者部落@我的”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 2;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 3) {<br>  WTQuestionnaireViewController *questionnaire &#x3D; (WTQuestionnaireViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTQuestionnaireViewController”];<br>  [self.navigationController pushViewController:questionnaire animated:YES];<br>  }else {<br>  &#x2F;&#x2F;点击cell，拿到cell对应的model，然后从model中拿到对应的RCUserInfo，然后赋值会话属性，进入会话<br>  if (model.conversationType &#x3D;&#x3D; ConversationType_PRIVATE) {&#x2F;&#x2F;单聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }else if (model.conversationType &#x3D;&#x3D; ConversationType_GROUP){&#x2F;&#x2F;群聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 在任意地方获取聊天列表数量及删除列表</span><br><span class="line"></span><br><span class="line">**获取聊天列表**   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[@(ConversationType_PRIVATE)]];<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**在ConversationList添加对应类型的聊天就可以获取对应类型的聊天列表删除方法类似**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[[RCIMClient sharedRCIMClient] clearConversations:@[@(ConversationType_PRIVATE)]];</li>
-</ul>
-<pre><code>
-### 背景图
-
-&gt; 融云聊天列表没有数据的默认图片下面有点击右上角加入聊天，可是不是所有的聊天都有这个功能(我的就没有)如何没有就可以在资源文件中找到 no\_message\_img 这张图片用ps去掉下面的那一行字
-
-### 其它
-
-&gt; 以上就是我在使用融云过程中遇到的一些问题及解决方法，如果有错误或者不足之处还望指正，谢谢！
-</code></pre>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“融云”</tag>
       </tags>
   </entry>
   <entry>
@@ -748,36 +851,73 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>与web前端朋友闲聊的发现-代码相通性</title>
-    <url>/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</url>
-    <content><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
-<p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
+    <title>iOS集成融云SDK即时通讯整理</title>
+    <url>/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</url>
+    <content><![CDATA[<h2 id="iOS集成融云SDK即时通讯整理"><a href="#iOS集成融云SDK即时通讯整理" class="headerlink" title="iOS集成融云SDK即时通讯整理"></a>iOS集成融云SDK即时通讯整理</h2><blockquote>
+<p>最近很少写一下项目总结了，最近项目虽然做了很多，但是都是一些外包项目，做下来也没有什么值得总结的。最近一个项目用到了融云即时通讯，以前基本都是用环信，所以还遇到了一些问题，在此总结一下记录一下。</p>
 </blockquote>
-<h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote>
-<p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p>
-</blockquote>
-<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote>
-<p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p>
-</blockquote>
-<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote>
-<p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
+<h3 id="头像、昵称等用户信息-融云对这个问题有两种处理方式"><a href="#头像、昵称等用户信息-融云对这个问题有两种处理方式" class="headerlink" title="头像、昵称等用户信息(融云对这个问题有两种处理方式)"></a>头像、昵称等用户信息(融云对这个问题有两种处理方式)</h3><p><strong>用户信息提供者</strong></p>
 <blockquote>
-<p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p>
+<p>实现步骤(以下代码放在单例中，可以是AppDelegate，最好单独写一个单例)  </p>
+<p>首先遵守RCIMUserInfoDataSource这个协议 </p>
 </blockquote>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
-<p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
+<p><strong>然后是要设置代理</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[[RCIM sharedRCIM] setUserInfoDataSource:self]; </span><br></pre></td></tr></table></figure>
+<p><strong>最后实现代理方法：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion &#123;</span><br><span class="line">    NSLog(@&quot;getUserInfoWithUserId ----- %@&quot;, userId);</span><br><span class="line">    RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">    if (userId == nil || [userId length] == 0) &#123;</span><br><span class="line">        user.userId = userId;</span><br><span class="line">        user.portraitUri = @&quot;&quot;;</span><br><span class="line">        user.name = @&quot;&quot;;</span><br><span class="line">        completion(user);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if ([userId isEqualToString:[UserInfo shareInstance].uid]) &#123;</span><br><span class="line">        NSString *urlSelf = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        return completion([[RCUserInfo alloc] initWithUserId:userId name:[UserInfo shareInstance].nickname portrait:urlSelf]);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    </span><br><span class="line">  //根据存储联系人信息的模型，通过 userId 来取得对应的name和头像url，进行以下设置</span><br><span class="line">    [WTBaseHttpRequst postRequstWithURL:getUserHttp params:@&#123;@&quot;uid&quot;:[UserInfo shareInstance].uid, @&quot;api_token&quot;:[UserInfo shareInstance].api_token, @&quot;k_uid&quot;:userId&#125; successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">        if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">            NSString *urlStr = [BASIC_URL_image stringByAppendingString:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;photo&quot;]];</span><br><span class="line">            return completion([[RCUserInfo alloc] initWithUserId:userId name:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;nickname&quot;] portrait:urlStr]);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            completion(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">        completion(user);</span><br><span class="line">    &#125; showHUD:NO];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这个方法不需要你自己手动调用，只是当你在修改用户信息时调用方法即可</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">WS(weakSelf);</span><br><span class="line">// 修改用户信息调用</span><br><span class="line">[WTBaseHttpRequst postRequstWithURL:modifyInfoHttp params:dict successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:returnData[@&quot;msg&quot;]];</span><br><span class="line">    if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">        RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">        user.userId = [UserInfo shareInstance].uid;</span><br><span class="line">        user.portraitUri = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        user.name = weakSelf.nickNameTextField.text;</span><br><span class="line">        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid];</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            [self.navigationController popViewControllerAnimated:YES];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:error];</span><br><span class="line">&#125; showHUD:YES];</span><br></pre></td></tr></table></figure>
+
+<p><strong>在扩展消息中携带用户信息</strong></p>
+<blockquote>
+<p>设置发送消息时在消息体中携带用户信息(从2.4.1 之后附加用户信息之后cell默认会显示附加的用户信息的头像，即用户信息不会取用户信息提供者里提供的用户信息)</p>
 </blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[RCIM sharedRCIM].enableMessageAttachUserInfo = YES; </span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">**你设置了enableMessageAttachUserInfo之后，可以取到**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;**  </p>
+<ul>
+<li>发送者信息</li>
+<li>**&#x2F;<br>@property(nonatomic, strong) RCUserInfo *senderUserInfo; <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   </span><br><span class="line">**当然我觉得还可以从后台获取好友关系后，我们在每次登陆后，开一个线程把好友关系请求下来存起来然后根据环信ID查找好友的昵称和头像**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)</span><br><span class="line">  </span><br><span class="line">**创建提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+_lab &#x3D; [[UILabel alloc] initWithFrame:self.chatSessionInputBarControl.inputTextView.bounds];<br>_lab.text &#x3D; @”请输入文字信息…”;<br>_lab.textColor &#x3D; [UIColor colorWithHexColor:@”dddddd”];<br>_lab.font &#x3D; [UIFont systemFontOfSize:15];<br>_lab.center &#x3D; CGPointMake(_lab.center.x + 15, _lab.center.y);<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**判定是否有草稿来显示和隐藏提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[self.chatSessionInputBarControl.inputTextView addSubview:_lab];<br>if (self.chatSessionInputBarControl.draft &#x3D;&#x3D; nil || self.chatSessionInputBarControl.draft.length &#x3D;&#x3D; 0) {<br> _lab.hidden &#x3D; NO;<br>}else {<br> _lab.hidden &#x3D; YES;<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**根据输入数据来判定显示隐藏提示label**</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ul>
+<li>(void)inputTextView:(UITextView *)inputTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {<br>  if (((inputTextView.text.length &#x3D;&#x3D; 1 &amp;&amp; [text isEqualToString:@””]) || (inputTextView.text.length &#x3D;&#x3D; 0 &amp;&amp; text.length &gt; 0))  &amp;&amp; range.length &#x3D;&#x3D; 1 &amp;&amp; range.location &#x3D;&#x3D; 0) {<br>  _lab.hidden &#x3D; NO;<br>  }else {<br>  _lab.hidden &#x3D; YES;<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 取消输入@弹出好友列表界面，保留长按头像@方法</span><br><span class="line"></span><br><span class="line">**首先在AppDelegate中开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[RCIM sharedRCIM].enableMessageMentioned &#x3D; YES;</li>
+</ul>
+<p>然后在继承RCConversationViewController的控制器中调用<br>-(void)showChooseUserViewController:(void (^)(RCUserInfo *selectedUserInfo))selectedBlock<br>                         cancel:(void (^)())cancelBlock {<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 在会话列表中添加一些固定的cell(继承RCConversationListViewController)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>&#x2F;&#x2F; 对自定义cell赋值</p>
+<ul>
+<li>(RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView<br>                            cellForRowAtIndexPath:(NSIndexPath *)indexPath {<br>  RCCustomCell *cell &#x3D; (RCCustomCell *)[[RCCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@”RCCustomCell”];<br>  RCConversationModel *model &#x3D; self.conversationListDataSource[indexPath.row];<br>  cell.nameLabel.text &#x3D; model.conversationTitle;<br>  return cell;<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 添加自定义cell的数据源</p>
+<ul>
+<li>(NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource{<br>  NSArray *arr &#x3D; @[@”论坛回复和@我的”, @”陌生人私信”, @”幸存者部落@我的”, @”问卷调查”];<br>  for (int i &#x3D; 0; i&lt;arr.count; i++) {<br>  RCConversationModel *model &#x3D; [[RCConversationModel alloc]init];<br>  model.conversationModelType &#x3D; RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;<br>  model.conversationTitle &#x3D; arr[i];<br>  model.isTop &#x3D; YES;<br>  [dataSource insertObject:model atIndex:i];<br>  }<br>  return dataSource;<br>}</li>
+</ul>
+<p>&#x2F;&#x2F; 点击cell跳转</p>
+<ul>
+<li>(void)onSelectedTableRow:(RCConversationModelType)conversationModelType<br>   conversationModel:(RCConversationModel *)model<br>     atIndexPath:(NSIndexPath *)indexPath{<br>  if (indexPath.row &#x3D;&#x3D; 0) {<br>  WTForumAndConnectListViewController *chatList &#x3D; (WTForumAndConnectListViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTForumAndConnectListViewController”];<br>  chatList.title &#x3D; @”回复和@我的”;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 1) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”陌生人私信”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 1;<br>  chatList.friendArray &#x3D; self.friendArray;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 2) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”幸存者部落@我的”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 2;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 3) {<br>  WTQuestionnaireViewController *questionnaire &#x3D; (WTQuestionnaireViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTQuestionnaireViewController”];<br>  [self.navigationController pushViewController:questionnaire animated:YES];<br>  }else {<br>  &#x2F;&#x2F;点击cell，拿到cell对应的model，然后从model中拿到对应的RCUserInfo，然后赋值会话属性，进入会话<br>  if (model.conversationType &#x3D;&#x3D; ConversationType_PRIVATE) {&#x2F;&#x2F;单聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }else if (model.conversationType &#x3D;&#x3D; ConversationType_GROUP){&#x2F;&#x2F;群聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 在任意地方获取聊天列表数量及删除列表</span><br><span class="line"></span><br><span class="line">**获取聊天列表**   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[@(ConversationType_PRIVATE)]];<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">**在ConversationList添加对应类型的聊天就可以获取对应类型的聊天列表删除方法类似**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+[[RCIMClient sharedRCIMClient] clearConversations:@[@(ConversationType_PRIVATE)]];</li>
+</ul>
+<pre><code>
+### 背景图
+
+&gt; 融云聊天列表没有数据的默认图片下面有点击右上角加入聊天，可是不是所有的聊天都有这个功能(我的就没有)如何没有就可以在资源文件中找到 no\_message\_img 这张图片用ps去掉下面的那一行字
+
+### 其它
+
+&gt; 以上就是我在使用融云过程中遇到的一些问题及解决方法，如果有错误或者不足之处还望指正，谢谢！
+</code></pre>
 ]]></content>
       <categories>
-        <category>其他</category>
+        <category>iOS</category>
       </categories>
       <tags>
         <tag>“iOS”</tag>
-        <tag>“web”</tag>
-        <tag>“代码相通性”</tag>
+        <tag>“融云”</tag>
       </tags>
   </entry>
   <entry>
@@ -1053,6 +1193,64 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
+    <title>与web前端朋友闲聊的发现-代码相通性</title>
+    <url>/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</url>
+    <content><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote>
+<p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p>
+</blockquote>
+<h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote>
+<p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p>
+</blockquote>
+<h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote>
+<p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p>
+</blockquote>
+<h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote>
+<p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p>
+</blockquote>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote>
+<p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“web”</tag>
+        <tag>“代码相通性”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS-解压zip</title>
+    <url>/2016/07/09/iOS-%E8%A7%A3%E5%8E%8Bzip/</url>
+    <content><![CDATA[<blockquote>
+<p>最近的项目中涉及到了将zip文件从服务上下载下来，然后解压使用。搜索了一下发现有一个压缩与解压zip文件的第三方“SSZipArchive”：<a href="https://github.com/ZipArchive/ZipArchive">https://github.com/ZipArchive/ZipArchive</a> 是用C语言实现的，包装用于OC与swift.</p>
+</blockquote>
+<h5 id="一、在使用过程中遇到过几个坑："><a href="#一、在使用过程中遇到过几个坑：" class="headerlink" title="一、在使用过程中遇到过几个坑："></a>一、在使用过程中遇到过几个坑：</h5><ol>
+<li><p>导入头文件冲突，我在pch文件里面导入了一些OC的头文件，而SSZipArchive是由C语言实现的，所以报了很多的系统错误。解决办法：将pch里面的导入头文件代码放在<br>“#ifdef <strong>OBJC</strong><br>&#x2F;&#x2F;导入头文件<br>“#endif 里面”<br>  或者删除里面导入头文件的代码，去具体需要的文件里面导入，有一点暴力哈。</p>
+</li>
+<li><p>我每一次下载的文件样式都是一样的，所以希望覆盖式的解压，一开始没有注意以为它只有解压方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination;<br>就自己去判定是否存在然后删除，后来去仔细的看源码才发现它是有带是否覆盖式解压的方法：+ (BOOL)unzipFileAtPath:(NSString *)path toDestination:(NSString *)destination overwrite:(BOOL)overwrite password:(NSString *)password error:(NSError * *)error;<br>当然它还有很多方法，包括带有代理方法，带有密码，带有完成后的block回调方法，<br><a href="http://blog.csdn.net/zhengang007/article/details/51019479">http://blog.csdn.net/zhengang007/article/details/51019479</a><br>这里有每一个方法的详细说明。</p>
+</li>
+</ol>
+<h5 id="二、我的实现："><a href="#二、我的实现：" class="headerlink" title="二、我的实现："></a>二、我的实现：</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)downFileFromServer&#123;</span><br><span class="line">//远程地址</span><br><span class="line">NSURL *URL = [NSURL URLWithString:DOWN_URL];</span><br><span class="line">//默认配置</span><br><span class="line">NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];</span><br><span class="line">//AFN3.0+基于封住URLSession的句柄</span><br><span class="line">AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];</span><br><span class="line"></span><br><span class="line">//请求</span><br><span class="line">NSURLRequest *request = [NSURLRequest requestWithURL:URL];</span><br><span class="line"></span><br><span class="line">//下载Task操作</span><br><span class="line">_downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) &#123;</span><br><span class="line">// 下载进度</span><br><span class="line"></span><br><span class="line">&#125; destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) &#123;</span><br><span class="line"></span><br><span class="line">//- block的返回值, 要求返回一个URL, 返回的这个URL就是文件的位置的路径</span><br><span class="line">NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];</span><br><span class="line"></span><br><span class="line">NSString *path = [cachesPath stringByAppendingPathComponent:response.suggestedFilename];</span><br><span class="line">return [NSURL fileURLWithPath:path];</span><br><span class="line">&#125; completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) &#123;</span><br><span class="line"></span><br><span class="line">//设置下载完成操作</span><br><span class="line">// filePath就是你下载文件的位置，你可以解压，也可以直接拿来使用</span><br><span class="line">NSString *imgFilePath = [filePath path];// 将NSURL转成NSString</span><br><span class="line">MyLog(@&quot;imgFilePath = %@&quot;,imgFilePath);</span><br><span class="line">NSArray *documentArray =  NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span><br><span class="line">NSString *path = [[documentArray lastObject] stringByAppendingPathComponent:@&quot;Preferences&quot;];</span><br><span class="line">[self releaseZipFilesWithUnzipFileAtPath:imgFilePath Destination:path];</span><br><span class="line">&#125;];</span><br><span class="line">[_downloadTask resume];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 解压</span><br><span class="line">- (void)releaseZipFilesWithUnzipFileAtPath:(NSString *)zipPath Destination:(NSString *)unzipPath&#123;</span><br><span class="line">NSError *error;</span><br><span class="line">if ([SSZipArchive unzipFileAtPath:zipPath toDestination:unzipPath overwrite:YES password:nil error:&amp;error delegate:self]) &#123;</span><br><span class="line">MyLog(@&quot;success&quot;);</span><br><span class="line">MyLog(@&quot;unzipPath = %@&quot;,unzipPath);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">MyLog(@&quot;%@&quot;,error);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#pragma mark - SSZipArchiveDelegate</span><br><span class="line">- (void)zipArchiveWillUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo &#123;</span><br><span class="line">MyLog(@&quot;将要解压。&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)zipArchiveDidUnzipArchiveAtPath:(NSString *)path zipInfo:(unz_global_info)zipInfo unzippedPath:(NSString *)unzippedPat uniqueId:(NSString *)uniqueId &#123;</span><br><span class="line">MyLog(@&quot;解压完成！&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当然还得遵守协议：SSZipArchiveDelegate<br>以上就是我使用SSZipArchive的体会，欢迎各位指正。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“解压zip”</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>图片上传预览</title>
     <url>/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</url>
     <content><![CDATA[<blockquote>
@@ -1087,123 +1285,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>微信小程序tips</title>
-    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
-    <content><![CDATA[<blockquote>
-<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
-</blockquote>
-<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
-<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
-<blockquote>
-<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
-</blockquote>
-<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
-<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
-</blockquote>
-<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
-<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
-</blockquote>
-<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
-<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
-<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
-<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
-<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
-<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
-<p>以上就是这次遇到的一些比较变态的问题。</p>
-</blockquote>
-<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
-<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
-<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
-<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>微信小程序</category>
-      </categories>
-      <tags>
-        <tag>“微信小程序”</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>UISearchBar详解</title>
-    <url>/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<blockquote>
-<p>今天公司的项目测试的差不多了，基本可以上架了，又有时间来分享一下最近遇到的一些问题了，公司的项目进行了大改版（应该是全改了，基本是一个新的项目了），老大决定用swift重写。之前一直在自学swift，终于这一次可以实战了。项目中搜索用的比较多，但是搜索框的样式与默认的差别太大了，所以只能自定义了。</p>
-</blockquote>
-<p>The UISearchBar class implements a text field control for text-based searches. The control provides a text field for entering text, a search button, a bookmark button, and a cancel button. The UISearchBar object does not actually perform any searches. You use a delegate, an object conforming to the UISearchBarDelegate protocol, to implement the actions when text is entered and buttons are clicked.</p><p>
-
-<blockquote>
-<p>以上是苹果对UISearchBar的解释，可以看见UISearchBar提供了类似UITextField的输入（其实它的组成中就有UITextField，下面会讲到），右边有搜索按钮、标签按钮、关闭按钮可供选择，搜索都是在协议UISearchBarDelegate中进行。</p>
-</blockquote>
-</p><p><strong>自定义外观</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/7efbcef7e9cb93c4383fe6794bdbefdf.webp?x-image-process=image/format,png" alt="默认搜索外观"></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/226c294545fe64cc3f3f91cd71df0146.webp?x-image-process=image/format,png" alt="项目搜索外观"></p>
-<blockquote>
-<p>UISearchBar的层级很是复杂主要由UISearchBarBackgroud、UISearchBarTextField、<br>UINavigationButton组成，其中UISearchBarTextField就是输入框，主要是由——UISearchBarSearchFieldBackgroundView、UIButton（❌）、UIImageView（?）等组成，</p>
-</blockquote>
-<p><strong>获取TextField方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">let searchFiled:UITextField = self.searchBar.value(forKey: &quot;_searchField&quot;) as! UITextField</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>这样就可以通过修改	searchFiled来修改输入样式（圆角、字体等）。</strong></p>
-<blockquote>
-<p>UISearchBar的直接子控件是UIVIew，其上的子控件UISearchBarBackgroud的frame与UISearchBar的bounds相等，UISearchBarTextField的高度默认为28与UISearchBar左右有8像素的固定间距，上下间距为直接子控件UIView的高度 - UISearchBarTextField的默认高度28 再除以2。因此UISearchBar的输入框始终与设置的frame不一样，不便于布局，我们可以添加一个子类继承UISearchBar，可以更改其内边距。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class MySearchBar: UISearchBar &#123;</span><br><span class="line">    </span><br><span class="line">    // 监听是否添加了该属性</span><br><span class="line">    var contentInset: UIEdgeInsets? &#123;</span><br><span class="line">        didSet &#123;</span><br><span class="line">            self.layoutSubviews()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    override func layoutSubviews() &#123;</span><br><span class="line">        super.layoutSubviews()</span><br><span class="line">        // 便利寻找</span><br><span class="line">        for view in self.subviews &#123;</span><br><span class="line">            for subview in view.subviews &#123;</span><br><span class="line">                // 判定是否是UISearchBarTextField</span><br><span class="line">                if subview.isKind(of: UITextField.classForCoder()) &#123;</span><br><span class="line">                    if let textFieldContentInset = contentInset &#123;</span><br><span class="line">                        // 修改UISearchBarTextField的布局</span><br><span class="line">                        subview.frame = CGRect(x: textFieldContentInset.left, y: textFieldContentInset.top, width: self.bounds.width - textFieldContentInset.left - textFieldContentInset.right, height: self.bounds.height - textFieldContentInset.top - textFieldContentInset.bottom)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        // 设置UISearchBar中UISearchBarTextField的默认边距</span><br><span class="line">                        let top: CGFloat = (self.bounds.height - 28.0) / 2.0</span><br><span class="line">                        let bottom: CGFloat = top</span><br><span class="line">                        let left: CGFloat = 8.0</span><br><span class="line">                        let right: CGFloat = left</span><br><span class="line">                        contentInset = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>让实例化的UISearchBar继承MySearchBar，然后就可以很方便的直接控制内边距了</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>接下来就是处理placeholder靠左，这个就比较麻烦了，查询了一大堆办法都挺麻烦的，最后找到了一个很投机的办法：先判定手机宽度，然后在placeholder右边加上空格做成靠左的假象。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if SCREEN.WIDTH == 320 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置       &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 373\5 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                  &quot;</span><br><span class="line">       &#125;else if SCREEN.WIDTH == 414 &#123;</span><br><span class="line">           self.searchBar.placeholder = &quot;搜索位置                                 &quot;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>然后在storyboard中设置searchBar的BarStyle为Minimal就可以很方便的控制UISearchBar的外观了。<br>到这里就剩一个问题了：UISearchBar上下的两根黑线了，</p>
-</blockquote>
-<p><strong>去除方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.searchBar.setBackgroundImage(UIImage.init(), for: .any, barMetrics: .default)</span><br></pre></td></tr></table></figure>
-
-<p><strong>搜索的使用</strong></p>
-<blockquote>
-<p>如苹果官方文档所说，与搜索相关的都是在其代理方法中完成。UISearchBar有很多的代理方法，感兴趣的可以点击进入查看</p>
-</blockquote>
-<p><a href="https://developer.apple.com/reference/uikit/uisearchbardelegate">UISearchBarDelegate</a>我就介绍几个常用的：</p>
-<blockquote>
-<p>当搜索内容变化时，执行该方法,可以实时监听输入框的变化,可以实现时实搜索。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (BOOL)searchBar:(UISearchBar *)searchBar shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)textNS_AVAILABLE_IOS(3_0);                 // called before text changes</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>也行你想把搜索事件放在点击搜索以后再触发，那就选用这个方法，它就是点击搜索后的代理方法</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;</span><br></pre></td></tr></table></figure>
-
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
-<p>当然如果你觉得这样太麻烦了，你还可以选择用UITextField来实现UISearchBar的功能，但是最终哪一个更加的麻烦还需要试一试才知道。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>swift</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“swift”</tag>
-        <tag>“UISearchBar”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>项目剖析01-swift WebSocket</title>
     <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</url>
     <content><![CDATA[<blockquote>
@@ -1228,6 +1309,61 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       <tags>
         <tag>“swift”</tag>
         <tag>“WebSocket”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
+    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
+<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
+</blockquote>
+<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
+
+<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
+</blockquote>
+<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>利用进度时间(Play with Progress Time)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
+<p><strong>时间帧播放(Play with Marker Names)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
+<ol>
+<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
+</li>
+<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
+</li>
+<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
+</li>
+<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
+</li>
+<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
+</li>
+<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
+</li>
+<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
+</li>
+</ol>
+</blockquote>
+<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>“iOS”</tag>
+        <tag>“动画”</tag>
+        <tag>“Lottie”</tag>
       </tags>
   </entry>
   <entry>
@@ -1347,61 +1483,6 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
       </tags>
   </entry>
   <entry>
-    <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <url>/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</url>
-    <content><![CDATA[<blockquote>
-<p><a href="https://github.com/airbnb/lottie-ios">Lottie</a> 是 <a href="https://lottiefiles.com/?lang=zh_CN">Airbnb</a>开源的一套跨平台的动画效果解决方案,它能够同时支持<code>iOS</code>、<code>Android</code>、<code>Web</code> 和 <code>React Native</code>的开发，设计师只需要用 <a href="https://www.adobe.com/cn/products/aftereffects.html">AdobeAfterEffects</a>(AE) 设计出需要的的动画之后，使用 <code>Lottie</code> 提供的 <a href="https://github.com/bodymovin/bodymovin">Bodymovin</a> 插件将设计好的动画导出成JSON格式(文件很小不会象GIF那么庞大)给你即可，可以让设计师实现所见即所得的动画再也不用和设计师争论动画设计了。本文只是展示在swift中如何简单使用<code>Lottie</code> ，详细的使用方法请参考<a href="https://airbnb.io/lottie/#/">官方文档</a></p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/9435d33b4f8d95e2fbaed37fa0c418ba.gif" alt="github例图"></p>
-<h3 id="用法举例"><a href="#用法举例" class="headerlink" title="用法举例"></a>用法举例</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">lazy var lottieAnimationView: AnimationView = &#123;</span><br><span class="line">        // 加载本地资源</span><br><span class="line">        let path : String = Bundle.main.path(forResource: &quot;data&quot;, ofType: &quot;json&quot;)!</span><br><span class="line">        let lottieAnimationView = AnimationView.init(filePath: path)</span><br><span class="line">        WTNavigationManger.Nav?.view.addSubview(lottieAnimationView)</span><br><span class="line">        lottieAnimationView.constrain(toSuperviewEdges: nil)</span><br><span class="line">        lottieAnimationView.isUserInteractionEnabled = true</span><br><span class="line">        lottieAnimationView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeLottieAnimationViewFromParent)))</span><br><span class="line">        return lottieAnimationView</span><br><span class="line">    &#125;()</span><br><span class="line"></span><br><span class="line">// 调用</span><br><span class="line">lottieAnimationView.play &#123;[weak self] (complete) in</span><br><span class="line">       guard let mySelf = self else &#123;return&#125;</span><br><span class="line">       mySelf.removeLottieAnimationViewFromParent()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@objc func removeLottieAnimationViewFromParent() &#123;</span><br><span class="line">        lottieAnimationView.removeFromSuperview()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>将设计师给你的文件导入项目，然后通过Bundle.main.path(forResource:找到json文件，然后将AnimationView添加到视图，在需要展示动画的地方调用play() 方法，这样动画就可以加载了。</p>
-</blockquote>
-<h3 id="引入json的方式"><a href="#引入json的方式" class="headerlink" title="引入json的方式"></a>引入json的方式</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/// json所在的文件，默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;) </span><br><span class="line">/// 默认为Bundle.main</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, bundle: myBundle)</span><br><span class="line">/// subdirectory 为动画所在的包中的子目录(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, subdirectory: &quot;Animations&quot;)</span><br><span class="line">/// animationCache 为保存加载动画的缓存(可选的)</span><br><span class="line">let animation = Animation.named(&quot;StarAnimation&quot;, animationCache: LRUAnimationCache.sharedCache)</span><br></pre></td></tr></table></figure>
-
-<h3 id="指定加载路径"><a href="#指定加载路径" class="headerlink" title="指定加载路径"></a>指定加载路径</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Animation.filepath(_ filepath: String, animationCache: AnimationCacheProvider?) -&gt; Animation?</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>从绝对文件路径加载动画模型。如果没有找到动画，则返回nil<br>filepath:要加载的动画的绝对文件路径<br>animationCache:用于保存加载的动画的缓存(可选的)</p>
-</blockquote>
-<h3 id="播放动画"><a href="#播放动画" class="headerlink" title="播放动画"></a>播放动画</h3><p><strong>基本播放(Basic Playing)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 播放动画从它的当前状态到它的时间轴结束。在动画停止时调用completion代码块</span><br><span class="line">// 如果动画完成，则completion返回true。如果动画被中断，则返回false</span><br><span class="line">AnimationView.play(completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>利用进度时间(Play with Progress Time)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 指定一个时间到另一个时间的播放</span><br><span class="line">AnimationView.play(fromProgress: AnimationProgressTime?, toProgress: AnimationProgressTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 动画播放从一个时间帧到另一个时间帧</span><br><span class="line">AnimationView.play(fromFrame: AnimationProgressTime?, toFrame: AnimationFrameTime, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br></pre></td></tr></table></figure>
-<p><strong>时间帧播放(Play with Marker Names)</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 将动画从命名标记播放到另一个标记。标记是编码到动画数据中并指定名称的时间点</span><br><span class="line">AnimationView.play(fromMarker: String?, toMarker: String, loopMode: LottieLoopMode?, completion: LottieCompletionBlock?)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="其它操作"><a href="#其它操作" class="headerlink" title="其它操作"></a>其它操作</h3><blockquote>
-<ol>
-<li><p>AnimationView.pause() &#x2F;&#x2F; 暂停</p>
-</li>
-<li><p>AnimationView.stop()  &#x2F;&#x2F; 停止</p>
-</li>
-<li><p>var AnimationView.backgroundBehavior: LottieBackgroundBehavior { get set} &#x2F;&#x2F; app进入后台</p>
-</li>
-<li><p>var AnimationView.contentMode: UIViewContentMode { get set } &#x2F;&#x2F; 循环播放模式。默认是playOnce，还有autoReverse无限循环</p>
-</li>
-<li><p>var AnimationView.isAnimationPlaying: Bool { get set } &#x2F;&#x2F; 判断动画是否在播放</p>
-</li>
-<li><p>var AnimationView.animationSpeed: CGFloat { get set } &#x2F;&#x2F; 动画速度</p>
-</li>
-<li><p>func AnimationView.forceDisplayUpdate() &#x2F;&#x2F; 强制重绘动画视图</p>
-</li>
-</ol>
-</blockquote>
-<p><strong>以上就是我在项目中使用<code>Lottie</code>的方法，如果有错误或者不足之处还望指正，谢谢</strong></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-      </categories>
-      <tags>
-        <tag>“iOS”</tag>
-        <tag>“动画”</tag>
-        <tag>“Lottie”</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
     <url>/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</url>
     <content><![CDATA[<h2 id="SSL证书验证"><a href="#SSL证书验证" class="headerlink" title="SSL证书验证"></a>SSL证书验证</h2><p><strong>一种加强App 和 Server 间通讯安全的方法。主要目标是确保 App 仅与预先验证的 Server 建立安全连接，防止中间人攻击（Man-in-the-Middle，MitM）等安全风险。一般常用的有两种方式进行验证，Certificate Pinning和Public Key Pinning。</strong></p>
@@ -1461,6 +1542,54 @@ NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[
         <tag>“swift”</tag>
         <tag>“证书验证”</tag>
         <tag>“SSL”</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微信小程序tips</title>
+    <url>/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</url>
+    <content><![CDATA[<blockquote>
+<p>最近公司项目改版，趁产品修改与UI出图的间歇用公司商户端UI图撸了一把微信小程序。因为刚刚实习那一会接触过前端开发，所以上手还比较快，当然也遇到了很多的问题，不过好在基本按图完成。趁此总结一下我遇到的问题,奉上一些可行的解决方案，希望可以帮助与我遇到相同问题的朋友。<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a> </p>
+</blockquote>
+<h3 id="先上图"><a href="#先上图" class="headerlink" title="先上图"></a>先上图</h3><p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6d605c3b3e52fc14fcf8b758b6c4b33.webp?x-image-process=image/format,png" alt="微信小程序"></p>
+<h3 id="tips"><a href="#tips" class="headerlink" title="tips"></a>tips</h3><p><strong>背景图片不能使用本地的</strong></p>
+<blockquote>
+<p>这个问题坑了我很久，因为在模拟器上跑时，将本地图片作为View的背景图片是可以的，但是一到真机测试就不显示背景图片了，一开始还以为是路径错了，经过测试发现路径是没有问题的，最后在网上找到了原因：微信小程序的背景图片不能是本地图片，必须是是网络图片，于是我就找了一个网站将图片传了上去，将网址作为背景图片链接，就奇迹般的显示了，很是无语。</p>
+</blockquote>
+<h3 id="不能加载网页"><a href="#不能加载网页" class="headerlink" title="不能加载网页"></a>不能加载网页</h3><blockquote>
+<p>微信小程序是不能跳转到网页的，也许是因为微信小程序本身就如同网页吧，也可能是微信不想有人越过它的审核，反正他是不允许直接加载网页的。</p>
+</blockquote>
+<h3 id="不能隐藏导航栏"><a href="#不能隐藏导航栏" class="headerlink" title="不能隐藏导航栏"></a>不能隐藏导航栏</h3><blockquote>
+<p>我的登陆页面本来是不应该有导航栏的，可是就是隐藏不了，也许有方法，但是我找了很久也没有发现。</p>
+</blockquote>
+<h3 id="只支持HTTPS的网络协议并且一个月只能修改5次"><a href="#只支持HTTPS的网络协议并且一个月只能修改5次" class="headerlink" title="只支持HTTPS的网络协议并且一个月只能修改5次"></a>只支持HTTPS的网络协议并且一个月只能修改5次</h3><blockquote>
+<p>在微信小程序中网络请求只能是https类型的。在添加URL的时候都已经限制死了。并且一个月只能修改5次，网络请求必须先进行服务器域名配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/48f1eaa31d6ea1dd09c872920e359dee.webp?x-image-process=image/format,png" alt="添加URL"><br>)</p>
+<h3 id="所有的页面都必须在app-json中配置路径"><a href="#所有的页面都必须在app-json中配置路径" class="headerlink" title="所有的页面都必须在app.json中配置路径"></a>所有的页面都必须在app.json中配置路径</h3><blockquote>
+<p>我之前新建一个页面然后跳转过去一直报路径错误，去网上查询才知道，每一个页面路径都需要提前配置。</p>
+</blockquote>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cb2cfa23e160b24cec566232710f644.webp?x-image-process=image/format,png" alt="页面路径配置"></p>
+<h3 id="网络请求的最大并发数为5、页面层级最多5层"><a href="#网络请求的最大并发数为5、页面层级最多5层" class="headerlink" title="网络请求的最大并发数为5、页面层级最多5层"></a>网络请求的最大并发数为5、页面层级最多5层</h3><blockquote>
+<p>就是说同时最多5个网络请求，页面的子页面最多4个。我在想要是一个页面是一个视频列表展示怎么办，每一个视频都需要网络请求啊。</p>
+<p>以上就是这次遇到的一些比较变态的问题。</p>
+</blockquote>
+<h3 id="谈谈我的一些代码实现"><a href="#谈谈我的一些代码实现" class="headerlink" title="谈谈我的一些代码实现"></a>谈谈我的一些代码实现</h3><p><strong>配置tabBar(app.json)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&quot;tabBar&quot;: &#123;</span><br><span class="line">  &quot;color&quot;: &quot;#888888&quot;,</span><br><span class="line">  &quot;selectedColor&quot;: &quot;#09BB07&quot;,</span><br><span class="line">  &quot;backgroundColor&quot;: &quot;&quot;,</span><br><span class="line">  &quot;borderStyle&quot;: &quot;white&quot;,</span><br><span class="line">  &quot;list&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/orderManage/orderManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;订单管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/order.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/order_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/moneyManage/moneyManage&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;财务管理&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/money.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/money_r.png&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pagePath&quot;: &quot;pages/myself/myself&quot;,</span><br><span class="line">      &quot;text&quot;: &quot;我的商户&quot;,</span><br><span class="line">      &quot;iconPath&quot;: &quot;pages/images/people.png&quot;,</span><br><span class="line">      &quot;selectedIconPath&quot;: &quot;pages/images/people_r.png&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="订单管理页的菜单栏"><a href="#订单管理页的菜单栏" class="headerlink" title="订单管理页的菜单栏"></a>订单管理页的菜单栏</h3><blockquote>
+<p>点击菜单栏切换View简单，直接将将点击的菜单的值赋给View让其偏移对应的百分比就好。</p>
+<p>手势切换：通过触摸的起点与终点计算出滑动方向，然后偏移并且切换菜单栏。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    catchtouchstart:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    that.setData(&#123;</span><br><span class="line">      startPoint: [e.touches[0].clientX,e.touches[0].clientY]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  catchtouchend:function(e)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    var currentNum = parseInt(this.data.currentNavtab);</span><br><span class="line">    var endPoint = [e.changedTouches[0].clientX,e.changedTouches[0].clientY];</span><br><span class="line">    var startPoint = that.data.startPoint</span><br><span class="line">    if(endPoint[0] &lt;= startPoint[0]) &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum&lt; this.data.navTab.length -1) &#123;</span><br><span class="line">         currentNum=currentNum + 1;  </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">      if(Math.abs(endPoint[0] - startPoint[0]) &gt;= Math.abs(endPoint[1] - startPoint[1]) &amp;&amp; currentNum &gt; 0) &#123;</span><br><span class="line">          currentNum -= 1;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: currentNum</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">// 点击菜单栏切换View</span><br><span class="line">  switchTab: function(e)&#123;</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      currentNavtab: e.currentTarget.dataset.idx</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><blockquote>
+<p>整个程序还是很简单的，就是初次写还是有些不适应。尤其是把div改为了View，不能使用window对象和document对象，很不适应。再次奉上<a href="https://github.com/GavinCarter1991/wx-onePro">demo</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>微信小程序</category>
+      </categories>
+      <tags>
+        <tag>“微信小程序”</tag>
       </tags>
   </entry>
 </search>

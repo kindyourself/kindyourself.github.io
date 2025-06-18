@@ -167,6 +167,174 @@
     
     
     <article
+  id="[layout]-iOS-发布代码到cocoapods上详细步骤"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"
+    >iOS-发布代码到cocoapods上详细步骤</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/" class="article-date">
+  <time datetime="2025-06-18T07:55:07.000Z" itemprop="datePublished">2025-06-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="完整步骤："><a href="#完整步骤：" class="headerlink" title="完整步骤："></a>完整步骤：</h2><blockquote>
+<ol>
+<li><p>把你需要发布到CocoaPods的代码写好。</p>
+</li>
+<li><p>用Xcode创建一个Framework项目，将你写好的代码拖入Framework，进行相关配置，根据需求打包Framework。</p>
+</li>
+<li><p>注册CocoaPods账号，检查库名是否已被占用，没有被占用就创建Podspec文件，拖入通用Framework。</p>
+</li>
+<li><p>创建git仓库，修改xxx.podspec配置，将代码推送到远程仓库并进行版本控制，验证Podspec文件。</p>
+</li>
+<li><p>验证通过，发布到 CocoaPods。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="1-创建Framework项目"><a href="#1-创建Framework项目" class="headerlink" title="1. 创建Framework项目"></a>1. 创建Framework项目</h2><p><strong>1. 在Xcode中，选择File -&gt; New -&gt; Project</strong></p>
+<p><strong>2. 选择iOS -&gt; Framework &amp; Library -&gt; Framework，然后点击Next</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-be0160ff8d3afd2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Framework"></p>
+<p><strong>3. 输入产品名称（例如：<code>LanguageSet</code>），选择语言（Objective-C或Swift），点击Next并保存。</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-83b4887d1f953d7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建cocoapodsDemo"></p>
+<h2 id="2-配置Framework"><a href="#2-配置Framework" class="headerlink" title="2. 配置Framework"></a>2. 配置Framework</h2><ul>
+<li><strong>添加代码文件</strong>：将你的源代码文件拖入项目，确保在Build Phases -&gt; Headers中设置好公开头文件（Public Headers）。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-ae2a853b2b80c1ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加代码文件"></p>
+<ul>
+<li><strong>将需要公开的头文件拖到public：</strong></li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-d9a8a7555487533e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置好公开头文件"></p>
+<p><strong>添加第三方库</strong></p>
+<blockquote>
+<p>1.使用cocoapod是可以自动管理第三方库，在Link Binary With Libraries 中找到Pod_的framwork 选择Optional</p>
+</blockquote>
+<blockquote>
+<p>2.手动添加第三方库和文件时，不要选择target</p>
+</blockquote>
+<ul>
+<li><p><strong>设置Build Settings</strong>:</p>
+</li>
+<li><p><strong>Mach-O Type</strong>: 默认为Dynamic Library，也可以选择Static Library（但Framework通常指动态库）。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-4ec8c2a6b6993b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Mach-O Type"></p>
+</li>
+<li><p><strong>Build Active Architecture Only</strong>: 设置为NO，以支持所有架构。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-c68f41b1eae65414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Build Active Architecture Only"></p>
+</li>
+<li><p><strong>iOS Deployment Target</strong>: 选择你希望支持的最低iOS版本。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-7f6fb03188cbd741.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS Deployment Target"></p>
+</li>
+<li><p><strong>Swift版本</strong>：如果是Swift项目，确保设置正确的Swift版本。</p>
+</li>
+<li><p><strong>Enable Bitcode</strong>: 如果需要，设置为YES。</p>
+</li>
+</ul>
+<h2 id="3-打包Framework（支持真机和模拟器）"><a href="#3-打包Framework（支持真机和模拟器）" class="headerlink" title="3. 打包Framework（支持真机和模拟器）"></a>3. 打包Framework（支持真机和模拟器）</h2><blockquote>
+<p>我们需要同时支持真机和模拟器架构（arm64, x86_64），并最终合并为一个通用Framework。</p>
+</blockquote>
+<p><strong>1. 分别编译真机和模拟器版本</strong></p>
+<p><strong>1. 真机Release</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-iOS&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 模拟器Release</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS Simulator&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-Simulator&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 合并两个Framework-打包通用Framework（支持真机+模拟器）</strong></p>
+<blockquote>
+<p>使用<code>lipo</code>工具合并二进制文件，并复制模拟器的swiftmodule（如果有）到真机Framework中。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建通用Framework目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p build/LanguageSet-Universal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制真机Framework到通用目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet build/LanguageSet-Universal/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并二进制文件</span></span><br><span class="line"></span><br><span class="line">lipo -create </span><br><span class="line"></span><br><span class="line">build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet.framework/LanguageSet </span><br><span class="line"></span><br><span class="line">build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSetframework/LanguageSet </span><br><span class="line"></span><br><span class="line">-output build/LanguageSet-Universal/LanguageSet.framework/LanguageSet</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果使用Swift，需要合并swiftmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule/* \</span><br><span class="line"></span><br><span class="line">build/LanguageSet-Universal/LanguageSet.framework/Modules/LanguageSet.swiftmodule/</span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>将上面的合并起来：</strong></p>
+<p><strong>创建一个打包脚本 build_framework.sh</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 1. 定义基础变量</span><br><span class="line">SCHEME_NAME=&quot;LanguageSet&quot;   # 替换为实际Scheme名</span><br><span class="line">PROJECT_NAME=&quot;LanguageSet&quot;    # 替换为实际工程名</span><br><span class="line">CONFIGURATION=&quot;Release&quot;           # 建议使用Release模式</span><br><span class="line">OUTPUT_DIR=&quot;$&#123;PWD&#125;/Output&quot;        # 输出目录</span><br><span class="line"></span><br><span class="line"># 2. 清理旧构建</span><br><span class="line">rm -rf &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line">mkdir -p &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 3. 编译真机版本 (arm64, armv7)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphoneos \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # 支持多架构 [[6]]</span><br><span class="line"></span><br><span class="line"># 4. 编译模拟器版本 (x86_64, arm64)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphonesimulator \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # M1芯片需包含arm64 [[3, 6]]</span><br><span class="line"></span><br><span class="line"># 5. 合并为XCFramework (官方推荐方式)</span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.xcframework&quot;  # 生成多平台兼容包 [[2, 6, 12, 16]]</span><br><span class="line"></span><br><span class="line"># 6. 可选：生成Fat Framework (传统合并方式)</span><br><span class="line"># lipo -create \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot;  # 需手动处理头文件 [[11, 15, 20]]</span><br><span class="line"></span><br><span class="line"># 7. 打开输出目录</span><br><span class="line">open &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-909a8b6bfe8a86bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build_framework.sh 存放"></p>
+<p><strong>运行脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x build_framework.sh</span><br><span class="line">./build_framework.sh</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成文件夹：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-b9c853f304e38d24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework"></p>
+<h2 id="注册CocoaPods的Trunk"><a href="#注册CocoaPods的Trunk" class="headerlink" title="注册CocoaPods的Trunk"></a>注册CocoaPods的Trunk</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 注册CocoaPods账号（仅首次）</span><br><span class="line">pod trunk register your-email@example.com &quot;Your Name&quot; --description=&#x27;MacBook Pro&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>CocoaPods会向你提供的邮箱发送一个验证链接，点击链接完成验证。 </code></p>
+<p><strong>验证CocoaPods的Trunk注册结果</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-a69e3e9f4000afde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Trunk创建验证"></p>
+<h2 id="创建Podspec文件"><a href="#创建Podspec文件" class="headerlink" title="创建Podspec文件"></a>创建Podspec文件</h2><blockquote>
+<p> <strong>pod lib create LanguageSet</strong></p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-e39b370605e72821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Podspec文件"></p>
+<p><strong>生成Podspec文件夹</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-086200ce38c70fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成Podspec文件夹"></p>
+<blockquote>
+<p> <strong>Example:</strong> 放demo应用</p>
+<p> <strong>LanguageSet:</strong> &#x2F;Classes主代码 &#x2F;Assets图片资源文件</p>
+</blockquote>
+<p><strong>将之前生成的XCFramework拖入新建Podspec文件夹中的LanguageSet中</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-60eec0705967d61c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework拖入后"></p>
+<h2 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h2><p><img src="https://upload-images.jianshu.io/upload_images/1976231-efca2c60c3794fd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Git仓库"></p>
+<p><strong>修改LanguageSet.podspec配置</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line">  s.name             = &#x27;LanguageSet&#x27;</span><br><span class="line">  s.version          = &#x27;0.0.1&#x27;</span><br><span class="line">  s.summary          = &#x27;multilingual processing.&#x27;</span><br><span class="line"></span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">  A few simple lines of code can handle multiple languages</span><br><span class="line">  DESC</span><br><span class="line"></span><br><span class="line">  s.homepage         = &#x27;https://github.com/GavinCarter1991/LanguageSet&#x27;</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line">  s.author           = &#123; &#x27;gavin&#x27; =&gt; &#x27;kindyourself@163.com&#x27; &#125;</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/GavinCarter1991/LanguageSet.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  s.ios.deployment_target = &#x27;12.0&#x27;</span><br><span class="line">  s.vendored_frameworks = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  # 添加模块映射</span><br><span class="line">  s.preserve_paths = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  </span><br><span class="line">  # 添加资源处理排除规则</span><br><span class="line">  s.pod_target_xcconfig = &#123;</span><br><span class="line">    &#x27;EXCLUDED_FILE_GROUP_PATTERNS&#x27; =&gt; [</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/_CodeSignature/**&#x27;,</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/Modules/**&#x27;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  # 禁用模块验证（针对 xcframework）</span><br><span class="line">  s.user_target_xcconfig = &#123; &#x27;VALIDATE_WORKSPACE&#x27; =&gt; &#x27;NO&#x27; &#125;</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置Git仓库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建本地仓库</span><br><span class="line">cd LanguageSet 进入文件夹</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line"></span><br><span class="line"># 创建远程仓库（在Gitee/GitHub上创建）</span><br><span class="line">git remote add origin https://github.com/GavinCarter1991/LanguageSet.git // 关联仓库</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"># 添加版本标签</span><br><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-abf0ebb55afd72eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tags"></p>
+<h2 id="发布到CocoaPods"><a href="#发布到CocoaPods" class="headerlink" title="发布到CocoaPods"></a>发布到CocoaPods</h2><p><strong>1. 首次发布</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 验证podspec</span><br><span class="line">pod lib lint --allow-warnings</span><br><span class="line"></span><br><span class="line"># 发布到CocoaPods</span><br><span class="line">pod trunk push CocoaPodsDemo.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-6524cd38c321ead0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="发布到CocoaPods"></p>
+<p><strong>2. 更新版本</strong></p>
+<blockquote>
+<p>更新podspec中的版本号</p>
+</blockquote>
+<blockquote>
+<p>推送新代码到你的库的 Git 仓库，创建新的Git标签(tag)</p>
+</blockquote>
+<blockquote>
+<p>重复推送和发布的步骤</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/GavinCarter1991/LanguageSet">Demo</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Ccocoapods%E2%80%9D/" rel="tag">“cocoapods”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%91%E5%B8%83/" rel="tag">发布</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="[layout]-iOS即时通讯发送图片消息内存暴涨优化"
   class="article article-type-[layout]"
   itemscope
@@ -556,13 +724,13 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/1976231-4b672d531de2e4be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地SSH配置"></p>
 <p><strong>2.添加配置文件</strong></p>
 <h3 id="config-yml：为其中一个GitHub账号的配置"><a href="#config-yml：为其中一个GitHub账号的配置" class="headerlink" title="_config.yml：为其中一个GitHub账号的配置"></a>_config.yml：为其中一个GitHub账号的配置</h3><blockquote>
-<p>url: <a href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
+<p>url: <a target="_blank" rel="noopener" href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
 <p>source_dir: source  # 这个值会被脚本覆盖，但需要存在</p>
 <p>public_dir: public_kind</p>
 <p> <img src="https://upload-images.jianshu.io/upload_images/1976231-d4cc0887e0a1f1c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
 </blockquote>
 <h3 id="config-other-yml：为另外一个GitHub账号的配置"><a href="#config-other-yml：为另外一个GitHub账号的配置" class="headerlink" title="_config_other.yml：为另外一个GitHub账号的配置"></a>_config_other.yml：为另外一个GitHub账号的配置</h3><blockquote>
-<p>url: <a target="_blank" rel="noopener" href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
+<p>url: <a href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
 <p>source_dir:  &#x2F;Users&#x2F;dianyin&#x2F;Desktop&#x2F;blog&#x2F;temp_source_gavin</p>
 <p>public_dir: public_gavin</p>
 <p> <img src="https://upload-images.jianshu.io/upload_images/1976231-e88ac014d9ccf8ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
@@ -1335,117 +1503,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CWebSocket%E2%80%9D/" rel="tag">“WebSocket”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cswift%E2%80%9D/" rel="tag">“swift”</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="[layout]-iOS集成融云SDK即时通讯整理"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"
-    >iOS集成融云SDK即时通讯整理</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/" class="article-date">
-  <time datetime="2018-03-29T06:36:05.000Z" itemprop="datePublished">2018-03-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h2 id="iOS集成融云SDK即时通讯整理"><a href="#iOS集成融云SDK即时通讯整理" class="headerlink" title="iOS集成融云SDK即时通讯整理"></a>iOS集成融云SDK即时通讯整理</h2><blockquote>
-<p>最近很少写一下项目总结了，最近项目虽然做了很多，但是都是一些外包项目，做下来也没有什么值得总结的。最近一个项目用到了融云即时通讯，以前基本都是用环信，所以还遇到了一些问题，在此总结一下记录一下。</p>
-</blockquote>
-<h3 id="头像、昵称等用户信息-融云对这个问题有两种处理方式"><a href="#头像、昵称等用户信息-融云对这个问题有两种处理方式" class="headerlink" title="头像、昵称等用户信息(融云对这个问题有两种处理方式)"></a>头像、昵称等用户信息(融云对这个问题有两种处理方式)</h3><p><strong>用户信息提供者</strong></p>
-<blockquote>
-<p>实现步骤(以下代码放在单例中，可以是AppDelegate，最好单独写一个单例)  </p>
-<p>首先遵守RCIMUserInfoDataSource这个协议 </p>
-</blockquote>
-<p><strong>然后是要设置代理</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RCIM sharedRCIM] setUserInfoDataSource:self]; </span><br></pre></td></tr></table></figure>
-<p><strong>最后实现代理方法：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion &#123;</span><br><span class="line">    NSLog(@&quot;getUserInfoWithUserId ----- %@&quot;, userId);</span><br><span class="line">    RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">    if (userId == nil || [userId length] == 0) &#123;</span><br><span class="line">        user.userId = userId;</span><br><span class="line">        user.portraitUri = @&quot;&quot;;</span><br><span class="line">        user.name = @&quot;&quot;;</span><br><span class="line">        completion(user);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if ([userId isEqualToString:[UserInfo shareInstance].uid]) &#123;</span><br><span class="line">        NSString *urlSelf = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        return completion([[RCUserInfo alloc] initWithUserId:userId name:[UserInfo shareInstance].nickname portrait:urlSelf]);</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">    </span><br><span class="line">  //根据存储联系人信息的模型，通过 userId 来取得对应的name和头像url，进行以下设置</span><br><span class="line">    [WTBaseHttpRequst postRequstWithURL:getUserHttp params:@&#123;@&quot;uid&quot;:[UserInfo shareInstance].uid, @&quot;api_token&quot;:[UserInfo shareInstance].api_token, @&quot;k_uid&quot;:userId&#125; successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">        if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">            NSString *urlStr = [BASIC_URL_image stringByAppendingString:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;photo&quot;]];</span><br><span class="line">            return completion([[RCUserInfo alloc] initWithUserId:userId name:returnData[@&quot;data&quot;][@&quot;user&quot;][@&quot;nickname&quot;] portrait:urlStr]);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            completion(user);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">        completion(user);</span><br><span class="line">    &#125; showHUD:NO];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>这个方法不需要你自己手动调用，只是当你在修改用户信息时调用方法即可</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">WS(weakSelf);</span><br><span class="line">// 修改用户信息调用</span><br><span class="line">[WTBaseHttpRequst postRequstWithURL:modifyInfoHttp params:dict successBlock:^(NSDictionary *returnData) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:returnData[@&quot;msg&quot;]];</span><br><span class="line">    if ([returnData[@&quot;status&quot;] integerValue] == 1) &#123;</span><br><span class="line">        RCUserInfo *user = [RCUserInfo new];</span><br><span class="line">        user.userId = [UserInfo shareInstance].uid;</span><br><span class="line">        user.portraitUri = [BASIC_URL_image stringByAppendingString:[UserInfo shareInstance].photo];</span><br><span class="line">        user.name = weakSelf.nickNameTextField.text;</span><br><span class="line">        [[RCIM sharedRCIM] refreshUserInfoCache:user withUserId:[UserInfo shareInstance].uid];</span><br><span class="line">        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            [self.navigationController popViewControllerAnimated:YES];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125; failureBlock:^(NSString *error) &#123;</span><br><span class="line">    [weakSelf MBProgressHudShowWithTextOnlyWithText:error];</span><br><span class="line">&#125; showHUD:YES];</span><br></pre></td></tr></table></figure>
-
-<p><strong>在扩展消息中携带用户信息</strong></p>
-<blockquote>
-<p>设置发送消息时在消息体中携带用户信息(从2.4.1 之后附加用户信息之后cell默认会显示附加的用户信息的头像，即用户信息不会取用户信息提供者里提供的用户信息)</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[RCIM sharedRCIM].enableMessageAttachUserInfo = YES; </span><br><span class="line">```  </span><br><span class="line">  </span><br><span class="line">**你设置了enableMessageAttachUserInfo之后，可以取到**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;**  </p>
-<ul>
-<li>发送者信息</li>
-<li>**&#x2F;<br>@property(nonatomic, strong) RCUserInfo *senderUserInfo; <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">**当然我觉得还可以从后台获取好友关系后，我们在每次登陆后，开一个线程把好友关系请求下来存起来然后根据环信ID查找好友的昵称和头像**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 给输入框添加提示语(这个我一直觉得环信应该给了方法修改，只是我一直没有找到这个方法，所以只有自己去写了)</span><br><span class="line">  </span><br><span class="line">**创建提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-_lab &#x3D; [[UILabel alloc] initWithFrame:self.chatSessionInputBarControl.inputTextView.bounds];<br>_lab.text &#x3D; @”请输入文字信息…”;<br>_lab.textColor &#x3D; [UIColor colorWithHexColor:@”dddddd”];<br>_lab.font &#x3D; [UIFont systemFontOfSize:15];<br>_lab.center &#x3D; CGPointMake(_lab.center.x + 15, _lab.center.y);<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**判定是否有草稿来显示和隐藏提示的label**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[self.chatSessionInputBarControl.inputTextView addSubview:_lab];<br>if (self.chatSessionInputBarControl.draft &#x3D;&#x3D; nil || self.chatSessionInputBarControl.draft.length &#x3D;&#x3D; 0) {<br> _lab.hidden &#x3D; NO;<br>}else {<br> _lab.hidden &#x3D; YES;<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**根据输入数据来判定显示隐藏提示label**</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-<ul>
-<li>(void)inputTextView:(UITextView *)inputTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {<br>  if (((inputTextView.text.length &#x3D;&#x3D; 1 &amp;&amp; [text isEqualToString:@””]) || (inputTextView.text.length &#x3D;&#x3D; 0 &amp;&amp; text.length &gt; 0))  &amp;&amp; range.length &#x3D;&#x3D; 1 &amp;&amp; range.location &#x3D;&#x3D; 0) {<br>  _lab.hidden &#x3D; NO;<br>  }else {<br>  _lab.hidden &#x3D; YES;<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 取消输入@弹出好友列表界面，保留长按头像@方法</span><br><span class="line"></span><br><span class="line">**首先在AppDelegate中开启消息@功能（只支持群聊和讨论组, App需要实现群成员数据源groupMemberDataSource）**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[RCIM sharedRCIM].enableMessageMentioned &#x3D; YES;</li>
-</ul>
-<p>然后在继承RCConversationViewController的控制器中调用<br>-(void)showChooseUserViewController:(void (^)(RCUserInfo *selectedUserInfo))selectedBlock<br>                         cancel:(void (^)())cancelBlock {<br>}</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 在会话列表中添加一些固定的cell(继承RCConversationListViewController)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>&#x2F;&#x2F; 对自定义cell赋值</p>
-<ul>
-<li>(RCConversationBaseCell *)rcConversationListTableView:(UITableView *)tableView<br>                            cellForRowAtIndexPath:(NSIndexPath *)indexPath {<br>  RCCustomCell *cell &#x3D; (RCCustomCell *)[[RCCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@”RCCustomCell”];<br>  RCConversationModel *model &#x3D; self.conversationListDataSource[indexPath.row];<br>  cell.nameLabel.text &#x3D; model.conversationTitle;<br>  return cell;<br>}</li>
-</ul>
-<p>&#x2F;&#x2F; 添加自定义cell的数据源</p>
-<ul>
-<li>(NSMutableArray *)willReloadTableData:(NSMutableArray *)dataSource{<br>  NSArray *arr &#x3D; @[@”论坛回复和@我的”, @”陌生人私信”, @”幸存者部落@我的”, @”问卷调查”];<br>  for (int i &#x3D; 0; i&lt;arr.count; i++) {<br>  RCConversationModel *model &#x3D; [[RCConversationModel alloc]init];<br>  model.conversationModelType &#x3D; RC_CONVERSATION_MODEL_TYPE_CUSTOMIZATION;<br>  model.conversationTitle &#x3D; arr[i];<br>  model.isTop &#x3D; YES;<br>  [dataSource insertObject:model atIndex:i];<br>  }<br>  return dataSource;<br>}</li>
-</ul>
-<p>&#x2F;&#x2F; 点击cell跳转</p>
-<ul>
-<li>(void)onSelectedTableRow:(RCConversationModelType)conversationModelType<br>   conversationModel:(RCConversationModel *)model<br>     atIndexPath:(NSIndexPath *)indexPath{<br>  if (indexPath.row &#x3D;&#x3D; 0) {<br>  WTForumAndConnectListViewController *chatList &#x3D; (WTForumAndConnectListViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTForumAndConnectListViewController”];<br>  chatList.title &#x3D; @”回复和@我的”;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 1) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”陌生人私信”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 1;<br>  chatList.friendArray &#x3D; self.friendArray;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 2) {<br>  WTChatListViewController *chatList &#x3D; [[WTChatListViewController alloc] init];<br>  chatList.title &#x3D; @”幸存者部落@我的”;<br>  chatList.isEnteredToCollectionViewController &#x3D; YES;<br>  chatList.type &#x3D; 2;<br>  [self.navigationController pushViewController:chatList animated:YES];<br>  }else if (indexPath.row &#x3D;&#x3D; 3) {<br>  WTQuestionnaireViewController *questionnaire &#x3D; (WTQuestionnaireViewController *)[WTStoryBoardSegment instantiateViewControllerWithStoryBoardName:@”Main” identifier:@”WTQuestionnaireViewController”];<br>  [self.navigationController pushViewController:questionnaire animated:YES];<br>  }else {<br>  &#x2F;&#x2F;点击cell，拿到cell对应的model，然后从model中拿到对应的RCUserInfo，然后赋值会话属性，进入会话<br>  if (model.conversationType &#x3D;&#x3D; ConversationType_PRIVATE) {&#x2F;&#x2F;单聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }else if (model.conversationType &#x3D;&#x3D; ConversationType_GROUP){&#x2F;&#x2F;群聊<br>      WTMyConversationLisViewController *_conversationVC &#x3D; [[WTMyConversationLisViewController alloc]init];<br>      _conversationVC.conversationType &#x3D; model.conversationType;<br>      _conversationVC.title &#x3D; model.conversationTitle;<br>      _conversationVC.targetId &#x3D; model.targetId;<br>      [self.navigationController pushViewController:_conversationVC animated:YES];<br>  }<br>  }<br>}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 在任意地方获取聊天列表数量及删除列表</span><br><span class="line"></span><br><span class="line">**获取聊天列表**   </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-NSArray *privateArr &#x3D; [[RCIMClient sharedRCIMClient] getConversationList:@[@(ConversationType_PRIVATE)]];<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**在ConversationList添加对应类型的聊天就可以获取对应类型的聊天列表删除方法类似**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-[[RCIMClient sharedRCIMClient] clearConversations:@[@(ConversationType_PRIVATE)]];</li>
-</ul>
-<pre><code>
-### 背景图
-
-&gt; 融云聊天列表没有数据的默认图片下面有点击右上角加入聊天，可是不是所有的聊天都有这个功能(我的就没有)如何没有就可以在资源文件中找到 no\_message\_img 这张图片用ps去掉下面的那一行字
-
-### 其它
-
-&gt; 以上就是我在使用融云过程中遇到的一些问题及解决方法，如果有错误或者不足之处还望指正，谢谢！
-</code></pre>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/" rel="tag">“融云”</a></li></ul>
 
     </footer>
   </div>

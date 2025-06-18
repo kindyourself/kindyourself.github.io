@@ -3,11 +3,11 @@
   <title>Gavin&#39;s Blog</title>
   
   <subtitle>记录成长过程中的点点滴滴</subtitle>
-  <link href="https://gavincarter1991.github.io/atom.xml" rel="self"/>
+  <link href="https://kindyourself.github.io/atom.xml" rel="self"/>
   
-  <link href="https://gavincarter1991.github.io/"/>
-  <updated>2025-06-16T05:54:01.444Z</updated>
-  <id>https://gavincarter1991.github.io/</id>
+  <link href="https://kindyourself.github.io/"/>
+  <updated>2025-06-18T07:54:48.675Z</updated>
+  <id>https://kindyourself.github.io/</id>
   
   <author>
     <name>kindyourself@163.com</name>
@@ -17,9 +17,43 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>iOS-发布代码到cocoapods上详细步骤</title>
+    <link href="https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</id>
+    <published>2025-06-18T07:55:07.000Z</published>
+    <updated>2025-06-18T07:54:48.675Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="完整步骤："><a href="#完整步骤：" class="headerlink" title="完整步骤："></a>完整步骤：</h2><blockquote><ol><li><p>把你需要发布到CocoaPods的代码写好。</p></li><li><p>用Xcode创建一个Framework项目，将你写好的代码拖入Framework，进行相关配置，根据需求打包Framework。</p></li><li><p>注册CocoaPods账号，检查库名是否已被占用，没有被占用就创建Podspec文件，拖入通用Framework。</p></li><li><p>创建git仓库，修改xxx.podspec配置，将代码推送到远程仓库并进行版本控制，验证Podspec文件。</p></li><li><p>验证通过，发布到 CocoaPods。</p></li></ol></blockquote><h2 id="1-创建Framework项目"><a href="#1-创建Framework项目" class="headerlink" title="1. 创建Framework项目"></a>1. 创建Framework项目</h2><p><strong>1. 在Xcode中，选择File -&gt; New -&gt; Project</strong></p><p><strong>2. 选择iOS -&gt; Framework &amp; Library -&gt; Framework，然后点击Next</strong></p><p><img src="https://upload-images.jianshu.io/upload_images/1976231-be0160ff8d3afd2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Framework"></p><p><strong>3. 输入产品名称（例如：<code>LanguageSet</code>），选择语言（Objective-C或Swift），点击Next并保存。</strong></p><p><img src="https://upload-images.jianshu.io/upload_images/1976231-83b4887d1f953d7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建cocoapodsDemo"></p><h2 id="2-配置Framework"><a href="#2-配置Framework" class="headerlink" title="2. 配置Framework"></a>2. 配置Framework</h2><ul><li><strong>添加代码文件</strong>：将你的源代码文件拖入项目，确保在Build Phases -&gt; Headers中设置好公开头文件（Public Headers）。</li></ul><p><img src="https://upload-images.jianshu.io/upload_images/1976231-ae2a853b2b80c1ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加代码文件"></p><ul><li><strong>将需要公开的头文件拖到public：</strong></li></ul><p><img src="https://upload-images.jianshu.io/upload_images/1976231-d9a8a7555487533e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置好公开头文件"></p><p><strong>添加第三方库</strong></p><blockquote><p>1.使用cocoapod是可以自动管理第三方库，在Link Binary With Libraries 中找到Pod_的framwork 选择Optional</p></blockquote><blockquote><p>2.手动添加第三方库和文件时，不要选择target</p></blockquote><ul><li><p><strong>设置Build Settings</strong>:</p></li><li><p><strong>Mach-O Type</strong>: 默认为Dynamic Library，也可以选择Static Library（但Framework通常指动态库）。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-4ec8c2a6b6993b23.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Mach-O Type"></p></li><li><p><strong>Build Active Architecture Only</strong>: 设置为NO，以支持所有架构。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-c68f41b1eae65414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Build Active Architecture Only"></p></li><li><p><strong>iOS Deployment Target</strong>: 选择你希望支持的最低iOS版本。<br><img src="https://upload-images.jianshu.io/upload_images/1976231-7f6fb03188cbd741.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iOS Deployment Target"></p></li><li><p><strong>Swift版本</strong>：如果是Swift项目，确保设置正确的Swift版本。</p></li><li><p><strong>Enable Bitcode</strong>: 如果需要，设置为YES。</p></li></ul><h2 id="3-打包Framework（支持真机和模拟器）"><a href="#3-打包Framework（支持真机和模拟器）" class="headerlink" title="3. 打包Framework（支持真机和模拟器）"></a>3. 打包Framework（支持真机和模拟器）</h2><blockquote><p>我们需要同时支持真机和模拟器架构（arm64, x86_64），并最终合并为一个通用Framework。</p></blockquote><p><strong>1. 分别编译真机和模拟器版本</strong></p><p><strong>1. 真机Release</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-iOS&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure><p><strong>2. 模拟器Release</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild archive </span><br><span class="line"></span><br><span class="line">-scheme LanguageSet </span><br><span class="line"></span><br><span class="line">-configuration Release </span><br><span class="line"></span><br><span class="line">-destination &quot;generic/platform=iOS Simulator&quot; </span><br><span class="line"></span><br><span class="line">-archivePath &quot;build/LanguageSet-Simulator&quot; </span><br><span class="line"></span><br><span class="line">SKIP_INSTALL=NO </span><br><span class="line"></span><br><span class="line">BUILD_LIBRARY_FOR_DISTRIBUTION=YES</span><br></pre></td></tr></table></figure><p><strong>2. 合并两个Framework-打包通用Framework（支持真机+模拟器）</strong></p><blockquote><p>使用<code>lipo</code>工具合并二进制文件，并复制模拟器的swiftmodule（如果有）到真机Framework中。</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 创建通用Framework目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p build/LanguageSet-Universal</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制真机Framework到通用目录</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet build/LanguageSet-Universal/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 合并二进制文件</span></span><br><span class="line"></span><br><span class="line">lipo -create </span><br><span class="line"></span><br><span class="line">build/LanguageSet-iOS.xcarchive/Products/Library/Frameworks/LanguageSet.framework/LanguageSet </span><br><span class="line"></span><br><span class="line">build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSetframework/LanguageSet </span><br><span class="line"></span><br><span class="line">-output build/LanguageSet-Universal/LanguageSet.framework/LanguageSet</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果使用Swift，需要合并swiftmodule</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -d <span class="string">&quot;build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cp</span> -R build/LanguageSet-Simulator.xcarchive/Products/Library/Frameworks/LanguageSet.framework/Modules/LanguageSet.swiftmodule/* \</span><br><span class="line"></span><br><span class="line">build/LanguageSet-Universal/LanguageSet.framework/Modules/LanguageSet.swiftmodule/</span><br><span class="line"></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>将上面的合并起来：</strong></p><p><strong>创建一个打包脚本 build_framework.sh</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 1. 定义基础变量</span><br><span class="line">SCHEME_NAME=&quot;LanguageSet&quot;   # 替换为实际Scheme名</span><br><span class="line">PROJECT_NAME=&quot;LanguageSet&quot;    # 替换为实际工程名</span><br><span class="line">CONFIGURATION=&quot;Release&quot;           # 建议使用Release模式</span><br><span class="line">OUTPUT_DIR=&quot;$&#123;PWD&#125;/Output&quot;        # 输出目录</span><br><span class="line"></span><br><span class="line"># 2. 清理旧构建</span><br><span class="line">rm -rf &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line">mkdir -p &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br><span class="line"></span><br><span class="line"># 3. 编译真机版本 (arm64, armv7)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphoneos \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # 支持多架构 [[6]]</span><br><span class="line"></span><br><span class="line"># 4. 编译模拟器版本 (x86_64, arm64)</span><br><span class="line">xcodebuild archive \</span><br><span class="line">  -project &quot;$&#123;PROJECT_NAME&#125;.xcodeproj&quot; \</span><br><span class="line">  -scheme &quot;$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">  -configuration &quot;$&#123;CONFIGURATION&#125;&quot; \</span><br><span class="line">  -sdk iphonesimulator \</span><br><span class="line">  -archivePath &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive&quot; \</span><br><span class="line">  SKIP_INSTALL=NO \</span><br><span class="line">  BUILD_LIBRARIES_FOR_DISTRIBUTION=YES  # M1芯片需包含arm64 [[3, 6]]</span><br><span class="line"></span><br><span class="line"># 5. 合并为XCFramework (官方推荐方式)</span><br><span class="line">xcodebuild -create-xcframework \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -framework &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework&quot; \</span><br><span class="line">  -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.xcframework&quot;  # 生成多平台兼容包 [[2, 6, 12, 16]]</span><br><span class="line"></span><br><span class="line"># 6. 可选：生成Fat Framework (传统合并方式)</span><br><span class="line"># lipo -create \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphoneos.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   &quot;$&#123;OUTPUT_DIR&#125;/iphonesimulator.xcarchive/Products/Library/Frameworks/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot; \</span><br><span class="line">#   -output &quot;$&#123;OUTPUT_DIR&#125;/$&#123;SCHEME_NAME&#125;.framework/$&#123;SCHEME_NAME&#125;&quot;  # 需手动处理头文件 [[11, 15, 20]]</span><br><span class="line"></span><br><span class="line"># 7. 打开输出目录</span><br><span class="line">open &quot;$&#123;OUTPUT_DIR&#125;&quot;</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/1976231-909a8b6bfe8a86bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="build_framework.sh 存放"></p><p><strong>运行脚本</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x build_framework.sh</span><br><span class="line">./build_framework.sh</span><br></pre></td></tr></table></figure><p><strong>生成文件夹：</strong></p><p><img src="https://upload-images.jianshu.io/upload_images/1976231-b9c853f304e38d24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework"></p><h2 id="注册CocoaPods的Trunk"><a href="#注册CocoaPods的Trunk" class="headerlink" title="注册CocoaPods的Trunk"></a>注册CocoaPods的Trunk</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 注册CocoaPods账号（仅首次）</span><br><span class="line">pod trunk register your-email@example.com &quot;Your Name&quot; --description=&#x27;MacBook Pro&#x27;</span><br></pre></td></tr></table></figure><p><code>CocoaPods会向你提供的邮箱发送一个验证链接，点击链接完成验证。 </code></p><p><strong>验证CocoaPods的Trunk注册结果</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/1976231-a69e3e9f4000afde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Trunk创建验证"></p><h2 id="创建Podspec文件"><a href="#创建Podspec文件" class="headerlink" title="创建Podspec文件"></a>创建Podspec文件</h2><blockquote><p> <strong>pod lib create LanguageSet</strong></p></blockquote><p><img src="https://upload-images.jianshu.io/upload_images/1976231-e39b370605e72821.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Podspec文件"></p><p><strong>生成Podspec文件夹</strong></p><p><img src="https://upload-images.jianshu.io/upload_images/1976231-086200ce38c70fe4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成Podspec文件夹"></p><blockquote><p> <strong>Example:</strong> 放demo应用</p><p> <strong>LanguageSet:</strong> &#x2F;Classes主代码 &#x2F;Assets图片资源文件</p></blockquote><p><strong>将之前生成的XCFramework拖入新建Podspec文件夹中的LanguageSet中</strong></p><p><img src="https://upload-images.jianshu.io/upload_images/1976231-60eec0705967d61c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="XCFramework拖入后"></p><h2 id="创建Git仓库"><a href="#创建Git仓库" class="headerlink" title="创建Git仓库"></a>创建Git仓库</h2><p><img src="https://upload-images.jianshu.io/upload_images/1976231-efca2c60c3794fd4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建Git仓库"></p><p><strong>修改LanguageSet.podspec配置</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line">  s.name             = &#x27;LanguageSet&#x27;</span><br><span class="line">  s.version          = &#x27;0.0.1&#x27;</span><br><span class="line">  s.summary          = &#x27;multilingual processing.&#x27;</span><br><span class="line"></span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">  A few simple lines of code can handle multiple languages</span><br><span class="line">  DESC</span><br><span class="line"></span><br><span class="line">  s.homepage         = &#x27;https://github.com/GavinCarter1991/LanguageSet&#x27;</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line">  s.author           = &#123; &#x27;gavin&#x27; =&gt; &#x27;kindyourself@163.com&#x27; &#125;</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/GavinCarter1991/LanguageSet.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  s.ios.deployment_target = &#x27;12.0&#x27;</span><br><span class="line">  s.vendored_frameworks = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  # 添加模块映射</span><br><span class="line">  s.preserve_paths = &#x27;LanguageSet/Classes/LanguageSet.xcframework&#x27;</span><br><span class="line">  </span><br><span class="line">  # 添加资源处理排除规则</span><br><span class="line">  s.pod_target_xcconfig = &#123;</span><br><span class="line">    &#x27;EXCLUDED_FILE_GROUP_PATTERNS&#x27; =&gt; [</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/_CodeSignature/**&#x27;,</span><br><span class="line">      &#x27;**/LanguageSet.xcframework/**/Modules/**&#x27;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  # 禁用模块验证（针对 xcframework）</span><br><span class="line">  s.user_target_xcconfig = &#123; &#x27;VALIDATE_WORKSPACE&#x27; =&gt; &#x27;NO&#x27; &#125;</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure><p><strong>设置Git仓库</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建本地仓库</span><br><span class="line">cd LanguageSet 进入文件夹</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line"></span><br><span class="line"># 创建远程仓库（在Gitee/GitHub上创建）</span><br><span class="line">git remote add origin https://github.com/GavinCarter1991/LanguageSet.git // 关联仓库</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br><span class="line"># 添加版本标签</span><br><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/1976231-abf0ebb55afd72eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tags"></p><h2 id="发布到CocoaPods"><a href="#发布到CocoaPods" class="headerlink" title="发布到CocoaPods"></a>发布到CocoaPods</h2><p><strong>1. 首次发布</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 验证podspec</span><br><span class="line">pod lib lint --allow-warnings</span><br><span class="line"></span><br><span class="line"># 发布到CocoaPods</span><br><span class="line">pod trunk push CocoaPodsDemo.podspec --allow-warnings</span><br></pre></td></tr></table></figure><p><img src="https://upload-images.jianshu.io/upload_images/1976231-6524cd38c321ead0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="发布到CocoaPods"></p><p><strong>2. 更新版本</strong></p><blockquote><p>更新podspec中的版本号</p></blockquote><blockquote><p>推送新代码到你的库的 Git 仓库，创建新的Git标签(tag)</p></blockquote><blockquote><p>重复推送和发布的步骤</p></blockquote><p><a href="https://github.com/GavinCarter1991/LanguageSet">Demo</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;完整步骤：&quot;&gt;&lt;a href=&quot;#完整步骤：&quot; class=&quot;headerlink&quot; title=&quot;完整步骤：&quot;&gt;&lt;/a&gt;完整步骤：&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;把你需要发布到CocoaPods的代码写好。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li</summary>
+      
+    
+    
+    
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
+    
+    
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    
+    <category term="“cocoapods”" scheme="https://kindyourself.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
+    
+    <category term="Github" scheme="https://kindyourself.github.io/tags/Github/"/>
+    
+    <category term="发布" scheme="https://kindyourself.github.io/tags/%E5%8F%91%E5%B8%83/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS即时通讯发送图片消息内存暴涨优化</title>
-    <link href="https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
-    <id>https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
+    <link href="https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
+    <id>https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
     <published>2025-06-16T05:55:07.000Z</published>
     <updated>2025-06-16T05:54:01.444Z</updated>
     
@@ -35,23 +69,23 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“IMSDK”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
+    <category term="“IMSDK”" scheme="https://kindyourself.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
     
-    <category term="UIImage" scheme="https://gavincarter1991.github.io/tags/UIImage/"/>
+    <category term="UIImage" scheme="https://kindyourself.github.io/tags/UIImage/"/>
     
-    <category term="优化内存" scheme="https://gavincarter1991.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
+    <category term="优化内存" scheme="https://kindyourself.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
   <entry>
     <title>iOS-SM3加密算法N种集成</title>
-    <link href="https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
-    <id>https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
+    <link href="https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
+    <id>https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
     <published>2025-06-13T10:55:07.000Z</published>
     <updated>2025-06-13T10:54:36.515Z</updated>
     
@@ -67,19 +101,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“SM3”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
+    <category term="“SM3”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客升级版</title>
-    <link href="https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
-    <id>https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
+    <link href="https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
+    <id>https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
     <published>2025-06-11T01:52:44.000Z</published>
     <updated>2025-06-12T06:21:36.778Z</updated>
     
@@ -94,21 +128,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“Hexo”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
+    <category term="“Hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
     
-    <category term="“github&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cgithub/"/>
+    <category term="“github&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9Cgithub/"/>
     
-    <category term="“博客&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
+    <category term="“博客&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/2025/06/07/widget-advanced/"/>
-    <id>https://gavincarter1991.github.io/2025/06/07/widget-advanced/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/widget-advanced/"/>
+    <id>https://kindyourself.github.io/2025/06/07/widget-advanced/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -123,19 +157,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Flutter遇到的问题</title>
-    <link href="https://gavincarter1991.github.io/2025/05/23/flutter-error/"/>
-    <id>https://gavincarter1991.github.io/2025/05/23/flutter-error/</id>
+    <link href="https://kindyourself.github.io/2025/05/23/flutter-error/"/>
+    <id>https://kindyourself.github.io/2025/05/23/flutter-error/</id>
     <published>2025-05-23T07:17:44.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -150,19 +184,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Error”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
+    <category term="“Error”" scheme="https://kindyourself.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
-    <link href="https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
-    <id>https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
+    <link href="https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
+    <id>https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
     <published>2024-03-05T08:02:13.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -176,21 +210,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“证书验证”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
+    <category term="“证书验证”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
     
-    <category term="“SSL”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
+    <category term="“SSL”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
     <published>2019-12-23T08:39:52.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -205,25 +239,25 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“网络请求”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
+    <category term="“网络请求”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
     
-    <category term="“Moya”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
+    <category term="“Moya”" scheme="https://kindyourself.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
     
-    <category term="“HandyJSON”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
+    <category term="“HandyJSON”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
     
-    <category term="“RxSwift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
+    <category term="“RxSwift”" scheme="https://kindyourself.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
     <published>2019-12-23T04:34:37.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -238,21 +272,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“动画”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
+    <category term="“动画”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
     
-    <category term="“Lottie”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
+    <category term="“Lottie”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析01-swift WebSocket</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
     <published>2019-12-23T02:00:16.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -267,19 +301,19 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“WebSocket”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
+    <category term="“WebSocket”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
-    <link href="https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
-    <id>https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
+    <link href="https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
+    <id>https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
     <published>2018-03-29T06:36:05.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -294,19 +328,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“融云”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
+    <category term="“融云”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>UISearchBar详解</title>
-    <link href="https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
     <published>2017-03-10T16:27:34.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -321,21 +355,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“UISearchBar”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
+    <category term="“UISearchBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序tips</title>
-    <link href="https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
-    <id>https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
+    <link href="https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
+    <id>https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
     <published>2017-02-21T17:19:52.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -350,17 +384,17 @@
     
     
     
-    <category term="微信小程序" scheme="https://gavincarter1991.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://kindyourself.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="“微信小程序”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
+    <category term="“微信小程序”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目总结-位置实时共享</title>
-    <link href="https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
-    <id>https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
+    <link href="https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
+    <id>https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
     <published>2016-11-16T16:13:34.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -375,21 +409,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“百度地图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
+    <category term="“百度地图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
     
-    <category term="“位置实时共享”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
+    <category term="“位置实时共享”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <link href="https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
+    <link href="https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
     <published>2016-08-07T17:06:48.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -404,21 +438,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“webView”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
+    <category term="“webView”" scheme="https://kindyourself.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
     
-    <category term="“视频不显示缩略图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
+    <category term="“视频不显示缩略图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>图片上传预览</title>
-    <link href="https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
-    <id>https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
+    <link href="https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
+    <id>https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
     <published>2016-07-31T17:06:42.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -435,21 +469,21 @@
     
     
     
-    <category term="web" scheme="https://gavincarter1991.github.io/categories/web/"/>
+    <category term="web" scheme="https://kindyourself.github.io/categories/web/"/>
     
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“图片上传”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
+    <category term="“图片上传”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
     
-    <category term="“预览”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
+    <category term="“预览”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
     <published>2016-07-25T03:29:55.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -465,21 +499,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“本地”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
+    <category term="“本地”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
     
-    <category term="“路径问题”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
+    <category term="“路径问题”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-widget-Today 扩展</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
     <published>2016-07-25T03:23:58.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -494,21 +528,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
+    <category term="“widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
     
-    <category term="“扩展”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
+    <category term="“扩展”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客</title>
-    <link href="https://gavincarter1991.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://gavincarter1991.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
+    <link href="https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://kindyourself.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
     <published>2016-07-15T20:11:37.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -523,21 +557,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“hexo”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Chexo%E2%80%9D/"/>
+    <category term="“hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9Chexo%E2%80%9D/"/>
     
-    <category term="“个人博客”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
+    <category term="“个人博客”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
     
-    <category term="“gitHub”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CgitHub%E2%80%9D/"/>
+    <category term="“gitHub”" scheme="https://kindyourself.github.io/tags/%E2%80%9CgitHub%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-自定义带抽屉效果的tabBar</title>
-    <link href="https://gavincarter1991.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
-    <id>https://gavincarter1991.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
+    <link href="https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/"/>
+    <id>https://kindyourself.github.io/2016/07/15/iOS-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%A6%E6%8A%BD%E5%B1%89%E6%95%88%E6%9E%9C%E7%9A%84tabBar/</id>
     <published>2016-07-15T15:50:50.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -552,43 +586,14 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“抽屉”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
+    <category term="“抽屉”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%8A%BD%E5%B1%89%E2%80%9D/"/>
     
-    <category term="“tabBar”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CtabBar%E2%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>与web前端朋友闲聊的发现-代码相通性</title>
-    <link href="https://gavincarter1991.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/"/>
-    <id>https://gavincarter1991.github.io/2016/07/15/%E4%B8%8Eweb%E5%89%8D%E7%AB%AF%E6%9C%8B%E5%8F%8B%E9%97%B2%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0-%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7/</id>
-    <published>2016-07-15T15:50:50.000Z</published>
-    <updated>2025-06-10T03:47:51.051Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h3><blockquote><p>  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一个页面需要做搜索，就是在搜索框内输入能够实时的展示搜索结果。</p></blockquote><h3 id="想法与问题"><a href="#想法与问题" class="headerlink" title="想法与问题"></a>想法与问题</h3><blockquote><p>他想监听了搜索框并且实时的进行数据的请求。后来发现输入的过程一直在进行远程数据的请求，他觉得这样消耗太大了。于是想做一个延时的操作，就是等用户稍微停止输入的时候才去远程请求数据。可是没有理清这个逻辑，于是他的方法相当的复杂，好像是要将每一实时输入的数据存入数组，然后进行对比，当延时完成进行对比决定请求的数据。</p></blockquote><h3 id="插曲"><a href="#插曲" class="headerlink" title="插曲"></a>插曲</h3><blockquote><p>但是他在这个过程中发现了一个问题，就是延时操作并没有减少网络请求的次数。这个问题在前段时间的项目中我也遇到了，就是延时操作并不是重复了，就不执行了，延时操作只是延缓操作时间，每一次的延时都会被执行。所以想要减少执行次就必须在延时操作未执行 前取消延时操作。取消的延时操作如果还没有执行，就不会执行了而不是取消后就立即执行。</p></blockquote><h3 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h3><blockquote><p>这时候我想起几天前在简书上看见一个哥们写了一篇<a href="http://www.jianshu.com/p/7bca987976bd">关于如何防止button被重复点击</a>的文章，他一共介绍了三种方法，他的第二种方法：</p></blockquote><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">- (void)click:(UIButton *)sender</span><br><span class="line"> &#123; </span><br><span class="line">      [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(btnClicke) object:nil]; </span><br><span class="line">      [self performSelector:@selector(btnClicke) withObject:nil afterDelay:1];</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure><blockquote><p>就是用的延时操作他的是在button的方法里面先取消延时方法，再添加延时方法，这个对于防止button重复点击来说并不是好的方法，因为这样会影响用户的体验，每次点击button不能及时的进行响应。但是对于我朋友的这个问题却是一个很好的选择。他原本就想减缓请求次数。</p></blockquote><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><blockquote><p>我发现编程语言是相通的，虽然各有各的语法，但是实现思路是一样的，特此记录。</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;  今天与一个做web前端的哥们闲聊了一会，他今天遇到了一个问题：就是在做一个混合开发的APP时候，他们H5端有一</summary>
-      
-    
-    
-    
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
-    
-    <category term="“web”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
-    
-    <category term="“代码相通性”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%BB%A3%E7%A0%81%E7%9B%B8%E9%80%9A%E6%80%A7%E2%80%9D/"/>
+    <category term="“tabBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CtabBar%E2%80%9D/"/>
     
   </entry>
   
