@@ -167,6 +167,120 @@
     
     
     <article
+  id="[layout]-一台电脑管理多个cocoapods账号"
+  class="article article-type-[layout]"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/"
+    >一台电脑管理多个cocoapods账号</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/" class="article-date">
+  <time datetime="2025-06-19T01:40:07.000Z" itemprop="datePublished">2025-06-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h2><blockquote>
+<p><strong>我的需求是：</strong>我需要在一个电脑上管理两个cocoapods账号，一个用于公司SDK的发布，一个用于自己平时测试用。</p>
+<p><strong>我的问题是：</strong>当我创建第二个账号成功后(第二个账号的邮箱必须和第一个不同)，第一个账号的信息就查不到了。</p>
+</blockquote>
+<h2 id="问题分析："><a href="#问题分析：" class="headerlink" title="问题分析："></a>问题分析：</h2><blockquote>
+<p>CocoaPods 默认只支持一个活跃 session，CocoaPods默认是使用**<code>~/.netrc</code><strong>文件来存储认证token。当我创建新的账号时，新的token就会被写入到</strong><code>~/.netrc</code>**文件中，但是会覆盖第一个账号的token，如何需要同时在一台电脑上存在两个及以上的CocoaPods账号就需要备份每一个token，我们需要使用不同的方式来管理多个账号的凭证。</p>
+</blockquote>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><p><em>由于CocoaPods本身并不支持多账号切换，我们需要手动管理多个账号的token。</em></p>
+<p><strong>以下是几种方法：</strong></p>
+<h3 id="方法1：使用环境变量"><a href="#方法1：使用环境变量" class="headerlink" title="方法1：使用环境变量"></a>方法1：使用环境变量</h3><blockquote>
+<p>CocoaPods可以通过环境变量**<code>COCOAPODS_TRUNK_TOKEN</code>**来指定当前会话使用的token。这样我们可以为不同的账号设置不同的token，并在使用前设置相应的环境变量。</p>
+</blockquote>
+<p><strong>1.</strong> 注册CocoaPods账号，并保存注册时得到的token（注册时会发送邮件，邮件中有验证链接，点击验证后，token才有效）</p>
+<p><code>注意：每个账号的token是唯一的，并且长期有效（除非在网页上重置）</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 注册第一个账号</span><br><span class="line">pod trunk register your-first-email@example.com &quot;First Name&quot; --description=&#x27;MacBook Pro&#x27;</span><br><span class="line"></span><br><span class="line"># 验证第一个账号邮箱：去邮箱点击邮件中的验证链接。未验证的 token 无法执行 pod trunk 命令</span><br><span class="line"></span><br><span class="line"># 查看当前登录状态</span><br><span class="line"># 如果报错 [!] Authentication token is invalid or unverified</span><br><span class="line"># 表示当前 token 无效或未验证</span><br><span class="line">pod trunk me</span><br><span class="line"></span><br><span class="line"># 验证成功后备份当前账号凭证</span><br><span class="line">cp ~/.netrc ~/.netrc_account1</span><br><span class="line"></span><br><span class="line"># 注册第二个账号</span><br><span class="line">pod trunk register your-second-email@example.com &quot;Second Name&quot; --description=&#x27;MacBook Pro&#x27;</span><br><span class="line"></span><br><span class="line"># 验证第二个账号邮箱</span><br><span class="line"># 备份第二个账号凭证</span><br><span class="line">cp ~/.netrc ~/.netrc_account2</span><br></pre></td></tr></table></figure>
+<p>到此根目录就存在三个token文件了：**.netrc**  <strong>.netrc_account1</strong>   <strong>.netrc_account2</strong></p>
+<p><strong>2.</strong> 使用环境变量管理会话</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 创建账号1的环境变量</span><br><span class="line">echo &quot;export COCOAPODS_TRUNK_TOKEN_ACCOUNT1=&#x27;your-token-here&#x27;&quot; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 创建账号2的环境变量</span><br><span class="line">echo &quot;export COCOAPODS_TRUNK_TOKEN_ACCOUNT2=&#x27;your-other-token-here&#x27;&quot; &gt;&gt; ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 刷新环境</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"></span><br><span class="line"># 使用特定账号</span><br><span class="line">function pod-account1() &#123;</span><br><span class="line">    export COCOAPODS_TRUNK_TOKEN=$COCOAPODS_TRUNK_TOKEN_ACCOUNT1</span><br><span class="line">    pod &quot;$@&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function pod-account2() &#123;</span><br><span class="line">    export COCOAPODS_TRUNK_TOKEN=$COCOAPODS_TRUNK_TOKEN_ACCOUNT2</span><br><span class="line">    pod &quot;$@&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.</strong> 创建切换脚本（ cocoapods-switch.sh），移动脚本到PATH</p>
+<p><strong>脚本内容：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$1&quot; = &quot;account1&quot; ]; then</span><br><span class="line">    # 切换到账号1</span><br><span class="line">    cp ~/.netrc_account1 ~/.netrc</span><br><span class="line">    echo &quot;Switched to CocoaPods account: account1&quot;</span><br><span class="line">elif [ &quot;$1&quot; = &quot;account2&quot; ]; then</span><br><span class="line">    # 切换到账号2</span><br><span class="line">    cp ~/.netrc_account2 ~/.netrc</span><br><span class="line">    echo &quot;Switched to CocoaPods account: account2&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;Usage: cocoapods-switch [account1|account2]&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p><strong>在终端运行：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 创建切换脚本</span><br><span class="line">nano cocoapods-switch.sh</span><br><span class="line"></span><br><span class="line"># 粘贴上面的脚本内容</span><br><span class="line"></span><br><span class="line"># 设置权限</span><br><span class="line">chmod +x cocoapods-switch.sh</span><br><span class="line"></span><br><span class="line"># 移动脚本到 PATH</span><br><span class="line">sudo mv cocoapods-switch.sh /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.</strong> 多账号操作流程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 切换到账号1</span><br><span class="line">cocoapods-switch account1</span><br><span class="line"></span><br><span class="line"># 验证账号1状态，可以看到账号1的信息</span><br><span class="line">pod trunk me</span><br><span class="line"></span><br><span class="line"># 发布到账号1的仓库</span><br><span class="line">pod trunk push MyPod.podspec</span><br><span class="line"></span><br><span class="line"># 切换到账号2</span><br><span class="line">cocoapods-switch account2</span><br><span class="line"></span><br><span class="line"># 验证账号2状态，可以看到账号2的信息</span><br><span class="line">pod trunk me</span><br><span class="line"></span><br><span class="line"># 发布到账号2的仓库</span><br><span class="line">pod trunk push OtherPod.podspec</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法2：使用脚本文件"><a href="#方法2：使用脚本文件" class="headerlink" title="方法2：使用脚本文件"></a>方法2：使用脚本文件</h3><blockquote>
+<p>前面的账号创建和备份Token是相同的就不重复了。</p>
+</blockquote>
+<p><strong>创建和使用 pod-switch 脚本</strong></p>
+<p>终端运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 使用 nano 编辑器创建文件</span><br><span class="line">nano pod-switch</span><br></pre></td></tr></table></figure>
+
+<p>复制并粘贴以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># 检查参数数量</span><br><span class="line">if [ $# -ne 1 ]; then</span><br><span class="line">    echo &quot;Usage: pod-switch [account1 | account2]&quot;</span><br><span class="line">    echo &quot;Current account:&quot;</span><br><span class="line">    pod trunk me | grep &quot;Email&quot; || echo &quot;No active account&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 根据参数切换账号</span><br><span class="line">if [ &quot;$1&quot; = &quot;account1&quot; ]; then</span><br><span class="line">    cp ~/.netrc_ account1 ~/.netrc 2&gt;/dev/null</span><br><span class="line">    if [ $? -eq 0 ]; then</span><br><span class="line">        echo &quot;✅ Switched to Account1 CocoaPods account&quot;</span><br><span class="line">        pod trunk me | grep &quot;Email&quot;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;❌ Error: Account1 credentials not found&quot;</span><br><span class="line">        echo &quot;Run &#x27;cp ~/.netrc ~/.netrc_ account1&#x27; to backup your account1&quot;</span><br><span class="line">    fi</span><br><span class="line">elif [ &quot;$1&quot; = &quot;account2&quot; ]; then</span><br><span class="line">    cp ~/.netrc_ account2 ~/.netrc 2&gt;/dev/null</span><br><span class="line">    if [ $? -eq 0 ]; then</span><br><span class="line">        echo &quot;✅ Switched to account2 CocoaPods account&quot;</span><br><span class="line">        pod trunk me | grep &quot;Email&quot;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;❌ Error: account2 credentials not found&quot;</span><br><span class="line">        echo &quot;Run &#x27;cp ~/.netrc ~/.netrc_ account2&#x27; to backup your account2&quot;</span><br><span class="line">    fi</span><br><span class="line">else</span><br><span class="line">    echo &quot;❌ Invalid account name. Use &#x27;account1&#x27; or &#x27;account2&#x27;&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<p><strong>保存并退出编辑器</strong></p>
+<ol>
+<li><p>按 Ctrl + O 保存文件</p>
+</li>
+<li><p>按 Enter 确认文件名</p>
+</li>
+<li><p>按 Ctrl + X 退出 nano</p>
+</li>
+</ol>
+<p>设置执行权限：<code>chmod +x pod-switch</code></p>
+<p><strong>移动到可执行路径</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv pod-switch /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<p><strong>验证脚本安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which pod-switch</span><br></pre></td></tr></table></figure>
+
+<p><code>应该输出: /usr/local/bin/pod-switch</code></p>
+<p><strong>使用 pod-switch 脚本</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 切换到主账号</span><br><span class="line">pod-switch account1</span><br><span class="line"></span><br><span class="line"># 验证账号</span><br><span class="line">pod trunk me</span><br><span class="line"></span><br><span class="line"># 切换到第二个账号</span><br><span class="line">pod-switch account2</span><br><span class="line"></span><br><span class="line"># 验证账号</span><br><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试验证：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-48996848ade104ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="操作流程"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Ccocoapods%E2%80%9D/" rel="tag">“cocoapods”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%A4%9A%E4%B8%AA%E8%B4%A6%E5%8F%B7/" rel="tag">多个账号</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="[layout]-iOS-发布代码到cocoapods上详细步骤"
   class="article article-type-[layout]"
   itemscope
@@ -277,7 +391,7 @@
 <p><strong>验证CocoaPods的Trunk注册结果</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://upload-images.jianshu.io/upload_images/1976231-a69e3e9f4000afde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Trunk创建验证"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1976231-5235e92f3f02d89f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Trunk创建验证"></p>
 <h2 id="创建Podspec文件"><a href="#创建Podspec文件" class="headerlink" title="创建Podspec文件"></a>创建Podspec文件</h2><blockquote>
 <p> <strong>pod lib create LanguageSet</strong></p>
 </blockquote>
@@ -724,13 +838,13 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/1976231-4b672d531de2e4be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本地SSH配置"></p>
 <p><strong>2.添加配置文件</strong></p>
 <h3 id="config-yml：为其中一个GitHub账号的配置"><a href="#config-yml：为其中一个GitHub账号的配置" class="headerlink" title="_config.yml：为其中一个GitHub账号的配置"></a>_config.yml：为其中一个GitHub账号的配置</h3><blockquote>
-<p>url: <a href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
+<p>url: <a target="_blank" rel="noopener" href="https://gavincarter1991.github.io/#">https://gavincarter1991.github.io#</a> 博客完整URL</p>
 <p>source_dir: source  # 这个值会被脚本覆盖，但需要存在</p>
 <p>public_dir: public_kind</p>
 <p> <img src="https://upload-images.jianshu.io/upload_images/1976231-d4cc0887e0a1f1c7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
 </blockquote>
 <h3 id="config-other-yml：为另外一个GitHub账号的配置"><a href="#config-other-yml：为另外一个GitHub账号的配置" class="headerlink" title="_config_other.yml：为另外一个GitHub账号的配置"></a>_config_other.yml：为另外一个GitHub账号的配置</h3><blockquote>
-<p>url: <a target="_blank" rel="noopener" href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
+<p>url: <a href="https://kindyourself.github.io/">https://kindyourself.github.io</a> # 博客完整URL</p>
 <p>source_dir:  &#x2F;Users&#x2F;dianyin&#x2F;Desktop&#x2F;blog&#x2F;temp_source_gavin</p>
 <p>public_dir: public_gavin</p>
 <p> <img src="https://upload-images.jianshu.io/upload_images/1976231-e88ac014d9ccf8ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="deploy"></p>
@@ -1435,74 +1549,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CLottie%E2%80%9D/" rel="tag">“Lottie”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/" rel="tag">“动画”</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="[layout]-项目剖析01-swift-WebSocket"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"
-    >项目剖析01-swift WebSocket</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/" class="article-date">
-  <time datetime="2019-12-23T02:00:16.000Z" itemprop="datePublished">2019-12-23</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/swift/">swift</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>已经很长一段时间没有总结项目了，正好最近完成项目第二版的改版(新项目完全是用swift写的)，就把项目中一些有意义的知识块在此记录一下， 项目中有实时的交易需要展示，所以用到了socket长链接，我用的是<a target="_blank" rel="noopener" href="https://github.com/daltoniam/Starscream">Starscream</a>这个第三方库，集成方法很简单去网站看看就知道。</p>
-</blockquote>
-<h3 id="先上代码"><a href="#先上代码" class="headerlink" title="先上代码"></a>先上代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line">import Reachability</span><br><span class="line">import Starscream</span><br><span class="line">import zlib</span><br><span class="line"></span><br><span class="line">let reachability = Reachability()! // 判断网络连接</span><br><span class="line">let webSocket = WTWebsocket.shared</span><br><span class="line">var reConnectTime = 0 // 设置重连次数</span><br><span class="line">let reConnectMaxTime = 1000 // 设置最大重连次数</span><br><span class="line">let reConnectIntervalTime: TimeInterval = 15 // 设置重连时间间隔(秒)</span><br><span class="line">var websocketTimer: Timer? = nil</span><br><span class="line">var reConnectSubscribeDict:[String : Any] = [:]</span><br><span class="line">var page = &quot;home&quot;</span><br><span class="line">var isReconnect = true</span><br><span class="line"></span><br><span class="line">final class WTWebsocket: NSObject,WebSocketDelegate &#123;</span><br><span class="line">    </span><br><span class="line">    var isPingBack = true</span><br><span class="line">    var myWebsocket: WebSocket? = nil</span><br><span class="line">    //  socket连接上函数</span><br><span class="line">    func websocketDidConnect(socket: WebSocketClient) &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime = 0</span><br><span class="line">        if reConnectSubscribeDict.count &gt; 0 &#123;</span><br><span class="line">            self.subscribe(subscribeDict: reConnectSubscribeDict)</span><br><span class="line">        &#125;</span><br><span class="line">        self.hearJump()</span><br><span class="line">        if  websocketTimer == nil &#123;</span><br><span class="line">            websocketTimer = Timer.scheduledTimer(timeInterval: reConnectIntervalTime, target: self, selector: #selector(sendBrandStr), userInfo: nil, repeats: true)</span><br><span class="line">        &#125;</span><br><span class="line">        isReconnect = true</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //发送文字消息</span><br><span class="line">    @objc func sendBrandStr()&#123;</span><br><span class="line">        self.checkPing()</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 发送ping</span><br><span class="line">    func hearJump() &#123;</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary: [&quot;topic&quot;:&quot;PING&quot;])</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  socket断开执行函数</span><br><span class="line">    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) &#123;</span><br><span class="line">        //执行重新连接方法</span><br><span class="line">        socketReconnect()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //  接收返回消息函数</span><br><span class="line">    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    func websocketDidReceiveData(socket: WebSocketClient, data: Data) &#123;</span><br><span class="line">        guard let newStr = String(data: data.gzipUncompress(), encoding: .utf8) else &#123;return&#125;</span><br><span class="line">        if newStr == &quot;PONG&quot; &#123;</span><br><span class="line">            isPingBack = true</span><br><span class="line">            return</span><br><span class="line">        &#125;</span><br><span class="line">      // 处理收到的信息</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 添加注册</span><br><span class="line">    func subscribe(subscribeDict: [String : Any]) &#123;</span><br><span class="line">        var subscribeDicts = subscribeDict</span><br><span class="line">        reConnectSubscribeDict = subscribeDicts</span><br><span class="line">        page = subscribeDicts[&quot;type&quot;] as! String</span><br><span class="line">        subscribeDicts.removeValue(forKey: &quot;type&quot;)</span><br><span class="line">        let json = getJSONStringFromDictionary(dictionary:</span><br><span class="line">            subscribeDicts as NSDictionary)</span><br><span class="line">        SingletonSocket.sharedInstance.socket.write(string: json)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //检测</span><br><span class="line">    @objc func checkPing() &#123;</span><br><span class="line">        if !isPingBack &#123;</span><br><span class="line">            // 重新连接</span><br><span class="line">            socketReconnect()</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            isPingBack = false</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //构造单例数据</span><br><span class="line">    static let shared = WTWebsocket()</span><br><span class="line">    private override init() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket 重连逻辑</span><br><span class="line">func socketReconnect() &#123;</span><br><span class="line">    //判断网络情况，如果网络正常，可以执行重连</span><br><span class="line">    if reachability.connection != .none &#123;</span><br><span class="line">        //设置重连次数，解决无限重连问题</span><br><span class="line">        reConnectTime =  reConnectTime + 1</span><br><span class="line">        if reConnectTime &lt; reConnectMaxTime &#123;</span><br><span class="line">            //添加重连延时执行，防止某个时间段，全部执行</span><br><span class="line">            let time: TimeInterval = 2.0</span><br><span class="line">            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) &#123;</span><br><span class="line">                SingletonSocket.sharedInstance.socket.connect()</span><br><span class="line">                SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            //提示重连失败</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        //提示无网络</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//socket主动断开，放在app进入后台时，数据进入缓存。app再进入前台，app出现卡死的情况</span><br><span class="line">func socketDisConnect() &#123;</span><br><span class="line">    if !SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">        websocketTimer?.invalidate()</span><br><span class="line">        websocketTimer = nil</span><br><span class="line">        SingletonSocket.sharedInstance.socket.disconnect()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// initSocket方法</span><br><span class="line">func initWebSocketSingle () &#123;</span><br><span class="line">    SingletonSocket.sharedInstance.socket.delegate = webSocket</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//声明webSocket单例</span><br><span class="line">class SingletonSocket &#123;</span><br><span class="line">    let socket:WebSocket = WebSocket(url: URL(string: AppURLHOST.SocketURL)!)</span><br><span class="line">    class var sharedInstance : SingletonSocket&#123;</span><br><span class="line">        struct Static&#123;</span><br><span class="line">            static let instance:SingletonSocket = SingletonSocket()</span><br><span class="line">        &#125;</span><br><span class="line">        if !Static.instance.socket.isConnected&#123;</span><br><span class="line">            Static.instance.socket.connect()</span><br><span class="line">        &#125;</span><br><span class="line">        return Static.instance</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"><a href="#整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点" class="headerlink" title="整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点"></a>整个代码很简单，基本都有注释，大概聊一聊里面的一些关键点</h3><blockquote>
-<p>发送ping-俗称发送心跳，这个主要是判断socket是否断开，链接成功后每次间隔固定时间发送一次请求，然后在返回中修改isPingBack，在下一次发送请求前检查isPingBack判断上一次的请求是否返回，这样就可以判断socket是否断开，这个间隔时间可以自由设定，但是最好不要太短，太短有可能是socket连接了但是没有来得及返回。当然太长也不行，这可能导致发现socket断开不及时。</p>
-</blockquote>
-<p><strong>app在后台需要断开socket，当 app重新进入前台需要重新连接</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func applicationWillResignActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入后台模式，主动断开socket，防止出现处理不了的情况</span><br><span class="line">        if SingletonSocket.sharedInstance.socket.isConnected &#123;</span><br><span class="line">            reConnectTime = reConnectMaxTime</span><br><span class="line">            socketDisConnect()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    func applicationDidBecomeActive(_ application: UIApplication) &#123;</span><br><span class="line">        //进入前台模式，主动连接socket</span><br><span class="line">        //解决因为网络切换或链接不稳定问题，引起socket断连问题</span><br><span class="line">        //如果app从无网络，到回复网络，需要执行重连</span><br><span class="line">        if !isFirstApplicationDidBecomeActive &#123;</span><br><span class="line">            reConnectTime = 0</span><br><span class="line">            socketReconnect()</span><br><span class="line">            WTBasicConfigManager.shareDataSingle.getHash()</span><br><span class="line">        &#125;</span><br><span class="line">        isFirstApplicationDidBecomeActive = false</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>一定要设置最大重新连接的次数，不然app会无限重新连接</strong></p>
-<p><strong>连接成功或者重连成功都需要对需要推送的数据进行一次网络请求，确保数据的准确性。</strong></p>
-<blockquote>
-<p>以上就是我在项目中使用WebSocket的方法，如果有错误或者不足之处还望指正，谢谢</p>
-</blockquote>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CWebSocket%E2%80%9D/" rel="tag">“WebSocket”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9Cswift%E2%80%9D/" rel="tag">“swift”</a></li></ul>
 
     </footer>
   </div>
