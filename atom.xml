@@ -3,11 +3,11 @@
   <title>Gavin&#39;s Blog</title>
   
   <subtitle>记录成长过程中的点点滴滴</subtitle>
-  <link href="https://gavincarter1991.github.io/atom.xml" rel="self"/>
+  <link href="https://kindyourself.github.io/atom.xml" rel="self"/>
   
-  <link href="https://gavincarter1991.github.io/"/>
-  <updated>2025-06-19T03:20:31.164Z</updated>
-  <id>https://gavincarter1991.github.io/</id>
+  <link href="https://kindyourself.github.io/"/>
+  <updated>2025-07-07T07:37:05.915Z</updated>
+  <id>https://kindyourself.github.io/</id>
   
   <author>
     <name>kindyourself@163.com</name>
@@ -17,9 +17,108 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Flutter-详解布局</title>
+    <link href="https://kindyourself.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/"/>
+    <id>https://kindyourself.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/</id>
+    <published>2025-07-07T07:30:56.000Z</published>
+    <updated>2025-07-07T07:37:05.915Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;上一章我们详细的学习了 Flutter 中的&lt;a href=&quot;https://www.jianshu.com/p/c6fe1cf0ff45&quot;&gt;Widget&lt;/a&gt;，这一章我们将要学习 Flutter 的&lt;code&gt;布局&lt;/code&gt;， 在上一章我们了解到了：Everything is a widget，在 Flutter 中几乎所有的对象都是一个 &lt;code&gt;Widget&lt;/code&gt; ，当然也包括布局，Flutter 的布局系统基于 &lt;code&gt;Widget &lt;/code&gt;树，通过组合不同的布局 &lt;code&gt;Widget&lt;/code&gt; 实现复杂的 UI，你在 Flutter 应用程序中能直接看到的图像，图标和文本都是 &lt;code&gt;Widget&lt;/code&gt;。此外不能直接看到的也是 &lt;code&gt;Widget&lt;/code&gt;，如用来排列、限制和对齐可见 &lt;code&gt;Widget&lt;/code&gt; 的行、列和网格。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/GavinCarter1991/flutter-layout-demo&quot;&gt;DEMO&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;布局规则&quot;&gt;&lt;a href=&quot;#布局规则&quot; class=&quot;headerlink&quot; title=&quot;布局规则&quot;&gt;&lt;/a&gt;布局规则&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;1.约束由父组件向子组件传导，大小由子组件向父组件传导，位置由父组件决定。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.布局Widget是Flutter UI的基础，理解它们的规则和适用场景非常重要&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&quot;核心布局控件-多子组件&quot;&gt;&lt;a href=&quot;#核心布局控件-多子组件&quot; class=&quot;headerlink&quot; title=&quot;核心布局控件 (多子组件)&quot;&gt;&lt;/a&gt;核心布局控件 (多子组件)&lt;/h1&gt;&lt;h2 id=&quot;1-Row-amp-Column&quot;&gt;&lt;a href=&quot;#1-Row-amp-Column&quot; class=&quot;headerlink&quot; title=&quot;1. Row &amp;amp; Column&quot;&gt;&lt;/a&gt;1. Row &amp;amp; Column&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; Row水平排列子Widget，Column垂直排列子Widget&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;规则：&lt;/strong&gt; 子Widget可以是非弹性（不扩展）或弹性（Expanded）。主轴-mainAxisAlignment（Row 为 X 轴，Column 为 Y 轴）和交叉轴-crossAxisAlignment（Row 为 Y 轴，Column 为 X 轴）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1.当子Widget的总长度超过主轴长度时，会溢出（常见错误：黄色黑色条纹警告）。可以使用Expanded或Flexible来避免，或者使用ListView代替&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.如果没有指定主轴对齐方式（mainAxisAlignment）和交叉轴对齐方式（crossAxisAlignment），默认是start和stretch&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;推荐：&lt;/strong&gt; 用于线性排列多个子Widget，如：导航栏（Row）、表单项列表（Column）、图文混排（Row + Column 嵌套），如果子Widget较多且可能超出屏幕，考虑使用ListView。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Row(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  mainAxisAlignment: MainAxisAlignment.spaceBetween, // 主轴均匀分布&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      crossAxisAlignment: CrossAxisAlignment.center, // 交叉轴居中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  children: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Container(width: 50, height: 50, color: Colors.red),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Expanded(child: Container(height: 30, color: Colors.green)), // 弹性填充剩余空间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Container(width: 50, height: 50, color: Colors.blue),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1976231-0f77998e7ccc506f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;ROW&quot;&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Column(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  mainAxisAlignment: MainAxisAlignment.spaceBetween, // 主轴均匀分布&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      crossAxisAlignment: CrossAxisAlignment.center, // 交叉轴居中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  children: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Container(width: 50, height: 50, color: Colors.red),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Expanded(child: Container(height: 30, color: Colors.green)), // 弹性填充剩余空间&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Container(width: 50, height: 50, color: Colors.blue),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1976231-9d2e8d107c3b5f44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Column&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-Stack&quot;&gt;&lt;a href=&quot;#2-Stack&quot; class=&quot;headerlink&quot; title=&quot;2. Stack&quot;&gt;&lt;/a&gt;2. Stack&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; 将子Widget重叠在一起。第一个子Widget在底部，后面的依次在上层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;规则：&lt;/strong&gt; 子Widget可以使用Positioned来定位，否则放置在左上角。如果没有定位，则根据alignment属性对齐（默认左上角）,子 Widget 顺序决定绘制顺序（后绘制的在上层）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 如果不使用Positioned，且Stack没有指定大小，那么Stack会调整到包裹所有未定位的子Widget（但如果有定位的子Widget，则定位的子Widget不影响Stack大小）, Positioned 的子 Widget 可能超出 Stack 边界（需 &lt;code&gt;Clip&lt;/code&gt; 处理）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;推荐：&lt;/strong&gt; 用于需要重叠的布局，如图片上的标签、浮动按钮、自定义进度条&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Stack(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  alignment: Alignment.center, // 所有子Widget居中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  children: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Container(width: 200, height: 200, color: Colors.blue), // 底层&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Positioned(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      bottom: 10,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      right: 10,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      child: Container(width: 50, height: 50, color: Colors.red), // 定位到右下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    const Text(&amp;quot;Stack Example&amp;quot;), // 文字居中&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1976231-aa664a2dba537c26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Stack&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;3-Wrap&quot;&gt;&lt;a href=&quot;#3-Wrap&quot; class=&quot;headerlink&quot; title=&quot;3. Wrap&quot;&gt;&lt;/a&gt;3. Wrap&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; 当一行（或一列）放不下子Widget时，自动换行（或换列）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;规则：&lt;/strong&gt; 可以设置方向（水平或垂直）、间距（spacing-主轴方向间距）和行间距（runSpacing-交叉轴方向行间距）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 与Row不同，Wrap不会溢出，而是换行。但要注意如果子Widget很大且没有足够空间，可能会超出屏幕（在换行方向），按需换行，避免溢出，子 Widget 数量极大时应用 Wrap.builder，计算间距不要忽略 spacing 和 runSpacing 不然容易导致布局重叠&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;推荐：&lt;/strong&gt; 用于流式布局，如标签列表、筛选条件栏、自适应按钮组&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;Wrap(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  spacing: 8.0, // 水平间距&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  runSpacing: 4.0, // 垂直间距（行间距）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  children: [&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签1&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签2&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签3&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签4&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签5&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签6&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签7&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签8&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签9&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签10&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签11&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Chip(label: Text(&amp;#x27;标签12&amp;#x27;)),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1976231-c4a8a811e079ba1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Wrap&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;4-Flow&quot;&gt;&lt;a href=&quot;#4-Flow&quot; class=&quot;headerlink&quot; title=&quot;4. Flow&quot;&gt;&lt;/a&gt;4. Flow&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;说明：&lt;/strong&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;1.Flow 需要自定义布局逻辑时使用，通过delegate控制每个子Widget的位置和大小。性能较好，因为子Widget可以独立定位而不影响父Widget&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;2.动态增减子元素：在delegate中监听数据变化，调用context.invalidateLayout()重布局&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;规则：&lt;/strong&gt; Flow：高性能自定义布局（需实现 FlowDelegate）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt; 通过委托计算（delegate-calculated）实现动态自适应，胜任复杂场景，当布局复杂度低时，优先用Wrap简化开发&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;推荐：&lt;/strong&gt; 复杂动画布局，避免Wrap的多次测量，适合动态加载&amp;#x2F;高频更新场景&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;class MyFlowDelegate extends FlowDelegate &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  void paintChildren(FlowPaintingContext context) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var x = 0.0, y = 0.0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    for (var i = 0; i &amp;lt; context.childCount; i++) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      // 动态计算每个子组件位置&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      final childSize = context.getChildSize(i)!;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      context.paintChild(i, transform: Matrix4.translationValues(x, y, 0));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      x += childSize.width * 0.8; // 重叠效果&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      y += childSize.height * 0.2;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  @override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  bool shouldRepaint(covariant FlowDelegate oldDelegate) =&amp;gt; true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Flow(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  delegate: MyFlowDelegate(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  children: List.generate(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      5,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      (index) =&amp;gt; Container(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            width: 80,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            height: 80,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            color: Colors.primaries[index],&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          )),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload-images.jianshu.io/upload_images/1976231-ce736ecf89cfae2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;Flow&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
+    
+    
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    
+    <category term="“Layout”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLayout%E2%80%9D/"/>
+    
+    <category term="布局" scheme="https://kindyourself.github.io/tags/%E5%B8%83%E5%B1%80/"/>
+    
+  </entry>
+  
+  <entry>
     <title>一台电脑管理多个cocoapods账号</title>
-    <link href="https://gavincarter1991.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/"/>
-    <id>https://gavincarter1991.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/</id>
+    <link href="https://kindyourself.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/"/>
+    <id>https://kindyourself.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/</id>
     <published>2025-06-19T01:40:07.000Z</published>
     <updated>2025-06-19T03:20:31.164Z</updated>
     
@@ -34,19 +133,19 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“cocoapods”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
+    <category term="“cocoapods”" scheme="https://kindyourself.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
     
-    <category term="多个账号" scheme="https://gavincarter1991.github.io/tags/%E5%A4%9A%E4%B8%AA%E8%B4%A6%E5%8F%B7/"/>
+    <category term="多个账号" scheme="https://kindyourself.github.io/tags/%E5%A4%9A%E4%B8%AA%E8%B4%A6%E5%8F%B7/"/>
     
   </entry>
   
   <entry>
     <title>iOS-发布代码到cocoapods上详细步骤</title>
-    <link href="https://gavincarter1991.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"/>
-    <id>https://gavincarter1991.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</id>
+    <link href="https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</id>
     <published>2025-06-18T07:55:07.000Z</published>
     <updated>2025-06-19T03:13:47.116Z</updated>
     
@@ -61,23 +160,23 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“cocoapods”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
+    <category term="“cocoapods”" scheme="https://kindyourself.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
     
-    <category term="Github" scheme="https://gavincarter1991.github.io/tags/Github/"/>
+    <category term="Github" scheme="https://kindyourself.github.io/tags/Github/"/>
     
-    <category term="发布" scheme="https://gavincarter1991.github.io/tags/%E5%8F%91%E5%B8%83/"/>
+    <category term="发布" scheme="https://kindyourself.github.io/tags/%E5%8F%91%E5%B8%83/"/>
     
   </entry>
   
   <entry>
     <title>iOS即时通讯发送图片消息内存暴涨优化</title>
-    <link href="https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
-    <id>https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
+    <link href="https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
+    <id>https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
     <published>2025-06-16T05:55:07.000Z</published>
     <updated>2025-06-16T05:54:01.444Z</updated>
     
@@ -92,23 +191,23 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“IMSDK”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
+    <category term="“IMSDK”" scheme="https://kindyourself.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
     
-    <category term="UIImage" scheme="https://gavincarter1991.github.io/tags/UIImage/"/>
+    <category term="UIImage" scheme="https://kindyourself.github.io/tags/UIImage/"/>
     
-    <category term="优化内存" scheme="https://gavincarter1991.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
+    <category term="优化内存" scheme="https://kindyourself.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
   <entry>
     <title>iOS-SM3加密算法N种集成</title>
-    <link href="https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
-    <id>https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
+    <link href="https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
+    <id>https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
     <published>2025-06-13T10:55:07.000Z</published>
     <updated>2025-06-13T10:54:36.515Z</updated>
     
@@ -125,19 +224,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“SM3”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
+    <category term="“SM3”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客升级版</title>
-    <link href="https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
-    <id>https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
+    <link href="https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
+    <id>https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
     <published>2025-06-11T01:52:44.000Z</published>
     <updated>2025-06-12T06:21:36.778Z</updated>
     
@@ -153,21 +252,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“Hexo”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
+    <category term="“Hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
     
-    <category term="“github&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cgithub/"/>
+    <category term="“github&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9Cgithub/"/>
     
-    <category term="“博客&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
+    <category term="“博客&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/2025/06/07/widget-advanced/"/>
-    <id>https://gavincarter1991.github.io/2025/06/07/widget-advanced/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/widget-advanced/"/>
+    <id>https://kindyourself.github.io/2025/06/07/widget-advanced/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -183,19 +282,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Flutter遇到的问题</title>
-    <link href="https://gavincarter1991.github.io/2025/05/23/flutter-error/"/>
-    <id>https://gavincarter1991.github.io/2025/05/23/flutter-error/</id>
+    <link href="https://kindyourself.github.io/2025/05/23/flutter-error/"/>
+    <id>https://kindyourself.github.io/2025/05/23/flutter-error/</id>
     <published>2025-05-23T07:17:44.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -211,19 +310,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Error”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
+    <category term="“Error”" scheme="https://kindyourself.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
-    <link href="https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
-    <id>https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
+    <link href="https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
+    <id>https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
     <published>2024-03-05T08:02:13.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -238,21 +337,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“证书验证”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
+    <category term="“证书验证”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
     
-    <category term="“SSL”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
+    <category term="“SSL”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
     <published>2019-12-23T08:39:52.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -268,25 +367,25 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“网络请求”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
+    <category term="“网络请求”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
     
-    <category term="“Moya”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
+    <category term="“Moya”" scheme="https://kindyourself.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
     
-    <category term="“HandyJSON”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
+    <category term="“HandyJSON”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
     
-    <category term="“RxSwift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
+    <category term="“RxSwift”" scheme="https://kindyourself.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
     <published>2019-12-23T04:34:37.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -302,21 +401,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“动画”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
+    <category term="“动画”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
     
-    <category term="“Lottie”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
+    <category term="“Lottie”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析01-swift WebSocket</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
     <published>2019-12-23T02:00:16.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -332,19 +431,19 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“WebSocket”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
+    <category term="“WebSocket”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
-    <link href="https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
-    <id>https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
+    <link href="https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
+    <id>https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
     <published>2018-03-29T06:36:05.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -359,19 +458,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“融云”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
+    <category term="“融云”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>UISearchBar详解</title>
-    <link href="https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
     <published>2017-03-10T16:27:34.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -387,21 +486,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“UISearchBar”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
+    <category term="“UISearchBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序tips</title>
-    <link href="https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
-    <id>https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
+    <link href="https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
+    <id>https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
     <published>2017-02-21T17:19:52.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -417,17 +516,17 @@
     
     
     
-    <category term="微信小程序" scheme="https://gavincarter1991.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://kindyourself.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="“微信小程序”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
+    <category term="“微信小程序”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目总结-位置实时共享</title>
-    <link href="https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
-    <id>https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
+    <link href="https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
+    <id>https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
     <published>2016-11-16T16:13:34.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -443,21 +542,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“百度地图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
+    <category term="“百度地图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
     
-    <category term="“位置实时共享”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
+    <category term="“位置实时共享”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <link href="https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
+    <link href="https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
     <published>2016-08-07T17:06:48.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -473,21 +572,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“webView”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
+    <category term="“webView”" scheme="https://kindyourself.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
     
-    <category term="“视频不显示缩略图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
+    <category term="“视频不显示缩略图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>图片上传预览</title>
-    <link href="https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
-    <id>https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
+    <link href="https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
+    <id>https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
     <published>2016-07-31T17:06:42.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -505,21 +604,21 @@
     
     
     
-    <category term="web" scheme="https://gavincarter1991.github.io/categories/web/"/>
+    <category term="web" scheme="https://kindyourself.github.io/categories/web/"/>
     
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“图片上传”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
+    <category term="“图片上传”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
     
-    <category term="“预览”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
+    <category term="“预览”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
     <published>2016-07-25T03:29:55.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -536,21 +635,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“本地”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
+    <category term="“本地”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
     
-    <category term="“路径问题”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
+    <category term="“路径问题”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-widget-Today 扩展</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
     <published>2016-07-25T03:23:58.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -566,44 +665,14 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
+    <category term="“widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
     
-    <category term="“扩展”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>gitHub hexo 个人博客</title>
-    <link href="https://gavincarter1991.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://gavincarter1991.github.io/2016/07/16/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</id>
-    <published>2016-07-15T20:11:37.000Z</published>
-    <updated>2025-06-10T03:47:51.048Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;一直以来就想搭建一个自己的博客，不想其它网站那么杂乱，需要一个纯粹的记录成长之路的地方。查了很多资料，最后决定用hexo 搭建一个静态网页，托管在gitHub上。下面我就介绍一下我的搭建之路，&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
-    
-    
-    <category term="“hexo”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Chexo%E2%80%9D/"/>
-    
-    <category term="“个人博客”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E2%80%9D/"/>
-    
-    <category term="“gitHub”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CgitHub%E2%80%9D/"/>
+    <category term="“扩展”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
     
   </entry>
   
