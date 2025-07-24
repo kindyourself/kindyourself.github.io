@@ -3,11 +3,11 @@
   <title>Gavin&#39;s Blog</title>
   
   <subtitle>记录成长过程中的点点滴滴</subtitle>
-  <link href="https://gavincarter1991.github.io/atom.xml" rel="self"/>
+  <link href="https://kindyourself.github.io/atom.xml" rel="self"/>
   
-  <link href="https://gavincarter1991.github.io/"/>
+  <link href="https://kindyourself.github.io/"/>
   <updated>2025-07-07T07:37:05.915Z</updated>
-  <id>https://gavincarter1991.github.io/</id>
+  <id>https://kindyourself.github.io/</id>
   
   <author>
     <name>kindyourself@163.com</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Flutter-详解布局</title>
-    <link href="https://gavincarter1991.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/"/>
-    <id>https://gavincarter1991.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/</id>
+    <link href="https://kindyourself.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/"/>
+    <id>https://kindyourself.github.io/2025/07/07/Flutter-%E8%AF%A6%E8%A7%A3%E5%B8%83%E5%B1%80/</id>
     <published>2025-07-07T07:30:56.000Z</published>
     <updated>2025-07-07T07:37:05.915Z</updated>
     
@@ -104,21 +104,21 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Layout”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CLayout%E2%80%9D/"/>
+    <category term="“Layout”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLayout%E2%80%9D/"/>
     
-    <category term="布局" scheme="https://gavincarter1991.github.io/tags/%E5%B8%83%E5%B1%80/"/>
+    <category term="布局" scheme="https://kindyourself.github.io/tags/%E5%B8%83%E5%B1%80/"/>
     
   </entry>
   
   <entry>
     <title>一台电脑管理多个cocoapods账号</title>
-    <link href="https://gavincarter1991.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/"/>
-    <id>https://gavincarter1991.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/</id>
+    <link href="https://kindyourself.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/"/>
+    <id>https://kindyourself.github.io/2025/06/19/%E4%B8%80%E5%8F%B0%E7%94%B5%E8%84%91%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAcocoapods%E8%B4%A6%E5%8F%B7/</id>
     <published>2025-06-19T01:40:07.000Z</published>
     <updated>2025-06-19T03:20:31.164Z</updated>
     
@@ -133,19 +133,19 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“cocoapods”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
+    <category term="“cocoapods”" scheme="https://kindyourself.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
     
-    <category term="多个账号" scheme="https://gavincarter1991.github.io/tags/%E5%A4%9A%E4%B8%AA%E8%B4%A6%E5%8F%B7/"/>
+    <category term="多个账号" scheme="https://kindyourself.github.io/tags/%E5%A4%9A%E4%B8%AA%E8%B4%A6%E5%8F%B7/"/>
     
   </entry>
   
   <entry>
     <title>iOS-发布代码到cocoapods上详细步骤</title>
-    <link href="https://gavincarter1991.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"/>
-    <id>https://gavincarter1991.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</id>
+    <link href="https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/"/>
+    <id>https://kindyourself.github.io/2025/06/18/iOS-%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0cocoapods%E4%B8%8A%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4/</id>
     <published>2025-06-18T07:55:07.000Z</published>
     <updated>2025-06-19T03:13:47.116Z</updated>
     
@@ -160,23 +160,23 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“cocoapods”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
+    <category term="“cocoapods”" scheme="https://kindyourself.github.io/tags/%E2%80%9Ccocoapods%E2%80%9D/"/>
     
-    <category term="Github" scheme="https://gavincarter1991.github.io/tags/Github/"/>
+    <category term="Github" scheme="https://kindyourself.github.io/tags/Github/"/>
     
-    <category term="发布" scheme="https://gavincarter1991.github.io/tags/%E5%8F%91%E5%B8%83/"/>
+    <category term="发布" scheme="https://kindyourself.github.io/tags/%E5%8F%91%E5%B8%83/"/>
     
   </entry>
   
   <entry>
     <title>iOS即时通讯发送图片消息内存暴涨优化</title>
-    <link href="https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
-    <id>https://gavincarter1991.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
+    <link href="https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/"/>
+    <id>https://kindyourself.github.io/2025/06/16/iOS%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E5%8F%91%E9%80%81%E5%9B%BE%E7%89%87%E6%B6%88%E6%81%AF%E5%86%85%E5%AD%98%E6%9A%B4%E6%B6%A8%E4%BC%98%E5%8C%96/</id>
     <published>2025-06-16T05:55:07.000Z</published>
     <updated>2025-06-16T05:54:01.444Z</updated>
     
@@ -191,23 +191,23 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“IMSDK”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
+    <category term="“IMSDK”" scheme="https://kindyourself.github.io/tags/%E2%80%9CIMSDK%E2%80%9D/"/>
     
-    <category term="UIImage" scheme="https://gavincarter1991.github.io/tags/UIImage/"/>
+    <category term="UIImage" scheme="https://kindyourself.github.io/tags/UIImage/"/>
     
-    <category term="优化内存" scheme="https://gavincarter1991.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
+    <category term="优化内存" scheme="https://kindyourself.github.io/tags/%E4%BC%98%E5%8C%96%E5%86%85%E5%AD%98/"/>
     
   </entry>
   
   <entry>
     <title>iOS-SM3加密算法N种集成</title>
-    <link href="https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
-    <id>https://gavincarter1991.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
+    <link href="https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/"/>
+    <id>https://kindyourself.github.io/2025/06/13/iOS-SM3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95N%E7%A7%8D%E9%9B%86%E6%88%90/</id>
     <published>2025-06-13T10:55:07.000Z</published>
     <updated>2025-06-13T10:54:36.515Z</updated>
     
@@ -224,19 +224,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“SM3”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
+    <category term="“SM3”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSM3%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>gitHub hexo 个人博客升级版</title>
-    <link href="https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
-    <id>https://gavincarter1991.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
+    <link href="https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/"/>
+    <id>https://kindyourself.github.io/2025/06/11/gitHub-hexo-%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8D%87%E7%BA%A7%E7%89%88/</id>
     <published>2025-06-11T01:52:44.000Z</published>
     <updated>2025-06-12T06:21:36.778Z</updated>
     
@@ -252,21 +252,21 @@
     
     
     
-    <category term="其他" scheme="https://gavincarter1991.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+    <category term="其他" scheme="https://kindyourself.github.io/categories/%E5%85%B6%E4%BB%96/"/>
     
     
-    <category term="“Hexo”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
+    <category term="“Hexo”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHexo%E2%80%9D/"/>
     
-    <category term="“github&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cgithub/"/>
+    <category term="“github&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9Cgithub/"/>
     
-    <category term="“博客&quot;" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
+    <category term="“博客&quot;" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Widget进阶</title>
-    <link href="https://gavincarter1991.github.io/2025/06/07/widget-advanced/"/>
-    <id>https://gavincarter1991.github.io/2025/06/07/widget-advanced/</id>
+    <link href="https://kindyourself.github.io/2025/06/07/widget-advanced/"/>
+    <id>https://kindyourself.github.io/2025/06/07/widget-advanced/</id>
     <published>2025-06-07T12:17:56.000Z</published>
     <updated>2025-06-10T03:47:51.051Z</updated>
     
@@ -282,19 +282,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
+    <category term="“Widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWidget%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>Flutter遇到的问题</title>
-    <link href="https://gavincarter1991.github.io/2025/05/23/flutter-error/"/>
-    <id>https://gavincarter1991.github.io/2025/05/23/flutter-error/</id>
+    <link href="https://kindyourself.github.io/2025/05/23/flutter-error/"/>
+    <id>https://kindyourself.github.io/2025/05/23/flutter-error/</id>
     <published>2025-05-23T07:17:44.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -310,19 +310,19 @@
     
     
     
-    <category term="Flutter" scheme="https://gavincarter1991.github.io/categories/Flutter/"/>
+    <category term="Flutter" scheme="https://kindyourself.github.io/categories/Flutter/"/>
     
     
-    <category term="“Flutter”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
+    <category term="“Flutter”" scheme="https://kindyourself.github.io/tags/%E2%80%9CFlutter%E2%80%9D/"/>
     
-    <category term="“Error”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
+    <category term="“Error”" scheme="https://kindyourself.github.io/tags/%E2%80%9CError%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析04-swift 网络请求Moya+Alamofire(HTTPS)证书验证</title>
-    <link href="https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
-    <id>https://gavincarter1991.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
+    <link href="https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/"/>
+    <id>https://kindyourself.github.io/2024/03/05/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9004-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-Alamofire-HTTPS-%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81/</id>
     <published>2024-03-05T08:02:13.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -337,21 +337,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“证书验证”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
+    <category term="“证书验证”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%AF%81%E4%B9%A6%E9%AA%8C%E8%AF%81%E2%80%9D/"/>
     
-    <category term="“SSL”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
+    <category term="“SSL”" scheme="https://kindyourself.github.io/tags/%E2%80%9CSSL%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析03-swift 网络请求Moya+HandyJSON+RxSwift</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9003-swift-%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82Moya-HandyJSON-RxSwift/</id>
     <published>2019-12-23T08:39:52.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -367,25 +367,25 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“网络请求”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
+    <category term="“网络请求”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E2%80%9D/"/>
     
-    <category term="“Moya”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
+    <category term="“Moya”" scheme="https://kindyourself.github.io/tags/%E2%80%9CMoya%E2%80%9D/"/>
     
-    <category term="“HandyJSON”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
+    <category term="“HandyJSON”" scheme="https://kindyourself.github.io/tags/%E2%80%9CHandyJSON%E2%80%9D/"/>
     
-    <category term="“RxSwift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
+    <category term="“RxSwift”" scheme="https://kindyourself.github.io/tags/%E2%80%9CRxSwift%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析02-swift 轻松实现动画效果-Lottie</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9002-swift-%E8%BD%BB%E6%9D%BE%E5%AE%9E%E7%8E%B0%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C-Lottie/</id>
     <published>2019-12-23T04:34:37.000Z</published>
     <updated>2025-06-10T03:47:51.053Z</updated>
     
@@ -401,21 +401,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“动画”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
+    <category term="“动画”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%8A%A8%E7%94%BB%E2%80%9D/"/>
     
-    <category term="“Lottie”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
+    <category term="“Lottie”" scheme="https://kindyourself.github.io/tags/%E2%80%9CLottie%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目剖析01-swift WebSocket</title>
-    <link href="https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
-    <id>https://gavincarter1991.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
+    <link href="https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/"/>
+    <id>https://kindyourself.github.io/2019/12/23/%E9%A1%B9%E7%9B%AE%E5%89%96%E6%9E%9001-swift-WebSocket/</id>
     <published>2019-12-23T02:00:16.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -431,19 +431,19 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“WebSocket”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
+    <category term="“WebSocket”" scheme="https://kindyourself.github.io/tags/%E2%80%9CWebSocket%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS集成融云SDK即时通讯整理</title>
-    <link href="https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
-    <id>https://gavincarter1991.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
+    <link href="https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/"/>
+    <id>https://kindyourself.github.io/2018/03/29/iOS%E9%9B%86%E6%88%90%E8%9E%8D%E4%BA%91SDK%E5%8D%B3%E6%97%B6%E9%80%9A%E8%AE%AF%E6%95%B4%E7%90%86/</id>
     <published>2018-03-29T06:36:05.000Z</published>
     <updated>2025-06-10T03:47:51.050Z</updated>
     
@@ -458,19 +458,19 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“融云”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
+    <category term="“融云”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%9E%8D%E4%BA%91%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>UISearchBar详解</title>
-    <link href="https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://gavincarter1991.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://kindyourself.github.io/2017/03/11/UISearchBar%E8%AF%A6%E8%A7%A3/</id>
     <published>2017-03-10T16:27:34.000Z</published>
     <updated>2025-06-10T03:47:51.048Z</updated>
     
@@ -486,21 +486,21 @@
     
     
     
-    <category term="swift" scheme="https://gavincarter1991.github.io/categories/swift/"/>
+    <category term="swift" scheme="https://kindyourself.github.io/categories/swift/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“swift”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
+    <category term="“swift”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cswift%E2%80%9D/"/>
     
-    <category term="“UISearchBar”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
+    <category term="“UISearchBar”" scheme="https://kindyourself.github.io/tags/%E2%80%9CUISearchBar%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序tips</title>
-    <link href="https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
-    <id>https://gavincarter1991.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
+    <link href="https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/"/>
+    <id>https://kindyourself.github.io/2017/02/22/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8Ftips/</id>
     <published>2017-02-21T17:19:52.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -516,17 +516,17 @@
     
     
     
-    <category term="微信小程序" scheme="https://gavincarter1991.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://kindyourself.github.io/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
     
-    <category term="“微信小程序”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
+    <category term="“微信小程序”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>项目总结-位置实时共享</title>
-    <link href="https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
-    <id>https://gavincarter1991.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
+    <link href="https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/"/>
+    <id>https://kindyourself.github.io/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/</id>
     <published>2016-11-16T16:13:34.000Z</published>
     <updated>2025-06-10T03:47:51.054Z</updated>
     
@@ -542,21 +542,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“百度地图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
+    <category term="“百度地图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E7%99%BE%E5%BA%A6%E5%9C%B0%E5%9B%BE%E2%80%9D/"/>
     
-    <category term="“位置实时共享”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
+    <category term="“位置实时共享”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-webView上加载HTML视频不显示缩略图</title>
-    <link href="https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
-    <id>https://gavincarter1991.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
+    <link href="https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/"/>
+    <id>https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/</id>
     <published>2016-08-07T17:06:48.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -572,21 +572,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“webView”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
+    <category term="“webView”" scheme="https://kindyourself.github.io/tags/%E2%80%9CwebView%E2%80%9D/"/>
     
-    <category term="“视频不显示缩略图”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
+    <category term="“视频不显示缩略图”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>图片上传预览</title>
-    <link href="https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
-    <id>https://gavincarter1991.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
+    <link href="https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/"/>
+    <id>https://kindyourself.github.io/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/</id>
     <published>2016-07-31T17:06:42.000Z</published>
     <updated>2025-06-10T03:47:51.052Z</updated>
     
@@ -604,21 +604,21 @@
     
     
     
-    <category term="web" scheme="https://gavincarter1991.github.io/categories/web/"/>
+    <category term="web" scheme="https://kindyourself.github.io/categories/web/"/>
     
     
-    <category term="“web”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
+    <category term="“web”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cweb%E2%80%9D/"/>
     
-    <category term="“图片上传”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
+    <category term="“图片上传”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E2%80%9D/"/>
     
-    <category term="“预览”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
+    <category term="“预览”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E9%A2%84%E8%A7%88%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS 下加载本地HTML/js/css/image 等路径问题</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-%E4%B8%8B%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0HTML-js-css-image-%E7%AD%89%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98/</id>
     <published>2016-07-25T03:29:55.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -635,21 +635,21 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“本地”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
+    <category term="“本地”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%9C%AC%E5%9C%B0%E2%80%9D/"/>
     
-    <category term="“路径问题”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
+    <category term="“路径问题”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98%E2%80%9D/"/>
     
   </entry>
   
   <entry>
     <title>iOS-widget-Today 扩展</title>
-    <link href="https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
-    <id>https://gavincarter1991.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
+    <link href="https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/"/>
+    <id>https://kindyourself.github.io/2016/07/25/iOS-widget-Today-%E6%89%A9%E5%B1%95/</id>
     <published>2016-07-25T03:23:58.000Z</published>
     <updated>2025-06-10T03:47:51.049Z</updated>
     
@@ -665,14 +665,14 @@
     
     
     
-    <category term="iOS" scheme="https://gavincarter1991.github.io/categories/iOS/"/>
+    <category term="iOS" scheme="https://kindyourself.github.io/categories/iOS/"/>
     
     
-    <category term="“iOS”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
+    <category term="“iOS”" scheme="https://kindyourself.github.io/tags/%E2%80%9CiOS%E2%80%9D/"/>
     
-    <category term="“widget”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
+    <category term="“widget”" scheme="https://kindyourself.github.io/tags/%E2%80%9Cwidget%E2%80%9D/"/>
     
-    <category term="“扩展”" scheme="https://gavincarter1991.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
+    <category term="“扩展”" scheme="https://kindyourself.github.io/tags/%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D/"/>
     
   </entry>
   
