@@ -17,7 +17,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>iOS-webView上加载HTML视频不显示缩略图 |  Gavin&#39;s Blog</title>
+      <title>Tag: “VoIP” |  Gavin&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,233 +65,56 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="[layout]-iOS-webView上加载HTML视频不显示缩略图"
-  class="article article-type-[layout]"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">#&nbsp“VoIP”</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2025" class="archive-year">2025</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-[layout]">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2025/07/30/iOS%E5%B9%B3%E5%8F%B0VoIP%E5%BA%94%E7%94%A8%E9%9F%B3%E9%A2%91%E5%86%B2%E7%AA%81%E7%9A%84%E5%88%86%E6%9E%90%E5%8F%8A%E8%A7%A3%E5%86%B3/" class="archive-article-date">
+  <time datetime="2025-07-30T08:55:07.000Z" itemprop="datePublished">07/30</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  iOS-webView上加载HTML视频不显示缩略图
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2025/07/30/iOS%E5%B9%B3%E5%8F%B0VoIP%E5%BA%94%E7%94%A8%E9%9F%B3%E9%A2%91%E5%86%B2%E7%AA%81%E7%9A%84%E5%88%86%E6%9E%90%E5%8F%8A%E8%A7%A3%E5%86%B3/"
+    >iOS平台VoIP应用音频冲突的分析及解决</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="article-date">
-  <time datetime="2016-08-07T17:06:48.000Z" itemprop="datePublished">2016-08-08</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/iOS/">iOS</a>
+    
+    
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AVAudioSession/" rel="tag">AVAudioSession</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CVoIP%E2%80%9D/" rel="tag">“VoIP”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9F%B3%E9%A2%91%E5%86%B2%E7%AA%81/" rel="tag">音频冲突</a></li></ul>
+
+    
   </div>
-  
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">418</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <blockquote>
-<p>最近在项目中遇到了一个比较棘手的问题：在原生的iOS的webView上面加载HTML视频发现没有缩略图，在网上查了资料发现在HTML里面有个poster属性（添加一个图片）可以设置缩略图，但是我们的后台告诉我视频资源本来就是来自网络的，没有缩略图只能自己解决了。于是开始是Google模式。终于功夫不负有心人，在一个<a target="_blank" rel="noopener" href="https://www.sitepoint.com/html5-video-fragments-captions-dynamic-thumbnails/">国外的网站</a>上面发现了一个折中的解决办法。</p>
-</blockquote>
-<h3 id="办法"><a href="#办法" class="headerlink" title="办法"></a>办法</h3><blockquote>
-<p>其实结局的办法很简单，但是对我这个不是太懂前端的人来说还是……。</p>
-</blockquote>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4207318919c8a9ed74e9a03b62d18e6c.webp?x-image-process=image/format,png" alt="方法2016-08-08 00.29.36.png"></p>
-<blockquote>
-<p>这个方法就是在资源URL的后面（视频格式后面，有的时候视频格式后面还有其他的字符串，我是直接把.mp4后面的直接删除了，但是视频还是可以播放）加上#t&#x3D;xxx,其中的xxx代表的是时间（秒）。大概的思路是这样的：就是在加载视频的时候设置视频的起始时间让视频跳转到你设置的时间上，但是时间一定要足够的小，因为大了前面的视频就看不了了。</p>
-</blockquote>
-<p><strong>这个方法其实还有一个用法：</strong></p>
-<p><img src="https://i-blog.csdnimg.cn/blog_migrate/406035d5b21ac7d6e4ba0edbf0414389.webp?x-image-process=image/format,png" alt="用法 2016-08-08 00.50.52.png"></p>
-<blockquote>
-<p>视频会在0：06开始播放直到0：20停止播放。但是这不是自动播放，自动播放需要设置：autoplay&#x3D;”autoplay”。</p>
-</blockquote>
-<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><blockquote>
-<p>NOTE：对于web端我是一个菜鸟，也不知道用这个方法解决这个问题是不是太蠢了，希望谁有其他更好的解决办法可以不吝赐教，谢谢。</p>
-</blockquote>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          打赏
-        </div>
-      </div>
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://kindyourself.github.io/2016/08/08/iOS-webView%E4%B8%8A%E5%8A%A0%E8%BD%BDHTML%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CiOS%E2%80%9D/" rel="tag">“iOS”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9CwebView%E2%80%9D/" rel="tag">“webView”</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E2%80%9C%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE%E2%80%9D/" rel="tag">“视频不显示缩略图”</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-  <nav class="article-nav">
-    
-      <a href="/2016/11/17/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93-%E4%BD%8D%E7%BD%AE%E5%AE%9E%E6%97%B6%E5%85%B1%E4%BA%AB/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            项目总结-位置实时共享
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2016/08/01/%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0%E9%A2%84%E8%A7%88/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">图片上传预览</div>
-      </a>
-    
-  </nav>
-
-   
-<!-- valine评论 -->
-<div id="vcomments-box">
-  <div id="vcomments"></div>
-</div>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
-<script>
-  new Valine({
-    el: "#vcomments",
-    app_id: "a1S86fOlOUpjKlnF6GbDEaXa-gzGzoHsz",
-    app_key: "I8KJc5Z8uB7wXwz3r7Mab2Rx",
-    path: window.location.pathname,
-    avatar: "monsterid",
-    placeholder: "留下您的宝贵意见...",
-    recordIP: true,
-  });
-  const infoEle = document.querySelector("#vcomments .info");
-  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-    infoEle.childNodes.forEach(function (item) {
-      item.parentNode.removeChild(item);
-    });
-  }
-</script>
-<style>
-  #vcomments-box {
-    padding: 5px 30px;
-  }
-
-  @media screen and (max-width: 800px) {
-    #vcomments-box {
-      padding: 5px 0px;
-    }
-  }
-
-  #vcomments-box #vcomments {
-    background-color: #fff;
-  }
-
-  .v .vlist .vcard .vh {
-    padding-right: 20px;
-  }
-
-  .v .vlist .vcard {
-    padding-left: 10px;
-  }
-</style>
-
- 
-   
-     
 </article>
+      
+      
+    </div>
+  </div>
+  
+  
 
+  
 </section>
       <footer class="footer">
   <div class="outer">
@@ -440,22 +263,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
